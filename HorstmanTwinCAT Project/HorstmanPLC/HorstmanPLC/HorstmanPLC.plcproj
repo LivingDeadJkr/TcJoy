@@ -2,19 +2,19 @@
   <PropertyGroup>
     <FileVersion>1.0.0.0</FileVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6caed002-4acd-4bd3-898b-4d8756715839}</ProjectGuid>
+    <ProjectGuid>{183d58d0-6327-4f07-8821-f200405a4372}</ProjectGuid>
     <SubObjectsSortedByName>True</SubObjectsSortedByName>
     <DownloadApplicationInfo>true</DownloadApplicationInfo>
     <WriteProductVersion>true</WriteProductVersion>
     <GenerateTpy>false</GenerateTpy>
-    <Name>Horstman</Name>
+    <Name>HorstmanPLC</Name>
     <ProgramVersion>3.1.4023.0</ProgramVersion>
-    <Application>{878df840-53a9-424b-afb2-c42424bbc755}</Application>
-    <TypeSystem>{dafb1f16-e12a-45ee-ad7a-fe513ae9f7c5}</TypeSystem>
-    <Implicit_Task_Info>{02248cd1-f3de-4e86-9c07-22e1f2e683cd}</Implicit_Task_Info>
-    <Implicit_KindOfTask>{d7915816-22d5-4ff5-a526-24e23ad49749}</Implicit_KindOfTask>
-    <Implicit_Jitter_Distribution>{eb70f84d-f3dc-4d18-9f62-47bf77ec1524}</Implicit_Jitter_Distribution>
-    <LibraryReferences>{a17434e5-5787-4e9e-9a72-89949ec47c00}</LibraryReferences>
+    <Application>{749867f5-aff3-41f7-b157-39cfa6758afa}</Application>
+    <TypeSystem>{0a812790-7be8-491a-a955-7023d01960ed}</TypeSystem>
+    <Implicit_Task_Info>{b5c80509-4666-4f04-96b6-0cd3c479d60e}</Implicit_Task_Info>
+    <Implicit_KindOfTask>{39601014-1c33-433a-bbad-35b7c66fac6f}</Implicit_KindOfTask>
+    <Implicit_Jitter_Distribution>{4e61a2ec-e57f-4dfa-9494-926b711f5a51}</Implicit_Jitter_Distribution>
+    <LibraryReferences>{dc7a2531-f16b-4479-bd57-c9258999a700}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="GVLs\Global_Variables.TcGVL">
@@ -51,7 +51,7 @@
     </PlaceholderReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Horstman.tmc">
+    <None Include="HorstmanPLC.tmc">
       <SubType>Content</SubType>
     </None>
   </ItemGroup>

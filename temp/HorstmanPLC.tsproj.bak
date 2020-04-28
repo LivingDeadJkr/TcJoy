@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4024.7">
+	<Project ProjectGUID="{FB729478-BB56-41A2-A3F3-C4C2894D3EEA}" Target64Bit="true" ShowHideConfigurations="#x106">
+		<System>
+			<Tasks>
+				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
+					<Name>PlcTask</Name>
+				</Task>
+			</Tasks>
+		</System>
+		<Plc>
+			<Project GUID="{6CAED002-4ACD-4BD3-898B-4D8756715839}" Name="Horstman" PrjFilePath="C:\TcJoyForHorstman\TcJoy\HorstmanTwinCAT Project\Horstman\Horstman.plcproj" TmcFilePath="C:\TcJoyForHorstman\TcJoy\HorstmanTwinCAT Project\Horstman\Horstman.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2">
+					<Name>Horstman Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+				</Instance>
+			</Project>
+		</Plc>
+	</Project>
+</TcSmProject>
