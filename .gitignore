@@ -331,3 +331,16 @@ ASALocalRun/
 .localhistory/
 *.~u
 *.~u
+*.compileinfo
+HorstmanTwinCAT Project/HorstmanPLC/HorstmanPLC/_CompileInfo/3D6D3F91-96E4-48E5-96E9-092E1499F04A.compileinfo
+HorstmanTwinCAT Project/HorstmanPLC/HorstmanPLC/HorstmanPLC.tsproj.bak
+HorstmanTwinCAT Project/HorstmanPLC/HorstmanPLC/HorstmanPLC.tsproj
+HorstmanTwinCAT Project/HorstmanPLC/HorstmanPLC/HorstmanPLC.tmc
+HorstmanTwinCAT Project/HorstmanPLC/HorstmanPLC/_CompileInfo/C2984F85-69DB-93C5-F9DE-42B488A5E84F.compileinfo
+HorstmanTwinCAT Project/HorstmanPLC/HorstmanPLC/_CompileInfo/3D6D3F91-96E4-48E5-96E9-092E1499F04A.compileinfo
+HorstmanTwinCAT Project/HorstmanPLC/HorstmanPLC/_Boot/TwinCAT RT (x64)/Plc/Port_851_boot.tizip
+HorstmanTwinCAT Project/HorstmanPLC/HorstmanPLC/_Boot/TwinCAT RT (x64)/Plc/Port_851.occ
+HorstmanTwinCAT Project/HorstmanPLC/HorstmanPLC/_Boot/TwinCAT RT (x64)/Plc/Port_851.crc
+HorstmanTwinCAT Project/HorstmanPLC/HorstmanPLC/_Boot/TwinCAT RT (x64)/Plc/Port_851.cid
+HorstmanTwinCAT Project/HorstmanPLC/HorstmanPLC/_Boot/TwinCAT RT (x64)/Plc/Port_851.app
+HorstmanTwinCAT Project/HorstmanPLC/HorstmanPLC/_Boot/TwinCAT RT (x64)/CurrentConfig.xml
