@@ -994,5 +994,7 @@ Public Class Form1
 
     End Class
 
+    Private Sub TextBox10_TextChanged(sender As Object, e As EventArgs) Handles txtNewUserPos.TextChanged
 
+    End Sub
 End Class
