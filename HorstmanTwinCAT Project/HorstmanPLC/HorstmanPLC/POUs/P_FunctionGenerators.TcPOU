@@ -3,13 +3,31 @@
   <POU Name="P_FunctionGenerators" Id="{115fcafb-7e59-4bfc-a156-7bd475b390a7}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM P_FunctionGenerators
 VAR
+	
+nPositionAr: ARRAY [0..2, 0..999]  OF LREAL; ///1000 positions to fill 1 second, 3 seconds worth of buffer. position data in ms.
+timer: TON; //track time
+ElapsedTIME :TIME;
+nPostionTarget: LREAL;
+nCase: INT;
+
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[]]></ST>
+      <ST><![CDATA[CASE nCase OF
+	1://Random inputs within 10 of each other
+	2://
+	3://
+	4://
+	
+END_CASE
+]]></ST>
     </Implementation>
     <LineIds Name="P_FunctionGenerators">
       <LineId Id="5" Count="0" />
+      <LineId Id="17" Count="0" />
+      <LineId Id="19" Count="3" />
+      <LineId Id="18" Count="0" />
+      <LineId Id="16" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>
