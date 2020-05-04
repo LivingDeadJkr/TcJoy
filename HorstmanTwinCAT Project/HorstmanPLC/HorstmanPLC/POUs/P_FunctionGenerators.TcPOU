@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+  <POU Name="P_FunctionGenerators" Id="{115fcafb-7e59-4bfc-a156-7bd475b390a7}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_FunctionGenerators
+VAR
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[]]></ST>
+    </Implementation>
+    <LineIds Name="P_FunctionGenerators">
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

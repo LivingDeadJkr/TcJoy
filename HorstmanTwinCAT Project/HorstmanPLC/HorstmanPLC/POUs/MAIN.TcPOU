@@ -6,15 +6,26 @@ VAR
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[.Global_Variables.TcJoy();
+      <ST><![CDATA[.Global_Variables.TcJoy(); // Read HMI data
 
-IF .Global_Variables.TcJoy.bIsActive THEN
+IF .Global_Variables.TcJoy.bIsActive THEN // if HMI is connected
 	;
-END_IF]]></ST>
+END_IF
+
+p_FaultMonitoring(); // Check fault routine
+//inputs
+//Seq
+//Outputs
+//logging
+//recipe system]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
       <LineId Id="3" Count="3" />
       <LineId Id="2" Count="0" />
+      <LineId Id="11" Count="0" />
+      <LineId Id="10" Count="0" />
+      <LineId Id="12" Count="0" />
+      <LineId Id="14" Count="3" />
     </LineIds>
   </POU>
 </TcPlcObject>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+  <GVL Name="IO" Id="{bbbb0fc5-1297-4d34-bc8a-189fc9af07a3}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+
+//Outputs
+//Drive 1	
+TorqueRequest1 AT %Q*: INT;
+DriveEnable1 AT %Q*: BOOL;
+Drive1Spare AT %Q*: BOOL;
+DriveAxis1 : AXIS_Ref;
+//Drive 2
+TorqueRequest2 AT %Q*: INT;
+DriveEnable2 AT %Q*:BOOL;
+Drive2Spare AT %Q*: BOOL;
+DriveAxis2 : AXIS_Ref;
+
+
+//Inputs
+
+//Drive 1
+DriveFaulted1  AT %I*: BOOL;
+DriveEnabled1  AT %I*: BOOL;
+DriveFeedback1   AT %I*: INT;
+LinearPosition1   AT %I*: INT;
+LoadCell1   AT %I*: DINT;
+
+//Drive 2
+DriveFaulted2  AT %I*: BOOL;
+DriveEnabled2  AT %I*: BOOL;
+DriveFeedback2   AT %I*: INT;
+LinearPosition2   AT %I*: INT;
+LoadCell2   AT %I*: DINT;
+ 
+
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>
