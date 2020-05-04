@@ -2005,6 +2005,9 @@ Drive 1	]]></Comment>
 				<Image Id="3" AddrType="9" ImageType="3">
 					<Name>Image</Name>
 				</Image>
+				<Image Id="6" AddrType="10" ImageType="3">
+					<Name>Image-2</Name>
+				</Image>
 				<Box Id="1" BoxType="9099">
 					<Name>Term 1 (EK1200)</Name>
 					<ImageId>1000</ImageId>
@@ -2304,7 +2307,7 @@ Bit1: Value smaller than Limit1]]></Comment>
 								<Entry Name="Status__Power failure" Index="#x6000" Sub="#x03">
 									<Type>BIT</Type>
 								</Entry>
-								<Entry Name="Status__Data mismatch" Index="#x6000" Sub="#x04">
+								<Entry Name="Status__Data mismatch" Index="#x6000" Sub="#x04" Flags="#x00000020">
 									<Type>BIT</Type>
 								</Entry>
 								<Entry Name="Status__">
@@ -2844,6 +2847,12 @@ Bit1: Value smaller than Limit1]]></Comment>
 			</OwnerB>
 		</OwnerA>
 		<OwnerA Name="TIPC^HorstmanPLC^HorstmanPLC Instance">
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Load Cell 1 (EL3356)">
+				<Link VarA="PlcTask Inputs^IO.LoadCell1" VarB="RMB Value (INT32)^IO.LoadCell1"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Load Cell 2 (EL3356)">
+				<Link VarA="PlcTask Inputs^IO.LoadCell2" VarB="RMB Value (INT32)^IO.LoadCell2"/>
+			</OwnerB>
 			<OwnerB Name="TINC^NC-Task 1 SAF^Axes^Axis 1">
 				<Link VarA="PlcTask Inputs^IO.DriveAxis1.NcToPlc" VarB="Outputs^ToPlc"/>
 				<Link VarA="PlcTask Outputs^IO.DriveAxis1.PlcToNc" VarB="Inputs^FromPlc"/>
