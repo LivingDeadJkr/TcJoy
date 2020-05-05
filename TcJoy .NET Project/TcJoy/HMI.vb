@@ -38,7 +38,7 @@ Imports System
 ' SOFTWARE.
 '
 
-Public Class Form1
+Public Class HMI
 
     Public BgTaskData As TaskData ' Data for background task that runs actual ADS comms.
 
@@ -322,7 +322,7 @@ Public Class Form1
 
                     Dim symbol As ITcAdsSymbol
                     Dim debug = False
-                    For Each tag As Form1.DataTag In BgTaskData.TagList
+                    For Each tag As HMI.DataTag In BgTaskData.TagList
 
                         If tag.IsRead Then
 
@@ -628,7 +628,7 @@ Public Class Form1
                 ADSWatchdogDeadDuration = 2000
             End Try
 
-            BgTaskData = New Form1.TaskData(rate, ADSWatchdog, ADSWatchdogDeadDuration,
+            BgTaskData = New HMI.TaskData(rate, ADSWatchdog, ADSWatchdogDeadDuration,
                                   TextBox_ADSNetID.Text, port)
 
             Try

@@ -105,11 +105,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ads_Link.vb" />
-    <Compile Include="Form1.vb">
+    <Compile Include="HMI.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="HMI.Designer.vb">
+      <DependentUpon>HMI.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="PLC_Polling.vb" />
@@ -136,8 +136,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="HMI.resx">
+      <DependentUpon>HMI.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
