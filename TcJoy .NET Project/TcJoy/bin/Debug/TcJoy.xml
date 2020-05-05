@@ -29,7 +29,7 @@ TcJoy
  </summary>
  <remarks></remarks>
 </member>
-<member name="M:TcJoy.Form1.Timer_HealthCheck_Tick_Slow(System.Object,System.EventArgs)">
+<member name="M:TcJoy.HMI.Timer_HealthCheck_Tick_Slow(System.Object,System.EventArgs)">
  <summary>
  System Health Check Slow Rate... Updates the gui with values from the controller, etc.  Runs slower than ADS cycle to preserve resources.
  </summary>
@@ -37,7 +37,7 @@ TcJoy
  <param name="e"></param>
  <remarks>Ticks every 'My.Settings.iHeathCheckPulseMS_Slow' Milliseconds </remarks>
 </member>
-<member name="T:TcJoy.Form1.DataTag">
+<member name="T:TcJoy.HMI.DataTag">
  <summary>
  Data Tag Object that we read/write to or from twincat via ADS
  </summary>

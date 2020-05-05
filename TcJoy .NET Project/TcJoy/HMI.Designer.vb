@@ -79,12 +79,6 @@ Partial Class HMI
         Me.txtTargetPos = New System.Windows.Forms.TextBox()
         Me.txtCurrPos = New System.Windows.Forms.TextBox()
         Me.TabPage_LiveStatus = New System.Windows.Forms.TabPage()
-        Me.ProgressBar_RightShoulderAnalog = New TcJoy.MyVerticalProgessBar()
-        Me.ProgressBar_LeftShoulderAnalog = New TcJoy.MyVerticalProgessBar()
-        Me.ProgressBar_LeftStickYMinus = New TcJoy.MyVerticalProgessBarMinus()
-        Me.ProgressBar_RightStickYMinus = New TcJoy.MyVerticalProgessBarMinus()
-        Me.ProgressBar_RightStickYPlus = New TcJoy.MyVerticalProgessBar()
-        Me.ProgressBar_LeftStickYPlus = New TcJoy.MyVerticalProgessBar()
         Me.Label_LeftShoulderVal = New System.Windows.Forms.Label()
         Me.Label_RightShoulderVal = New System.Windows.Forms.Label()
         Me.Label_RightStickYNeg = New System.Windows.Forms.Label()
@@ -154,6 +148,13 @@ Partial Class HMI
         Me.CheckBox_AutoConnectOnOpen = New System.Windows.Forms.CheckBox()
         Me.TabPage_Help = New System.Windows.Forms.TabPage()
         Me.RichTextBox_Help = New System.Windows.Forms.RichTextBox()
+        Me.ProgressBar_RightShoulderAnalog = New TcJoy.MyVerticalProgessBar()
+        Me.ProgressBar_LeftShoulderAnalog = New TcJoy.MyVerticalProgessBar()
+        Me.ProgressBar_LeftStickYMinus = New TcJoy.MyVerticalProgessBarMinus()
+        Me.ProgressBar_RightStickYMinus = New TcJoy.MyVerticalProgessBarMinus()
+        Me.ProgressBar_RightStickYPlus = New TcJoy.MyVerticalProgessBar()
+        Me.ProgressBar_LeftStickYPlus = New TcJoy.MyVerticalProgessBar()
+        Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabControl.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -174,6 +175,7 @@ Partial Class HMI
         Me.TabControl.Controls.Add(Me.TabPage_LiveStatus)
         Me.TabControl.Controls.Add(Me.TabPage_Connection)
         Me.TabControl.Controls.Add(Me.TabPage_Help)
+        Me.TabControl.Controls.Add(Me.TabPage2)
         Me.TabControl.Location = New System.Drawing.Point(2, 3)
         Me.TabControl.Name = "TabControl"
         Me.TabControl.SelectedIndex = 0
@@ -203,9 +205,9 @@ Partial Class HMI
         Me.TabPage1.Controls.Add(Me.txtTargetPos)
         Me.TabPage1.Controls.Add(Me.txtCurrPos)
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TabPage1.Margin = New System.Windows.Forms.Padding(2)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(2)
         Me.TabPage1.Size = New System.Drawing.Size(1205, 648)
         Me.TabPage1.TabIndex = 4
         Me.TabPage1.Text = "Hank Rig Controls"
@@ -214,7 +216,7 @@ Partial Class HMI
         'PictureBox1
         '
         Me.PictureBox1.Location = New System.Drawing.Point(68, 129)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(243, 205)
         Me.PictureBox1.TabIndex = 10
@@ -283,7 +285,7 @@ Partial Class HMI
         'txtUserPos
         '
         Me.txtUserPos.Location = New System.Drawing.Point(516, 40)
-        Me.txtUserPos.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtUserPos.Margin = New System.Windows.Forms.Padding(2)
         Me.txtUserPos.Name = "txtUserPos"
         Me.txtUserPos.Size = New System.Drawing.Size(68, 20)
         Me.txtUserPos.TabIndex = 3
@@ -309,9 +311,9 @@ Partial Class HMI
         Me.GroupBox2.Controls.Add(Me.btnHome)
         Me.GroupBox2.Controls.Add(Me.lblSystemPos)
         Me.GroupBox2.Location = New System.Drawing.Point(358, 424)
-        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox2.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox2.Padding = New System.Windows.Forms.Padding(2)
         Me.GroupBox2.Size = New System.Drawing.Size(309, 223)
         Me.GroupBox2.TabIndex = 5
         Me.GroupBox2.TabStop = False
@@ -323,9 +325,9 @@ Partial Class HMI
         Me.GroupBox3.Controls.Add(Me.Label28)
         Me.GroupBox3.Controls.Add(Me.txtNewUserPos)
         Me.GroupBox3.Location = New System.Drawing.Point(15, 98)
-        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox3.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox3.Padding = New System.Windows.Forms.Padding(2)
         Me.GroupBox3.Size = New System.Drawing.Size(258, 90)
         Me.GroupBox3.TabIndex = 8
         Me.GroupBox3.TabStop = False
@@ -334,7 +336,7 @@ Partial Class HMI
         'btnSetUserPos
         '
         Me.btnSetUserPos.Location = New System.Drawing.Point(24, 45)
-        Me.btnSetUserPos.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnSetUserPos.Margin = New System.Windows.Forms.Padding(2)
         Me.btnSetUserPos.Name = "btnSetUserPos"
         Me.btnSetUserPos.Size = New System.Drawing.Size(64, 41)
         Me.btnSetUserPos.TabIndex = 0
@@ -354,7 +356,7 @@ Partial Class HMI
         'txtNewUserPos
         '
         Me.txtNewUserPos.Location = New System.Drawing.Point(141, 19)
-        Me.txtNewUserPos.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtNewUserPos.Margin = New System.Windows.Forms.Padding(2)
         Me.txtNewUserPos.Name = "txtNewUserPos"
         Me.txtNewUserPos.Size = New System.Drawing.Size(68, 20)
         Me.txtNewUserPos.TabIndex = 3
@@ -383,7 +385,7 @@ Partial Class HMI
         'btnLevel
         '
         Me.btnLevel.Location = New System.Drawing.Point(26, 23)
-        Me.btnLevel.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnLevel.Margin = New System.Windows.Forms.Padding(2)
         Me.btnLevel.Name = "btnLevel"
         Me.btnLevel.Size = New System.Drawing.Size(84, 31)
         Me.btnLevel.TabIndex = 0
@@ -393,7 +395,7 @@ Partial Class HMI
         'btnPower
         '
         Me.btnPower.Location = New System.Drawing.Point(190, 23)
-        Me.btnPower.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnPower.Margin = New System.Windows.Forms.Padding(2)
         Me.btnPower.Name = "btnPower"
         Me.btnPower.Size = New System.Drawing.Size(101, 31)
         Me.btnPower.TabIndex = 0
@@ -403,7 +405,7 @@ Partial Class HMI
         'btnHome
         '
         Me.btnHome.Location = New System.Drawing.Point(121, 23)
-        Me.btnHome.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnHome.Margin = New System.Windows.Forms.Padding(2)
         Me.btnHome.Name = "btnHome"
         Me.btnHome.Size = New System.Drawing.Size(53, 31)
         Me.btnHome.TabIndex = 0
@@ -413,7 +415,7 @@ Partial Class HMI
         'lblSystemPos
         '
         Me.lblSystemPos.Location = New System.Drawing.Point(106, 197)
-        Me.lblSystemPos.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.lblSystemPos.Margin = New System.Windows.Forms.Padding(2)
         Me.lblSystemPos.Name = "lblSystemPos"
         Me.lblSystemPos.Size = New System.Drawing.Size(68, 20)
         Me.lblSystemPos.TabIndex = 3
@@ -422,7 +424,7 @@ Partial Class HMI
         'btnJumpToPos
         '
         Me.btnJumpToPos.Location = New System.Drawing.Point(397, 230)
-        Me.btnJumpToPos.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnJumpToPos.Margin = New System.Windows.Forms.Padding(2)
         Me.btnJumpToPos.Name = "btnJumpToPos"
         Me.btnJumpToPos.Size = New System.Drawing.Size(113, 40)
         Me.btnJumpToPos.TabIndex = 0
@@ -432,7 +434,7 @@ Partial Class HMI
         'btnAutoStep
         '
         Me.btnAutoStep.Location = New System.Drawing.Point(398, 183)
-        Me.btnAutoStep.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnAutoStep.Margin = New System.Windows.Forms.Padding(2)
         Me.btnAutoStep.Name = "btnAutoStep"
         Me.btnAutoStep.Size = New System.Drawing.Size(113, 36)
         Me.btnAutoStep.TabIndex = 0
@@ -442,7 +444,7 @@ Partial Class HMI
         'btnStep
         '
         Me.btnStep.Location = New System.Drawing.Point(527, 183)
-        Me.btnStep.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnStep.Margin = New System.Windows.Forms.Padding(2)
         Me.btnStep.Name = "btnStep"
         Me.btnStep.Size = New System.Drawing.Size(57, 36)
         Me.btnStep.TabIndex = 0
@@ -452,7 +454,7 @@ Partial Class HMI
         'Button9
         '
         Me.Button9.Location = New System.Drawing.Point(596, 183)
-        Me.Button9.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.Button9.Margin = New System.Windows.Forms.Padding(2)
         Me.Button9.Name = "Button9"
         Me.Button9.Size = New System.Drawing.Size(53, 36)
         Me.Button9.TabIndex = 0
@@ -477,9 +479,9 @@ Partial Class HMI
         Me.GroupBox1.Controls.Add(Me.Label22)
         Me.GroupBox1.Controls.Add(Me.Label20)
         Me.GroupBox1.Location = New System.Drawing.Point(4, 424)
-        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Margin = New System.Windows.Forms.Padding(2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.GroupBox1.Padding = New System.Windows.Forms.Padding(2)
         Me.GroupBox1.Size = New System.Drawing.Size(343, 223)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
@@ -488,7 +490,7 @@ Partial Class HMI
         'txtTFB
         '
         Me.txtTFB.Location = New System.Drawing.Point(261, 98)
-        Me.txtTFB.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtTFB.Margin = New System.Windows.Forms.Padding(2)
         Me.txtTFB.Name = "txtTFB"
         Me.txtTFB.Size = New System.Drawing.Size(68, 20)
         Me.txtTFB.TabIndex = 3
@@ -496,7 +498,7 @@ Partial Class HMI
         'btnLowerA
         '
         Me.btnLowerA.Location = New System.Drawing.Point(177, 183)
-        Me.btnLowerA.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnLowerA.Margin = New System.Windows.Forms.Padding(2)
         Me.btnLowerA.Name = "btnLowerA"
         Me.btnLowerA.Size = New System.Drawing.Size(53, 31)
         Me.btnLowerA.TabIndex = 0
@@ -506,7 +508,7 @@ Partial Class HMI
         'txtATB
         '
         Me.txtATB.Location = New System.Drawing.Point(262, 70)
-        Me.txtATB.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtATB.Margin = New System.Windows.Forms.Padding(2)
         Me.txtATB.Name = "txtATB"
         Me.txtATB.Size = New System.Drawing.Size(68, 20)
         Me.txtATB.TabIndex = 3
@@ -514,7 +516,7 @@ Partial Class HMI
         'btnLowerB
         '
         Me.btnLowerB.Location = New System.Drawing.Point(262, 183)
-        Me.btnLowerB.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnLowerB.Margin = New System.Windows.Forms.Padding(2)
         Me.btnLowerB.Name = "btnLowerB"
         Me.btnLowerB.Size = New System.Drawing.Size(53, 31)
         Me.btnLowerB.TabIndex = 0
@@ -524,7 +526,7 @@ Partial Class HMI
         'txtAPB
         '
         Me.txtAPB.Location = New System.Drawing.Point(262, 44)
-        Me.txtAPB.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtAPB.Margin = New System.Windows.Forms.Padding(2)
         Me.txtAPB.Name = "txtAPB"
         Me.txtAPB.Size = New System.Drawing.Size(68, 20)
         Me.txtAPB.TabIndex = 3
@@ -532,7 +534,7 @@ Partial Class HMI
         'btnRaiseA
         '
         Me.btnRaiseA.Location = New System.Drawing.Point(177, 148)
-        Me.btnRaiseA.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnRaiseA.Margin = New System.Windows.Forms.Padding(2)
         Me.btnRaiseA.Name = "btnRaiseA"
         Me.btnRaiseA.Size = New System.Drawing.Size(53, 31)
         Me.btnRaiseA.TabIndex = 0
@@ -542,7 +544,7 @@ Partial Class HMI
         'txtTFA
         '
         Me.txtTFA.Location = New System.Drawing.Point(175, 98)
-        Me.txtTFA.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtTFA.Margin = New System.Windows.Forms.Padding(2)
         Me.txtTFA.Name = "txtTFA"
         Me.txtTFA.Size = New System.Drawing.Size(68, 20)
         Me.txtTFA.TabIndex = 3
@@ -550,7 +552,7 @@ Partial Class HMI
         'btnRaiseB
         '
         Me.btnRaiseB.Location = New System.Drawing.Point(262, 148)
-        Me.btnRaiseB.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.btnRaiseB.Margin = New System.Windows.Forms.Padding(2)
         Me.btnRaiseB.Name = "btnRaiseB"
         Me.btnRaiseB.Size = New System.Drawing.Size(53, 31)
         Me.btnRaiseB.TabIndex = 0
@@ -560,7 +562,7 @@ Partial Class HMI
         'txtATA
         '
         Me.txtATA.Location = New System.Drawing.Point(176, 70)
-        Me.txtATA.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtATA.Margin = New System.Windows.Forms.Padding(2)
         Me.txtATA.Name = "txtATA"
         Me.txtATA.Size = New System.Drawing.Size(68, 20)
         Me.txtATA.TabIndex = 3
@@ -578,7 +580,7 @@ Partial Class HMI
         'txtAPA
         '
         Me.txtAPA.Location = New System.Drawing.Point(176, 44)
-        Me.txtAPA.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtAPA.Margin = New System.Windows.Forms.Padding(2)
         Me.txtAPA.Name = "txtAPA"
         Me.txtAPA.Size = New System.Drawing.Size(68, 20)
         Me.txtAPA.TabIndex = 3
@@ -626,7 +628,7 @@ Partial Class HMI
         'txtTime
         '
         Me.txtTime.Location = New System.Drawing.Point(516, 96)
-        Me.txtTime.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtTime.Margin = New System.Windows.Forms.Padding(2)
         Me.txtTime.Name = "txtTime"
         Me.txtTime.Size = New System.Drawing.Size(68, 20)
         Me.txtTime.TabIndex = 3
@@ -635,7 +637,7 @@ Partial Class HMI
         'txtPosTime
         '
         Me.txtPosTime.Location = New System.Drawing.Point(587, 96)
-        Me.txtPosTime.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtPosTime.Margin = New System.Windows.Forms.Padding(2)
         Me.txtPosTime.Name = "txtPosTime"
         Me.txtPosTime.Size = New System.Drawing.Size(68, 20)
         Me.txtPosTime.TabIndex = 3
@@ -646,7 +648,7 @@ Partial Class HMI
         Me.dgvProgramData.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.dgvProgramData.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.PositionNumber, Me.Position, Me.Speed, Me.Jerk, Me.Accel, Me.Decel, Me.Dwell, Me.SameDeCel})
         Me.dgvProgramData.Location = New System.Drawing.Point(687, 41)
-        Me.dgvProgramData.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.dgvProgramData.Margin = New System.Windows.Forms.Padding(2)
         Me.dgvProgramData.Name = "dgvProgramData"
         Me.dgvProgramData.RowHeadersWidth = 62
         Me.dgvProgramData.RowTemplate.Height = 28
@@ -712,7 +714,7 @@ Partial Class HMI
         'txtTargetPos
         '
         Me.txtTargetPos.Location = New System.Drawing.Point(527, 241)
-        Me.txtTargetPos.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtTargetPos.Margin = New System.Windows.Forms.Padding(2)
         Me.txtTargetPos.Name = "txtTargetPos"
         Me.txtTargetPos.Size = New System.Drawing.Size(122, 20)
         Me.txtTargetPos.TabIndex = 3
@@ -721,7 +723,7 @@ Partial Class HMI
         'txtCurrPos
         '
         Me.txtCurrPos.Location = New System.Drawing.Point(515, 66)
-        Me.txtCurrPos.Margin = New System.Windows.Forms.Padding(2, 2, 2, 2)
+        Me.txtCurrPos.Margin = New System.Windows.Forms.Padding(2)
         Me.txtCurrPos.Name = "txtCurrPos"
         Me.txtCurrPos.Size = New System.Drawing.Size(68, 20)
         Me.txtCurrPos.TabIndex = 3
@@ -772,63 +774,11 @@ Partial Class HMI
         Me.TabPage_LiveStatus.Controls.Add(Me.Label5)
         Me.TabPage_LiveStatus.Location = New System.Drawing.Point(4, 22)
         Me.TabPage_LiveStatus.Name = "TabPage_LiveStatus"
-        Me.TabPage_LiveStatus.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage_LiveStatus.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage_LiveStatus.Size = New System.Drawing.Size(1205, 648)
         Me.TabPage_LiveStatus.TabIndex = 0
         Me.TabPage_LiveStatus.Text = "Live Status"
         Me.TabPage_LiveStatus.UseVisualStyleBackColor = True
-        '
-        'ProgressBar_RightShoulderAnalog
-        '
-        Me.ProgressBar_RightShoulderAnalog.Location = New System.Drawing.Point(363, 88)
-        Me.ProgressBar_RightShoulderAnalog.Maximum = 255
-        Me.ProgressBar_RightShoulderAnalog.Name = "ProgressBar_RightShoulderAnalog"
-        Me.ProgressBar_RightShoulderAnalog.Size = New System.Drawing.Size(10, 45)
-        Me.ProgressBar_RightShoulderAnalog.TabIndex = 58
-        Me.ProgressBar_RightShoulderAnalog.Value = 255
-        '
-        'ProgressBar_LeftShoulderAnalog
-        '
-        Me.ProgressBar_LeftShoulderAnalog.Location = New System.Drawing.Point(101, 88)
-        Me.ProgressBar_LeftShoulderAnalog.Maximum = 255
-        Me.ProgressBar_LeftShoulderAnalog.Name = "ProgressBar_LeftShoulderAnalog"
-        Me.ProgressBar_LeftShoulderAnalog.Size = New System.Drawing.Size(10, 45)
-        Me.ProgressBar_LeftShoulderAnalog.TabIndex = 57
-        Me.ProgressBar_LeftShoulderAnalog.Value = 255
-        '
-        'ProgressBar_LeftStickYMinus
-        '
-        Me.ProgressBar_LeftStickYMinus.Location = New System.Drawing.Point(102, 254)
-        Me.ProgressBar_LeftStickYMinus.Maximum = 32768
-        Me.ProgressBar_LeftStickYMinus.Name = "ProgressBar_LeftStickYMinus"
-        Me.ProgressBar_LeftStickYMinus.Size = New System.Drawing.Size(9, 45)
-        Me.ProgressBar_LeftStickYMinus.TabIndex = 56
-        '
-        'ProgressBar_RightStickYMinus
-        '
-        Me.ProgressBar_RightStickYMinus.Location = New System.Drawing.Point(332, 372)
-        Me.ProgressBar_RightStickYMinus.Maximum = 32768
-        Me.ProgressBar_RightStickYMinus.Name = "ProgressBar_RightStickYMinus"
-        Me.ProgressBar_RightStickYMinus.Size = New System.Drawing.Size(9, 45)
-        Me.ProgressBar_RightStickYMinus.TabIndex = 55
-        '
-        'ProgressBar_RightStickYPlus
-        '
-        Me.ProgressBar_RightStickYPlus.Location = New System.Drawing.Point(332, 311)
-        Me.ProgressBar_RightStickYPlus.Maximum = 32768
-        Me.ProgressBar_RightStickYPlus.Name = "ProgressBar_RightStickYPlus"
-        Me.ProgressBar_RightStickYPlus.Size = New System.Drawing.Size(10, 45)
-        Me.ProgressBar_RightStickYPlus.TabIndex = 54
-        Me.ProgressBar_RightStickYPlus.Value = 32768
-        '
-        'ProgressBar_LeftStickYPlus
-        '
-        Me.ProgressBar_LeftStickYPlus.Location = New System.Drawing.Point(102, 196)
-        Me.ProgressBar_LeftStickYPlus.Maximum = 32768
-        Me.ProgressBar_LeftStickYPlus.Name = "ProgressBar_LeftStickYPlus"
-        Me.ProgressBar_LeftStickYPlus.Size = New System.Drawing.Size(10, 45)
-        Me.ProgressBar_LeftStickYPlus.TabIndex = 51
-        Me.ProgressBar_LeftStickYPlus.Value = 32768
         '
         'Label_LeftShoulderVal
         '
@@ -1187,7 +1137,7 @@ Partial Class HMI
         Me.TabPage_Connection.Controls.Add(Me.GroupBox_PLC)
         Me.TabPage_Connection.Location = New System.Drawing.Point(4, 22)
         Me.TabPage_Connection.Name = "TabPage_Connection"
-        Me.TabPage_Connection.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage_Connection.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage_Connection.Size = New System.Drawing.Size(1205, 648)
         Me.TabPage_Connection.TabIndex = 1
         Me.TabPage_Connection.Text = "Connection"
@@ -1490,7 +1440,7 @@ Partial Class HMI
         Me.TabPage_Help.Controls.Add(Me.RichTextBox_Help)
         Me.TabPage_Help.Location = New System.Drawing.Point(4, 22)
         Me.TabPage_Help.Name = "TabPage_Help"
-        Me.TabPage_Help.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage_Help.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage_Help.Size = New System.Drawing.Size(1205, 648)
         Me.TabPage_Help.TabIndex = 2
         Me.TabPage_Help.Text = "Help"
@@ -1504,13 +1454,75 @@ Partial Class HMI
         Me.RichTextBox_Help.TabIndex = 0
         Me.RichTextBox_Help.Text = resources.GetString("RichTextBox_Help.Text")
         '
-        'Form1
+        'ProgressBar_RightShoulderAnalog
+        '
+        Me.ProgressBar_RightShoulderAnalog.Location = New System.Drawing.Point(363, 88)
+        Me.ProgressBar_RightShoulderAnalog.Maximum = 255
+        Me.ProgressBar_RightShoulderAnalog.Name = "ProgressBar_RightShoulderAnalog"
+        Me.ProgressBar_RightShoulderAnalog.Size = New System.Drawing.Size(10, 45)
+        Me.ProgressBar_RightShoulderAnalog.TabIndex = 58
+        Me.ProgressBar_RightShoulderAnalog.Value = 255
+        '
+        'ProgressBar_LeftShoulderAnalog
+        '
+        Me.ProgressBar_LeftShoulderAnalog.Location = New System.Drawing.Point(101, 88)
+        Me.ProgressBar_LeftShoulderAnalog.Maximum = 255
+        Me.ProgressBar_LeftShoulderAnalog.Name = "ProgressBar_LeftShoulderAnalog"
+        Me.ProgressBar_LeftShoulderAnalog.Size = New System.Drawing.Size(10, 45)
+        Me.ProgressBar_LeftShoulderAnalog.TabIndex = 57
+        Me.ProgressBar_LeftShoulderAnalog.Value = 255
+        '
+        'ProgressBar_LeftStickYMinus
+        '
+        Me.ProgressBar_LeftStickYMinus.Location = New System.Drawing.Point(102, 254)
+        Me.ProgressBar_LeftStickYMinus.Maximum = 32768
+        Me.ProgressBar_LeftStickYMinus.Name = "ProgressBar_LeftStickYMinus"
+        Me.ProgressBar_LeftStickYMinus.Size = New System.Drawing.Size(9, 45)
+        Me.ProgressBar_LeftStickYMinus.TabIndex = 56
+        '
+        'ProgressBar_RightStickYMinus
+        '
+        Me.ProgressBar_RightStickYMinus.Location = New System.Drawing.Point(332, 372)
+        Me.ProgressBar_RightStickYMinus.Maximum = 32768
+        Me.ProgressBar_RightStickYMinus.Name = "ProgressBar_RightStickYMinus"
+        Me.ProgressBar_RightStickYMinus.Size = New System.Drawing.Size(9, 45)
+        Me.ProgressBar_RightStickYMinus.TabIndex = 55
+        '
+        'ProgressBar_RightStickYPlus
+        '
+        Me.ProgressBar_RightStickYPlus.Location = New System.Drawing.Point(332, 311)
+        Me.ProgressBar_RightStickYPlus.Maximum = 32768
+        Me.ProgressBar_RightStickYPlus.Name = "ProgressBar_RightStickYPlus"
+        Me.ProgressBar_RightStickYPlus.Size = New System.Drawing.Size(10, 45)
+        Me.ProgressBar_RightStickYPlus.TabIndex = 54
+        Me.ProgressBar_RightStickYPlus.Value = 32768
+        '
+        'ProgressBar_LeftStickYPlus
+        '
+        Me.ProgressBar_LeftStickYPlus.Location = New System.Drawing.Point(102, 196)
+        Me.ProgressBar_LeftStickYPlus.Maximum = 32768
+        Me.ProgressBar_LeftStickYPlus.Name = "ProgressBar_LeftStickYPlus"
+        Me.ProgressBar_LeftStickYPlus.Size = New System.Drawing.Size(10, 45)
+        Me.ProgressBar_LeftStickYPlus.TabIndex = 51
+        Me.ProgressBar_LeftStickYPlus.Value = 32768
+        '
+        'TabPage2
+        '
+        Me.TabPage2.Location = New System.Drawing.Point(4, 22)
+        Me.TabPage2.Name = "TabPage2"
+        Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
+        Me.TabPage2.Size = New System.Drawing.Size(1205, 648)
+        Me.TabPage2.TabIndex = 5
+        Me.TabPage2.Text = "TabPage2"
+        Me.TabPage2.UseVisualStyleBackColor = True
+        '
+        'HMI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(1248, 677)
         Me.Controls.Add(Me.TabControl)
-        Me.Name = "Form1"
+        Me.Name = "HMI"
         Me.Text = "TcJoy by Jensen Mechatronics"
         Me.TabControl.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
@@ -1666,4 +1678,5 @@ Partial Class HMI
     Friend WithEvents SameDeCel As DataGridViewCheckBoxColumn
     Friend WithEvents txtTargetPos As TextBox
     Friend WithEvents txtCurrPos As TextBox
+    Friend WithEvents TabPage2 As TabPage
 End Class
