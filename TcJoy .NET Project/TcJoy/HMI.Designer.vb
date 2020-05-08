@@ -23,6 +23,9 @@ Partial Class HMI
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(HMI))
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
@@ -140,7 +143,6 @@ Partial Class HMI
         Me.TabPage_Help = New System.Windows.Forms.TabPage()
         Me.RichTextBox_Help = New System.Windows.Forms.RichTextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.ScopeProjectPanel1 = New TwinCAT.Measurement.Scope.Control.ScopeProjectPanel()
         Me.toolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.btnLoad = New System.Windows.Forms.ToolStripButton()
         Me.toolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
@@ -156,6 +158,8 @@ Partial Class HMI
         Me.btnPause = New System.Windows.Forms.ToolStripButton()
         Me.toolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnDelChart = New System.Windows.Forms.ToolStripButton()
+        Me.ScopeProjectPanel1 = New TwinCAT.Measurement.Scope.Control.ScopeProjectPanel()
+        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.ProgressBar_RightShoulderAnalog = New TcJoy.MyVerticalProgessBar()
         Me.ProgressBar_LeftShoulderAnalog = New TcJoy.MyVerticalProgessBar()
         Me.ProgressBar_LeftStickYMinus = New TcJoy.MyVerticalProgessBarMinus()
@@ -175,6 +179,7 @@ Partial Class HMI
         Me.TabPage_Help.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         Me.toolStrip1.SuspendLayout()
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl
@@ -193,6 +198,7 @@ Partial Class HMI
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.Chart1)
         Me.TabPage1.Controls.Add(Me.PictureBox1)
         Me.TabPage1.Controls.Add(Me.lblAutoSeqPause)
         Me.TabPage1.Controls.Add(Me.lblManStepMode)
@@ -214,7 +220,7 @@ Partial Class HMI
         Me.TabPage1.Controls.Add(Me.txtCurrPos)
         Me.TabPage1.Location = New System.Drawing.Point(4, 29)
         Me.TabPage1.Name = "TabPage1"
-        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3, 3, 3, 3)
+        Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
         Me.TabPage1.Size = New System.Drawing.Size(1812, 1004)
         Me.TabPage1.TabIndex = 4
         Me.TabPage1.Text = "Hank Rig Controls"
@@ -1431,25 +1437,6 @@ Partial Class HMI
         Me.TabPage2.Text = "TcScope"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
-        'ScopeProjectPanel1
-        '
-        Me.ScopeProjectPanel1.AllowDrop = True
-        Me.ScopeProjectPanel1.BackColor = System.Drawing.Color.WhiteSmoke
-        Me.ScopeProjectPanel1.ChartBackColor = System.Drawing.SystemColors.Control
-        Me.ScopeProjectPanel1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ScopeProjectPanel1.GraphicLibrary = TwinCAT.Scope2.Communications.GraphicLibrary.GDI_Plus
-        Me.ScopeProjectPanel1.GridSplitColor = System.Drawing.Color.DarkSlateGray
-        Me.ScopeProjectPanel1.HotColor = System.Drawing.SystemColors.MenuHighlight
-        Me.ScopeProjectPanel1.Location = New System.Drawing.Point(4, 5)
-        Me.ScopeProjectPanel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.ScopeProjectPanel1.Name = "ScopeProjectPanel1"
-        Me.ScopeProjectPanel1.NormalColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(206, Byte), Integer), CType(CType(219, Byte), Integer))
-        Me.ScopeProjectPanel1.ScopeProject = Nothing
-        Me.ScopeProjectPanel1.SelectedColor = System.Drawing.SystemColors.Highlight
-        Me.ScopeProjectPanel1.Size = New System.Drawing.Size(1804, 994)
-        Me.ScopeProjectPanel1.TabIndex = 0
-        Me.ScopeProjectPanel1.TextColor = System.Drawing.Color.Black
-        '
         'toolStrip1
         '
         Me.toolStrip1.BackColor = System.Drawing.SystemColors.Control
@@ -1562,6 +1549,41 @@ Partial Class HMI
         Me.btnDelChart.Size = New System.Drawing.Size(113, 29)
         Me.btnDelChart.Text = "Delete Chart"
         '
+        'ScopeProjectPanel1
+        '
+        Me.ScopeProjectPanel1.AllowDrop = True
+        Me.ScopeProjectPanel1.BackColor = System.Drawing.Color.WhiteSmoke
+        Me.ScopeProjectPanel1.ChartBackColor = System.Drawing.SystemColors.Control
+        Me.ScopeProjectPanel1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.ScopeProjectPanel1.GraphicLibrary = TwinCAT.Scope2.Communications.GraphicLibrary.GDI_Plus
+        Me.ScopeProjectPanel1.GridSplitColor = System.Drawing.Color.DarkSlateGray
+        Me.ScopeProjectPanel1.HotColor = System.Drawing.SystemColors.MenuHighlight
+        Me.ScopeProjectPanel1.Location = New System.Drawing.Point(4, 5)
+        Me.ScopeProjectPanel1.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ScopeProjectPanel1.Name = "ScopeProjectPanel1"
+        Me.ScopeProjectPanel1.NormalColor = System.Drawing.Color.FromArgb(CType(CType(204, Byte), Integer), CType(CType(206, Byte), Integer), CType(CType(219, Byte), Integer))
+        Me.ScopeProjectPanel1.ScopeProject = Nothing
+        Me.ScopeProjectPanel1.SelectedColor = System.Drawing.SystemColors.Highlight
+        Me.ScopeProjectPanel1.Size = New System.Drawing.Size(1804, 994)
+        Me.ScopeProjectPanel1.TabIndex = 0
+        Me.ScopeProjectPanel1.TextColor = System.Drawing.Color.Black
+        '
+        'Chart1
+        '
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
+        Me.Chart1.Location = New System.Drawing.Point(11, 13)
+        Me.Chart1.Name = "Chart1"
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.Chart1.Series.Add(Series1)
+        Me.Chart1.Size = New System.Drawing.Size(300, 300)
+        Me.Chart1.TabIndex = 11
+        Me.Chart1.Text = "Chart1"
+        '
         'ProgressBar_RightShoulderAnalog
         '
         Me.ProgressBar_RightShoulderAnalog.Location = New System.Drawing.Point(544, 135)
@@ -1651,6 +1673,7 @@ Partial Class HMI
         Me.TabPage2.PerformLayout()
         Me.toolStrip1.ResumeLayout(False)
         Me.toolStrip1.PerformLayout()
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1794,4 +1817,5 @@ Partial Class HMI
     Private WithEvents toolStripSeparator4 As ToolStripSeparator
     Private WithEvents btnDelChart As ToolStripButton
     Friend WithEvents ScopeProjectPanel1 As TwinCAT.Measurement.Scope.Control.ScopeProjectPanel
+    Friend WithEvents Chart1 As DataVisualization.Charting.Chart
 End Class

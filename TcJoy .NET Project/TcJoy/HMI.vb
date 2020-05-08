@@ -45,7 +45,7 @@ Public Class HMI
 
 
     Public WithEvents Timer_HealthCheck As New Timer ' Timer that updates the screen variables
-
+    Public ScopeFilename As String = "YTScope.tcscopex"
     Public WithEvents Timer_SendDataToPLC As New Timer ' Timer that sends ADS data to the PLC.
     Public HeartBeatState As Boolean  ' Toggle helper for heartbeat.
 
@@ -1006,7 +1006,7 @@ Public Class HMI
     End Sub
 
     Private Sub btnLoad_Click(sender As Object, e As EventArgs) Handles btnLoad.Click
-        Dim ScopeFilename As String = "YTScope.tcscopex"
+
         Dim ScopeFile As New FileInfo(ScopeFilename)
         If (Not ScopeFile.Exists) Then
             MessageBox.Show("File not found.")
@@ -1036,5 +1036,123 @@ Public Class HMI
                 '// load new data
 
             End If
+    End Sub
+
+    Private Sub btnAddChart_Click(sender As Object, e As EventArgs) Handles btnAddChart.Click
+        Dim chart As New YTChart()
+        ScopeProjectPanel1.ScopeProject.AddMember(chart)
+        chart.SubMember.OfType(Of ChartStyle).First.ToolTipEnabled = True
+    End Sub
+
+    Private Sub btnAddAxis_Click(sender As Object, e As EventArgs) Handles btnAddAxis.Click
+        If ScopeProjectPanel1.ScopeProject.SubMember.OfType(Of Chart).Count = 0 Then
+            ScopeProjectPanel1.ScopeProject.AddMember(New AxisGroup())
+        Else
+            ScopeProjectPanel1.ScopeProject.SubMember.OfType(Of Chart).First().AddMember(New AxisGroup())
+        End If
+
+    End Sub
+
+    Private Sub btnAddChannel_Click(sender As Object, e As EventArgs) Handles btnAddChannel.Click
+        '        Dim ch As New Channel()
+        '       If (ScopeProjectPanel1.ScopeProject.SubMember.OfType(Of Chart).Count() = 0) Then
+        '      ScopeProjectPanel1.ScopeProject.AddMember(Channel)
+        '     ElseIf (scopeProjectPanel1.ScopeProject.SubMember.OfType(Of Chart).First().SubMember.OfType(Of AxisGroup).Count() = 0) Then
+        '    ScopeProjectPanel1.ScopeProject.SubMember.OfType(Of Chart).First().AddMember(Channel)
+        '   Else
+        '  ScopeProjectPanel1.ScopeProject.SubMember.OfType(Of Chart).First().SubMember.OfType(Of AxisGroup).First().AddMember(Channel)
+        ' End If
+
+        '        ChangeChannelSettings(Channel)
+        '       SetAcquisitions(Channel)
+        MessageBox.Show("not implimented")
+    End Sub
+
+    Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
+        Try
+            '//clear old data
+            If ScopeProjectPanel1.ScopeProject.ScopeState = TwinCAT.Measurement.Scope.API.ScopeViewState.Reply Then
+                ScopeProjectPanel1.ScopeProject.Disconnect()
+            End If
+
+            '//start record
+            If (ScopeProjectPanel1.ScopeProject.ScopeState = TwinCAT.Measurement.Scope.API.ScopeViewState.Config) Then
+                ScopeProjectPanel1.ScopeProject.StartRecord()
+            End If
+
+            If (ScopeProjectPanel1.ScopeProject.ScopeState = TwinCAT.Measurement.Scope.API.ScopeViewState.Connected) Then
+                For Each chart In ScopeProjectPanel1.ScopeProject.SubMember.OfType(Of Chart)
+                    chart.StartDisplay()
+                Next
+            End If
+
+
+
+
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "error on start record", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub btnStop_Click(sender As Object, e As EventArgs) Handles btnStop.Click
+        Try
+            If ScopeProjectPanel1.ScopeProject.ScopeState = TwinCAT.Measurement.Scope.API.ScopeViewState.Record Then
+                ScopeProjectPanel1.ScopeProject.StopRecord()
+            End If
+
+        Catch ex As Exception
+            MessageBox.Show(ex.Message, "Error on stop record!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+        Try
+
+            '//save data And configuration
+            If (ScopeProjectPanel1.ScopeProject.ScopeState = TwinCAT.Measurement.Scope.API.ScopeViewState.Reply) Then
+
+                File.Create("ExportData.svdx").Close()
+                '  ScopeProjectPanel1.ScopeProject.ShowProgress = ("", TwinCAT.Scope2.Tools.ProgressBox.WorkDelegate work) => { return TwinCAT.Scope2.Tools.ProgressBox.Show(this, "", 100, work) = DialogResult.OK
+                ScopeProjectPanel1.ScopeProject.SaveData("ExportData.svdx")
+
+                '//just save the configuration
+            Else
+                Dim filename = "SavedScope.tcscopex"
+                File.Create(ScopeFilename).Close()
+                ScopeProjectPanel1.ScopeProject.SaveToFile(ScopeFilename)
+            End If
+
+        Catch ex As Exception
+
+            MessageBox.Show(ex.Message, "Error on save!",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Sub btnRun_Click(sender As Object, e As EventArgs) Handles btnRun.Click
+        If (ScopeProjectPanel1.ScopeProject.ScopeState <> TwinCAT.Measurement.Scope.API.ScopeViewState.Record) Then
+            MessageBox.Show("Only possible if a record is running!", "Run not possible!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
+        If (ScopeProjectPanel1.ScopeProject.ScopeState = TwinCAT.Measurement.Scope.API.ScopeViewState.Record) Then
+            ScopeProjectPanel1.ScopeProject.SubMember.OfType(Of Chart).First().StartDisplay()
+        End If
+
+    End Sub
+
+    Private Sub btnPause_Click(sender As Object, e As EventArgs) Handles btnPause.Click
+
+
+        If (ScopeProjectPanel1.ScopeProject.ScopeState <> TwinCAT.Measurement.Scope.API.ScopeViewState.Record) Then
+
+            MessageBox.Show("Only possible if a record is running!", "Pause not possible!",
+                MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        End If
+        If (ScopeProjectPanel1.ScopeProject.ScopeState = TwinCAT.Measurement.Scope.API.ScopeViewState.Record) Then
+            ScopeProjectPanel1.ScopeProject.SubMember.OfType(Of Chart).First().StopDisplay()
+
+        End If
+
     End Sub
 End Class
