@@ -3,7 +3,8 @@ Imports TwinCAT.Ads
 Imports J2i.Net.XInputWrapper
 Imports System.ComponentModel
 Imports System
-
+Imports System.IO
+Imports TwinCAT.Measurement.Scope.API.Model
 '
 ' TcJoy, by Evan Jensen of Jensen Mecharonics, LLC. 2018 
 '
@@ -42,6 +43,7 @@ Public Class HMI
 
     Public BgTaskData As TaskData ' Data for background task that runs actual ADS comms.
 
+
     Public WithEvents Timer_HealthCheck As New Timer ' Timer that updates the screen variables
 
     Public WithEvents Timer_SendDataToPLC As New Timer ' Timer that sends ADS data to the PLC.
@@ -54,6 +56,7 @@ Public Class HMI
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         TabControl.SelectedTab = TabPage_Connection
+        ScopeProjectPanel1.ScopeProject = New ScopeProject
 
         LoadSettings()
 
@@ -1000,5 +1003,38 @@ Public Class HMI
 
     Private Sub TabPage1_Click(sender As Object, e As EventArgs) Handles TabPage1.Click
 
+    End Sub
+
+    Private Sub btnLoad_Click(sender As Object, e As EventArgs) Handles btnLoad.Click
+        Dim ScopeFilename As String = "YTScope.tcscopex"
+        Dim ScopeFile As New FileInfo(ScopeFilename)
+        If (Not ScopeFile.Exists) Then
+            MessageBox.Show("File not found.")
+        Else
+            If ScopeProjectPanel1.ScopeProject.ContainsData Then
+                ScopeProjectPanel1.ScopeProject.Disconnect()
+                '//delete old config
+                While (ScopeProjectPanel1.ScopeProject.SubMember.OfType(Of Chart).Count() > 0)
+                    ScopeProjectPanel1.ScopeProject.RemoveMember(ScopeProjectPanel1.ScopeProject.SubMember.OfType(Of Chart).First())
+                End While
+            End If
+            ScopeProjectPanel1.ScopeProject.SetFromFile(ScopeFilename)
+            If (Not ScopeProjectPanel1.ScopeProject.ContainsData) Then
+                    For Each chart As Chart In ScopeProjectPanel1.ScopeProject.SubMember.OfType(Of Chart)
+                        For Each ag As AxisGroup In chart.SubMember.OfType(Of AxisGroup)
+                            For Each channel As Channel In ag.SubMember.OfType(Of Channel)
+                                For Each ai As AcquisitionInterpreter In channel.SubMember.OfType(Of AcquisitionInterpreter)
+                                    If ai.Acquisition IsNot Nothing Then
+                                        ai.Acquisition.AmsNetId = AmsNetId.Local
+                                    End If
+                                Next
+                            Next
+
+                        Next
+                    Next
+                End If
+                '// load new data
+
+            End If
     End Sub
 End Class

@@ -7,7 +7,7 @@
     <RootNamespace>JoyStickAxisScope</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="YT Scope Project.tcscopex">
+    <Content Include="YTScope.tcscopex">
       <SubType>Content</SubType>
     </Content>
   </ItemGroup>
