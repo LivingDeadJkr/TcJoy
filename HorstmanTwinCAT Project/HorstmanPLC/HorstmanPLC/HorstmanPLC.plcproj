@@ -41,6 +41,9 @@
     <Compile Include="POUs\P_SequenceReader.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\P_ServoControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DUTs" />

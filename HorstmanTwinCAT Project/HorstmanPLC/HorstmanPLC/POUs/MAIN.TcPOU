@@ -16,6 +16,7 @@ p_FaultMonitoring(); // Check fault routine
 //inputs
 //Seq
 //Outputs
+p_servocontrol();
 //logging
 //recipe system]]></ST>
     </Implementation>
@@ -25,7 +26,9 @@ p_FaultMonitoring(); // Check fault routine
       <LineId Id="11" Count="0" />
       <LineId Id="10" Count="0" />
       <LineId Id="12" Count="0" />
-      <LineId Id="14" Count="3" />
+      <LineId Id="14" Count="1" />
+      <LineId Id="21" Count="0" />
+      <LineId Id="16" Count="1" />
     </LineIds>
   </POU>
 </TcPlcObject>

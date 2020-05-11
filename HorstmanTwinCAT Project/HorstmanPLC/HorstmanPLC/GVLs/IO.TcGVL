@@ -4,6 +4,9 @@
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 
+SaferyOK :BOOL; // safety system status
+PowerEnabled:BOOL; // soft  bit we turn on to enable drives when we have no errors.
+
 //Outputs
 //Drive 1	
 TorqueRequest1 AT %Q*: INT;
@@ -16,6 +19,8 @@ DriveEnable2 AT %Q*:BOOL;
 Drive2Spare AT %Q*: BOOL;
 DriveAxis2 : AXIS_Ref;
 
+Simdrive1: AXIS_Ref;
+Simdrive2: AXIS_Ref;
 
 //Inputs
 

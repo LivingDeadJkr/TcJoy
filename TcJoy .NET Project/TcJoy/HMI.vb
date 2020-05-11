@@ -3,6 +3,8 @@ Imports TwinCAT.Ads
 Imports J2i.Net.XInputWrapper
 Imports System.ComponentModel
 Imports System
+Imports System.Text
+Imports System.Net
 Imports System.IO
 Imports TwinCAT.Measurement.Scope.API.Model
 '
@@ -48,10 +50,11 @@ Public Class HMI
     Public ScopeFilename As String = "YTScope.tcscopex"
     Public WithEvents Timer_SendDataToPLC As New Timer ' Timer that sends ADS data to the PLC.
     Public HeartBeatState As Boolean  ' Toggle helper for heartbeat.
-
+    Public Recipefile As FileInfo
     Public MyController As XboxController
 
     Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As Integer, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
+
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -73,6 +76,35 @@ Public Class HMI
         End If
 
     End Sub
+
+    Public Sub SendFile()
+        ' Get the object used to communicate with the server.
+        Dim request As FtpWebRequest = CType(WebRequest.Create("ftp://192.168.0.88/file.csv"), FtpWebRequest)
+        request.Method = WebRequestMethods.Ftp.UploadFile
+
+        ' This example assumes the FTP site uses anonymous logon.
+        request.Credentials = New NetworkCredential("anonymous", "hmi@localhost.com")
+
+        ' Copy the contents of the file to the request stream.
+        Dim fileContents As Byte()
+
+        Using sourceStream As StreamReader = New StreamReader(Recipefile.FullName)
+            fileContents = Encoding.UTF8.GetBytes(sourceStream.ReadToEnd())
+        End Using
+
+        request.ContentLength = fileContents.Length
+
+        Using requestStream As Stream = request.GetRequestStream()
+            requestStream.Write(fileContents, 0, fileContents.Length)
+        End Using
+
+        Using response As FtpWebResponse = CType(request.GetResponse(), FtpWebResponse)
+            Console.WriteLine($"Upload File Complete, status {response.StatusDescription}")
+            MessageBox.Show("transfer complete")
+
+        End Using
+    End Sub
+
 
     Private Sub LoadSettings()
 
@@ -1154,5 +1186,31 @@ Public Class HMI
 
         End If
 
+    End Sub
+
+    Private Sub BtnLoadCsv_Click(sender As Object, e As EventArgs) Handles BtnLoadCsv.Click
+
+        Dim myStream As Stream = Nothing
+        Dim openFileDialog1 As New OpenFileDialog()
+
+        openFileDialog1.InitialDirectory = "c:\"
+        openFileDialog1.Filter = "txt files (*.csv)|*.csv|All files (*.*)|*.*"
+        openFileDialog1.FilterIndex = 2
+        openFileDialog1.RestoreDirectory = True
+
+        If openFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+            Try
+                Recipefile = New FileInfo(openFileDialog1.FileName.ToString)
+
+                If (RecipeFile.Exists) Then
+                    MessageBox.Show(Recipefile.FullName)
+                    SendFile()
+                    ' Insert code to read the stream here.
+                End If
+            Catch Ex As Exception
+                MessageBox.Show("Cannot read file from disk. Original error: " & Ex.Message)
+
+            End Try
+        End If
     End Sub
 End Class

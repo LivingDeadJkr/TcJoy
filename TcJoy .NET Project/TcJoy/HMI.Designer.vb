@@ -22,12 +22,14 @@ Partial Class HMI
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
+        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(HMI))
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Me.TabControl = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.BtnLoadCsv = New System.Windows.Forms.Button()
+        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblAutoSeqPause = New System.Windows.Forms.Label()
         Me.lblManStepMode = New System.Windows.Forms.Label()
@@ -73,6 +75,12 @@ Partial Class HMI
         Me.txtTargetPos = New System.Windows.Forms.TextBox()
         Me.txtCurrPos = New System.Windows.Forms.TextBox()
         Me.TabPage_LiveStatus = New System.Windows.Forms.TabPage()
+        Me.ProgressBar_RightShoulderAnalog = New TcJoy.MyVerticalProgessBar()
+        Me.ProgressBar_LeftShoulderAnalog = New TcJoy.MyVerticalProgessBar()
+        Me.ProgressBar_LeftStickYMinus = New TcJoy.MyVerticalProgessBarMinus()
+        Me.ProgressBar_RightStickYMinus = New TcJoy.MyVerticalProgessBarMinus()
+        Me.ProgressBar_RightStickYPlus = New TcJoy.MyVerticalProgessBar()
+        Me.ProgressBar_LeftStickYPlus = New TcJoy.MyVerticalProgessBar()
         Me.Label_LeftShoulderVal = New System.Windows.Forms.Label()
         Me.Label_RightShoulderVal = New System.Windows.Forms.Label()
         Me.Label_RightStickYNeg = New System.Windows.Forms.Label()
@@ -159,15 +167,9 @@ Partial Class HMI
         Me.toolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnDelChart = New System.Windows.Forms.ToolStripButton()
         Me.ScopeProjectPanel1 = New TwinCAT.Measurement.Scope.Control.ScopeProjectPanel()
-        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
-        Me.ProgressBar_RightShoulderAnalog = New TcJoy.MyVerticalProgessBar()
-        Me.ProgressBar_LeftShoulderAnalog = New TcJoy.MyVerticalProgessBar()
-        Me.ProgressBar_LeftStickYMinus = New TcJoy.MyVerticalProgessBarMinus()
-        Me.ProgressBar_RightStickYMinus = New TcJoy.MyVerticalProgessBarMinus()
-        Me.ProgressBar_RightStickYPlus = New TcJoy.MyVerticalProgessBar()
-        Me.ProgressBar_LeftStickYPlus = New TcJoy.MyVerticalProgessBar()
         Me.TabControl.SuspendLayout()
         Me.TabPage1.SuspendLayout()
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -179,7 +181,6 @@ Partial Class HMI
         Me.TabPage_Help.SuspendLayout()
         Me.TabPage2.SuspendLayout()
         Me.toolStrip1.SuspendLayout()
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TabControl
@@ -198,6 +199,7 @@ Partial Class HMI
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.BtnLoadCsv)
         Me.TabPage1.Controls.Add(Me.Chart1)
         Me.TabPage1.Controls.Add(Me.PictureBox1)
         Me.TabPage1.Controls.Add(Me.lblAutoSeqPause)
@@ -225,6 +227,31 @@ Partial Class HMI
         Me.TabPage1.TabIndex = 4
         Me.TabPage1.Text = "Hank Rig Controls"
         Me.TabPage1.UseVisualStyleBackColor = True
+        '
+        'BtnLoadCsv
+        '
+        Me.BtnLoadCsv.Location = New System.Drawing.Point(1050, 98)
+        Me.BtnLoadCsv.Name = "BtnLoadCsv"
+        Me.BtnLoadCsv.Size = New System.Drawing.Size(121, 70)
+        Me.BtnLoadCsv.TabIndex = 12
+        Me.BtnLoadCsv.Text = "Select Recipe"
+        Me.BtnLoadCsv.UseVisualStyleBackColor = True
+        '
+        'Chart1
+        '
+        ChartArea2.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea2)
+        Legend2.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend2)
+        Me.Chart1.Location = New System.Drawing.Point(11, 13)
+        Me.Chart1.Name = "Chart1"
+        Series2.ChartArea = "ChartArea1"
+        Series2.Legend = "Legend1"
+        Series2.Name = "Series1"
+        Me.Chart1.Series.Add(Series2)
+        Me.Chart1.Size = New System.Drawing.Size(300, 300)
+        Me.Chart1.TabIndex = 11
+        Me.Chart1.Text = "Chart1"
         '
         'PictureBox1
         '
@@ -678,6 +705,64 @@ Partial Class HMI
         Me.TabPage_LiveStatus.TabIndex = 0
         Me.TabPage_LiveStatus.Text = "Live Status"
         Me.TabPage_LiveStatus.UseVisualStyleBackColor = True
+        '
+        'ProgressBar_RightShoulderAnalog
+        '
+        Me.ProgressBar_RightShoulderAnalog.Location = New System.Drawing.Point(544, 135)
+        Me.ProgressBar_RightShoulderAnalog.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ProgressBar_RightShoulderAnalog.Maximum = 255
+        Me.ProgressBar_RightShoulderAnalog.Name = "ProgressBar_RightShoulderAnalog"
+        Me.ProgressBar_RightShoulderAnalog.Size = New System.Drawing.Size(15, 69)
+        Me.ProgressBar_RightShoulderAnalog.TabIndex = 58
+        Me.ProgressBar_RightShoulderAnalog.Value = 255
+        '
+        'ProgressBar_LeftShoulderAnalog
+        '
+        Me.ProgressBar_LeftShoulderAnalog.Location = New System.Drawing.Point(152, 135)
+        Me.ProgressBar_LeftShoulderAnalog.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ProgressBar_LeftShoulderAnalog.Maximum = 255
+        Me.ProgressBar_LeftShoulderAnalog.Name = "ProgressBar_LeftShoulderAnalog"
+        Me.ProgressBar_LeftShoulderAnalog.Size = New System.Drawing.Size(15, 69)
+        Me.ProgressBar_LeftShoulderAnalog.TabIndex = 57
+        Me.ProgressBar_LeftShoulderAnalog.Value = 255
+        '
+        'ProgressBar_LeftStickYMinus
+        '
+        Me.ProgressBar_LeftStickYMinus.Location = New System.Drawing.Point(153, 391)
+        Me.ProgressBar_LeftStickYMinus.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ProgressBar_LeftStickYMinus.Maximum = 32768
+        Me.ProgressBar_LeftStickYMinus.Name = "ProgressBar_LeftStickYMinus"
+        Me.ProgressBar_LeftStickYMinus.Size = New System.Drawing.Size(14, 69)
+        Me.ProgressBar_LeftStickYMinus.TabIndex = 56
+        '
+        'ProgressBar_RightStickYMinus
+        '
+        Me.ProgressBar_RightStickYMinus.Location = New System.Drawing.Point(498, 572)
+        Me.ProgressBar_RightStickYMinus.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ProgressBar_RightStickYMinus.Maximum = 32768
+        Me.ProgressBar_RightStickYMinus.Name = "ProgressBar_RightStickYMinus"
+        Me.ProgressBar_RightStickYMinus.Size = New System.Drawing.Size(14, 69)
+        Me.ProgressBar_RightStickYMinus.TabIndex = 55
+        '
+        'ProgressBar_RightStickYPlus
+        '
+        Me.ProgressBar_RightStickYPlus.Location = New System.Drawing.Point(498, 478)
+        Me.ProgressBar_RightStickYPlus.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ProgressBar_RightStickYPlus.Maximum = 32768
+        Me.ProgressBar_RightStickYPlus.Name = "ProgressBar_RightStickYPlus"
+        Me.ProgressBar_RightStickYPlus.Size = New System.Drawing.Size(15, 69)
+        Me.ProgressBar_RightStickYPlus.TabIndex = 54
+        Me.ProgressBar_RightStickYPlus.Value = 32768
+        '
+        'ProgressBar_LeftStickYPlus
+        '
+        Me.ProgressBar_LeftStickYPlus.Location = New System.Drawing.Point(153, 302)
+        Me.ProgressBar_LeftStickYPlus.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
+        Me.ProgressBar_LeftStickYPlus.Maximum = 32768
+        Me.ProgressBar_LeftStickYPlus.Name = "ProgressBar_LeftStickYPlus"
+        Me.ProgressBar_LeftStickYPlus.Size = New System.Drawing.Size(15, 69)
+        Me.ProgressBar_LeftStickYPlus.TabIndex = 51
+        Me.ProgressBar_LeftStickYPlus.Value = 32768
         '
         'Label_LeftShoulderVal
         '
@@ -1568,80 +1653,6 @@ Partial Class HMI
         Me.ScopeProjectPanel1.TabIndex = 0
         Me.ScopeProjectPanel1.TextColor = System.Drawing.Color.Black
         '
-        'Chart1
-        '
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
-        Me.Chart1.Location = New System.Drawing.Point(11, 13)
-        Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Size = New System.Drawing.Size(300, 300)
-        Me.Chart1.TabIndex = 11
-        Me.Chart1.Text = "Chart1"
-        '
-        'ProgressBar_RightShoulderAnalog
-        '
-        Me.ProgressBar_RightShoulderAnalog.Location = New System.Drawing.Point(544, 135)
-        Me.ProgressBar_RightShoulderAnalog.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.ProgressBar_RightShoulderAnalog.Maximum = 255
-        Me.ProgressBar_RightShoulderAnalog.Name = "ProgressBar_RightShoulderAnalog"
-        Me.ProgressBar_RightShoulderAnalog.Size = New System.Drawing.Size(15, 69)
-        Me.ProgressBar_RightShoulderAnalog.TabIndex = 58
-        Me.ProgressBar_RightShoulderAnalog.Value = 255
-        '
-        'ProgressBar_LeftShoulderAnalog
-        '
-        Me.ProgressBar_LeftShoulderAnalog.Location = New System.Drawing.Point(152, 135)
-        Me.ProgressBar_LeftShoulderAnalog.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.ProgressBar_LeftShoulderAnalog.Maximum = 255
-        Me.ProgressBar_LeftShoulderAnalog.Name = "ProgressBar_LeftShoulderAnalog"
-        Me.ProgressBar_LeftShoulderAnalog.Size = New System.Drawing.Size(15, 69)
-        Me.ProgressBar_LeftShoulderAnalog.TabIndex = 57
-        Me.ProgressBar_LeftShoulderAnalog.Value = 255
-        '
-        'ProgressBar_LeftStickYMinus
-        '
-        Me.ProgressBar_LeftStickYMinus.Location = New System.Drawing.Point(153, 391)
-        Me.ProgressBar_LeftStickYMinus.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.ProgressBar_LeftStickYMinus.Maximum = 32768
-        Me.ProgressBar_LeftStickYMinus.Name = "ProgressBar_LeftStickYMinus"
-        Me.ProgressBar_LeftStickYMinus.Size = New System.Drawing.Size(14, 69)
-        Me.ProgressBar_LeftStickYMinus.TabIndex = 56
-        '
-        'ProgressBar_RightStickYMinus
-        '
-        Me.ProgressBar_RightStickYMinus.Location = New System.Drawing.Point(498, 572)
-        Me.ProgressBar_RightStickYMinus.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.ProgressBar_RightStickYMinus.Maximum = 32768
-        Me.ProgressBar_RightStickYMinus.Name = "ProgressBar_RightStickYMinus"
-        Me.ProgressBar_RightStickYMinus.Size = New System.Drawing.Size(14, 69)
-        Me.ProgressBar_RightStickYMinus.TabIndex = 55
-        '
-        'ProgressBar_RightStickYPlus
-        '
-        Me.ProgressBar_RightStickYPlus.Location = New System.Drawing.Point(498, 478)
-        Me.ProgressBar_RightStickYPlus.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.ProgressBar_RightStickYPlus.Maximum = 32768
-        Me.ProgressBar_RightStickYPlus.Name = "ProgressBar_RightStickYPlus"
-        Me.ProgressBar_RightStickYPlus.Size = New System.Drawing.Size(15, 69)
-        Me.ProgressBar_RightStickYPlus.TabIndex = 54
-        Me.ProgressBar_RightStickYPlus.Value = 32768
-        '
-        'ProgressBar_LeftStickYPlus
-        '
-        Me.ProgressBar_LeftStickYPlus.Location = New System.Drawing.Point(153, 302)
-        Me.ProgressBar_LeftStickYPlus.Margin = New System.Windows.Forms.Padding(4, 5, 4, 5)
-        Me.ProgressBar_LeftStickYPlus.Maximum = 32768
-        Me.ProgressBar_LeftStickYPlus.Name = "ProgressBar_LeftStickYPlus"
-        Me.ProgressBar_LeftStickYPlus.Size = New System.Drawing.Size(15, 69)
-        Me.ProgressBar_LeftStickYPlus.TabIndex = 51
-        Me.ProgressBar_LeftStickYPlus.Value = 32768
-        '
         'HMI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -1654,6 +1665,7 @@ Partial Class HMI
         Me.TabControl.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
+        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
@@ -1673,7 +1685,6 @@ Partial Class HMI
         Me.TabPage2.PerformLayout()
         Me.toolStrip1.ResumeLayout(False)
         Me.toolStrip1.PerformLayout()
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1818,4 +1829,5 @@ Partial Class HMI
     Private WithEvents btnDelChart As ToolStripButton
     Friend WithEvents ScopeProjectPanel1 As TwinCAT.Measurement.Scope.Control.ScopeProjectPanel
     Friend WithEvents Chart1 As DataVisualization.Charting.Chart
+    Friend WithEvents BtnLoadCsv As Button
 End Class
