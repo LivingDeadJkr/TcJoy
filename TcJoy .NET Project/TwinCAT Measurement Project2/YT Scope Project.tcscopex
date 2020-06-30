@@ -33,12 +33,27 @@
     <DataPool AssemblyName="TwinCAT.Measurement.Scope.API.Model">
       <SubMember>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
-          <AmsNetId>192.168.1.162.1.1</AmsNetId>
-          <Area>Local</Area>
-          <ArrayLength>0</ArrayLength>
-          <BaseSampleTime>100000</BaseSampleTime>
-          <Comment></Comment>
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>387120</IndexOffset>
+          <SymbolName>Global_Variables.TcJoy.iLeftStick_X_Axis</SymbolName>
+          <SymbolBased>true</SymbolBased>
+          <TargetPort>851</TargetPort>
           <ContextMask>0</ContextMask>
+          <IsHistorical>false</IsHistorical>
+          <FileHandle>0</FileHandle>
+          <ServerHandle>0</ServerHandle>
+          <ChannelStyleInformation />
+          <Enabled>true</Enabled>
+          <AmsNetId>192.168.1.162.1.1</AmsNetId>
+          <UseLocalServer>true</UseLocalServer>
+          <DataType>INT32</DataType>
+          <BaseSampleTime>100000</BaseSampleTime>
+          <UseTaskSampleTime>true</UseTaskSampleTime>
+          <Oversample>0</Oversample>
+          <ForceOversampling>false</ForceOversampling>
+          <ArrayLength>0</ArrayLength>
+          <TimeOffset>0</TimeOffset>
+          <VariableSize>4</VariableSize>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -51,261 +66,87 @@
               </TimeTangeInfo>
             </DataAccessMode>
           </DataAccess>
-          <DataType>INT32</DataType>
-          <DisplayColor>Black</DisplayColor>
-          <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
-          <ForceOversampling>false</ForceOversampling>
+          <RawUnit>
+            <Unit>
+              <BaseUnitValue>0</BaseUnitValue>
+              <Prefix>none</Prefix>
+              <ScaleFactor>1</ScaleFactor>
+              <Offset>0</Offset>
+              <Symbol></Symbol>
+              <ReturnText> (None) </ReturnText>
+              <BaseUnitString></BaseUnitString>
+              <NameExtension></NameExtension>
+            </Unit>
+            <Transformation>
+              <BaseUnitValue>0</BaseUnitValue>
+              <TargetUnitValue>0</TargetUnitValue>
+              <ScaleFactor>1</ScaleFactor>
+              <Name>None</Name>
+              <SourceUnitString></SourceUnitString>
+              <TargetUnitString></TargetUnitString>
+              <SourceUnitPrefix>none</SourceUnitPrefix>
+              <Symbol>1</Symbol>
+            </Transformation>
+            <UserUnit>
+              <BaseUnitValue>0</BaseUnitValue>
+              <Prefix>none</Prefix>
+              <ScaleFactor>1</ScaleFactor>
+              <Offset>0</Offset>
+              <Name>None</Name>
+              <BaseName>UnitOfOne</BaseName>
+              <NameExtension></NameExtension>
+              <Symbol></Symbol>
+              <BaseUnitString></BaseUnitString>
+              <UserPrefix>none</UserPrefix>
+            </UserUnit>
+            <UnitScaleResult>1</UnitScaleResult>
+            <UnitOffsetResult>0</UnitOffsetResult>
+          </RawUnit>
+          <Area>Local</Area>
+          <SubMember />
           <Guid>26e88b0c-55f7-4e9c-bc41-ff79052805a9</Guid>
-          <IndexGroup>16448</IndexGroup>
-          <IndexOffset>387120</IndexOffset>
-          <IsFileBased>false</IsFileBased>
-          <IsHistorical>false</IsHistorical>
+          <Title>AdsAcquisition_48</Title>
           <Name>iLeftStick_X_Axis</Name>
-          <Oversample>0</Oversample>
-          <RawUnit>
-            <Unit>
-              <BaseUnitValue>0</BaseUnitValue>
-              <Prefix>none</Prefix>
-              <ScaleFactor>1</ScaleFactor>
-              <Offset>0</Offset>
-              <Symbol></Symbol>
-              <ReturnText> (None) </ReturnText>
-              <BaseUnitString></BaseUnitString>
-              <NameExtension></NameExtension>
-            </Unit>
-            <Transformation>
-              <BaseUnitValue>0</BaseUnitValue>
-              <TargetUnitValue>0</TargetUnitValue>
-              <ScaleFactor>1</ScaleFactor>
-              <Name>None</Name>
-              <SourceUnitString />
-              <TargetUnitString />
-              <SourceUnitPrefix>none</SourceUnitPrefix>
-              <Symbol>1</Symbol>
-            </Transformation>
-            <UserUnit>
-              <BaseUnitValue>0</BaseUnitValue>
-              <Prefix>none</Prefix>
-              <ScaleFactor>1</ScaleFactor>
-              <Offset>0</Offset>
-              <Name>None</Name>
-              <BaseName>UnitOfOne</BaseName>
-              <NameExtension></NameExtension>
-              <Symbol></Symbol>
-              <BaseUnitString></BaseUnitString>
-              <UserPrefix>none</UserPrefix>
-            </UserUnit>
-            <UnitScaleResult>1</UnitScaleResult>
-            <UnitOffsetResult>0</UnitOffsetResult>
-          </RawUnit>
-          <ServerHandle>0</ServerHandle>
-          <SortPriority>10</SortPriority>
-          <Suffix>.svacq</Suffix>
-          <SymbolBased>true</SymbolBased>
-          <SymbolName>Global_Variables.TcJoy.iLeftStick_X_Axis</SymbolName>
-          <TargetPort>851</TargetPort>
-          <TimeOffset>0</TimeOffset>
-          <Title>AdsAcquisition_48</Title>
-          <UseLocalServer>true</UseLocalServer>
-          <UseTaskSampleTime>true</UseTaskSampleTime>
-          <VariableSize>4</VariableSize>
-          <ChannelStyleInformation />
-          <SubMember />
-        </AdsAcquisition>
-        <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
-          <AmsNetId>192.168.1.162.1.1</AmsNetId>
-          <Area>Local</Area>
-          <ArrayLength>0</ArrayLength>
-          <BaseSampleTime>100000</BaseSampleTime>
           <Comment></Comment>
-          <ContextMask>0</ContextMask>
-          <DataAccess>
-            <DataAccessMode>
-              <Source>TwinCAT</Source>
-              <Protocoll>ADS</Protocoll>
-              <Format>TcBinary</Format>
-              <TimeContext>Present</TimeContext>
-              <TimeTangeInfo>
-                <StartTimeStamp>0</StartTimeStamp>
-                <EndTimeStamp>0</EndTimeStamp>
-              </TimeTangeInfo>
-            </DataAccessMode>
-          </DataAccess>
-          <DataType>INT32</DataType>
           <DisplayColor>Black</DisplayColor>
-          <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
-          <ForceOversampling>false</ForceOversampling>
-          <Guid>00311571-71d8-4a90-ad79-5f667e6ba100</Guid>
-          <IndexGroup>16448</IndexGroup>
-          <IndexOffset>387120</IndexOffset>
+          <SortPriority>10</SortPriority>
           <IsFileBased>false</IsFileBased>
-          <IsHistorical>false</IsHistorical>
-          <Name>iLeftStick_X_Axis (1)</Name>
-          <Oversample>0</Oversample>
-          <RawUnit>
-            <Unit>
-              <BaseUnitValue>0</BaseUnitValue>
-              <Prefix>none</Prefix>
-              <ScaleFactor>1</ScaleFactor>
-              <Offset>0</Offset>
-              <Symbol></Symbol>
-              <ReturnText> (None) </ReturnText>
-              <BaseUnitString></BaseUnitString>
-              <NameExtension></NameExtension>
-            </Unit>
-            <Transformation>
-              <BaseUnitValue>0</BaseUnitValue>
-              <TargetUnitValue>0</TargetUnitValue>
-              <ScaleFactor>1</ScaleFactor>
-              <Name>None</Name>
-              <SourceUnitString />
-              <TargetUnitString />
-              <SourceUnitPrefix>none</SourceUnitPrefix>
-              <Symbol>1</Symbol>
-            </Transformation>
-            <UserUnit>
-              <BaseUnitValue>0</BaseUnitValue>
-              <Prefix>none</Prefix>
-              <ScaleFactor>1</ScaleFactor>
-              <Offset>0</Offset>
-              <Name>None</Name>
-              <BaseName>UnitOfOne</BaseName>
-              <NameExtension></NameExtension>
-              <Symbol></Symbol>
-              <BaseUnitString></BaseUnitString>
-              <UserPrefix>none</UserPrefix>
-            </UserUnit>
-            <UnitScaleResult>1</UnitScaleResult>
-            <UnitOffsetResult>0</UnitOffsetResult>
-          </RawUnit>
-          <ServerHandle>0</ServerHandle>
-          <SortPriority>10</SortPriority>
           <Suffix>.svacq</Suffix>
-          <SymbolBased>true</SymbolBased>
-          <SymbolName>Global_Variables.TcJoy.iLeftStick_X_Axis</SymbolName>
-          <TargetPort>851</TargetPort>
-          <TimeOffset>0</TimeOffset>
-          <Title>AdsAcquisition_48</Title>
-          <UseLocalServer>true</UseLocalServer>
-          <UseTaskSampleTime>true</UseTaskSampleTime>
-          <VariableSize>4</VariableSize>
-          <ChannelStyleInformation />
-          <SubMember />
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
-          <AmsNetId>192.168.1.162.1.1</AmsNetId>
-          <Area>Local</Area>
-          <ArrayLength>0</ArrayLength>
-          <BaseSampleTime>100000</BaseSampleTime>
-          <Comment></Comment>
-          <ContextMask>0</ContextMask>
-          <DataAccess>
-            <DataAccessMode>
-              <Source>TwinCAT</Source>
-              <Protocoll>ADS</Protocoll>
-              <Format>TcBinary</Format>
-              <TimeContext>Present</TimeContext>
-              <TimeTangeInfo>
-                <StartTimeStamp>0</StartTimeStamp>
-                <EndTimeStamp>0</EndTimeStamp>
-              </TimeTangeInfo>
-            </DataAccessMode>
-          </DataAccess>
-          <DataType>INT32</DataType>
-          <DisplayColor>Black</DisplayColor>
-          <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
-          <ForceOversampling>false</ForceOversampling>
-          <Guid>9ae6ac29-d6b2-4603-86e4-d5a9a54be2f1</Guid>
-          <IndexGroup>16448</IndexGroup>
-          <IndexOffset>387120</IndexOffset>
-          <IsFileBased>false</IsFileBased>
-          <IsHistorical>false</IsHistorical>
-          <Name>iLeftStick_X_Axis (2)</Name>
-          <Oversample>0</Oversample>
-          <RawUnit>
-            <Unit>
-              <BaseUnitValue>0</BaseUnitValue>
-              <Prefix>none</Prefix>
-              <ScaleFactor>1</ScaleFactor>
-              <Offset>0</Offset>
-              <Symbol></Symbol>
-              <ReturnText> (None) </ReturnText>
-              <BaseUnitString></BaseUnitString>
-              <NameExtension></NameExtension>
-            </Unit>
-            <Transformation>
-              <BaseUnitValue>0</BaseUnitValue>
-              <TargetUnitValue>0</TargetUnitValue>
-              <ScaleFactor>1</ScaleFactor>
-              <Name>None</Name>
-              <SourceUnitString />
-              <TargetUnitString />
-              <SourceUnitPrefix>none</SourceUnitPrefix>
-              <Symbol>1</Symbol>
-            </Transformation>
-            <UserUnit>
-              <BaseUnitValue>0</BaseUnitValue>
-              <Prefix>none</Prefix>
-              <ScaleFactor>1</ScaleFactor>
-              <Offset>0</Offset>
-              <Name>None</Name>
-              <BaseName>UnitOfOne</BaseName>
-              <NameExtension></NameExtension>
-              <Symbol></Symbol>
-              <BaseUnitString></BaseUnitString>
-              <UserPrefix>none</UserPrefix>
-            </UserUnit>
-            <UnitScaleResult>1</UnitScaleResult>
-            <UnitOffsetResult>0</UnitOffsetResult>
-          </RawUnit>
-          <ServerHandle>0</ServerHandle>
-          <SortPriority>10</SortPriority>
-          <Suffix>.svacq</Suffix>
-          <SymbolBased>true</SymbolBased>
-          <SymbolName>Global_Variables.TcJoy.iLeftStick_X_Axis</SymbolName>
-          <TargetPort>851</TargetPort>
-          <TimeOffset>0</TimeOffset>
-          <Title>AdsAcquisition_48</Title>
-          <UseLocalServer>true</UseLocalServer>
-          <UseTaskSampleTime>true</UseTaskSampleTime>
-          <VariableSize>4</VariableSize>
-          <ChannelStyleInformation />
-          <SubMember />
-        </AdsAcquisition>
-        <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
-          <AmsNetId>192.168.1.162.1.1</AmsNetId>
-          <Area>Local</Area>
-          <ArrayLength>0</ArrayLength>
-          <BaseSampleTime>100000</BaseSampleTime>
-          <Comment></Comment>
-          <ContextMask>0</ContextMask>
-          <DataAccess>
-            <DataAccessMode>
-              <Source>TwinCAT</Source>
-              <Protocoll>ADS</Protocoll>
-              <Format>TcBinary</Format>
-              <TimeContext>Present</TimeContext>
-              <TimeTangeInfo>
-                <StartTimeStamp>0</StartTimeStamp>
-                <EndTimeStamp>0</EndTimeStamp>
-              </TimeTangeInfo>
-            </DataAccessMode>
-          </DataAccess>
-          <DataType>INT32</DataType>
-          <DisplayColor>Black</DisplayColor>
-          <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
-          <ForceOversampling>false</ForceOversampling>
-          <Guid>8b0cc6bc-4683-45df-adf8-efc2b082965e</Guid>
           <IndexGroup>16448</IndexGroup>
           <IndexOffset>387124</IndexOffset>
-          <IsFileBased>false</IsFileBased>
+          <SymbolName>Global_Variables.TcJoy.iLeftStick_Y_Axis</SymbolName>
+          <SymbolBased>true</SymbolBased>
+          <TargetPort>851</TargetPort>
+          <ContextMask>0</ContextMask>
           <IsHistorical>false</IsHistorical>
-          <Name>iLeftStick_Y_Axis</Name>
+          <FileHandle>0</FileHandle>
+          <ServerHandle>0</ServerHandle>
+          <ChannelStyleInformation />
+          <Enabled>true</Enabled>
+          <AmsNetId>192.168.1.162.1.1</AmsNetId>
+          <UseLocalServer>true</UseLocalServer>
+          <DataType>INT32</DataType>
+          <BaseSampleTime>100000</BaseSampleTime>
+          <UseTaskSampleTime>true</UseTaskSampleTime>
           <Oversample>0</Oversample>
+          <ForceOversampling>false</ForceOversampling>
+          <ArrayLength>0</ArrayLength>
+          <TimeOffset>0</TimeOffset>
+          <VariableSize>4</VariableSize>
+          <DataAccess>
+            <DataAccessMode>
+              <Source>TwinCAT</Source>
+              <Protocoll>ADS</Protocoll>
+              <Format>TcBinary</Format>
+              <TimeContext>Present</TimeContext>
+              <TimeTangeInfo>
+                <StartTimeStamp>0</StartTimeStamp>
+                <EndTimeStamp>0</EndTimeStamp>
+              </TimeTangeInfo>
+            </DataAccessMode>
+          </DataAccess>
           <RawUnit>
             <Unit>
               <BaseUnitValue>0</BaseUnitValue>
@@ -322,8 +163,8 @@
               <TargetUnitValue>0</TargetUnitValue>
               <ScaleFactor>1</ScaleFactor>
               <Name>None</Name>
-              <SourceUnitString />
-              <TargetUnitString />
+              <SourceUnitString></SourceUnitString>
+              <TargetUnitString></TargetUnitString>
               <SourceUnitPrefix>none</SourceUnitPrefix>
               <Symbol>1</Symbol>
             </Transformation>
@@ -342,51 +183,51 @@
             <UnitScaleResult>1</UnitScaleResult>
             <UnitOffsetResult>0</UnitOffsetResult>
           </RawUnit>
-          <ServerHandle>0</ServerHandle>
-          <SortPriority>10</SortPriority>
-          <Suffix>.svacq</Suffix>
-          <SymbolBased>true</SymbolBased>
-          <SymbolName>Global_Variables.TcJoy.iLeftStick_Y_Axis</SymbolName>
-          <TargetPort>851</TargetPort>
-          <TimeOffset>0</TimeOffset>
-          <Title>AdsAcquisition_48</Title>
-          <UseLocalServer>true</UseLocalServer>
-          <UseTaskSampleTime>true</UseTaskSampleTime>
-          <VariableSize>4</VariableSize>
-          <ChannelStyleInformation />
+          <Area>Local</Area>
           <SubMember />
+          <Guid>8b0cc6bc-4683-45df-adf8-efc2b082965e</Guid>
+          <Title>AdsAcquisition_48</Title>
+          <Name>iLeftStick_Y_Axis</Name>
+          <Comment></Comment>
+          <DisplayColor>Black</DisplayColor>
+          <SortPriority>10</SortPriority>
+          <IsFileBased>false</IsFileBased>
+          <Suffix>.svacq</Suffix>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
-          <AmsNetId>192.168.1.162.1.1</AmsNetId>
-          <Area>Local</Area>
-          <ArrayLength>0</ArrayLength>
-          <BaseSampleTime>100000</BaseSampleTime>
-          <Comment></Comment>
-          <ContextMask>0</ContextMask>
-          <DataAccess>
-            <DataAccessMode>
-              <Source>TwinCAT</Source>
-              <Protocoll>ADS</Protocoll>
-              <Format>TcBinary</Format>
-              <TimeContext>Present</TimeContext>
-              <TimeTangeInfo>
-                <StartTimeStamp>0</StartTimeStamp>
-                <EndTimeStamp>0</EndTimeStamp>
-              </TimeTangeInfo>
-            </DataAccessMode>
-          </DataAccess>
-          <DataType>INT32</DataType>
-          <DisplayColor>Black</DisplayColor>
-          <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
-          <ForceOversampling>false</ForceOversampling>
-          <Guid>341f3d6d-6850-48ca-b439-08cd0ebc0c39</Guid>
           <IndexGroup>16448</IndexGroup>
           <IndexOffset>387128</IndexOffset>
-          <IsFileBased>false</IsFileBased>
+          <SymbolName>Global_Variables.TcJoy.iRightStick_X_Axis</SymbolName>
+          <SymbolBased>true</SymbolBased>
+          <TargetPort>851</TargetPort>
+          <ContextMask>0</ContextMask>
           <IsHistorical>false</IsHistorical>
-          <Name>iRightStick_X_Axis</Name>
+          <FileHandle>0</FileHandle>
+          <ServerHandle>0</ServerHandle>
+          <ChannelStyleInformation />
+          <Enabled>true</Enabled>
+          <AmsNetId>192.168.1.162.1.1</AmsNetId>
+          <UseLocalServer>true</UseLocalServer>
+          <DataType>INT32</DataType>
+          <BaseSampleTime>100000</BaseSampleTime>
+          <UseTaskSampleTime>true</UseTaskSampleTime>
           <Oversample>0</Oversample>
+          <ForceOversampling>false</ForceOversampling>
+          <ArrayLength>0</ArrayLength>
+          <TimeOffset>0</TimeOffset>
+          <VariableSize>4</VariableSize>
+          <DataAccess>
+            <DataAccessMode>
+              <Source>TwinCAT</Source>
+              <Protocoll>ADS</Protocoll>
+              <Format>TcBinary</Format>
+              <TimeContext>Present</TimeContext>
+              <TimeTangeInfo>
+                <StartTimeStamp>0</StartTimeStamp>
+                <EndTimeStamp>0</EndTimeStamp>
+              </TimeTangeInfo>
+            </DataAccessMode>
+          </DataAccess>
           <RawUnit>
             <Unit>
               <BaseUnitValue>0</BaseUnitValue>
@@ -403,8 +244,8 @@
               <TargetUnitValue>0</TargetUnitValue>
               <ScaleFactor>1</ScaleFactor>
               <Name>None</Name>
-              <SourceUnitString />
-              <TargetUnitString />
+              <SourceUnitString></SourceUnitString>
+              <TargetUnitString></TargetUnitString>
               <SourceUnitPrefix>none</SourceUnitPrefix>
               <Symbol>1</Symbol>
             </Transformation>
@@ -423,108 +264,39 @@
             <UnitScaleResult>1</UnitScaleResult>
             <UnitOffsetResult>0</UnitOffsetResult>
           </RawUnit>
-          <ServerHandle>0</ServerHandle>
-          <SortPriority>10</SortPriority>
-          <Suffix>.svacq</Suffix>
-          <SymbolBased>true</SymbolBased>
-          <SymbolName>Global_Variables.TcJoy.iRightStick_X_Axis</SymbolName>
-          <TargetPort>851</TargetPort>
-          <TimeOffset>0</TimeOffset>
-          <Title>AdsAcquisition_48</Title>
-          <UseLocalServer>true</UseLocalServer>
-          <UseTaskSampleTime>true</UseTaskSampleTime>
-          <VariableSize>4</VariableSize>
-          <ChannelStyleInformation />
+          <Area>Local</Area>
           <SubMember />
+          <Guid>341f3d6d-6850-48ca-b439-08cd0ebc0c39</Guid>
+          <Title>AdsAcquisition_48</Title>
+          <Name>iRightStick_X_Axis</Name>
+          <Comment></Comment>
+          <DisplayColor>Black</DisplayColor>
+          <SortPriority>10</SortPriority>
+          <IsFileBased>false</IsFileBased>
+          <Suffix>.svacq</Suffix>
         </AdsAcquisition>
         <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
-          <AmsNetId>192.168.1.162.1.1</AmsNetId>
-          <Area>Local</Area>
-          <ArrayLength>0</ArrayLength>
-          <BaseSampleTime>100000</BaseSampleTime>
-          <Comment></Comment>
-          <ContextMask>0</ContextMask>
-          <DataAccess>
-            <DataAccessMode>
-              <Source>TwinCAT</Source>
-              <Protocoll>ADS</Protocoll>
-              <Format>TcBinary</Format>
-              <TimeContext>Present</TimeContext>
-              <TimeTangeInfo>
-                <StartTimeStamp>0</StartTimeStamp>
-                <EndTimeStamp>0</EndTimeStamp>
-              </TimeTangeInfo>
-            </DataAccessMode>
-          </DataAccess>
-          <DataType>INT32</DataType>
-          <DisplayColor>Black</DisplayColor>
-          <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
-          <ForceOversampling>false</ForceOversampling>
-          <Guid>75cd7878-5617-4a46-8c4c-96a325a3f0be</Guid>
           <IndexGroup>16448</IndexGroup>
           <IndexOffset>387132</IndexOffset>
-          <IsFileBased>false</IsFileBased>
-          <IsHistorical>false</IsHistorical>
-          <Name>iRightStick_Y_Axis</Name>
-          <Oversample>0</Oversample>
-          <RawUnit>
-            <Unit>
-              <BaseUnitValue>0</BaseUnitValue>
-              <Prefix>none</Prefix>
-              <ScaleFactor>1</ScaleFactor>
-              <Offset>0</Offset>
-              <Symbol></Symbol>
-              <ReturnText> (None) </ReturnText>
-              <BaseUnitString></BaseUnitString>
-              <NameExtension></NameExtension>
-            </Unit>
-            <Transformation>
-              <BaseUnitValue>0</BaseUnitValue>
-              <TargetUnitValue>0</TargetUnitValue>
-              <ScaleFactor>1</ScaleFactor>
-              <Name>None</Name>
-              <SourceUnitString />
-              <TargetUnitString />
-              <SourceUnitPrefix>none</SourceUnitPrefix>
-              <Symbol>1</Symbol>
-            </Transformation>
-            <UserUnit>
-              <BaseUnitValue>0</BaseUnitValue>
-              <Prefix>none</Prefix>
-              <ScaleFactor>1</ScaleFactor>
-              <Offset>0</Offset>
-              <Name>None</Name>
-              <BaseName>UnitOfOne</BaseName>
-              <NameExtension></NameExtension>
-              <Symbol></Symbol>
-              <BaseUnitString></BaseUnitString>
-              <UserPrefix>none</UserPrefix>
-            </UserUnit>
-            <UnitScaleResult>1</UnitScaleResult>
-            <UnitOffsetResult>0</UnitOffsetResult>
-          </RawUnit>
-          <ServerHandle>0</ServerHandle>
-          <SortPriority>10</SortPriority>
-          <Suffix>.svacq</Suffix>
-          <SymbolBased>true</SymbolBased>
           <SymbolName>Global_Variables.TcJoy.iRightStick_Y_Axis</SymbolName>
+          <SymbolBased>true</SymbolBased>
           <TargetPort>851</TargetPort>
-          <TimeOffset>0</TimeOffset>
-          <Title>AdsAcquisition_48</Title>
-          <UseLocalServer>true</UseLocalServer>
-          <UseTaskSampleTime>true</UseTaskSampleTime>
-          <VariableSize>4</VariableSize>
-          <ChannelStyleInformation />
-          <SubMember />
-        </AdsAcquisition>
-        <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
-          <AmsNetId>192.168.1.162.1.1</AmsNetId>
-          <Area>Local</Area>
-          <ArrayLength>0</ArrayLength>
-          <BaseSampleTime>100000</BaseSampleTime>
-          <Comment></Comment>
           <ContextMask>0</ContextMask>
+          <IsHistorical>false</IsHistorical>
+          <FileHandle>0</FileHandle>
+          <ServerHandle>0</ServerHandle>
+          <ChannelStyleInformation />
+          <Enabled>true</Enabled>
+          <AmsNetId>192.168.1.162.1.1</AmsNetId>
+          <UseLocalServer>true</UseLocalServer>
+          <DataType>INT32</DataType>
+          <BaseSampleTime>100000</BaseSampleTime>
+          <UseTaskSampleTime>true</UseTaskSampleTime>
+          <Oversample>0</Oversample>
+          <ForceOversampling>false</ForceOversampling>
+          <ArrayLength>0</ArrayLength>
+          <TimeOffset>0</TimeOffset>
+          <VariableSize>4</VariableSize>
           <DataAccess>
             <DataAccessMode>
               <Source>TwinCAT</Source>
@@ -537,18 +309,6 @@
               </TimeTangeInfo>
             </DataAccessMode>
           </DataAccess>
-          <DataType>INT32</DataType>
-          <DisplayColor>Black</DisplayColor>
-          <Enabled>true</Enabled>
-          <FileHandle>0</FileHandle>
-          <ForceOversampling>false</ForceOversampling>
-          <Guid>5444adaf-643c-4acf-b24c-ce11d9f5d471</Guid>
-          <IndexGroup>16448</IndexGroup>
-          <IndexOffset>387136</IndexOffset>
-          <IsFileBased>false</IsFileBased>
-          <IsHistorical>false</IsHistorical>
-          <Name>iLeftTrigger_Axis</Name>
-          <Oversample>0</Oversample>
           <RawUnit>
             <Unit>
               <BaseUnitValue>0</BaseUnitValue>
@@ -565,8 +325,8 @@
               <TargetUnitValue>0</TargetUnitValue>
               <ScaleFactor>1</ScaleFactor>
               <Name>None</Name>
-              <SourceUnitString />
-              <TargetUnitString />
+              <SourceUnitString></SourceUnitString>
+              <TargetUnitString></TargetUnitString>
               <SourceUnitPrefix>none</SourceUnitPrefix>
               <Symbol>1</Symbol>
             </Transformation>
@@ -585,19 +345,97 @@
             <UnitScaleResult>1</UnitScaleResult>
             <UnitOffsetResult>0</UnitOffsetResult>
           </RawUnit>
-          <ServerHandle>0</ServerHandle>
-          <SortPriority>10</SortPriority>
-          <Suffix>.svacq</Suffix>
-          <SymbolBased>true</SymbolBased>
-          <SymbolName>Global_Variables.TcJoy.iLeftTrigger_Axis</SymbolName>
-          <TargetPort>851</TargetPort>
-          <TimeOffset>0</TimeOffset>
-          <Title>AdsAcquisition_48</Title>
-          <UseLocalServer>true</UseLocalServer>
-          <UseTaskSampleTime>true</UseTaskSampleTime>
-          <VariableSize>4</VariableSize>
-          <ChannelStyleInformation />
+          <Area>Local</Area>
           <SubMember />
+          <Guid>75cd7878-5617-4a46-8c4c-96a325a3f0be</Guid>
+          <Title>AdsAcquisition_48</Title>
+          <Name>iRightStick_Y_Axis</Name>
+          <Comment></Comment>
+          <DisplayColor>Black</DisplayColor>
+          <SortPriority>10</SortPriority>
+          <IsFileBased>false</IsFileBased>
+          <Suffix>.svacq</Suffix>
+        </AdsAcquisition>
+        <AdsAcquisition AssemblyName="TwinCAT.Measurement.Scope.API.Model">
+          <IndexGroup>16448</IndexGroup>
+          <IndexOffset>387136</IndexOffset>
+          <SymbolName>Global_Variables.TcJoy.iLeftTrigger_Axis</SymbolName>
+          <SymbolBased>true</SymbolBased>
+          <TargetPort>851</TargetPort>
+          <ContextMask>0</ContextMask>
+          <IsHistorical>false</IsHistorical>
+          <FileHandle>0</FileHandle>
+          <ServerHandle>0</ServerHandle>
+          <ChannelStyleInformation />
+          <Enabled>true</Enabled>
+          <AmsNetId>192.168.1.162.1.1</AmsNetId>
+          <UseLocalServer>true</UseLocalServer>
+          <DataType>INT32</DataType>
+          <BaseSampleTime>100000</BaseSampleTime>
+          <UseTaskSampleTime>true</UseTaskSampleTime>
+          <Oversample>0</Oversample>
+          <ForceOversampling>false</ForceOversampling>
+          <ArrayLength>0</ArrayLength>
+          <TimeOffset>0</TimeOffset>
+          <VariableSize>4</VariableSize>
+          <DataAccess>
+            <DataAccessMode>
+              <Source>TwinCAT</Source>
+              <Protocoll>ADS</Protocoll>
+              <Format>TcBinary</Format>
+              <TimeContext>Present</TimeContext>
+              <TimeTangeInfo>
+                <StartTimeStamp>0</StartTimeStamp>
+                <EndTimeStamp>0</EndTimeStamp>
+              </TimeTangeInfo>
+            </DataAccessMode>
+          </DataAccess>
+          <RawUnit>
+            <Unit>
+              <BaseUnitValue>0</BaseUnitValue>
+              <Prefix>none</Prefix>
+              <ScaleFactor>1</ScaleFactor>
+              <Offset>0</Offset>
+              <Symbol></Symbol>
+              <ReturnText> (None) </ReturnText>
+              <BaseUnitString></BaseUnitString>
+              <NameExtension></NameExtension>
+            </Unit>
+            <Transformation>
+              <BaseUnitValue>0</BaseUnitValue>
+              <TargetUnitValue>0</TargetUnitValue>
+              <ScaleFactor>1</ScaleFactor>
+              <Name>None</Name>
+              <SourceUnitString></SourceUnitString>
+              <TargetUnitString></TargetUnitString>
+              <SourceUnitPrefix>none</SourceUnitPrefix>
+              <Symbol>1</Symbol>
+            </Transformation>
+            <UserUnit>
+              <BaseUnitValue>0</BaseUnitValue>
+              <Prefix>none</Prefix>
+              <ScaleFactor>1</ScaleFactor>
+              <Offset>0</Offset>
+              <Name>None</Name>
+              <BaseName>UnitOfOne</BaseName>
+              <NameExtension></NameExtension>
+              <Symbol></Symbol>
+              <BaseUnitString></BaseUnitString>
+              <UserPrefix>none</UserPrefix>
+            </UserUnit>
+            <UnitScaleResult>1</UnitScaleResult>
+            <UnitOffsetResult>0</UnitOffsetResult>
+          </RawUnit>
+          <Area>Local</Area>
+          <SubMember />
+          <Guid>5444adaf-643c-4acf-b24c-ce11d9f5d471</Guid>
+          <Title>AdsAcquisition_48</Title>
+          <Name>iLeftTrigger_Axis</Name>
+          <Comment></Comment>
+          <DisplayColor>Black</DisplayColor>
+          <SortPriority>10</SortPriority>
+          <IsFileBased>false</IsFileBased>
+          <Suffix>.svacq</Suffix>
         </AdsAcquisition>
       </SubMember>
       <Guid>96723ab5-07a6-4105-8767-03c16e760c5c</Guid>
@@ -749,8 +587,8 @@
                       <TargetUnitValue>0</TargetUnitValue>
                       <ScaleFactor>1</ScaleFactor>
                       <Name>None</Name>
-                      <SourceUnitString />
-                      <TargetUnitString />
+                      <SourceUnitString></SourceUnitString>
+                      <TargetUnitString></TargetUnitString>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
                       <Symbol>1</Symbol>
                     </Transformation>
@@ -868,8 +706,8 @@
                       <TargetUnitValue>0</TargetUnitValue>
                       <ScaleFactor>1</ScaleFactor>
                       <Name>None</Name>
-                      <SourceUnitString />
-                      <TargetUnitString />
+                      <SourceUnitString></SourceUnitString>
+                      <TargetUnitString></TargetUnitString>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
                       <Symbol>1</Symbol>
                     </Transformation>
@@ -987,8 +825,8 @@
                       <TargetUnitValue>0</TargetUnitValue>
                       <ScaleFactor>1</ScaleFactor>
                       <Name>None</Name>
-                      <SourceUnitString />
-                      <TargetUnitString />
+                      <SourceUnitString></SourceUnitString>
+                      <TargetUnitString></TargetUnitString>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
                       <Symbol>1</Symbol>
                     </Transformation>
@@ -1106,8 +944,8 @@
                       <TargetUnitValue>0</TargetUnitValue>
                       <ScaleFactor>1</ScaleFactor>
                       <Name>None</Name>
-                      <SourceUnitString />
-                      <TargetUnitString />
+                      <SourceUnitString></SourceUnitString>
+                      <TargetUnitString></TargetUnitString>
                       <SourceUnitPrefix>none</SourceUnitPrefix>
                       <Symbol>1</Symbol>
                     </Transformation>

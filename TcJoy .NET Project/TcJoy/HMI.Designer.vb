@@ -22,9 +22,9 @@ Partial Class HMI
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ChartArea2 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend2 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series2 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
+        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
+        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
+        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(HMI))
         Me.TabControl = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
@@ -167,6 +167,8 @@ Partial Class HMI
         Me.toolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnDelChart = New System.Windows.Forms.ToolStripButton()
         Me.ScopeProjectPanel1 = New TwinCAT.Measurement.Scope.Control.ScopeProjectPanel()
+        Me.lbl0 = New System.Windows.Forms.Label()
+        Me.lbl1 = New System.Windows.Forms.Label()
         Me.TabControl.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -199,6 +201,8 @@ Partial Class HMI
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.lbl1)
+        Me.TabPage1.Controls.Add(Me.lbl0)
         Me.TabPage1.Controls.Add(Me.BtnLoadCsv)
         Me.TabPage1.Controls.Add(Me.Chart1)
         Me.TabPage1.Controls.Add(Me.PictureBox1)
@@ -239,16 +243,16 @@ Partial Class HMI
         '
         'Chart1
         '
-        ChartArea2.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea2)
-        Legend2.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend2)
+        ChartArea1.Name = "ChartArea1"
+        Me.Chart1.ChartAreas.Add(ChartArea1)
+        Legend1.Name = "Legend1"
+        Me.Chart1.Legends.Add(Legend1)
         Me.Chart1.Location = New System.Drawing.Point(11, 13)
         Me.Chart1.Name = "Chart1"
-        Series2.ChartArea = "ChartArea1"
-        Series2.Legend = "Legend1"
-        Series2.Name = "Series1"
-        Me.Chart1.Series.Add(Series2)
+        Series1.ChartArea = "ChartArea1"
+        Series1.Legend = "Legend1"
+        Series1.Name = "Series1"
+        Me.Chart1.Series.Add(Series1)
         Me.Chart1.Size = New System.Drawing.Size(300, 300)
         Me.Chart1.TabIndex = 11
         Me.Chart1.Text = "Chart1"
@@ -1653,6 +1657,24 @@ Partial Class HMI
         Me.ScopeProjectPanel1.TabIndex = 0
         Me.ScopeProjectPanel1.TextColor = System.Drawing.Color.Black
         '
+        'lbl0
+        '
+        Me.lbl0.AutoSize = True
+        Me.lbl0.Location = New System.Drawing.Point(1086, 224)
+        Me.lbl0.Name = "lbl0"
+        Me.lbl0.Size = New System.Drawing.Size(66, 20)
+        Me.lbl0.TabIndex = 13
+        Me.lbl0.Text = "Label25"
+        '
+        'lbl1
+        '
+        Me.lbl1.AutoSize = True
+        Me.lbl1.Location = New System.Drawing.Point(1090, 282)
+        Me.lbl1.Name = "lbl1"
+        Me.lbl1.Size = New System.Drawing.Size(66, 20)
+        Me.lbl1.TabIndex = 14
+        Me.lbl1.Text = "Label31"
+        '
         'HMI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -1830,4 +1852,6 @@ Partial Class HMI
     Friend WithEvents ScopeProjectPanel1 As TwinCAT.Measurement.Scope.Control.ScopeProjectPanel
     Friend WithEvents Chart1 As DataVisualization.Charting.Chart
     Friend WithEvents BtnLoadCsv As Button
+    Friend WithEvents lbl1 As Label
+    Friend WithEvents lbl0 As Label
 End Class

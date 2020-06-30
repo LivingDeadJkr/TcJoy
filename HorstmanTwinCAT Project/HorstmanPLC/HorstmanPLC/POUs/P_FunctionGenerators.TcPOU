@@ -9,25 +9,301 @@ timer: TON; //track time
 ElapsedTIME :TIME;
 nPostionTarget: LREAL;
 nCase: INT;
+SignalGenerator : FB_CTRL_SIGNAL_GENERATOR;
 
+//sin gen
+sin_bufferspace :LREAL; //10mm
+sin_Magnitude : LREAL; //100 mm
+sin_frequency :LREAL; // 5 hz?
+sin_time :TIME;
+	sin_index: lreal;
+	sinout: LREAL;
+	sin_steps: LREAL;
+	sin_speed: LREAL;
+	nSinStep: INT;
+	//mc_moveAbs1: MC_moveabsolute;
+	//mc_moveAbs2: MC_moveabsolute;
+		mc_moveAbs1:Mc_MoveContinuousAbsolute;
+	mc_moveAbs2:Mc_MoveContinuousAbsolute;
+		mc_AbsCont1 :Mc_MoveContinuousAbsolute;
+	haltServo1: MC_Halt;
+	Runtimer: BOOL;
+	bMove1 :BOOL;
+	bMove2 :BOOL;
+	bHalt: BOOL;
+	mcabscont1buffermode : MC_buffermode := MC_blendingHigh;
+	mc_movere1: MC_moveRelative;
+	brelMove1: BOOL;
+	relmove1Dist: LREAL;
+	mc_movere2: MC_moveRelative;
+	rel_speed: LREAL;
+	livePosition: LREAL;
+	LiveVel: LREAL := 1000;
+	bMoveit: BOOL;
+	n_i: INT;
+	n_max: INT;
+	initialized: BOOL;
+	InitialPosition: LREAL;
+	SignalGeneratorParams: ST_CTRL_SIGNAL_GENERATOR_PARAMS;
+	SignalGenratorOutput: LREAL;
+	
+	SignalGeneratorErrorID: Tc2_ControllerToolbox.E_CTRL_ERRORCODES;
+	SignalGeneratorError: BOOL;
+	SignalType : Tc2_ControllerToolbox.E_CTRL_SIGNAL_TYPE; //  eCTRL_TRIANGLE := 0,  eCTRL_SINUS := 1,  eCTRL_SAWTOOTH := 2
+	bInit: BOOL :=TRUE;
+	tempvar: INT;
+	PositionBuffer: LREAL;
+	SignalGeneratorMode: Tc2_ControllerToolbox.E_CTRL_MODE;
+	SignalGeneratorState: Tc2_ControllerToolbox.E_CTRL_STATE;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[CASE nCase OF
-	1://Random inputs within 10 of each other
-	2://
-	3://
+      <ST><![CDATA[// these calls only run when the exectute bit is set, but must always be callable, so they go here. might need to put these at the end of this block to avoid a 1 cycle delay.
+//mc_moveAbs1(Axis := io.Simdrive1, Execute := bMove1, Position := 0, Velocity := sin_speed);
+//mc_movere1(Axis := io.Simdrive1, Execute := brelMove1, Distance:=relmove1Dist,  Velocity := rel_speed);
+//mc_movere2(Axis := io.Simdrive1, Execute := brelMove1, Distance:=relmove1Dist,  Velocity := rel_speed);
+//mc_moveAbs2(Axis := io.Simdrive1, Execute := bmove2, Position := sin_magnitude, Velocity := sin_speed);
+//haltServo1(axis := io.Simdrive1, execute := bHalt);
+//mc_AbsCont1(axis := io.Simdrive1,Position := PositionBuffer ,Velocity:= LiveVel,Execute:= bMoveit,BufferMode:=mcabscont1buffermode);
+timer(in:= runtimer);
+	IF bInit THEN
+	(* init the setpoint array *)
+	SignalGeneratorParams.tCtrlCycleTime		:= T#1MS;
+	SignalGeneratorParams.tTaskCycleTime		:= T#1MS;
+	SignalGeneratorParams.eSignalType			:= eCTRL_SINUS;
+	SignalGeneratorParams.tStart				:= T#0mS;
+	SignalGeneratorParams.tCylceDuration		:= T#100MS;
+	SignalGeneratorParams.fAmplitude			:= 40;
+	SignalGeneratorParams.fOffset				:= SignalGeneratorParams.fAmplitude + 10;
+
+	(* set the mode to ACTIVE --> normal operation *)
+	SignalGeneratorMode := eCTRL_MODE_ACTIVE;
+	tempvar := nCase;
+	(* reset init flag *)
+	bInit := FALSE;
+	END_IF
+SignalGenerator(fManValue := InitialPosition, eMode := SignalGeneratorMode, fOut => SignalGenratorOutput, eState => SignalGeneratorState, eErrorid => SignalGeneratorErrorID, bError => SignalGeneratorError, stParams := SignalGeneratorParams);
+liveposition := SignalGenratorOutput;
+
+CASE nCase OF
+	0:
+	runtimer := FALSE;
+	sin_index := 0;
+//bInit := TRUE;	
+	SignalGeneratorMode := eCTRL_MODE_RESET;
+	bMoveit := FALSE;
+	
+	1:
+	//osscillate between two positions for a period of time. not actually sin
+	sin_magnitude := 100;
+	sin_Frequency := 1; // hz
+	sin_time := T#10S;
+	Sin_index := sin_index * PI;
+
+	sin_speed := sin_magnitude * (sin_frequency);   
+   // determine velocity required for move, put it into absolute request, fire, when it gets there, fire another one to 0.
+   // move 100, 200mm/s
+   //move done, send next move immediately, flip flop until done.
+   timer.PT := sin_time;
+   timer.IN := runtimer;
+   
+   IF timer.Q THEN nsinstep := 4;
+	
+   END_IF
+   CASE nSinStep OF 
+	   0: //mcabsolute to 0
+	   
+	   IF NOT mc_moveabs1.Busy AND NOT mc_moveabs1.Error AND NOT mc_moveabs1.InEndVelocity THEN 
+	   Runtimer := TRUE;	   
+	   bMove1 := TRUE;
+	   nSinStep := 1;
+	   END_IF
+	   	   1:
+		   
+	   IF mc_moveabs1.InEndVelocity THEN nSinstep := 2; END_IF 
+		bMove1 := FALSE;
+	   2:
+	    
+	   IF NOT mc_moveabs2.Busy AND NOT mc_moveabs2.Error AND NOT mc_moveabs2.InEndVelocity THEN 
+	   Runtimer := TRUE;	   
+	   bMove2 := TRUE;
+	   nSinStep := 3;
+	   END_IF
+
+	   3:
+	      IF mc_moveabs2.InEndVelocity THEN nSinstep := 0; END_IF 
+		bMove2 := FALSE; 
+   
+		4:  /// exit loop
+		//mcabsolute to 0, then stop.
+		nSinStep := 5;
+		runtimer := FALSE;
+		nCase := 0;
+		5:
+		 IF mc_moveabs1.InEndVelocity THEN nCase := 0; END_IF
+		nSinstep := 0 ;
+		// wait for move 4
+		6: //external setpoint experiment
+	
+   END_CASE
+//check if timer has expired
+//mc absolute move to 0
+//wait for 
+   
+
+	
+
+	
+	
+	2:// relative follower.
+	IF NOT initialized THEN 
+	n_i := 0;
+	n_max := 999;
+	initialized := TRUE;
+	END_IF
+	
+	
+	
+	mc_AbsCont1(axis := io.Simdrive1,Position := livePosition,Velocity:= LiveVel,Execute:= bMoveit);
+	n_i := n_i +1;
+	//
+	liveposition:= STRING_TO_LREAL(p_TextModeRead.database[n_i]);
+	IF n_i = 999 THEN
+		n_i := 0;
+	END_IF
+	3://Sin follower.
+
+SignalGeneratorMode := eCTRL_MODE_ACTIVE;
+    IF control.sp_ServoA.Position > SignalGenratorOutput THEN
+		Control.sp_ServoA.Direction := 1;
+	END_IF
+	IF control.sp_ServoA.Position > SignalGenratorOutput THEN
+		Control.sp_ServoA.Direction := 2;
+	END_IF
+  IF control.sp_ServoB.Position > SignalGenratorOutput THEN
+		Control.sp_ServoB.Direction := 1;
+	END_IF
+	IF control.sp_ServoB.Position > SignalGenratorOutput THEN
+		Control.sp_ServoB.Direction := 2;
+	END_IF
+	
+	control.sp_ServoA.Position := SignalGenratorOutput;
+	control.sp_ServoB.Position := SignalGenratorOutput;
+	
+	
+	bmoveit := FALSE;
+	
+IF mc_AbsCont1.InEndVelocity OR NOT mc_AbsCont1.Busy THEN
+		bmoveit :=TRUE;
+	END_IF
+IF mc_AbsCont1.Active THEN
+	bmoveit := FALSE;
+
+END_IF	
+
 	4://
 	
 END_CASE
 ]]></ST>
     </Implementation>
     <LineIds Name="P_FunctionGenerators">
+      <LineId Id="298" Count="0" />
+      <LineId Id="43" Count="0" />
+      <LineId Id="177" Count="1" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="132" Count="0" />
+      <LineId Id="395" Count="0" />
+      <LineId Id="148" Count="0" />
+      <LineId Id="467" Count="14" />
+      <LineId Id="465" Count="1" />
+      <LineId Id="389" Count="0" />
+      <LineId Id="149" Count="0" />
       <LineId Id="5" Count="0" />
+      <LineId Id="66" Count="0" />
+      <LineId Id="146" Count="0" />
+      <LineId Id="68" Count="0" />
+      <LineId Id="387" Count="0" />
+      <LineId Id="390" Count="0" />
+      <LineId Id="447" Count="0" />
+      <LineId Id="67" Count="0" />
       <LineId Id="17" Count="0" />
-      <LineId Id="19" Count="3" />
+      <LineId Id="51" Count="0" />
+      <LineId Id="58" Count="2" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="75" Count="0" />
+      <LineId Id="77" Count="0" />
+      <LineId Id="70" Count="0" />
+      <LineId Id="79" Count="2" />
+      <LineId Id="121" Count="1" />
+      <LineId Id="117" Count="2" />
+      <LineId Id="82" Count="1" />
+      <LineId Id="110" Count="0" />
+      <LineId Id="126" Count="0" />
+      <LineId Id="104" Count="0" />
+      <LineId Id="135" Count="0" />
+      <LineId Id="106" Count="0" />
+      <LineId Id="127" Count="0" />
+      <LineId Id="108" Count="0" />
+      <LineId Id="136" Count="0" />
+      <LineId Id="93" Count="0" />
+      <LineId Id="91" Count="0" />
+      <LineId Id="87" Count="0" />
+      <LineId Id="140" Count="4" />
+      <LineId Id="94" Count="0" />
+      <LineId Id="111" Count="0" />
+      <LineId Id="88" Count="0" />
+      <LineId Id="95" Count="0" />
+      <LineId Id="145" Count="0" />
+      <LineId Id="137" Count="0" />
+      <LineId Id="98" Count="1" />
+      <LineId Id="124" Count="1" />
+      <LineId Id="147" Count="0" />
+      <LineId Id="100" Count="0" />
+      <LineId Id="114" Count="0" />
+      <LineId Id="487" Count="0" />
+      <LineId Id="101" Count="1" />
+      <LineId Id="115" Count="0" />
+      <LineId Id="84" Count="0" />
+      <LineId Id="73" Count="0" />
+      <LineId Id="96" Count="1" />
+      <LineId Id="71" Count="0" />
+      <LineId Id="38" Count="0" />
+      <LineId Id="64" Count="0" />
+      <LineId Id="63" Count="0" />
+      <LineId Id="61" Count="1" />
+      <LineId Id="19" Count="0" />
+      <LineId Id="222" Count="0" />
+      <LineId Id="232" Count="1" />
+      <LineId Id="229" Count="1" />
+      <LineId Id="226" Count="0" />
+      <LineId Id="223" Count="0" />
+      <LineId Id="221" Count="0" />
+      <LineId Id="184" Count="0" />
+      <LineId Id="235" Count="0" />
+      <LineId Id="239" Count="1" />
+      <LineId Id="236" Count="2" />
+      <LineId Id="20" Count="0" />
+      <LineId Id="373" Count="1" />
+      <LineId Id="490" Count="2" />
+      <LineId Id="497" Count="1" />
+      <LineId Id="495" Count="0" />
+      <LineId Id="500" Count="4" />
+      <LineId Id="499" Count="0" />
+      <LineId Id="496" Count="0" />
+      <LineId Id="449" Count="0" />
+      <LineId Id="493" Count="0" />
+      <LineId Id="485" Count="0" />
+      <LineId Id="494" Count="0" />
+      <LineId Id="455" Count="0" />
+      <LineId Id="486" Count="0" />
+      <LineId Id="484" Count="0" />
+      <LineId Id="456" Count="1" />
+      <LineId Id="461" Count="2" />
+      <LineId Id="282" Count="0" />
+      <LineId Id="300" Count="0" />
+      <LineId Id="21" Count="1" />
       <LineId Id="18" Count="0" />
-      <LineId Id="16" Count="0" />
+      <LineId Id="392" Count="0" />
     </LineIds>
   </POU>
 </TcPlcObject>

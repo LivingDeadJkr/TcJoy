@@ -3,6 +3,7 @@
   <POU Name="MAIN" Id="{d25881fd-bae0-4e0a-b3eb-c173027ef094}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
+	SoftClock : RTC_EX;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -14,9 +15,16 @@ END_IF
 
 p_FaultMonitoring(); // Check fault routine
 //inputs
+p_TextModeRead();
 //Seq
 //Outputs
-p_servocontrol();
+P_FunctionGenerators();
+
+SoftClock(En := Global_Variables.EnablemsClock,PMSEK:=0, Q=> Global_Variables.msClockValid);// Call for a 1ms resolution software timer to start at 0ms when enable goes true.
+p_MotorControl_ST();
+p_MotorControl();
+
+//p_servocontrol();
 //logging
 //recipe system]]></ST>
     </Implementation>
@@ -26,7 +34,13 @@ p_servocontrol();
       <LineId Id="11" Count="0" />
       <LineId Id="10" Count="0" />
       <LineId Id="12" Count="0" />
+      <LineId Id="29" Count="0" />
       <LineId Id="14" Count="1" />
+      <LineId Id="25" Count="0" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="33" Count="1" />
+      <LineId Id="46" Count="0" />
+      <LineId Id="45" Count="0" />
       <LineId Id="21" Count="0" />
       <LineId Id="16" Count="1" />
     </LineIds>

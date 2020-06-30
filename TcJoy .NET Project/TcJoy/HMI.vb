@@ -52,11 +52,16 @@ Public Class HMI
     Public HeartBeatState As Boolean  ' Toggle helper for heartbeat.
     Public Recipefile As FileInfo
     Public MyController As XboxController
-
+    Public MyNetId As AmsNetId
+    Public PLCboolArray(64) As Boolean
+    Public TempInt As Integer
+    '   Public AmsNetId remoteNetId { 192, 168, 0, 231, 1, 1 };
     Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As Integer, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
 
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
 
         TabControl.SelectedTab = TabPage_Connection
         ScopeProjectPanel1.ScopeProject = New ScopeProject
@@ -394,6 +399,15 @@ Public Class HMI
                                     End If
 
                                 End If
+                                'read data bits from PLC
+                            Case "Global_variables.HmiBoolDword0"
+                                lbl0.Text = tag.Value
+
+
+                            Case "Global_variables.HmiBoolDword1"
+                                Integer.TryParse(lbl0.Text, TempInt)
+                                lbl1.Text = tag.Value And TempInt
+
 
                             Case TextBox_TcJoyPath.Text + ".iUpdateRateMS"
 
@@ -1056,10 +1070,10 @@ Public Class HMI
                         For Each ag As AxisGroup In chart.SubMember.OfType(Of AxisGroup)
                             For Each channel As Channel In ag.SubMember.OfType(Of Channel)
                                 For Each ai As AcquisitionInterpreter In channel.SubMember.OfType(Of AcquisitionInterpreter)
-                                    If ai.Acquisition IsNot Nothing Then
-                                        ai.Acquisition.AmsNetId = AmsNetId.Local
-                                    End If
-                                Next
+                                If ai.Acquisition IsNot Nothing Then
+                                    AmsNetId.TryParse("192.168.0.109.1.1", ai.Acquisition.AmsNetId) ' make configurable!
+                                End If
+                            Next
                             Next
 
                         Next

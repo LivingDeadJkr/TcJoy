@@ -7,6 +7,7 @@ VAR
 	mc_powerSim2 :MC_power;
 	mc_MoveAbs1 :mc_moveAbsolute;
 	mc_MoveAbs2 :mc_moveAbsolute;
+
 	
 	b_moveready: BOOL;
 	TargetPos: LREAL;
@@ -30,17 +31,7 @@ ELSE
 END_IF]]></ST>
     </Implementation>
     <LineIds Name="P_ServoControl">
-      <LineId Id="5" Count="0" />
-      <LineId Id="8" Count="0" />
-      <LineId Id="14" Count="0" />
-      <LineId Id="13" Count="0" />
-      <LineId Id="15" Count="1" />
-      <LineId Id="6" Count="1" />
-      <LineId Id="20" Count="0" />
-      <LineId Id="19" Count="0" />
-      <LineId Id="21" Count="0" />
-      <LineId Id="27" Count="0" />
-      <LineId Id="24" Count="1" />
+      <LineId Id="39" Count="13" />
       <LineId Id="22" Count="0" />
     </LineIds>
   </POU>

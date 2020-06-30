@@ -1417,18 +1417,20 @@ External Setpoint Generation:
 		<ImageData Id="1004">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000000000ff00ffff00ffff00ff000000ff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ffff00ff000000ff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ffff00ff000000ff00ffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ff000000ff00ff000000ff00ff000000ff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff000000000000ff00ff000000000000ff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff000000ff00ffff00ffff00ff000000ff00ffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
 		<ImageData Id="1005">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ff007fff007fff007fff007fff007fff007fffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
 	</ImageDatas>
-	<Project ProjectGUID="{82BAD453-443E-4949-A67B-82B359E903D6}" Target64Bit="true" ShowHideConfigurations="#x106">
+	<Project ProjectGUID="{82BAD453-443E-4949-A67B-82B359E903D6}" TargetNetId="192.168.0.109.1.1" ShowHideConfigurations="#x106">
 		<System>
-			<Settings DontCheckTarget="10.0.75.1.1.1"/>
+			<Settings MaxCpus="12">
+				<Cpu CpuId="1" BaseTime="1000"/>
+			</Settings>
 			<Tasks>
-				<Task Id="3" Priority="20" CycleTime="100000" AmsPort="350" AdtTasks="true">
+				<Task Id="3" Priority="20" CycleTime="10000" AmsPort="350" AdtTasks="true">
 					<Name>PlcTask</Name>
 				</Task>
 			</Tasks>
 		</System>
 		<Motion>
 			<NC>
-				<SafTask Priority="4" CycleTime="20000" AmsPort="501" IoAtBegin="true">
+				<SafTask Priority="4" CycleTime="5000" AmsPort="501" IoAtBegin="true">
 					<Name>NC-Task 1 SAF</Name>
 					<Vars VarGrpType="1" InsertType="1">
 						<Name>Inputs</Name>
@@ -1878,6 +1880,7 @@ External Setpoint Generation:
 				<Axis Id="3" CreateSymbols="true" AxisType="1">
 					<Name>sim Axis 1</Name>
 					<AxisPara>
+						<Dynamic Acceleration="2000" Deceleration="2000" Jerk="2000"/>
 						<OtherSettings AllowMotionCmdToSlave="true"/>
 					</AxisPara>
 					<Encoder Name="Enc" EncType="1">
@@ -1940,6 +1943,7 @@ External Setpoint Generation:
 					<Drive Name="Drive" DrvType="5">
 						<DrvPara>
 							<Analog TorqueSetpointScale="10" ScaleFactorActTorque="0.1"/>
+							<TimeComp TaskDelayCycles="1"/>
 						</DrvPara>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
@@ -2097,6 +2101,7 @@ External Setpoint Generation:
 					<Drive Name="Drive" DrvType="5">
 						<DrvPara>
 							<Analog TorqueSetpointScale="10" ScaleFactorActTorque="0.1"/>
+							<TimeComp TaskDelayCycles="1"/>
 						</DrvPara>
 						<Vars VarGrpType="1">
 							<Name>Inputs</Name>
@@ -2192,12 +2197,17 @@ External Setpoint Generation:
 			</NC>
 		</Motion>
 		<Plc>
-			<Project GUID="{183D58D0-6327-4F07-8821-F200405A4372}" Name="HorstmanPLC" PrjFilePath="HorstmanPLC.plcproj" TmcFilePath="HorstmanPLC.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+			<Project GUID="{183D58D0-6327-4F07-8821-F200405A4372}" Name="HorstmanPLC" PrjFilePath="HorstmanPLC.plcproj" TmcFilePath="HorstmanPLC.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e">
 				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcPath="HorstmanPLC.tmc">
 					<Name>HorstmanPLC Instance</Name>
 					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
 					<Vars VarGrpType="1">
 						<Name>PlcTask Inputs</Name>
+						<Var>
+							<Name>Control.b_MainCoreServoEnableReq</Name>
+							<Comment><![CDATA[ Servo enable request state from main core.]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
 						<Var>
 							<Name>IO.DriveAxis1.NcToPlc</Name>
 							<Type GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}" Namespace="MC">NCTOPLC_AXIS_REF</Type>
@@ -2210,11 +2220,6 @@ Drive 1]]></Comment>
 						</Var>
 						<Var>
 							<Name>IO.DriveEnabled1</Name>
-							<Type>BOOL</Type>
-						</Var>
-						<Var>
-							<Name>IO.DriveFaulted2</Name>
-							<Comment><![CDATA[Drive 2]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -2242,6 +2247,11 @@ Drive 1]]></Comment>
 							<Type>DINT</Type>
 						</Var>
 						<Var>
+							<Name>IO.DriveFaulted2</Name>
+							<Comment><![CDATA[Drive 2]]></Comment>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
 							<Name>IO.DriveEnabled2</Name>
 							<Type>BOOL</Type>
 						</Var>
@@ -2261,7 +2271,8 @@ Drive 1]]></Comment>
 					<Vars VarGrpType="2">
 						<Name>PlcTask Outputs</Name>
 						<Var>
-							<Name>IO.DriveEnable1</Name>
+							<Name>Control.b_MotionCommandsEnabled</Name>
+							<Comment><![CDATA[ Tell motion core servos are ready to move.]]></Comment>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -2271,11 +2282,11 @@ Drive 1	]]></Comment>
 							<Type>INT</Type>
 						</Var>
 						<Var>
-							<Name>IO.Drive1Spare</Name>
+							<Name>IO.DriveEnable1</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
-							<Name>IO.DriveEnable2</Name>
+							<Name>IO.Drive1Spare</Name>
 							<Type>BOOL</Type>
 						</Var>
 						<Var>
@@ -2286,6 +2297,10 @@ Drive 1	]]></Comment>
 						<Var>
 							<Name>IO.DriveAxis1.PlcToNc</Name>
 							<Type GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}" Namespace="MC">PLCTONC_AXIS_REF</Type>
+						</Var>
+						<Var>
+							<Name>IO.DriveEnable2</Name>
+							<Type>BOOL</Type>
 						</Var>
 						<Var>
 							<Name>IO.Drive2Spare</Name>
@@ -2311,13 +2326,13 @@ Drive 1	]]></Comment>
 			</Project>
 		</Plc>
 		<Io>
-			<Device Id="1" Disabled="true" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="10.0.75.1.2.1" RemoteName="Device 1 (EtherCAT)">
+			<Device Id="1" Disabled="true" DevType="111" DevFlags="#x0003" AmsPort="28673" AmsNetId="5.63.228.160.2.1" RemoteName="Device 1 (EtherCAT)">
 				<Name>Device 1 (EtherCAT)</Name>
 				<AddressInfo>
 					<Pnp>
-						<DeviceDesc></DeviceDesc>
-						<DeviceName></DeviceName>
-						<DeviceData>000000000000</DeviceData>
+						<DeviceDesc>Local Area Connection 2 (TwinCAT-Intel PCI Ethernet</DeviceDesc>
+						<DeviceName>\DEVICE\{0FC98C7B-F9A2-4232-93E5-61725CABC560}</DeviceName>
+						<DeviceData>0001053fe4a0</DeviceData>
 					</Pnp>
 				</AddressInfo>
 				<Image Id="2" AddrType="9" ImageType="3">
@@ -2325,12 +2340,40 @@ Drive 1	]]></Comment>
 				</Image>
 				<EtherCAT/>
 			</Device>
-			<Device Id="2" Disabled="true" DevType="111" DevFlags="#x0003" AmsPort="28674" AmsNetId="10.0.75.1.3.1" RemoteName="Device 2 (EtherCAT)">
+			<Device Id="2" Disabled="true" DevType="111" DevFlags="#x0003" AmsPort="28674" AmsNetId="5.63.228.160.3.1" RemoteName="Device 2 (EtherCAT)">
 				<Name>Device 2 (EtherCAT)</Name>
 				<AddressInfo>
-					<TcCom>
-						<ObjectId>#x00000000</ObjectId>
-					</TcCom>
+					<Ccat>
+						<Address>-41943040</Address>
+						<Offset>131072</Offset>
+						<Size>8192</Size>
+						<BaseAddr>0</BaseAddr>
+						<BusNo>1</BusNo>
+						<SlotNo>0</SlotNo>
+						<VendorId>5612</VendorId>
+						<DeviceId>20480</DeviceId>
+						<Dma>
+							<Address>0</Address>
+							<Offset>4096</Offset>
+							<Size>12288</Size>
+							<BaseAddr>2</BaseAddr>
+							<RxChn>0</RxChn>
+							<TxChn>1</TxChn>
+						</Dma>
+						<TimeSize>128</TimeSize>
+						<TimeOffs>1024</TimeOffs>
+						<GpioSize>32</GpioSize>
+						<GpioOffs>768</GpioOffs>
+						<EepromSize>32</EepromSize>
+						<EepromOffs>512</EepromOffs>
+						<IntCtrlSize>16</IntCtrlSize>
+						<IntCtrlOffs>640</IntCtrlOffs>
+						<Identification>
+							<Value>175900712</Value>
+							<Version>1</Version>
+							<Size>256</Size>
+						</Identification>
+					</Ccat>
 				</AddressInfo>
 				<Image Id="3" AddrType="9" ImageType="3">
 					<Name>Image</Name>
@@ -2588,7 +2631,7 @@ Bit1: Value smaller than Limit1]]></Comment>
 					<Box Id="5" BoxType="9099" BoxFlags="#x00000020">
 						<Name>Analog Out (EL4032)</Name>
 						<ImageId>1003</ImageId>
-						<EtherCAT SlaveType="2" PdiType="#x0405" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="3" FoeType="1" VendorId="#x00000002" ProductCode="#x0fc03052" RevisionNo="#x00140000" InfoDataAddr="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL4032 2Ch. Ana. Output +/-10V, 12bit" Desc="EL4032" PortABoxInfo="#x01000004">
+						<EtherCAT SlaveType="2" PdiType="#x0405" MboxDataLinkLayer="true" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="3" FoeType="1" VendorId="#x00000002" ProductCode="#x0fc03052" RevisionNo="#x00140000" InfoDataAddr="true" InfoDataDcTimes="true" TimeoutMailbox2="2000" CheckRevisionNoType="3" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL4032 2Ch. Ana. Output +/-10V, 12bit" Desc="EL4032" PortABoxInfo="#x01000004">
 							<SyncMan>001080002600010001000000800080008000001026010000</SyncMan>
 							<SyncMan>801080002200010002000000800080008000801022010000</SyncMan>
 							<SyncMan>001104002400010003000000000000000400001124010000</SyncMan>
@@ -3133,7 +3176,7 @@ Bit1: Value smaller than Limit1]]></Comment>
 		</Io>
 	</Project>
 	<Mappings>
-		<MappingInfo Identifier="{05000010-2001-0850-1000-040300205008}" Id="#x02030020" Watchdog="14000000040000000400000004000000"/>
+		<MappingInfo Identifier="{05000010-2001-0850-1000-040300205008}" Id="#x02030020" Watchdog="08000000040000000400000004000000"/>
 		<OwnerA Name="TINC^NC-Task 1 SAF^Axes^Axis 1">
 			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1200)^Absolute Encoders (EL5002)">
 				<Link VarA="Enc2^Inputs^In^nDataIn1" VarB="SSI Inputs Channel 1^Drive 1 Linear Position"/>

@@ -17,13 +17,34 @@
     <LibraryReferences>{dc7a2531-f16b-4479-bd57-c9258999a700}</LibraryReferences>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DUTs\MoveBuffer1kms.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="DUTs\Setpoint_Interface.TcDUT">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="GVLs\Control.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="GVLs\Global_Variables.TcGVL">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="GVLs\IO.TcGVL">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="GVLs\RecipeData.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
+    <Compile Include="GVLs\SAFETY.TcGVL">
+      <SubType>Code</SubType>
+      <LinkAlways>true</LinkAlways>
+    </Compile>
     <Compile Include="PlcTask.TcTTO">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\FB\FB_UseExtSetpointGen.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\FB_TcJoy.TcPOU">
@@ -38,20 +59,37 @@
     <Compile Include="POUs\P_FunctionGenerators.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\P_MotorControl.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\p_MotorControl_ST.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\P_ReadCsv.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\P_SequenceReader.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\P_ServoControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\p_TextModeRead.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DUTs" />
     <Folder Include="GVLs" />
+    <Folder Include="POUs\FB" />
     <Folder Include="VISUs" />
     <Folder Include="POUs" />
   </ItemGroup>
   <ItemGroup>
+    <PlaceholderReference Include="Tc2_ControllerToolbox">
+      <DefaultResolution>Tc2_ControllerToolbox, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_ControllerToolbox</Namespace>
+    </PlaceholderReference>
     <PlaceholderReference Include="Tc2_Drive">
       <DefaultResolution>Tc2_Drive, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc2_Drive</Namespace>
@@ -71,6 +109,10 @@
     <PlaceholderReference Include="Tc2_System">
       <DefaultResolution>Tc2_System, * (Beckhoff Automation GmbH)</DefaultResolution>
       <Namespace>Tc2_System</Namespace>
+    </PlaceholderReference>
+    <PlaceholderReference Include="Tc2_Utilities">
+      <DefaultResolution>Tc2_Utilities, * (Beckhoff Automation GmbH)</DefaultResolution>
+      <Namespace>Tc2_Utilities</Namespace>
     </PlaceholderReference>
     <PlaceholderReference Include="Tc3_Module">
       <DefaultResolution>Tc3_Module, * (Beckhoff Automation GmbH)</DefaultResolution>

@@ -99,7 +99,15 @@ Module PLC_IO_Polling
 
         BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".sBatteryInfo", AdsDatatypeId.ADST_STRING, False, True))
 
+        'custom tags
+        BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HmiButtonData0", AdsDatatypeId.ADST_INT32, False, True))
+        BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HmiButtonData1", AdsDatatypeId.ADST_INT32, False, True))
+
+
         ' Add tags to our data object, ones that read from TwinCAT From PLC To VB
+        BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HmiBoolDword0", AdsDatatypeId.ADST_INT32, True, False))
+        BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HmiBoolDword1", AdsDatatypeId.ADST_INT32, True, False))
+
         BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".bIsActive", AdsDatatypeId.ADST_BIT, True, False))
         BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".iUpdateRateMS", AdsDatatypeId.ADST_BIT, True, False))
 

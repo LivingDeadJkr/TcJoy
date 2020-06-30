@@ -1,0 +1,252 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+  <POU Name="p_MotorControl_ST" Id="{1948efc2-07af-4f24-8417-60a242e950fd}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM p_MotorControl_ST
+VAR
+	
+	Mc_ResetServoA : MC_Reset;
+	Mc_ResetServoB : MC_Reset;
+	FbMc_PowerServoB :MC_Power;
+	FbMc_PowerServoA :MC_Power;
+
+ ServoResetOK :BYTE;
+ 
+ //Monitor the rising edge of the ecnoder position reset function.
+ 
+ServosReady :byte; // 	
+ 
+// ServoEnableFallingEdge: f_trig;	
+ // ServoEnableRisingEdge: r_trig;	
+ // SoeResetRisingEdge :r_trig;
+	st_Buffermode : MC_Buffermode;
+	n_Override :INT := 100;
+	SoeReset :BYTE;
+	
+   EncodeCalibrationRequest_RisingEdge :r_trig;
+	
+	b_debugSetEncoders: BOOL;
+	debugging_belt: BOOL;
+	BufferMode: MC_Buffermode;
+	BeltForceBit: BOOL;
+	state: INT; // State machine current step
+	b_ServosReady: BOOL;
+	b_Faulted: BOOL;
+	testbool: BOOL;
+	ServoDisableTimeout :Ton;
+	b_DEBUG_STOP: BOOL;
+	b_EncoderCalibrationRequest: BOOL;
+END_VAR
+
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[st_buffermode := MC_Aborting; // stop between moves instead of blending? see the mc_buffermode docs
+b_Faulted := p_faultmonitoring.b_Faulted;
+Mc_ResetServoA(Axis := io.Simdrive1, Execute := Control.b_RequestServoReset);
+Mc_ResetServoB(Axis := io.Simdrive2, Execute := Control.b_RequestServoReset);//STb
+
+IF p_faultmonitoring.b_Faulted OR Safety.GLOBAL_SAFETY_NOT_OK THEN
+state :=0; //Reset state
+END_IF 
+
+
+CASE state OF 
+	
+0: //Faulted OR Not enabled, but stopped (intialize here)
+//servo power off, disable all moves and halts.			
+control.b_EnableServosFinal := FALSE; // servo power off
+control.b_HaltRequest := FALSE; //
+control.b_UseExternalSetpointGenerator := FALSE;
+control.b_MotionCommandsEnabled := FALSE; // 
+
+IF control.b_EnableServosReq AND (NOT b_faulted  AND NOT safety.GLOBAL_SAFETY_NOT_OK) THEN
+	state := 1; // Leave the faulted state when not faulted.
+	Control.b_RequestServoReset := TRUE;
+END_IF
+ 
+1: //ready to enable, but haven't been asked to.
+	 // sit here until user enable is high // user can issue reset during this stage to help wake motors.
+IF control.b_EnableServosReq  THEN // 
+	control.b_EnableServosFinal := TRUE; // Enable the servos if the servo request is on.
+	Control.b_RequestServoReset := FALSE;	
+	ELSE
+		control.b_EnableServosFinal := FALSE; // Enable the servos if the servo request is on.
+		State := 0;
+END_IF
+
+control.b_MotionCommandsEnabled := FALSE; // reset motioncommand enable.	
+
+IF b_ServosReady THEN state := 2; END_IF; // if the servos are all enabled, we can move to next state
+
+2: // Turning on servos with NO Commands issued, so halt them. 
+control.b_HaltRequest := TRUE;	
+IF control.b_Servos_Halted THEN State := 3; END_IF; 
+IF control.b_EnableServosReq = FALSE THEN control.b_EnableServosFinal := FALSE; State:=0; END_IF 
+				
+3: //Switch into SP mode
+	;//Enabeld, turn off halts, turn on SP generator access to servos
+	control.b_HaltRequest := FALSE;
+	control.b_UseExternalSetpointGenerator := TRUE;
+
+	IF control.b_SetpointGeneratorFault	THEN State:= 4; END_IF; //halt if setpoint generator gets an error.
+	IF NOT b_ServosReady THEN state := 4; END_IF; // drop power to servos if any servo loses op mode
+ 
+
+4: //Enable has been dropped, HALT! (No time delay)
+	control.b_UseExternalSetpointGenerator := FALSE;
+	control.b_MotionCommandsEnabled := FALSE ; //   
+	control.b_HaltRequest := TRUE;
+   IF control.b_Servos_Halted THEN State := 0; END_IF; //drop back to initial state when halted.
+   IF NOT (control.b_EnableServosReq AND control.b_MainCoreServoEnableReq) THEN state := 0; END_IF;
+   IF ServoDisableTimeout.Q THEN State := 0; END_IF;
+END_CASE
+
+Servodisabletimeout.PT := T#1000MS;
+Servodisabletimeout(IN:=(state = 4)); //.q is true 2 seconds after servo enable is no longer commanded
+
+
+
+ 
+//Servo enable command sent rising edge	
+//ServoEnableRisingedge(CLK:=control.b_EnableServosFinal);
+// lost enable, start halt & shutdown procedure
+//ServoEnableFallingedge(CLK:=(Control.b_MainCoreServoEnableReq AND control.b_EnableServosReq));
+
+//Send halt command to NC (this is here for timing reasons)
+Control.b_HaltRequestExecute := control.b_HaltRequest; // halt if requested, unless the servo system is disabled.  
+
+
+// pack servo readdy bits into the servoready byte. if a Bit is true, the assosiated servo is ready to roll.
+Servosready.0 := IO.Simdrive1.NcToPlc.StateDWord.0;
+Servosready.1 := IO.Simdrive2.NcToPlc.StateDWord.0;
+
+IF ServosReady = 3 THEN //if all servos ready set bool true
+	b_ServosReady := TRUE;
+	ELSE
+	b_Servosready :=FALSE;
+END_IF
+
+Control.n_ServosHalted.0 := P_MotorControl.MC_Halt_ServoB.Done;
+Control.n_ServosHalted.1 := P_MotorControl.MC_Halt_ServoA.Done;
+
+//detect when everything is halted.
+IF control.n_ServosHalted = 3 THEN // change back to 255 to watch pendulum and laser
+	control.b_Servos_Halted :=TRUE;
+	ELSE
+	control.b_Servos_Halted :=FALSE;
+END_IF
+
+
+//a
+	FbMc_PowerServoA(Enable		:= Control.b_EnableServosFinal,
+			Enable_Positive	:= Control.b_EnableServosFinal ,
+			Enable_Negative	:= Control.b_EnableServosFinal ,
+			Override		:= n_Override ,
+			BufferMode		:= st_Buffermode ,
+			Axis			:= io.Simdrive1 );
+//Servo B		
+	FbMc_PowerServoB(Enable		:= Control.b_EnableServosFinal,
+			Enable_Positive	:= Control.b_EnableServosFinal ,
+			Enable_Negative	:= Control.b_EnableServosFinal ,
+			Override		:= n_Override ,
+			BufferMode		:= st_Buffermode ,
+			Axis			:= io.simdrive2 );	
+
+			
+			// when we see execute reset a bit,
+			// watch rising edge for done bit blocking it with error bit?
+			//set /reset bits to fill offsets byte
+			//send summary 
+
+
+
+
+
+
+	
+]]></ST>
+    </Implementation>
+    <LineIds Name="p_MotorControl_ST">
+      <LineId Id="3203" Count="0" />
+      <LineId Id="3932" Count="0" />
+      <LineId Id="4413" Count="0" />
+      <LineId Id="3974" Count="0" />
+      <LineId Id="3933" Count="1" />
+      <LineId Id="3936" Count="1" />
+      <LineId Id="3935" Count="0" />
+      <LineId Id="3239" Count="0" />
+      <LineId Id="3901" Count="0" />
+      <LineId Id="3905" Count="0" />
+      <LineId Id="3931" Count="0" />
+      <LineId Id="3914" Count="0" />
+      <LineId Id="3946" Count="0" />
+      <LineId Id="3956" Count="1" />
+      <LineId Id="3992" Count="0" />
+      <LineId Id="3971" Count="0" />
+      <LineId Id="4306" Count="0" />
+      <LineId Id="3972" Count="0" />
+      <LineId Id="4416" Count="0" />
+      <LineId Id="3973" Count="0" />
+      <LineId Id="3908" Count="0" />
+      <LineId Id="3930" Count="0" />
+      <LineId Id="3915" Count="0" />
+      <LineId Id="3977" Count="0" />
+      <LineId Id="4061" Count="1" />
+      <LineId Id="4414" Count="0" />
+      <LineId Id="4063" Count="0" />
+      <LineId Id="4415" Count="0" />
+      <LineId Id="3981" Count="0" />
+      <LineId Id="4374" Count="0" />
+      <LineId Id="4235" Count="0" />
+      <LineId Id="4373" Count="0" />
+      <LineId Id="3920" Count="0" />
+      <LineId Id="4236" Count="0" />
+      <LineId Id="3929" Count="0" />
+      <LineId Id="3985" Count="0" />
+      <LineId Id="3982" Count="0" />
+      <LineId Id="4089" Count="0" />
+      <LineId Id="3912" Count="0" />
+      <LineId Id="3928" Count="0" />
+      <LineId Id="3917" Count="0" />
+      <LineId Id="3983" Count="0" />
+      <LineId Id="3986" Count="0" />
+      <LineId Id="3993" Count="0" />
+      <LineId Id="3987" Count="0" />
+      <LineId Id="4234" Count="0" />
+      <LineId Id="3927" Count="0" />
+      <LineId Id="3989" Count="0" />
+      <LineId Id="3925" Count="0" />
+      <LineId Id="4091" Count="0" />
+      <LineId Id="3942" Count="0" />
+      <LineId Id="4090" Count="0" />
+      <LineId Id="3990" Count="1" />
+      <LineId Id="4239" Count="0" />
+      <LineId Id="3906" Count="0" />
+      <LineId Id="4237" Count="0" />
+      <LineId Id="3996" Count="0" />
+      <LineId Id="3245" Count="0" />
+      <LineId Id="4080" Count="0" />
+      <LineId Id="4083" Count="0" />
+      <LineId Id="4067" Count="0" />
+      <LineId Id="3325" Count="2" />
+      <LineId Id="3338" Count="1" />
+      <LineId Id="3355" Count="0" />
+      <LineId Id="3357" Count="2" />
+      <LineId Id="3381" Count="3" />
+      <LineId Id="3968" Count="0" />
+      <LineId Id="3964" Count="3" />
+      <LineId Id="3391" Count="0" />
+      <LineId Id="3969" Count="0" />
+      <LineId Id="3392" Count="1" />
+      <LineId Id="3400" Count="7" />
+      <LineId Id="3420" Count="14" />
+      <LineId Id="3482" Count="0" />
+      <LineId Id="3564" Count="4" />
+      <LineId Id="3578" Count="0" />
+      <LineId Id="3583" Count="1" />
+      <LineId Id="3647" Count="0" />
+      <LineId Id="4240" Count="0" />
+      <LineId Id="3650" Count="1" />
+      <LineId Id="1312" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
