@@ -36,7 +36,9 @@ Module PLC_IO_Polling
         ' Do writes
         For Each tag As HMI.DataTag In e.Argument.TagList
             If tag.IsWritten Then
-
+                Select Case tag.TagName
+                    Case "Global_variables.HmiBoolDword0"
+                End Select
                 Try
                     If debug Then Console.WriteLine("Writing Tag: " + tag.TagName + " to value: " + tag.Value.ToString)
                     ' Get data type and other information from PLC
