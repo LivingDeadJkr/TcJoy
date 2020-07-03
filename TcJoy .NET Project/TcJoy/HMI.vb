@@ -1113,7 +1113,8 @@ Public Class HMI
                             For Each channel As Channel In ag.SubMember.OfType(Of Channel)
                                 For Each ai As AcquisitionInterpreter In channel.SubMember.OfType(Of AcquisitionInterpreter)
                                 If ai.Acquisition IsNot Nothing Then
-                                    AmsNetId.TryParse("192.168.0.109.1.1", ai.Acquisition.AmsNetId) ' make configurable!
+                                    AmsNetId.TryParse(My.Settings.sPLC_NETID, ai.Acquisition.AmsNetId)
+                                    '  AmsNetId.TryParse("192.168.0.109.1.1", ai.Acquisition.AmsNetId) ' make configurable!
                                 End If
                             Next
                             Next

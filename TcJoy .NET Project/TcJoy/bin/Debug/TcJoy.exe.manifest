@@ -54,6 +54,18 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="M2Mqtt.Rebex.dll" size="55808">
+      <assemblyIdentity name="M2Mqtt.Rebex" version="1.0.0.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Uc6UD9zIVr55ROfR8IigRlGx+bcbcCGoVNJZy5nLzhs=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Microsoft.DirectX.dll" size="223232">
       <assemblyIdentity name="Microsoft.DirectX" version="1.0.2902.0" publicKeyToken="31BF3856AD364E35" language="neutral" />
       <hash>
@@ -126,6 +138,30 @@
     </dependentAssembly>
   </dependency>
   <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Rebex.Common.dll" size="700240">
+      <assemblyIdentity name="Rebex.Common" version="2.5.6339.0" publicKeyToken="1C4638788972655D" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>Ou5cZGN7hhj/axMuM1uZnbr/n3HX3rg2B61hypQ7xto=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Rebex.Networking.dll" size="389456">
+      <assemblyIdentity name="Rebex.Networking" version="3.5.6339.0" publicKeyToken="1C4638788972655D" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>sdhONmqOm3wk3ISTkhB1cuV85ljt6laW+9N9uhSIJ3I=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TcJoy.exe" size="114176">
       <assemblyIdentity name="TcJoy" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
@@ -133,7 +169,67 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>PxmOklOY0qKUTAN31oYJNr33igfUEVncOTgfaxG2yMc=</dsig:DigestValue>
+        <dsig:DigestValue>/4Nc0SOg4ihX8AKYdypHCh+eYJYILbI/8huLibvjeUI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TF6420DBSrv.ADSCommunication.dll" size="97280">
+      <assemblyIdentity name="TF6420DBSrv.ADSCommunication" version="3.2.32.3" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>WgyYJEZjX5IVNCa4zfkBwVWHXnM6UzNXDnkIViTuLxM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TF6420DBSrv.Configuration.dll" size="92672">
+      <assemblyIdentity name="TF6420DBSrv.Configuration" version="3.2.32.3" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>oYtzeKyI69UM9vSdQgG8NnY5JxPCVnNov2aknaE0llE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TF6420DBSrv.DatabaseTypes.dll" size="339456">
+      <assemblyIdentity name="TF6420DBSrv.DatabaseTypes" version="3.2.32.3" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>NgVTOaqYickoK4foD173rE+VAEyrgQeClOULaM+YSuk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TF6420DBSrv.Encryption.dll" size="6144">
+      <assemblyIdentity name="TF6420DBSrv.Encryption" version="3.2.32.3" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>mJ5Y/uKHC5TojrpinLSq4uXysHqjymVwUE9RA0n20fo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TF6420DBSrv.Errors.dll" size="135168">
+      <assemblyIdentity name="TF6420DBSrv.Errors" version="3.2.32.3" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>xLB1d1UThMn/cqyWEHzN9+WDSGxXAunu8UyJdaG9Kkg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -146,6 +242,270 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>j6LQMYyPp4K9KwXKA8DEWgzSIYazoSGXD9Uby3u76Js=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.BaseUI.dll" size="144384">
+      <assemblyIdentity name="TwinCAT.BaseUI" version="3.2.0.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>yu2glv3PHTj9eewtpr6iMoHwYA4/eE1BSmKuX/Y/icM=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.Core.dll" size="210944">
+      <assemblyIdentity name="TwinCAT.Core" version="3.2.0.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>nzcRZniOJlsIA6xh+7a+bfEu7AHvK+lWokNzzMNI17k=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.IoT.dll" size="10240">
+      <assemblyIdentity name="TwinCAT.IoT" version="1.1.0.12" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>l0KIwpXawKCLC7bytfeF8WL1jVueQKNM7D0Zwkl0V1A=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.IoT.MQTT.dll" size="474624">
+      <assemblyIdentity name="TwinCAT.IoT.MQTT" version="1.1.0.12" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>waanuZvH2ko6FMOWmdFrbcvCBX7rfBUO0cSfA4TJVDg=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.Measurement.ProjectBase.dll" size="83456">
+      <assemblyIdentity name="TwinCAT.Measurement.ProjectBase" version="3.4.3143.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>n+6X23vGmFrEQYYMkW5eTeSK7/5zJjRQVmkB8Fpg6RI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.Measurement.Scope.API.dll" size="1552896">
+      <assemblyIdentity name="TwinCAT.Measurement.Scope.API" version="3.4.3143.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>tF0/xlyHBq0xjw2Wj+G/1EE7xAaCSVQ22AljYsdImK4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.Measurement.Scope.Control.dll" size="2374656">
+      <assemblyIdentity name="TwinCAT.Measurement.Scope.Control" version="3.4.3143.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>kQV7zSzZCxaq92JEbO5XNfkdKzAfzjfnbcyj3Sk1edU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.Measurement.WizardBase.dll" size="269824">
+      <assemblyIdentity name="TwinCAT.Measurement.WizardBase" version="3.4.3143.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>AVClMs3F+9ut+tx7nQ894KYp6teBc985OUqBU9Dx/mo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.Scope2.Charting.ChartControlLib_DX.dll" size="89088">
+      <assemblyIdentity name="TwinCAT.Scope2.Charting.ChartControlLib_DX" version="3.4.3143.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>rqw0TnNUXiuSTPtL+20fauXTwYcP8PsMnv0gdPPlEQ4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.Scope2.Charting.ChartControlLib_GDI.dll" size="77312">
+      <assemblyIdentity name="TwinCAT.Scope2.Charting.ChartControlLib_GDI" version="3.4.3143.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>s+7xb4/gPQ3aWvvH1ZL+6EWDuu4f8+zpJFB5OdmVoU0=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.Scope2.Charting.ChartingBase.dll" size="300032">
+      <assemblyIdentity name="TwinCAT.Scope2.Charting.ChartingBase" version="3.4.3143.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>KCJf9FNfch+Wzf0BIWhqup30YCowzBUL+xiuytIYoBo=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.Scope2.Communications.dll" size="481280">
+      <assemblyIdentity name="TwinCAT.Scope2.Communications" version="3.4.3143.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>0RW4jGVu7QlW3XZcCByNRH2Js74+pmvvQj1BDCNPJ2c=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.Scope2.Export.Diadem.dll" size="42496">
+      <assemblyIdentity name="TwinCAT.Scope2.Export.Diadem" version="3.4.3143.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>wfXYCbyE/hPiOmztHTGbf1owXktQIGa5CWP8bvCS1oQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.Scope2.ScopeClient.dll" size="249344">
+      <assemblyIdentity name="TwinCAT.Scope2.ScopeClient" version="3.4.3143.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>hiNO8sqotU4FzPuyslF80Vr+zeLc7mFitZ7Mi63WEew=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.Scope2.Tools.dll" size="515584">
+      <assemblyIdentity name="TwinCAT.Scope2.Tools" version="3.4.3143.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>egY1VzmCYyf/Byc0k46eTo6K/yGrmtrQU+vHNceDlBQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.SystemService.dll" size="896000">
+      <assemblyIdentity name="TwinCAT.SystemService" version="3.2.0.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>+Q7eDgGYvokoieTStxESiTciQ4gXJaxRimWn8Jo3zpU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.TargetBrowser.Control.dll" size="417280">
+      <assemblyIdentity name="TwinCAT.TargetBrowser.Control" version="1.0.24.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>0Id6WzPMTp9LLm6aD5t33lINVhNAYm2gTx5p4kYbFTE=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.TargetBrowser.Definition.dll" size="19968">
+      <assemblyIdentity name="TwinCAT.TargetBrowser.Definition" version="1.0.4.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>AMb03YCSSyNjVmAgs+v+q3WmtwMgKYTP2uU4rV1W+6c=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.TargetBrowser.Package.Definition.dll" size="6656">
+      <assemblyIdentity name="TwinCAT.TargetBrowser.Package.Definition" version="1.0.1.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>SLisuVia04Sa4fNsWGL+NXNfMYtHBnOuvBHO6hQQDIw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.TargetBrowser.Utilities.dll" size="77312">
+      <assemblyIdentity name="TwinCAT.TargetBrowser.Utilities" version="1.0.13.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>818Fe+7Bioddum3jhz8TRf/whDXDe3UCOE+wJIwRGCQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TwinCAT.Utilities.dll" size="1045504">
+      <assemblyIdentity name="TwinCAT.Utilities" version="3.2.0.0" publicKeyToken="180016CD49E5E8C3" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>RFeFd171uy/VmLUIZrC2KMrlkwDIhEk1Gr624mE3ty4=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="UnifiedAutomation.UaBase.dll" size="7075328">
+      <assemblyIdentity name="UnifiedAutomation.UaBase" version="2.6.1.0" publicKeyToken="90C158E6F23D82C1" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>fOggiql7+GS8QHXWivVYK9mt7yB4dEk5tsbBQ56XR5M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

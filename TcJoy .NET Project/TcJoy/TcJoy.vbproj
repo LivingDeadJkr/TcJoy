@@ -95,16 +95,36 @@
       <HintPath>..\..\Redist\TwinCAT.Ads.dll</HintPath>
     </Reference>
     <Reference Include="TwinCAT.Measurement.ExtensibilityDefinitions, Version=3.4.3140.0, Culture=neutral, PublicKeyToken=81c3902b29e02512" />
-    <Reference Include="TwinCAT.Measurement.ProjectBase, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3" />
-    <Reference Include="TwinCAT.Measurement.Scope.API, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3" />
-    <Reference Include="TwinCAT.Measurement.Scope.Control, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3, processorArchitecture=MSIL" />
-    <Reference Include="TwinCAT.Measurement.WizardBase, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3" />
-    <Reference Include="TwinCAT.Scope2.Charting.ChartControlLib_DX, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3" />
-    <Reference Include="TwinCAT.Scope2.Charting.ChartControlLib_GDI, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3" />
-    <Reference Include="TwinCAT.Scope2.Charting.ChartingBase, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3" />
-    <Reference Include="TwinCAT.Scope2.Communications, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3" />
-    <Reference Include="TwinCAT.Scope2.ScopeClient, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3" />
-    <Reference Include="TwinCAT.Scope2.Tools, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3" />
+    <Reference Include="TwinCAT.Measurement.ProjectBase, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3">
+      <HintPath>..\..\Redist\TwinCAT.Measurement.ProjectBase.dll</HintPath>
+    </Reference>
+    <Reference Include="TwinCAT.Measurement.Scope.API, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3">
+      <HintPath>..\..\Redist\TwinCAT.Measurement.Scope.API.dll</HintPath>
+    </Reference>
+    <Reference Include="TwinCAT.Measurement.Scope.Control, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3, processorArchitecture=MSIL">
+      <HintPath>..\..\Redist\TwinCAT.Measurement.Scope.Control.dll</HintPath>
+    </Reference>
+    <Reference Include="TwinCAT.Measurement.WizardBase, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3">
+      <HintPath>..\..\Redist\TwinCAT.Measurement.WizardBase.dll</HintPath>
+    </Reference>
+    <Reference Include="TwinCAT.Scope2.Charting.ChartControlLib_DX, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3">
+      <HintPath>..\..\Redist\TwinCAT.Scope2.Charting.ChartControlLib_DX.dll</HintPath>
+    </Reference>
+    <Reference Include="TwinCAT.Scope2.Charting.ChartControlLib_GDI, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3">
+      <HintPath>..\..\Redist\TwinCAT.Scope2.Charting.ChartControlLib_GDI.dll</HintPath>
+    </Reference>
+    <Reference Include="TwinCAT.Scope2.Charting.ChartingBase, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3">
+      <HintPath>..\..\Redist\TwinCAT.Scope2.Charting.ChartingBase.dll</HintPath>
+    </Reference>
+    <Reference Include="TwinCAT.Scope2.Communications, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3">
+      <HintPath>..\..\Redist\TwinCAT.Scope2.Communications.dll</HintPath>
+    </Reference>
+    <Reference Include="TwinCAT.Scope2.ScopeClient, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3">
+      <HintPath>..\..\Redist\TwinCAT.Scope2.ScopeClient.dll</HintPath>
+    </Reference>
+    <Reference Include="TwinCAT.Scope2.Tools, Version=3.4.3143.0, Culture=neutral, PublicKeyToken=180016cd49e5e8c3">
+      <HintPath>..\..\Redist\TwinCAT.Scope2.Tools.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
