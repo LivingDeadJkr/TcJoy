@@ -3,8 +3,7 @@
   <GVL Name="Control" Id="{16130499-3ae7-437c-beec-55370c8d7814}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-b_UseExternalSetpointGenerator :BOOL; // Allows motioncore fine control of traction servos.
-b_ResetServos :BOOL; // called by cores to request servo reset.
+b_UseExternalSetpointGenerator :BOOL; // Allows fine control of servos.
 
 b_HaltRequest: BOOL;// System is performing a halt
 b_HaltRequestExecute: BOOL; //activates the halt functions
@@ -21,6 +20,8 @@ sp_ServoB: Setpoint_Interface;
 sp_ServoA: Setpoint_Interface;
 	b_EnableServosReq: BOOL;
 	b_RequestServoReset: BOOL;
+	bExecMoveRelA: BOOL;
+	b_ExecuteGearIn: BOOL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

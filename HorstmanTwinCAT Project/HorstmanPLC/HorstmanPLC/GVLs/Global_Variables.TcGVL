@@ -10,6 +10,20 @@ VAR_GLOBAL
 	HmiBoolDword1 : DINT;
 	EnablemsClock: BOOL;
 	msClockValid: BOOL;
+	
+	HMI_Servo1_Pos : LREAL;
+	HMI_Servo1_Torque : LREAL;
+	HMI_Servo1_Vel : LREAL;
+	
+	HMI_Servo2_Pos : LREAL;
+	HMI_Servo2_Torque : LREAL;
+	HMI_Servo2_Vel : LREAL;
+	
+	HMI_PlayBack_PositionIndex: DINT;
+	HMI_Playback_TimeIndex :DINT;
+	HMI_PlayBack_SeekToTime :DINT;
+
+	
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

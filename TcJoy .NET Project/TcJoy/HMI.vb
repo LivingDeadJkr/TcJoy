@@ -53,7 +53,8 @@ Public Class HMI
     Public Recipefile As FileInfo
     Public MyController As XboxController
     Public MyNetId As AmsNetId
-    Public PLCboolArray(64) As Boolean
+    Public myHMIButtonData0 As Integer
+    Public myHMIButtonData1 As Integer
     Public TempInt As Integer
     '   Public AmsNetId remoteNetId { 192, 168, 0, 231, 1, 1 };
     Declare Function SendMessage Lib "user32" Alias "SendMessageA" (ByVal hwnd As Integer, ByVal wMsg As Integer, ByVal wParam As Integer, ByVal lParam As Integer) As Integer
@@ -464,6 +465,24 @@ Public Class HMI
 
                 Select Case Tag.TagName
 
+                    Case "Global_variables.HMI_Servo1_Pos"
+                        txtAPA.Text = Tag.Value.ToString
+                    Case "Global_variables.HMI_Servo1_Torque"
+                        txtATA.Text = Tag.Value.ToString
+                    Case "Global_variables.HMI_Servo1_Vel"
+
+                    Case "Global_variables.HMI_Servo2_Pos"
+                        txtAPB.Text = Tag.Value.ToString
+                    Case "Global_variables.HMI_Servo2_Torque"
+                        txtATB.Text = Tag.Value.ToString
+                    Case "Global_variables.HMI_Servo2_Vel"
+
+                    Case "Global_variables.HmiButtonData0"
+                        Tag.Value = myHMIButtonData0
+
+                    Case "Global_variables.HmiButtonData1"
+                        Tag.Value = myHMIButtonData1
+
                     Case TextBox_TcJoyPath.Text + ".bControllerConnected"
                         Tag.Value = MyController.IsConnected
 
@@ -852,6 +871,29 @@ Public Class HMI
 
     End Sub
 
+    Private Function GetBit(ByRef value As Integer, ByVal bit As Integer)
+        If (2 ^ bit And value) Then
+            Return True
+        Else
+            Return False
+        End If
+    End Function
+
+    Private Function SetBit(ByRef value As Integer, ByVal bit As Integer)
+        Return ((2 ^ bit) Or value)
+    End Function
+
+    Private Function ResetBit(ByRef value As Integer, ByVal bit As Integer)
+        Return (value And Not (2 ^ bit))
+    End Function
+
+    Private Function flipBit(ByRef value As Integer, ByVal bit As Integer)
+        Return (value Xor (2 ^ bit))
+    End Function
+
+
+
+
     Private Sub TextBox_ShoulderDeadzone_TextChanged(sender As Object, e As EventArgs) Handles TextBox_ShoulderDeadzone.TextChanged
         If TextBox_ShoulderDeadzone.Text <> "" Then
             Dim value As Integer
@@ -1226,5 +1268,49 @@ Public Class HMI
 
             End Try
         End If
+    End Sub
+    'Jog buttons
+    Private Sub btnRaiseA_MouseLeave(sender As Object, e As EventArgs) Handles btnRaiseA.MouseLeave
+        myHMIButtonData0 = ResetBit(myHMIButtonData0, 0)
+    End Sub
+
+    Private Sub btnRaiseA_MouseDown(sender As Object, e As MouseEventArgs) Handles btnRaiseA.MouseDown
+        myHMIButtonData0 = SetBit(myHMIButtonData0, 0)
+    End Sub
+
+    Private Sub btnRaiseA_MouseUp(sender As Object, e As MouseEventArgs) Handles btnRaiseA.MouseUp
+        myHMIButtonData0 = ResetBit(myHMIButtonData0, 0)
+    End Sub
+
+    Private Sub btnLowerA_MouseDown(sender As Object, e As MouseEventArgs) Handles btnLowerA.MouseDown
+        myHMIButtonData0 = SetBit(myHMIButtonData0, 1)
+    End Sub
+
+    Private Sub btnLowerA_MouseLeave(sender As Object, e As EventArgs) Handles btnLowerA.MouseLeave
+        myHMIButtonData0 = ResetBit(myHMIButtonData0, 1)
+    End Sub
+
+    Private Sub btnLowerA_MouseUp(sender As Object, e As MouseEventArgs) Handles btnLowerA.MouseUp
+        myHMIButtonData0 = ResetBit(myHMIButtonData0, 1)
+    End Sub
+    'Power button toggle.
+    Private Sub btnPower_Click(sender As Object, e As EventArgs) Handles btnPower.Click
+        myHMIButtonData0 = flipBit(myHMIButtonData0, 2)
+    End Sub
+
+    Private Sub btnFaultReset_MouseDown(sender As Object, e As MouseEventArgs) Handles btnFaultReset.MouseDown
+        myHMIButtonData0 = SetBit(myHMIButtonData0, 3)
+    End Sub
+
+    Private Sub btnFaultReset_MouseUp(sender As Object, e As MouseEventArgs) Handles btnFaultReset.MouseUp
+        myHMIButtonData0 = ResetBit(myHMIButtonData0, 3)
+    End Sub
+
+    Private Sub btnFaultReset_MouseLeave(sender As Object, e As EventArgs) Handles btnFaultReset.MouseLeave
+        myHMIButtonData0 = ResetBit(myHMIButtonData0, 3)
+    End Sub
+
+    Private Sub btn_JogModeToggle_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_JogModeToggle.MouseDown
+        myHMIButtonData0 = flipBit(myHMIButtonData0, 4)
     End Sub
 End Class

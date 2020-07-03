@@ -5,7 +5,7 @@
 VAR_GLOBAL
 
 SaferyOK :BOOL; // safety system status
-PowerEnabled:BOOL; // soft  bit we turn on to enable drives when we have no errors.
+PowerEnabled :BOOL; // soft  bit we turn on to enable drives when we have no errors.
 
 //Outputs
 //Drive 1	

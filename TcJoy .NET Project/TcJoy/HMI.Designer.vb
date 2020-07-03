@@ -22,14 +22,13 @@ Partial Class HMI
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim ChartArea1 As System.Windows.Forms.DataVisualization.Charting.ChartArea = New System.Windows.Forms.DataVisualization.Charting.ChartArea()
-        Dim Legend1 As System.Windows.Forms.DataVisualization.Charting.Legend = New System.Windows.Forms.DataVisualization.Charting.Legend()
-        Dim Series1 As System.Windows.Forms.DataVisualization.Charting.Series = New System.Windows.Forms.DataVisualization.Charting.Series()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(HMI))
         Me.TabControl = New System.Windows.Forms.TabControl()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
+        Me.btnFaultReset = New System.Windows.Forms.Button()
+        Me.lbl1 = New System.Windows.Forms.Label()
+        Me.lbl0 = New System.Windows.Forms.Label()
         Me.BtnLoadCsv = New System.Windows.Forms.Button()
-        Me.Chart1 = New System.Windows.Forms.DataVisualization.Charting.Chart()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.lblAutoSeqPause = New System.Windows.Forms.Label()
         Me.lblManStepMode = New System.Windows.Forms.Label()
@@ -55,6 +54,7 @@ Partial Class HMI
         Me.btnStep = New System.Windows.Forms.Button()
         Me.Button9 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.btn_JogModeToggle = New System.Windows.Forms.Button()
         Me.txtTFB = New System.Windows.Forms.TextBox()
         Me.btnLowerA = New System.Windows.Forms.Button()
         Me.txtATB = New System.Windows.Forms.TextBox()
@@ -167,11 +167,8 @@ Partial Class HMI
         Me.toolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnDelChart = New System.Windows.Forms.ToolStripButton()
         Me.ScopeProjectPanel1 = New TwinCAT.Measurement.Scope.Control.ScopeProjectPanel()
-        Me.lbl0 = New System.Windows.Forms.Label()
-        Me.lbl1 = New System.Windows.Forms.Label()
         Me.TabControl.SuspendLayout()
         Me.TabPage1.SuspendLayout()
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
@@ -201,10 +198,10 @@ Partial Class HMI
         '
         'TabPage1
         '
+        Me.TabPage1.Controls.Add(Me.btnFaultReset)
         Me.TabPage1.Controls.Add(Me.lbl1)
         Me.TabPage1.Controls.Add(Me.lbl0)
         Me.TabPage1.Controls.Add(Me.BtnLoadCsv)
-        Me.TabPage1.Controls.Add(Me.Chart1)
         Me.TabPage1.Controls.Add(Me.PictureBox1)
         Me.TabPage1.Controls.Add(Me.lblAutoSeqPause)
         Me.TabPage1.Controls.Add(Me.lblManStepMode)
@@ -232,6 +229,33 @@ Partial Class HMI
         Me.TabPage1.Text = "Hank Rig Controls"
         Me.TabPage1.UseVisualStyleBackColor = True
         '
+        'btnFaultReset
+        '
+        Me.btnFaultReset.Location = New System.Drawing.Point(828, 582)
+        Me.btnFaultReset.Name = "btnFaultReset"
+        Me.btnFaultReset.Size = New System.Drawing.Size(152, 48)
+        Me.btnFaultReset.TabIndex = 15
+        Me.btnFaultReset.Text = "Fault Reset"
+        Me.btnFaultReset.UseVisualStyleBackColor = True
+        '
+        'lbl1
+        '
+        Me.lbl1.AutoSize = True
+        Me.lbl1.Location = New System.Drawing.Point(1090, 282)
+        Me.lbl1.Name = "lbl1"
+        Me.lbl1.Size = New System.Drawing.Size(66, 20)
+        Me.lbl1.TabIndex = 14
+        Me.lbl1.Text = "Label31"
+        '
+        'lbl0
+        '
+        Me.lbl0.AutoSize = True
+        Me.lbl0.Location = New System.Drawing.Point(1086, 224)
+        Me.lbl0.Name = "lbl0"
+        Me.lbl0.Size = New System.Drawing.Size(66, 20)
+        Me.lbl0.TabIndex = 13
+        Me.lbl0.Text = "Label25"
+        '
         'BtnLoadCsv
         '
         Me.BtnLoadCsv.Location = New System.Drawing.Point(1050, 98)
@@ -240,22 +264,6 @@ Partial Class HMI
         Me.BtnLoadCsv.TabIndex = 12
         Me.BtnLoadCsv.Text = "Select Recipe"
         Me.BtnLoadCsv.UseVisualStyleBackColor = True
-        '
-        'Chart1
-        '
-        ChartArea1.Name = "ChartArea1"
-        Me.Chart1.ChartAreas.Add(ChartArea1)
-        Legend1.Name = "Legend1"
-        Me.Chart1.Legends.Add(Legend1)
-        Me.Chart1.Location = New System.Drawing.Point(11, 13)
-        Me.Chart1.Name = "Chart1"
-        Series1.ChartArea = "ChartArea1"
-        Series1.Legend = "Legend1"
-        Series1.Name = "Series1"
-        Me.Chart1.Series.Add(Series1)
-        Me.Chart1.Size = New System.Drawing.Size(300, 300)
-        Me.Chart1.TabIndex = 11
-        Me.Chart1.Text = "Chart1"
         '
         'PictureBox1
         '
@@ -481,6 +489,7 @@ Partial Class HMI
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.btn_JogModeToggle)
         Me.GroupBox1.Controls.Add(Me.txtTFB)
         Me.GroupBox1.Controls.Add(Me.btnLowerA)
         Me.GroupBox1.Controls.Add(Me.txtATB)
@@ -502,6 +511,15 @@ Partial Class HMI
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Manual Control"
+        '
+        'btn_JogModeToggle
+        '
+        Me.btn_JogModeToggle.Location = New System.Drawing.Point(42, 241)
+        Me.btn_JogModeToggle.Name = "btn_JogModeToggle"
+        Me.btn_JogModeToggle.Size = New System.Drawing.Size(152, 48)
+        Me.btn_JogModeToggle.TabIndex = 15
+        Me.btn_JogModeToggle.Text = "Jog Mode"
+        Me.btn_JogModeToggle.UseVisualStyleBackColor = True
         '
         'txtTFB
         '
@@ -1657,24 +1675,6 @@ Partial Class HMI
         Me.ScopeProjectPanel1.TabIndex = 0
         Me.ScopeProjectPanel1.TextColor = System.Drawing.Color.Black
         '
-        'lbl0
-        '
-        Me.lbl0.AutoSize = True
-        Me.lbl0.Location = New System.Drawing.Point(1086, 224)
-        Me.lbl0.Name = "lbl0"
-        Me.lbl0.Size = New System.Drawing.Size(66, 20)
-        Me.lbl0.TabIndex = 13
-        Me.lbl0.Text = "Label25"
-        '
-        'lbl1
-        '
-        Me.lbl1.AutoSize = True
-        Me.lbl1.Location = New System.Drawing.Point(1090, 282)
-        Me.lbl1.Name = "lbl1"
-        Me.lbl1.Size = New System.Drawing.Size(66, 20)
-        Me.lbl1.TabIndex = 14
-        Me.lbl1.Text = "Label31"
-        '
         'HMI
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(9.0!, 20.0!)
@@ -1687,7 +1687,6 @@ Partial Class HMI
         Me.TabControl.ResumeLayout(False)
         Me.TabPage1.ResumeLayout(False)
         Me.TabPage1.PerformLayout()
-        CType(Me.Chart1, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
@@ -1850,8 +1849,9 @@ Partial Class HMI
     Private WithEvents toolStripSeparator4 As ToolStripSeparator
     Private WithEvents btnDelChart As ToolStripButton
     Friend WithEvents ScopeProjectPanel1 As TwinCAT.Measurement.Scope.Control.ScopeProjectPanel
-    Friend WithEvents Chart1 As DataVisualization.Charting.Chart
     Friend WithEvents BtnLoadCsv As Button
     Friend WithEvents lbl1 As Label
     Friend WithEvents lbl0 As Label
+    Friend WithEvents btnFaultReset As Button
+    Friend WithEvents btn_JogModeToggle As Button
 End Class

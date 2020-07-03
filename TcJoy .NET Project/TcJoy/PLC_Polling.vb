@@ -36,9 +36,9 @@ Module PLC_IO_Polling
         ' Do writes
         For Each tag As HMI.DataTag In e.Argument.TagList
             If tag.IsWritten Then
-                Select Case tag.TagName
-                    Case "Global_variables.HmiBoolDword0"
-                End Select
+
+
+
                 Try
                     If debug Then Console.WriteLine("Writing Tag: " + tag.TagName + " to value: " + tag.Value.ToString)
                     ' Get data type and other information from PLC
@@ -109,6 +109,14 @@ Module PLC_IO_Polling
         ' Add tags to our data object, ones that read from TwinCAT From PLC To VB
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HmiBoolDword0", AdsDatatypeId.ADST_INT32, True, False))
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HmiBoolDword1", AdsDatatypeId.ADST_INT32, True, False))
+        BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo1_Pos", AdsDatatypeId.ADST_REAL32, True, False))
+        BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo1_Torque", AdsDatatypeId.ADST_REAL32, True, False))
+        BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo1_Vel", AdsDatatypeId.ADST_REAL32, True, False))
+
+        BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo2_Pos", AdsDatatypeId.ADST_REAL32, True, False))
+        BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo2_Torque", AdsDatatypeId.ADST_REAL32, True, False))
+        BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo2_Vel", AdsDatatypeId.ADST_REAL32, True, False))
+
 
         BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".bIsActive", AdsDatatypeId.ADST_BIT, True, False))
         BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".iUpdateRateMS", AdsDatatypeId.ADST_BIT, True, False))

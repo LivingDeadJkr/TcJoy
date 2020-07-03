@@ -11,6 +11,8 @@ VAR
 
  ServoResetOK :BYTE;
  
+ jogbuttontimer :ton;
+ 
  //Monitor the rising edge of the ecnoder position reset function.
  
 ServosReady :byte; // 	
@@ -35,18 +37,33 @@ ServosReady :byte; //
 	ServoDisableTimeout :Ton;
 	b_DEBUG_STOP: BOOL;
 	b_EncoderCalibrationRequest: BOOL;
+	RequestedState: INT;
+	Requested: INT;
+	n_JogReq: INT;
 END_VAR
 
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[st_buffermode := MC_Aborting; // stop between moves instead of blending? see the mc_buffermode docs
+jogbuttontimer.PT := T#250MS;
 b_Faulted := p_faultmonitoring.b_Faulted;
 Mc_ResetServoA(Axis := io.Simdrive1, Execute := Control.b_RequestServoReset);
 Mc_ResetServoB(Axis := io.Simdrive2, Execute := Control.b_RequestServoReset);//STb
 
-IF p_faultmonitoring.b_Faulted OR Safety.GLOBAL_SAFETY_NOT_OK THEN
+IF p_faultmonitoring.b_Faulted OR Safety.GLOBAL_SAFETY_NOT_OK OR NOT IO.PowerEnabled THEN
 state :=0; //Reset state
 END_IF 
+
+IF Control.b_RequestServoReset THEN 
+state :=0;
+END_IF;
+
+IF Global_variables.HmiButtonData0.4 AND p_motorcontrol_st.state = 2 THEN
+	// if halted and ready, switch to jogging mode. 
+	p_motorcontrol_st.state := 5;
+END_IF
+
+
 
 
 CASE state OF 
@@ -57,17 +74,18 @@ control.b_EnableServosFinal := FALSE; // servo power off
 control.b_HaltRequest := FALSE; //
 control.b_UseExternalSetpointGenerator := FALSE;
 control.b_MotionCommandsEnabled := FALSE; // 
+ control.b_ExecuteGearIn := FALSE;
 
 IF control.b_EnableServosReq AND (NOT b_faulted  AND NOT safety.GLOBAL_SAFETY_NOT_OK) THEN
 	state := 1; // Leave the faulted state when not faulted.
-	Control.b_RequestServoReset := TRUE;
+	//Control.b_RequestServoReset := TRUE;
 END_IF
  
 1: //ready to enable, but haven't been asked to.
 	 // sit here until user enable is high // user can issue reset during this stage to help wake motors.
-IF control.b_EnableServosReq  THEN // 
+IF control.b_EnableServosReq AND io.PowerEnabled THEN // 
 	control.b_EnableServosFinal := TRUE; // Enable the servos if the servo request is on.
-	Control.b_RequestServoReset := FALSE;	
+//	Control.b_RequestServoReset := FALSE;	
 	ELSE
 		control.b_EnableServosFinal := FALSE; // Enable the servos if the servo request is on.
 		State := 0;
@@ -79,9 +97,12 @@ IF b_ServosReady THEN state := 2; END_IF; // if the servos are all enabled, we c
 
 2: // Turning on servos with NO Commands issued, so halt them. 
 control.b_HaltRequest := TRUE;	
-IF control.b_Servos_Halted THEN State := 3; END_IF; 
+IF control.b_Servos_Halted AND RequestedState <> 0 THEN State := RequestedState; END_IF; 
+
 IF control.b_EnableServosReq = FALSE THEN control.b_EnableServosFinal := FALSE; State:=0; END_IF 
 				
+
+
 3: //Switch into SP mode
 	;//Enabeld, turn off halts, turn on SP generator access to servos
 	control.b_HaltRequest := FALSE;
@@ -98,6 +119,35 @@ IF control.b_EnableServosReq = FALSE THEN control.b_EnableServosFinal := FALSE; 
    IF control.b_Servos_Halted THEN State := 0; END_IF; //drop back to initial state when halted.
    IF NOT (control.b_EnableServosReq AND control.b_MainCoreServoEnableReq) THEN state := 0; END_IF;
    IF ServoDisableTimeout.Q THEN State := 0; END_IF;
+   
+   
+   
+ 5://gear in 
+
+ control.b_HaltRequest := FALSE;
+ control.b_ExecuteGearIn := TRUE;
+ IF P_Motorcontrol.MC_GearInA.InGear THEN state := 6;
+END_IF
+
+
+ 6:  // Jog function
+ jogbuttontimer();
+
+IF NOT (Global_variables.HmiButtonData0.0 OR Global_variables.HmiButtonData0.1) OR JogButtonTimer.Q THEN
+			n_jogreq := 0;
+			control.bExecMoveRelA := FALSE;
+			jogbuttontimer.IN := FALSE;
+			ELSIF Global_variables.HmiButtonData0.0 THEN
+				n_jogreq := 1;
+				control.bExecMoveRelA := TRUE;
+				jogbuttontimer.IN := TRUE;
+			ELSIF Global_variables.HmiButtonData0.1THEN
+				n_jogreq := -1;
+				control.bExecMoveRelA := TRUE;
+				jogbuttontimer.IN := TRUE;	
+END_IF
+  
+   
 END_CASE
 
 Servodisabletimeout.PT := T#1000MS;
@@ -105,6 +155,8 @@ Servodisabletimeout(IN:=(state = 4)); //.q is true 2 seconds after servo enable 
 
 
 
+
+ 
  
 //Servo enable command sent rising edge	
 //ServoEnableRisingedge(CLK:=control.b_EnableServosFinal);
@@ -167,11 +219,19 @@ END_IF
     </Implementation>
     <LineIds Name="p_MotorControl_ST">
       <LineId Id="3203" Count="0" />
+      <LineId Id="4507" Count="0" />
       <LineId Id="3932" Count="0" />
       <LineId Id="4413" Count="0" />
       <LineId Id="3974" Count="0" />
       <LineId Id="3933" Count="1" />
       <LineId Id="3936" Count="1" />
+      <LineId Id="4572" Count="0" />
+      <LineId Id="4574" Count="0" />
+      <LineId Id="4573" Count="0" />
+      <LineId Id="4571" Count="0" />
+      <LineId Id="4575" Count="0" />
+      <LineId Id="4567" Count="3" />
+      <LineId Id="4565" Count="1" />
       <LineId Id="3935" Count="0" />
       <LineId Id="3239" Count="0" />
       <LineId Id="3901" Count="0" />
@@ -181,6 +241,7 @@ END_IF
       <LineId Id="3946" Count="0" />
       <LineId Id="3956" Count="1" />
       <LineId Id="3992" Count="0" />
+      <LineId Id="4520" Count="0" />
       <LineId Id="3971" Count="0" />
       <LineId Id="4306" Count="0" />
       <LineId Id="3972" Count="0" />
@@ -203,8 +264,11 @@ END_IF
       <LineId Id="3929" Count="0" />
       <LineId Id="3985" Count="0" />
       <LineId Id="3982" Count="0" />
+      <LineId Id="4456" Count="0" />
       <LineId Id="4089" Count="0" />
       <LineId Id="3912" Count="0" />
+      <LineId Id="4461" Count="0" />
+      <LineId Id="4460" Count="0" />
       <LineId Id="3928" Count="0" />
       <LineId Id="3917" Count="0" />
       <LineId Id="3983" Count="0" />
@@ -220,14 +284,39 @@ END_IF
       <LineId Id="4090" Count="0" />
       <LineId Id="3990" Count="1" />
       <LineId Id="4239" Count="0" />
+      <LineId Id="4470" Count="2" />
+      <LineId Id="4476" Count="0" />
+      <LineId Id="4511" Count="0" />
+      <LineId Id="4477" Count="0" />
+      <LineId Id="4516" Count="0" />
+      <LineId Id="4521" Count="0" />
+      <LineId Id="4518" Count="0" />
+      <LineId Id="4523" Count="0" />
+      <LineId Id="4522" Count="0" />
+      <LineId Id="4517" Count="0" />
+      <LineId Id="4519" Count="0" />
+      <LineId Id="4512" Count="0" />
+      <LineId Id="4473" Count="0" />
+      <LineId Id="4490" Count="0" />
+      <LineId Id="4499" Count="0" />
+      <LineId Id="4504" Count="0" />
+      <LineId Id="4494" Count="0" />
+      <LineId Id="4496" Count="0" />
+      <LineId Id="4500" Count="0" />
+      <LineId Id="4505" Count="0" />
+      <LineId Id="4498" Count="0" />
+      <LineId Id="4497" Count="0" />
+      <LineId Id="4501" Count="0" />
+      <LineId Id="4506" Count="0" />
+      <LineId Id="4491" Count="0" />
+      <LineId Id="4474" Count="1" />
       <LineId Id="3906" Count="0" />
-      <LineId Id="4237" Count="0" />
+      <LineId Id="4462" Count="0" />
       <LineId Id="3996" Count="0" />
       <LineId Id="3245" Count="0" />
-      <LineId Id="4080" Count="0" />
-      <LineId Id="4083" Count="0" />
-      <LineId Id="4067" Count="0" />
-      <LineId Id="3325" Count="2" />
+      <LineId Id="4463" Count="3" />
+      <LineId Id="4468" Count="1" />
+      <LineId Id="3326" Count="1" />
       <LineId Id="3338" Count="1" />
       <LineId Id="3355" Count="0" />
       <LineId Id="3357" Count="2" />
