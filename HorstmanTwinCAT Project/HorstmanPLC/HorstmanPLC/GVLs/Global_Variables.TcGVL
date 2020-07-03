@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <GVL Name="Global_Variables" Id="{3d4ea763-d46a-4a6c-8c86-663c0c89768b}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
@@ -14,16 +14,16 @@ VAR_GLOBAL
 	HMI_Servo1_Pos : LREAL;
 	HMI_Servo1_Torque : LREAL;
 	HMI_Servo1_Vel : LREAL;
+	HMI_Servo1_Force AT %I* :LREAL;
 	
 	HMI_Servo2_Pos : LREAL;
 	HMI_Servo2_Torque : LREAL;
 	HMI_Servo2_Vel : LREAL;
+	HMI_Servo2_Force AT %I* :LREAL;
 	
-	HMI_PlayBack_PositionIndex: DINT;
-	HMI_Playback_TimeIndex :DINT;
-	HMI_PlayBack_SeekToTime :DINT;
 
 	
+	b_GearIn: BOOL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

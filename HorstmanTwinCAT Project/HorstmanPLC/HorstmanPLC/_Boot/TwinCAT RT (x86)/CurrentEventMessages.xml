@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<TcEventSources Version="2">
+	<Source>
+		<GUID>{28111931-0002-0000-5230-501800001500}</GUID>
+		<Name LcId="1031">EL6224 (IO Link Master)</Name>
+		<Name LcId="1033">EL6224 (IO Link Master)</Name>
+		<Event>
+			<Id>1</Id>
+			<Message LcId="1031">IO-Link Master Port {0}:  Eventqualifier = 0x{1,X} {2}</Message>
+			<Message LcId="1033">IO-Link Master Port {0}:  Eventqualifier = 0x{1,X} {2}</Message>
+		</Event>
+		<Property>
+			<Name>DisplayTxtId</Name>
+			<Value>true</Value>
+		</Property>
+	</Source>
+</TcEventSources>

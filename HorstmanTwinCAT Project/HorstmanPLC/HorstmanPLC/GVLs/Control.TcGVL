@@ -1,21 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <GVL Name="Control" Id="{16130499-3ae7-437c-beec-55370c8d7814}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
 b_UseExternalSetpointGenerator :BOOL; // Allows fine control of servos.
-
 b_HaltRequest: BOOL;// System is performing a halt
 b_HaltRequestExecute: BOOL; //activates the halt functions
 n_ServosHalted :usint; // each servo will set a 1 here in it's respective bit when halted
 b_Servos_Halted :BOOL; // if all servos are in halt state, we can drop enable.
-b_EnableServosCMD: BOOL; //Soft enable/disable request to enable handler.
-
-b_UseMainCore : BOOL := 1;//uses the matlab core for motor control instead of the Simplejog Twincat app.
 b_EnableServosFinal :BOOL; // if true, the servos will try to enable
-b_MotionCommandsEnabled AT %Q* :BOOL; // Tell motion core servos are ready to move.
-b_MainCoreServoEnableReq AT %I* :BOOL; // Servo enable request state from main core.
 b_SetpointGeneratorFault: BOOL;
+
 sp_ServoB: Setpoint_Interface;
 sp_ServoA: Setpoint_Interface;
 	b_EnableServosReq: BOOL;

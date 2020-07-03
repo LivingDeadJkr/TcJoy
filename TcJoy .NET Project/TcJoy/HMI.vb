@@ -402,12 +402,20 @@ Public Class HMI
                                 End If
                                 'read data bits from PLC
                             Case "Global_variables.HmiBoolDword0"
-                                lbl0.Text = tag.Value
+                                cbServo1Enabled.Checked = GetBit(tag.Value, 0)
+                                CbServo1Faulted.Checked = GetBit(tag.Value, 1)
+                                cbServo2Enabled.Checked = GetBit(tag.Value, 2)
+                                cbServo2Faulted.Checked = GetBit(tag.Value, 3)
+                                cb_GearedIn.Checked = GetBit(tag.Value, 4)
+                                cbServosHalted.Checked = GetBit(tag.Value, 5)
+                                cb_SoftwareEnable.Checked = GetBit(tag.Value, 6)
+                                cb_GeneralFault.Checked = GetBit(tag.Value, 7)
+                              '  lbl0.Text = tag.Value
 
 
                             Case "Global_variables.HmiBoolDword1"
-                                Integer.TryParse(lbl0.Text, TempInt)
-                                lbl1.Text = tag.Value And TempInt
+                                '   Integer.TryParse(lbl0.Text, TempInt)
+                             '   lbl1.Text = tag.Value And TempInt
 
 
                             Case TextBox_TcJoyPath.Text + ".iUpdateRateMS"
@@ -471,11 +479,19 @@ Public Class HMI
                         txtATA.Text = Tag.Value.ToString
                     Case "Global_variables.HMI_Servo1_Vel"
 
+                    Case "Global_variables.HMI_Servo1_Force"
+                        txtTFA.Text = Tag.Value
+
                     Case "Global_variables.HMI_Servo2_Pos"
                         txtAPB.Text = Tag.Value.ToString
                     Case "Global_variables.HMI_Servo2_Torque"
                         txtATB.Text = Tag.Value.ToString
                     Case "Global_variables.HMI_Servo2_Vel"
+                    Case "Global_variables.HMI_Servo2_Force"
+                        txtTFB.Text = Tag.Value
+
+
+
 
                     Case "Global_variables.HmiButtonData0"
                         Tag.Value = myHMIButtonData0
@@ -1245,7 +1261,7 @@ Public Class HMI
 
     End Sub
 
-    Private Sub BtnLoadCsv_Click(sender As Object, e As EventArgs) Handles BtnLoadCsv.Click
+    Private Sub BtnLoadCsv_Click(sender As Object, e As EventArgs)
 
         Dim myStream As Stream = Nothing
         Dim openFileDialog1 As New OpenFileDialog()
@@ -1259,7 +1275,7 @@ Public Class HMI
             Try
                 Recipefile = New FileInfo(openFileDialog1.FileName.ToString)
 
-                If (RecipeFile.Exists) Then
+                If (Recipefile.Exists) Then
                     MessageBox.Show(Recipefile.FullName)
                     SendFile()
                     ' Insert code to read the stream here.
@@ -1314,4 +1330,5 @@ Public Class HMI
     Private Sub btn_JogModeToggle_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_JogModeToggle.MouseDown
         myHMIButtonData0 = flipBit(myHMIButtonData0, 4)
     End Sub
+
 End Class

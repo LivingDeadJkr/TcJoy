@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="p_MotorControl_ST" Id="{1948efc2-07af-4f24-8417-60a242e950fd}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM p_MotorControl_ST
 VAR
@@ -47,8 +47,11 @@ END_VAR
       <ST><![CDATA[st_buffermode := MC_Aborting; // stop between moves instead of blending? see the mc_buffermode docs
 jogbuttontimer.PT := T#250MS;
 b_Faulted := p_faultmonitoring.b_Faulted;
-Mc_ResetServoA(Axis := io.Simdrive1, Execute := Control.b_RequestServoReset);
-Mc_ResetServoB(Axis := io.Simdrive2, Execute := Control.b_RequestServoReset);//STb
+Mc_ResetServoA(Axis := io.DriveAxis1, Execute := Control.b_RequestServoReset);
+Mc_ResetServoB(Axis := io.DriveAxis2, Execute := Control.b_RequestServoReset);//STb
+io.DriveEnable1 := Control.b_EnableServosFinal;
+io.DriveEnable2 := control.b_EnableServosFinal;
+
 
 IF p_faultmonitoring.b_Faulted OR Safety.GLOBAL_SAFETY_NOT_OK OR NOT IO.PowerEnabled THEN
 state :=0; //Reset state
@@ -73,7 +76,7 @@ CASE state OF
 control.b_EnableServosFinal := FALSE; // servo power off
 control.b_HaltRequest := FALSE; //
 control.b_UseExternalSetpointGenerator := FALSE;
-control.b_MotionCommandsEnabled := FALSE; // 
+
  control.b_ExecuteGearIn := FALSE;
 
 IF control.b_EnableServosReq AND (NOT b_faulted  AND NOT safety.GLOBAL_SAFETY_NOT_OK) THEN
@@ -83,7 +86,7 @@ END_IF
  
 1: //ready to enable, but haven't been asked to.
 	 // sit here until user enable is high // user can issue reset during this stage to help wake motors.
-IF control.b_EnableServosReq AND io.PowerEnabled THEN // 
+IF NOT p_FaultMonitoring.b_Faulted AND io.PowerEnabled THEN // 
 	control.b_EnableServosFinal := TRUE; // Enable the servos if the servo request is on.
 //	Control.b_RequestServoReset := FALSE;	
 	ELSE
@@ -91,7 +94,6 @@ IF control.b_EnableServosReq AND io.PowerEnabled THEN //
 		State := 0;
 END_IF
 
-control.b_MotionCommandsEnabled := FALSE; // reset motioncommand enable.	
 
 IF b_ServosReady THEN state := 2; END_IF; // if the servos are all enabled, we can move to next state
 
@@ -114,10 +116,10 @@ IF control.b_EnableServosReq = FALSE THEN control.b_EnableServosFinal := FALSE; 
 
 4: //Enable has been dropped, HALT! (No time delay)
 	control.b_UseExternalSetpointGenerator := FALSE;
-	control.b_MotionCommandsEnabled := FALSE ; //   
+ 
 	control.b_HaltRequest := TRUE;
    IF control.b_Servos_Halted THEN State := 0; END_IF; //drop back to initial state when halted.
-   IF NOT (control.b_EnableServosReq AND control.b_MainCoreServoEnableReq) THEN state := 0; END_IF;
+   IF NOT (control.b_EnableServosReq) THEN state := 0; END_IF;
    IF ServoDisableTimeout.Q THEN State := 0; END_IF;
    
    
@@ -168,8 +170,8 @@ Control.b_HaltRequestExecute := control.b_HaltRequest; // halt if requested, unl
 
 
 // pack servo readdy bits into the servoready byte. if a Bit is true, the assosiated servo is ready to roll.
-Servosready.0 := IO.Simdrive1.NcToPlc.StateDWord.0;
-Servosready.1 := IO.Simdrive2.NcToPlc.StateDWord.0;
+Servosready.0 := io.DriveAxis1.NcToPlc.StateDWord.0;
+Servosready.1 := io.DriveAxis2.NcToPlc.StateDWord.0;
 
 IF ServosReady = 3 THEN //if all servos ready set bool true
 	b_ServosReady := TRUE;
@@ -194,14 +196,14 @@ END_IF
 			Enable_Negative	:= Control.b_EnableServosFinal ,
 			Override		:= n_Override ,
 			BufferMode		:= st_Buffermode ,
-			Axis			:= io.Simdrive1 );
+			Axis			:= io.DriveAxis1 );
 //Servo B		
 	FbMc_PowerServoB(Enable		:= Control.b_EnableServosFinal,
 			Enable_Positive	:= Control.b_EnableServosFinal ,
 			Enable_Negative	:= Control.b_EnableServosFinal ,
 			Override		:= n_Override ,
 			BufferMode		:= st_Buffermode ,
-			Axis			:= io.simdrive2 );	
+			Axis			:= io.DriveAxis2 );	
 
 			
 			// when we see execute reset a bit,
@@ -223,6 +225,7 @@ END_IF
       <LineId Id="3932" Count="0" />
       <LineId Id="4413" Count="0" />
       <LineId Id="3974" Count="0" />
+      <LineId Id="4617" Count="2" />
       <LineId Id="3933" Count="1" />
       <LineId Id="3936" Count="1" />
       <LineId Id="4572" Count="0" />
@@ -257,7 +260,6 @@ END_IF
       <LineId Id="4415" Count="0" />
       <LineId Id="3981" Count="0" />
       <LineId Id="4374" Count="0" />
-      <LineId Id="4235" Count="0" />
       <LineId Id="4373" Count="0" />
       <LineId Id="3920" Count="0" />
       <LineId Id="4236" Count="0" />

@@ -112,11 +112,11 @@ Module PLC_IO_Polling
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo1_Pos", AdsDatatypeId.ADST_REAL32, True, False))
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo1_Torque", AdsDatatypeId.ADST_REAL32, True, False))
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo1_Vel", AdsDatatypeId.ADST_REAL32, True, False))
-
+        BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo1_Force", AdsDatatypeId.ADST_REAL32, True, False))
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo2_Pos", AdsDatatypeId.ADST_REAL32, True, False))
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo2_Torque", AdsDatatypeId.ADST_REAL32, True, False))
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo2_Vel", AdsDatatypeId.ADST_REAL32, True, False))
-
+        BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo2_Force", AdsDatatypeId.ADST_REAL32, True, False))
 
         BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".bIsActive", AdsDatatypeId.ADST_BIT, True, False))
         BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".iUpdateRateMS", AdsDatatypeId.ADST_BIT, True, False))

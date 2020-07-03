@@ -1,23 +1,39 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="P_HMI_Polling" Id="{6c3f4490-3ab2-422f-af2f-6459f65a48e9}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM P_HMI_Polling
 VAR
+
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[
-Global_variables.HMI_Servo1_Pos := io.Simdrive1.NcToPlc.ActPos;
-Global_variables.HMI_Servo1_Vel := io.Simdrive1.NcToPlc.ActVelo;
-Global_variables.HMI_Servo1_Torque := io.Simdrive1.NcToPlc.ActTorque;
+Global_variables.HMI_Servo1_Pos := io.DriveAxis1.NcToPlc.ActPos;
+Global_variables.HMI_Servo1_Vel := io.DriveAxis1.NcToPlc.ActVelo;
+Global_variables.HMI_Servo1_Torque := io.DriveAxis1.NcToPlc.ActTorque;
 
-Global_variables.HMI_Servo2_Pos := io.Simdrive2.NcToPlc.ActPos;
-Global_variables.HMI_Servo2_Vel := io.Simdrive1.NcToPlc.ActVelo;
-Global_variables.HMI_Servo2_Torque := io.Simdrive2.NcToPlc.ActTorque;
+Global_variables.HMI_Servo2_Pos := io.DriveAxis2.NcToPlc.ActPos;
+Global_variables.HMI_Servo2_Vel := io.DriveAxis1.NcToPlc.ActVelo;
+Global_variables.HMI_Servo2_Torque := io.DriveAxis2.NcToPlc.ActTorque;
 
 io.PowerEnabled := Global_variables.HmiButtonData0.2; 
 Control.b_EnableServosReq := Global_variables.HmiButtonData0.2;
 Control.b_RequestServoReset := Global_variables.HmiButtonData0.3;
+IO.Laser_mm := UINT_TO_LREAL(io.LaserDistanceValue)  / 10.0;
+
+
+Global_variables.HmiBoolDword0.0 := io.DriveEnabled1;
+Global_variables.HmiBoolDword0.1 := io.DriveFaulted1;
+Global_variables.HmiBoolDword0.2 := io.DriveEnabled2;
+Global_variables.HmiBoolDword0.3 := io.DriveFaulted2;
+Global_variables.HmiBoolDword0.4 := Global_variables.b_GearIn;
+Global_variables.HmiBoolDword0.5 := control.b_Servos_Halted;
+Global_variables.HmiBoolDword0.6 := control.b_EnableServosFinal;
+Global_variables.HmiBoolDword0.7 := p_Faultmonitoring.b_Faulted; 
+
+
+
+
 
 ]]></ST>
     </Implementation>
@@ -33,6 +49,19 @@ Control.b_RequestServoReset := Global_variables.HmiButtonData0.3;
       <LineId Id="8" Count="0" />
       <LineId Id="30" Count="0" />
       <LineId Id="28" Count="0" />
+      <LineId Id="39" Count="0" />
+      <LineId Id="54" Count="1" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="44" Count="0" />
+      <LineId Id="58" Count="0" />
+      <LineId Id="57" Count="0" />
+      <LineId Id="62" Count="0" />
+      <LineId Id="66" Count="1" />
+      <LineId Id="81" Count="0" />
+      <LineId Id="59" Count="0" />
+      <LineId Id="56" Count="0" />
+      <LineId Id="48" Count="0" />
+      <LineId Id="40" Count="0" />
       <LineId Id="35" Count="0" />
       <LineId Id="29" Count="0" />
     </LineIds>

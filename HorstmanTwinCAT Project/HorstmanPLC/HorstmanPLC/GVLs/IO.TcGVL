@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <GVL Name="IO" Id="{bbbb0fc5-1297-4d34-bc8a-189fc9af07a3}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
-
+devstate AT %I*: UINT;
 SaferyOK :BOOL; // safety system status
 PowerEnabled :BOOL; // soft  bit we turn on to enable drives when we have no errors.
 
@@ -19,11 +19,12 @@ DriveEnable2 AT %Q*:BOOL;
 Drive2Spare AT %Q*: BOOL;
 DriveAxis2 : AXIS_Ref;
 
-Simdrive1: AXIS_Ref;
-Simdrive2: AXIS_Ref;
+//Simdrive1: AXIS_Ref;
+//Simdrive2: AXIS_Ref;
 
 //Inputs
-
+LaserDistanceValue AT %I* :UINT; // Laser
+Laser2 AT %I*: UINT;
 //Drive 1
 DriveFaulted1  AT %I*: BOOL;
 DriveEnabled1  AT %I*: BOOL;
@@ -39,6 +40,7 @@ LinearPosition2   AT %I*: INT;
 LoadCell2   AT %I*: DINT;
  
 
+	Laser_mm: LREAL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

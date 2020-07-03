@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="P_FunctionGenerators" Id="{115fcafb-7e59-4bfc-a156-7bd475b390a7}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM P_FunctionGenerators
 VAR
@@ -59,12 +59,12 @@ END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[// these calls only run when the exectute bit is set, but must always be callable, so they go here. might need to put these at the end of this block to avoid a 1 cycle delay.
-//mc_moveAbs1(Axis := io.Simdrive1, Execute := bMove1, Position := 0, Velocity := sin_speed);
-//mc_movere1(Axis := io.Simdrive1, Execute := brelMove1, Distance:=relmove1Dist,  Velocity := rel_speed);
-//mc_movere2(Axis := io.Simdrive1, Execute := brelMove1, Distance:=relmove1Dist,  Velocity := rel_speed);
-//mc_moveAbs2(Axis := io.Simdrive1, Execute := bmove2, Position := sin_magnitude, Velocity := sin_speed);
-//haltServo1(axis := io.Simdrive1, execute := bHalt);
-//mc_AbsCont1(axis := io.Simdrive1,Position := PositionBuffer ,Velocity:= LiveVel,Execute:= bMoveit,BufferMode:=mcabscont1buffermode);
+//mc_moveAbs1(Axis := io.DriveAxis1, Execute := bMove1, Position := 0, Velocity := sin_speed);
+//mc_movere1(Axis := io.DriveAxis1, Execute := brelMove1, Distance:=relmove1Dist,  Velocity := rel_speed);
+//mc_movere2(Axis := io.DriveAxis1, Execute := brelMove1, Distance:=relmove1Dist,  Velocity := rel_speed);
+//mc_moveAbs2(Axis := io.DriveAxis1, Execute := bmove2, Position := sin_magnitude, Velocity := sin_speed);
+//haltServo1(axis := io.DriveAxis1, execute := bHalt);
+//mc_AbsCont1(axis := io.DriveAxis1,Position := PositionBuffer ,Velocity:= LiveVel,Execute:= bMoveit,BufferMode:=mcabscont1buffermode);
 timer(in:= runtimer);
 	IF bInit THEN
 	(* init the setpoint array *)
@@ -164,7 +164,7 @@ CASE nCase OF
 	
 	
 	
-	mc_AbsCont1(axis := io.Simdrive1,Position := livePosition,Velocity:= LiveVel,Execute:= bMoveit);
+	mc_AbsCont1(axis := io.DriveAxis1,Position := livePosition,Velocity:= LiveVel,Execute:= bMoveit);
 	n_i := n_i +1;
 	//
 	liveposition:= STRING_TO_LREAL(p_TextModeRead.database[n_i]);
