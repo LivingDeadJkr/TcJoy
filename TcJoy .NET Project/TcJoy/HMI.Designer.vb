@@ -29,6 +29,7 @@ Partial Class HMI
         Me.cb_GearedIn = New System.Windows.Forms.CheckBox()
         Me.cbServo2Faulted = New System.Windows.Forms.CheckBox()
         Me.cbServo2Enabled = New System.Windows.Forms.CheckBox()
+        Me.cb_GeneralFault = New System.Windows.Forms.CheckBox()
         Me.CbServo1Faulted = New System.Windows.Forms.CheckBox()
         Me.cbServo1Enabled = New System.Windows.Forms.CheckBox()
         Me.btnFaultReset = New System.Windows.Forms.Button()
@@ -61,6 +62,12 @@ Partial Class HMI
         Me.Label22 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.TabPage_LiveStatus = New System.Windows.Forms.TabPage()
+        Me.ProgressBar_RightShoulderAnalog = New TcJoy.MyVerticalProgessBar()
+        Me.ProgressBar_LeftShoulderAnalog = New TcJoy.MyVerticalProgessBar()
+        Me.ProgressBar_LeftStickYMinus = New TcJoy.MyVerticalProgessBarMinus()
+        Me.ProgressBar_RightStickYMinus = New TcJoy.MyVerticalProgessBarMinus()
+        Me.ProgressBar_RightStickYPlus = New TcJoy.MyVerticalProgessBar()
+        Me.ProgressBar_LeftStickYPlus = New TcJoy.MyVerticalProgessBar()
         Me.Label_LeftShoulderVal = New System.Windows.Forms.Label()
         Me.Label_RightShoulderVal = New System.Windows.Forms.Label()
         Me.Label_RightStickYNeg = New System.Windows.Forms.Label()
@@ -147,13 +154,6 @@ Partial Class HMI
         Me.toolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.btnDelChart = New System.Windows.Forms.ToolStripButton()
         Me.ScopeProjectPanel1 = New TwinCAT.Measurement.Scope.Control.ScopeProjectPanel()
-        Me.ProgressBar_RightShoulderAnalog = New TcJoy.MyVerticalProgessBar()
-        Me.ProgressBar_LeftShoulderAnalog = New TcJoy.MyVerticalProgessBar()
-        Me.ProgressBar_LeftStickYMinus = New TcJoy.MyVerticalProgessBarMinus()
-        Me.ProgressBar_RightStickYMinus = New TcJoy.MyVerticalProgessBarMinus()
-        Me.ProgressBar_RightStickYPlus = New TcJoy.MyVerticalProgessBar()
-        Me.ProgressBar_LeftStickYPlus = New TcJoy.MyVerticalProgessBar()
-        Me.cb_GeneralFault = New System.Windows.Forms.CheckBox()
         Me.TabControl.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
@@ -253,6 +253,16 @@ Partial Class HMI
         Me.cbServo2Enabled.TabIndex = 16
         Me.cbServo2Enabled.Text = "Servo2 Enabled"
         Me.cbServo2Enabled.UseVisualStyleBackColor = True
+        '
+        'cb_GeneralFault
+        '
+        Me.cb_GeneralFault.AutoSize = True
+        Me.cb_GeneralFault.Location = New System.Drawing.Point(742, 16)
+        Me.cb_GeneralFault.Name = "cb_GeneralFault"
+        Me.cb_GeneralFault.Size = New System.Drawing.Size(116, 21)
+        Me.cb_GeneralFault.TabIndex = 16
+        Me.cb_GeneralFault.Text = "General Fault"
+        Me.cb_GeneralFault.UseVisualStyleBackColor = True
         '
         'CbServo1Faulted
         '
@@ -379,7 +389,7 @@ Partial Class HMI
         Me.btnPower.Name = "btnPower"
         Me.btnPower.Size = New System.Drawing.Size(135, 38)
         Me.btnPower.TabIndex = 0
-        Me.btnPower.Text = "Power ON / OFF"
+        Me.btnPower.Text = "Power On / Off"
         Me.btnPower.UseVisualStyleBackColor = True
         '
         'btnHome
@@ -623,6 +633,64 @@ Partial Class HMI
         Me.TabPage_LiveStatus.TabIndex = 0
         Me.TabPage_LiveStatus.Text = "Live Status"
         Me.TabPage_LiveStatus.UseVisualStyleBackColor = True
+        '
+        'ProgressBar_RightShoulderAnalog
+        '
+        Me.ProgressBar_RightShoulderAnalog.Location = New System.Drawing.Point(484, 108)
+        Me.ProgressBar_RightShoulderAnalog.Margin = New System.Windows.Forms.Padding(4)
+        Me.ProgressBar_RightShoulderAnalog.Maximum = 255
+        Me.ProgressBar_RightShoulderAnalog.Name = "ProgressBar_RightShoulderAnalog"
+        Me.ProgressBar_RightShoulderAnalog.Size = New System.Drawing.Size(13, 55)
+        Me.ProgressBar_RightShoulderAnalog.TabIndex = 58
+        Me.ProgressBar_RightShoulderAnalog.Value = 255
+        '
+        'ProgressBar_LeftShoulderAnalog
+        '
+        Me.ProgressBar_LeftShoulderAnalog.Location = New System.Drawing.Point(135, 108)
+        Me.ProgressBar_LeftShoulderAnalog.Margin = New System.Windows.Forms.Padding(4)
+        Me.ProgressBar_LeftShoulderAnalog.Maximum = 255
+        Me.ProgressBar_LeftShoulderAnalog.Name = "ProgressBar_LeftShoulderAnalog"
+        Me.ProgressBar_LeftShoulderAnalog.Size = New System.Drawing.Size(13, 55)
+        Me.ProgressBar_LeftShoulderAnalog.TabIndex = 57
+        Me.ProgressBar_LeftShoulderAnalog.Value = 255
+        '
+        'ProgressBar_LeftStickYMinus
+        '
+        Me.ProgressBar_LeftStickYMinus.Location = New System.Drawing.Point(136, 313)
+        Me.ProgressBar_LeftStickYMinus.Margin = New System.Windows.Forms.Padding(4)
+        Me.ProgressBar_LeftStickYMinus.Maximum = 32768
+        Me.ProgressBar_LeftStickYMinus.Name = "ProgressBar_LeftStickYMinus"
+        Me.ProgressBar_LeftStickYMinus.Size = New System.Drawing.Size(12, 55)
+        Me.ProgressBar_LeftStickYMinus.TabIndex = 56
+        '
+        'ProgressBar_RightStickYMinus
+        '
+        Me.ProgressBar_RightStickYMinus.Location = New System.Drawing.Point(443, 458)
+        Me.ProgressBar_RightStickYMinus.Margin = New System.Windows.Forms.Padding(4)
+        Me.ProgressBar_RightStickYMinus.Maximum = 32768
+        Me.ProgressBar_RightStickYMinus.Name = "ProgressBar_RightStickYMinus"
+        Me.ProgressBar_RightStickYMinus.Size = New System.Drawing.Size(12, 55)
+        Me.ProgressBar_RightStickYMinus.TabIndex = 55
+        '
+        'ProgressBar_RightStickYPlus
+        '
+        Me.ProgressBar_RightStickYPlus.Location = New System.Drawing.Point(443, 382)
+        Me.ProgressBar_RightStickYPlus.Margin = New System.Windows.Forms.Padding(4)
+        Me.ProgressBar_RightStickYPlus.Maximum = 32768
+        Me.ProgressBar_RightStickYPlus.Name = "ProgressBar_RightStickYPlus"
+        Me.ProgressBar_RightStickYPlus.Size = New System.Drawing.Size(13, 55)
+        Me.ProgressBar_RightStickYPlus.TabIndex = 54
+        Me.ProgressBar_RightStickYPlus.Value = 32768
+        '
+        'ProgressBar_LeftStickYPlus
+        '
+        Me.ProgressBar_LeftStickYPlus.Location = New System.Drawing.Point(136, 242)
+        Me.ProgressBar_LeftStickYPlus.Margin = New System.Windows.Forms.Padding(4)
+        Me.ProgressBar_LeftStickYPlus.Maximum = 32768
+        Me.ProgressBar_LeftStickYPlus.Name = "ProgressBar_LeftStickYPlus"
+        Me.ProgressBar_LeftStickYPlus.Size = New System.Drawing.Size(13, 55)
+        Me.ProgressBar_LeftStickYPlus.TabIndex = 51
+        Me.ProgressBar_LeftStickYPlus.Value = 32768
         '
         'Label_LeftShoulderVal
         '
@@ -1513,74 +1581,6 @@ Partial Class HMI
         Me.ScopeProjectPanel1.Size = New System.Drawing.Size(1602, 793)
         Me.ScopeProjectPanel1.TabIndex = 0
         Me.ScopeProjectPanel1.TextColor = System.Drawing.Color.Black
-        '
-        'ProgressBar_RightShoulderAnalog
-        '
-        Me.ProgressBar_RightShoulderAnalog.Location = New System.Drawing.Point(484, 108)
-        Me.ProgressBar_RightShoulderAnalog.Margin = New System.Windows.Forms.Padding(4)
-        Me.ProgressBar_RightShoulderAnalog.Maximum = 255
-        Me.ProgressBar_RightShoulderAnalog.Name = "ProgressBar_RightShoulderAnalog"
-        Me.ProgressBar_RightShoulderAnalog.Size = New System.Drawing.Size(13, 55)
-        Me.ProgressBar_RightShoulderAnalog.TabIndex = 58
-        Me.ProgressBar_RightShoulderAnalog.Value = 255
-        '
-        'ProgressBar_LeftShoulderAnalog
-        '
-        Me.ProgressBar_LeftShoulderAnalog.Location = New System.Drawing.Point(135, 108)
-        Me.ProgressBar_LeftShoulderAnalog.Margin = New System.Windows.Forms.Padding(4)
-        Me.ProgressBar_LeftShoulderAnalog.Maximum = 255
-        Me.ProgressBar_LeftShoulderAnalog.Name = "ProgressBar_LeftShoulderAnalog"
-        Me.ProgressBar_LeftShoulderAnalog.Size = New System.Drawing.Size(13, 55)
-        Me.ProgressBar_LeftShoulderAnalog.TabIndex = 57
-        Me.ProgressBar_LeftShoulderAnalog.Value = 255
-        '
-        'ProgressBar_LeftStickYMinus
-        '
-        Me.ProgressBar_LeftStickYMinus.Location = New System.Drawing.Point(136, 313)
-        Me.ProgressBar_LeftStickYMinus.Margin = New System.Windows.Forms.Padding(4)
-        Me.ProgressBar_LeftStickYMinus.Maximum = 32768
-        Me.ProgressBar_LeftStickYMinus.Name = "ProgressBar_LeftStickYMinus"
-        Me.ProgressBar_LeftStickYMinus.Size = New System.Drawing.Size(12, 55)
-        Me.ProgressBar_LeftStickYMinus.TabIndex = 56
-        '
-        'ProgressBar_RightStickYMinus
-        '
-        Me.ProgressBar_RightStickYMinus.Location = New System.Drawing.Point(443, 458)
-        Me.ProgressBar_RightStickYMinus.Margin = New System.Windows.Forms.Padding(4)
-        Me.ProgressBar_RightStickYMinus.Maximum = 32768
-        Me.ProgressBar_RightStickYMinus.Name = "ProgressBar_RightStickYMinus"
-        Me.ProgressBar_RightStickYMinus.Size = New System.Drawing.Size(12, 55)
-        Me.ProgressBar_RightStickYMinus.TabIndex = 55
-        '
-        'ProgressBar_RightStickYPlus
-        '
-        Me.ProgressBar_RightStickYPlus.Location = New System.Drawing.Point(443, 382)
-        Me.ProgressBar_RightStickYPlus.Margin = New System.Windows.Forms.Padding(4)
-        Me.ProgressBar_RightStickYPlus.Maximum = 32768
-        Me.ProgressBar_RightStickYPlus.Name = "ProgressBar_RightStickYPlus"
-        Me.ProgressBar_RightStickYPlus.Size = New System.Drawing.Size(13, 55)
-        Me.ProgressBar_RightStickYPlus.TabIndex = 54
-        Me.ProgressBar_RightStickYPlus.Value = 32768
-        '
-        'ProgressBar_LeftStickYPlus
-        '
-        Me.ProgressBar_LeftStickYPlus.Location = New System.Drawing.Point(136, 242)
-        Me.ProgressBar_LeftStickYPlus.Margin = New System.Windows.Forms.Padding(4)
-        Me.ProgressBar_LeftStickYPlus.Maximum = 32768
-        Me.ProgressBar_LeftStickYPlus.Name = "ProgressBar_LeftStickYPlus"
-        Me.ProgressBar_LeftStickYPlus.Size = New System.Drawing.Size(13, 55)
-        Me.ProgressBar_LeftStickYPlus.TabIndex = 51
-        Me.ProgressBar_LeftStickYPlus.Value = 32768
-        '
-        'cb_GeneralFault
-        '
-        Me.cb_GeneralFault.AutoSize = True
-        Me.cb_GeneralFault.Location = New System.Drawing.Point(742, 16)
-        Me.cb_GeneralFault.Name = "cb_GeneralFault"
-        Me.cb_GeneralFault.Size = New System.Drawing.Size(116, 21)
-        Me.cb_GeneralFault.TabIndex = 16
-        Me.cb_GeneralFault.Text = "General Fault"
-        Me.cb_GeneralFault.UseVisualStyleBackColor = True
         '
         'HMI
         '

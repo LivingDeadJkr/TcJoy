@@ -16,10 +16,13 @@ Global_variables.HMI_Servo2_Pos := io.DriveAxis2.NcToPlc.ActPos;
 Global_variables.HMI_Servo2_Vel := io.DriveAxis1.NcToPlc.ActVelo;
 Global_variables.HMI_Servo2_Torque := io.DriveAxis2.NcToPlc.ActTorque;
 
-io.PowerEnabled := Global_variables.HmiButtonData0.2; 
-Control.b_EnableServosReq := Global_variables.HmiButtonData0.2;
-Control.b_RequestServoReset := Global_variables.HmiButtonData0.3;
+
+
+Control.b_RequestServoReset := Global_variables.HmiButtonData0.3; // also passes fault reset to servo code, might want to move this to the fault monitoring routine later?
+
+p_Faultmonitoring.b_FaultReset := Global_variables.HmiButtonData0.3; //pass fault reset to fault monitoring routine.
 IO.Laser_mm := UINT_TO_LREAL(io.LaserDistanceValue)  / 10.0;
+
 
 
 Global_variables.HmiBoolDword0.0 := io.DriveEnabled1;
@@ -47,10 +50,14 @@ Global_variables.HmiBoolDword0.7 := p_Faultmonitoring.b_Faulted;
       <LineId Id="22" Count="1" />
       <LineId Id="13" Count="0" />
       <LineId Id="8" Count="0" />
-      <LineId Id="30" Count="0" />
+      <LineId Id="93" Count="0" />
       <LineId Id="28" Count="0" />
+      <LineId Id="94" Count="0" />
+      <LineId Id="87" Count="0" />
       <LineId Id="39" Count="0" />
-      <LineId Id="54" Count="1" />
+      <LineId Id="54" Count="0" />
+      <LineId Id="86" Count="0" />
+      <LineId Id="55" Count="0" />
       <LineId Id="53" Count="0" />
       <LineId Id="44" Count="0" />
       <LineId Id="58" Count="0" />

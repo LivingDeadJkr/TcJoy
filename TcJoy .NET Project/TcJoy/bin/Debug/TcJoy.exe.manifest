@@ -49,7 +49,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>lAY93092Rry4TJQi91iXOLbDMoClqqepvTDgwYD2DQc=</dsig:DigestValue>
+        <dsig:DigestValue>CrHIZlCdPQNBI7bQIlVrlY1Mil7c+jl/tU4M08LDJYU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -162,14 +162,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TcJoy.exe" size="111104">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TcJoy.exe" size="110592">
       <assemblyIdentity name="TcJoy" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>rNlmK5eM1ide8akmK3ePDn/MMylRmxgpf7AqOY/bhOY=</dsig:DigestValue>
+        <dsig:DigestValue>1OprJANAFvwXo2qnQk+qqH34YiIbnw1pQW0rHujp50s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

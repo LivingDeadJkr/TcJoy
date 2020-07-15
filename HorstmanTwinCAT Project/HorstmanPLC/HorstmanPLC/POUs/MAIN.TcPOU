@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="MAIN" Id="{d25881fd-bae0-4e0a-b3eb-c173027ef094}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
@@ -24,7 +24,6 @@ SoftClock(En := Global_Variables.EnablemsClock,PMSEK:=0, Q=> Global_Variables.ms
 p_MotorControl_ST();
 p_MotorControl();
 
-//p_servocontrol();
 //logging
 //recipe system]]></ST>
     </Implementation>
@@ -40,7 +39,6 @@ p_MotorControl();
       <LineId Id="40" Count="0" />
       <LineId Id="33" Count="1" />
       <LineId Id="46" Count="0" />
-      <LineId Id="45" Count="0" />
       <LineId Id="21" Count="0" />
       <LineId Id="16" Count="1" />
     </LineIds>

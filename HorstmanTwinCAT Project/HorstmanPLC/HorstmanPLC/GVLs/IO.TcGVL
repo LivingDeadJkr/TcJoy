@@ -11,12 +11,12 @@ PowerEnabled :BOOL; // soft  bit we turn on to enable drives when we have no err
 //Drive 1	
 TorqueRequest1 AT %Q*: INT;
 DriveEnable1 AT %Q*: BOOL;
-Drive1Spare AT %Q*: BOOL;
+Drive1FaultReset AT %Q*: BOOL;
 DriveAxis1 : AXIS_Ref;
 //Drive 2
 TorqueRequest2 AT %Q*: INT;
 DriveEnable2 AT %Q*:BOOL;
-Drive2Spare AT %Q*: BOOL;
+Drive2FaultReset AT %Q*: BOOL;
 DriveAxis2 : AXIS_Ref;
 
 //Simdrive1: AXIS_Ref;

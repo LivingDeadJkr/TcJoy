@@ -3,11 +3,12 @@
   <POU Name="p_MotorControl_ST" Id="{1948efc2-07af-4f24-8417-60a242e950fd}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM p_MotorControl_ST
 VAR
-	
+	MC_GearOutDrive1 :MC_Gearout;
 	Mc_ResetServoA : MC_Reset;
 	Mc_ResetServoB : MC_Reset;
 	FbMc_PowerServoB :MC_Power;
 	FbMc_PowerServoA :MC_Power;
+	
 
  ServoResetOK :BYTE;
  
@@ -40,6 +41,8 @@ ServosReady :byte; //
 	RequestedState: INT;
 	Requested: INT;
 	n_JogReq: INT;
+	ServoEnableRtrig : r_trig;
+	PowerEnableRtrig: r_trig;
 END_VAR
 
 ]]></Declaration>
@@ -51,17 +54,35 @@ Mc_ResetServoA(Axis := io.DriveAxis1, Execute := Control.b_RequestServoReset);
 Mc_ResetServoB(Axis := io.DriveAxis2, Execute := Control.b_RequestServoReset);//STb
 io.DriveEnable1 := Control.b_EnableServosFinal;
 io.DriveEnable2 := control.b_EnableServosFinal;
+MC_GearOutDrive1(Slave := io.DriveAxis2, Execute := NOT Control.b_ExecuteGearIn);
+servoenablertrig(CLK := io.PowerEnabled) ;
+IF servoenablertrig.q THEN
+	control.b_EnableServosReq := TRUE;
+END_IF
+
+PowerEnableRtrig(CLK := Global_variables.HmiButtonData0.2) ; // power on off request handler.
+
+IF PowerEnableRtrig.q  AND NOT b_faulted THEN // if we get a power on request, and we're not faulted, try turning on power. turn it off if it's already on.
+	IF io.PowerEnabled THEN 
+		io.PowerEnabled := FALSE;
+		ELSE
+		io.PowerEnabled := TRUE;
+		END_IF
+	END_IF
+
+IF b_faulted THEN io.PowerEnabled := FALSE; END_IF; // drop power on fault.
 
 
-IF p_faultmonitoring.b_Faulted OR Safety.GLOBAL_SAFETY_NOT_OK OR NOT IO.PowerEnabled THEN
+IF NOT io.PowerEnabled THEN
+	control.b_EnableServosReq := false;
+END_IF
+
+IF Control.b_RequestServoReset OR b_Faulted OR NOT IO.PowerEnabled THEN // if faulted, reset, or powered off Go to state 0
 state :=0; //Reset state
 END_IF 
 
-IF Control.b_RequestServoReset THEN 
-state :=0;
-END_IF;
 
-IF Global_variables.HmiButtonData0.4 AND p_motorcontrol_st.state = 2 THEN
+IF Global_variables.HmiButtonData0.4 AND p_motorcontrol_st.state = 2 THEN // if in ready state, and asked to go to jog mode, jump to Gear In Request.
 	// if halted and ready, switch to jogging mode. 
 	p_motorcontrol_st.state := 5;
 END_IF
@@ -140,11 +161,11 @@ IF NOT (Global_variables.HmiButtonData0.0 OR Global_variables.HmiButtonData0.1) 
 			control.bExecMoveRelA := FALSE;
 			jogbuttontimer.IN := FALSE;
 			ELSIF Global_variables.HmiButtonData0.0 THEN
-				n_jogreq := 1;
+				n_jogreq := 5;
 				control.bExecMoveRelA := TRUE;
 				jogbuttontimer.IN := TRUE;
 			ELSIF Global_variables.HmiButtonData0.1THEN
-				n_jogreq := -1;
+				n_jogreq := -5;
 				control.bExecMoveRelA := TRUE;
 				jogbuttontimer.IN := TRUE;	
 END_IF
@@ -170,8 +191,8 @@ Control.b_HaltRequestExecute := control.b_HaltRequest; // halt if requested, unl
 
 
 // pack servo readdy bits into the servoready byte. if a Bit is true, the assosiated servo is ready to roll.
-Servosready.0 := io.DriveAxis1.NcToPlc.StateDWord.0;
-Servosready.1 := io.DriveAxis2.NcToPlc.StateDWord.0;
+Servosready.0 := io.DriveEnabled1;
+Servosready.1 := io.DriveEnabled2;
 
 IF ServosReady = 3 THEN //if all servos ready set bool true
 	b_ServosReady := TRUE;
@@ -191,14 +212,15 @@ END_IF
 
 
 //a
-	FbMc_PowerServoA(Enable		:= Control.b_EnableServosFinal,
+	FbMc_PowerServoA(Enable		:= io.DriveEnabled1,
 			Enable_Positive	:= Control.b_EnableServosFinal ,
 			Enable_Negative	:= Control.b_EnableServosFinal ,
 			Override		:= n_Override ,
 			BufferMode		:= st_Buffermode ,
 			Axis			:= io.DriveAxis1 );
+
 //Servo B		
-	FbMc_PowerServoB(Enable		:= Control.b_EnableServosFinal,
+	FbMc_PowerServoB(Enable		:= io.DriveEnabled2,
 			Enable_Positive	:= Control.b_EnableServosFinal ,
 			Enable_Negative	:= Control.b_EnableServosFinal ,
 			Override		:= n_Override ,
@@ -225,12 +247,24 @@ END_IF
       <LineId Id="3932" Count="0" />
       <LineId Id="4413" Count="0" />
       <LineId Id="3974" Count="0" />
-      <LineId Id="4617" Count="2" />
-      <LineId Id="3933" Count="1" />
+      <LineId Id="4617" Count="0" />
+      <LineId Id="4619" Count="0" />
+      <LineId Id="3933" Count="0" />
+      <LineId Id="4707" Count="3" />
+      <LineId Id="4716" Count="0" />
+      <LineId Id="4720" Count="1" />
+      <LineId Id="4723" Count="2" />
+      <LineId Id="4727" Count="2" />
+      <LineId Id="4726" Count="0" />
+      <LineId Id="4732" Count="0" />
+      <LineId Id="4722" Count="0" />
+      <LineId Id="4719" Count="0" />
+      <LineId Id="4712" Count="0" />
+      <LineId Id="4711" Count="0" />
+      <LineId Id="4713" Count="1" />
+      <LineId Id="4706" Count="0" />
+      <LineId Id="3934" Count="0" />
       <LineId Id="3936" Count="1" />
-      <LineId Id="4572" Count="0" />
-      <LineId Id="4574" Count="0" />
-      <LineId Id="4573" Count="0" />
       <LineId Id="4571" Count="0" />
       <LineId Id="4575" Count="0" />
       <LineId Id="4567" Count="3" />
@@ -329,7 +363,9 @@ END_IF
       <LineId Id="3969" Count="0" />
       <LineId Id="3392" Count="1" />
       <LineId Id="3400" Count="7" />
-      <LineId Id="3420" Count="14" />
+      <LineId Id="3420" Count="7" />
+      <LineId Id="4661" Count="0" />
+      <LineId Id="3428" Count="6" />
       <LineId Id="3482" Count="0" />
       <LineId Id="3564" Count="4" />
       <LineId Id="3578" Count="0" />

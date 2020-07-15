@@ -78,7 +78,7 @@ Public Class HMI
         BgTaskData = New TaskData(0, 0, 0, "", 851)
 
         If My.Settings.bAutoConnectADS Then
-            ConnectToPLC()
+            '  ConnectToPLC()
         End If
 
     End Sub
@@ -1287,48 +1287,43 @@ Public Class HMI
         End If
     End Sub
     'Jog buttons
-    Private Sub btnRaiseA_MouseLeave(sender As Object, e As EventArgs) Handles btnRaiseA.MouseLeave
-        myHMIButtonData0 = ResetBit(myHMIButtonData0, 0)
-    End Sub
+
 
     Private Sub btnRaiseA_MouseDown(sender As Object, e As MouseEventArgs) Handles btnRaiseA.MouseDown
         myHMIButtonData0 = SetBit(myHMIButtonData0, 0)
     End Sub
-
-    Private Sub btnRaiseA_MouseUp(sender As Object, e As MouseEventArgs) Handles btnRaiseA.MouseUp
+    Private Sub btnRaiseA_MouseLeave(sender As Object, e As EventArgs) Handles btnRaiseA.MouseLeave, btnRaiseA.MouseUp
         myHMIButtonData0 = ResetBit(myHMIButtonData0, 0)
     End Sub
 
     Private Sub btnLowerA_MouseDown(sender As Object, e As MouseEventArgs) Handles btnLowerA.MouseDown
         myHMIButtonData0 = SetBit(myHMIButtonData0, 1)
     End Sub
-
-    Private Sub btnLowerA_MouseLeave(sender As Object, e As EventArgs) Handles btnLowerA.MouseLeave
+    Private Sub btnLowerA_MouseLeave(sender As Object, e As EventArgs) Handles btnLowerA.MouseLeave, btnLowerA.MouseUp
         myHMIButtonData0 = ResetBit(myHMIButtonData0, 1)
     End Sub
 
-    Private Sub btnLowerA_MouseUp(sender As Object, e As MouseEventArgs) Handles btnLowerA.MouseUp
-        myHMIButtonData0 = ResetBit(myHMIButtonData0, 1)
-    End Sub
+
     'Power button toggle.
-    Private Sub btnPower_Click(sender As Object, e As EventArgs) Handles btnPower.Click
-        myHMIButtonData0 = flipBit(myHMIButtonData0, 2)
+    Private Sub btnPower_Click(sender As Object, e As EventArgs) Handles btnPower.MouseDown
+        myHMIButtonData0 = SetBit(myHMIButtonData0, 2)
     End Sub
 
-    Private Sub btnFaultReset_MouseDown(sender As Object, e As MouseEventArgs) Handles btnFaultReset.MouseDown
+    Private Sub btnPower_unClick(sender As Object, e As EventArgs) Handles btnPower.MouseUp, btnPower.MouseLeave
+        myHMIButtonData0 = ResetBit(myHMIButtonData0, 2)
+    End Sub
+
+    Private Sub btnFaultReset_MouseDown(sender As Object, e As EventArgs) Handles btnFaultReset.MouseDown
         myHMIButtonData0 = SetBit(myHMIButtonData0, 3)
     End Sub
 
-    Private Sub btnFaultReset_MouseUp(sender As Object, e As MouseEventArgs) Handles btnFaultReset.MouseUp
-        myHMIButtonData0 = ResetBit(myHMIButtonData0, 3)
-    End Sub
-
-    Private Sub btnFaultReset_MouseLeave(sender As Object, e As EventArgs) Handles btnFaultReset.MouseLeave
+    Private Sub btnFaultReset_MouseUp(sender As Object, e As EventArgs) Handles btnFaultReset.MouseUp, btnFaultReset.MouseLeave
         myHMIButtonData0 = ResetBit(myHMIButtonData0, 3)
     End Sub
 
     Private Sub btn_JogModeToggle_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_JogModeToggle.MouseDown
         myHMIButtonData0 = flipBit(myHMIButtonData0, 4)
     End Sub
+
 
 End Class

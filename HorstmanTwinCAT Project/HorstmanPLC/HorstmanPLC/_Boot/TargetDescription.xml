@@ -3,7 +3,7 @@
 	<TargetVersion>
 		<Version>3</Version>
 		<Revision>1</Revision>
-		<Build>4018</Build>
-		<Subbuild>4</Subbuild>
+		<Build>4024</Build>
+		<Subbuild>10</Subbuild>
 	</TargetVersion>
 </TcTargetDesc>

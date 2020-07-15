@@ -15,6 +15,7 @@
     <Implicit_KindOfTask>{39601014-1c33-433a-bbad-35b7c66fac6f}</Implicit_KindOfTask>
     <Implicit_Jitter_Distribution>{4e61a2ec-e57f-4dfa-9494-926b711f5a51}</Implicit_Jitter_Distribution>
     <LibraryReferences>{dc7a2531-f16b-4479-bd57-c9258999a700}</LibraryReferences>
+    <Released>false</Released>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DUTs\MoveBuffer1kms.TcDUT">
@@ -72,9 +73,6 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\P_SequenceReader.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\P_ServoControl.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\p_TextModeRead.TcPOU">
