@@ -5028,6 +5028,15 @@ External Setpoint Generation:
 			</ArrayInfo>
 		</DataType>
 		<DataType>
+			<Name GUID="{6ED04087-656B-98A7-735E-B4B7BE5857F6}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..1000] OF INT</Name>
+			<BitSize>16016</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
+			<ArrayInfo>
+				<LBound>0</LBound>
+				<Elements>1001</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
 			<Name GUID="{8ED098D7-A47A-66E5-03EE-277F17FC2D02}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..2,0..999] OF LREAL</Name>
 			<BitSize>192000</BitSize>
 			<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
@@ -5987,7 +5996,7 @@ External Setpoint Generation:
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{F61AF802-212A-5786-9825-59E7F9CADF8F}" Namespace="Tc2_ControllerToolbox" AutoDeleteType="true">FB_CTRL_SIGNAL_GENERATOR</Name>
+			<Name GUID="{00045E84-B744-79AD-8690-084ADC333361}" Namespace="Tc2_ControllerToolbox" AutoDeleteType="true">FB_CTRL_SIGNAL_GENERATOR</Name>
 			<BitSize>1408</BitSize>
 			<SubItem>
 				<Name>fManValue</Name>
@@ -6159,9 +6168,6 @@ External Setpoint Generation:
 				<Name>M_Error</Name>
 			</Action>
 			<Action>
-				<Name>M_Reset</Name>
-			</Action>
-			<Action>
 				<Name>M_Manual</Name>
 			</Action>
 			<Action>
@@ -6171,10 +6177,13 @@ External Setpoint Generation:
 				<Name>M_StateChange</Name>
 			</Action>
 			<Action>
+				<Name>M_Init</Name>
+			</Action>
+			<Action>
 				<Name>M_Passive</Name>
 			</Action>
 			<Action>
-				<Name>M_Init</Name>
+				<Name>M_Reset</Name>
 			</Action>
 			<Method>
 				<Name>__GetInterfaceReference</Name>
@@ -9421,6 +9430,380 @@ External Setpoint Generation:
 			</Properties>
 		</DataType>
 		<DataType>
+			<Name GUID="{33AEBC84-0A01-2C66-13F6-0AB9FED5A8E1}" Namespace="Tc2_MC2" AutoDeleteType="true">ST_GearOutOptions</Name>
+			<BitSize>8</BitSize>
+			<SubItem>
+				<Name>reserved</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>0</BitOffs>
+				<Properties>
+					<Property>
+						<Name>conditionalshow</Name>
+					</Property>
+				</Properties>
+			</SubItem>
+		</DataType>
+		<DataType>
+			<Name GUID="{93E4B089-196B-3435-20CE-0FF3838494F2}" Namespace="Tc2_System" AutoDeleteType="true">ADSWRITE</Name>
+			<Comment><![CDATA[ ADS write command. ]]></Comment>
+			<BitSize>1216</BitSize>
+			<SubItem>
+				<Name>NETID</Name>
+				<Type GUID="{E73C367E-92B3-1139-8032-E11C3D2123C1}" Namespace="Tc2_System">T_AmsNetID</Type>
+				<Comment><![CDATA[ Ams net id ]]></Comment>
+				<BitSize>192</BitSize>
+				<BitOffs>32</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>PORT</Name>
+				<Type GUID="{1314D5BC-2072-B9BE-309B-ED5DE92ADB0C}" Namespace="Tc2_System">T_AmsPort</Type>
+				<Comment><![CDATA[ Ads communication port ]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>224</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>IDXGRP</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ Index group ]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>256</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>IDXOFFS</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ Index offset ]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>288</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>LEN</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ Max. number of data bytes to write (LEN <= max. size of source buffer) ]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>320</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>SRCADDR</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000018}">PVOID</Type>
+				<Comment><![CDATA[ Pointer to source buffer ]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>352</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>WRITE</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ Rising edge starts command execution ]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>384</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>TMOUT</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000048}">TIME</Type>
+				<Comment><![CDATA[ Maximum time allowed for the execution of this ADS command ]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>416</BitOffs>
+				<Default>
+					<Value>5000</Value>
+				</Default>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>BUSY</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ Busy flag ]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>448</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Output</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>ERR</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ Error flag ]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>456</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Output</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>ERRID</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<Comment><![CDATA[ ADS error code ]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>480</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Output</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<Method>
+				<Name>__GetInterfaceReference</Name>
+				<ReturnType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</ReturnType>
+				<ReturnBitSize>8</ReturnBitSize>
+				<Parameter>
+					<Name>nInterfaceId</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+					<BitSize>32</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>pRef</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000007}" PointerTo="2">DWORD</Type>
+					<BitSize>32</BitSize>
+				</Parameter>
+			</Method>
+			<Method>
+				<Name>__GetInterfacePointer</Name>
+				<ReturnType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</ReturnType>
+				<ReturnBitSize>8</ReturnBitSize>
+				<Parameter>
+					<Name>pRef</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000007}" PointerTo="2">DWORD</Type>
+					<BitSize>32</BitSize>
+				</Parameter>
+			</Method>
+			<Properties>
+				<Property>
+					<Name>PouType</Name>
+					<Value>FunctionBlock</Value>
+				</Property>
+				<Property>
+					<Name>hide_all_locals</Name>
+				</Property>
+			</Properties>
+		</DataType>
+		<DataType>
+			<Name GUID="{F1D3EB31-D4B5-27A6-B3E5-55A26C60F4A2}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_GearOut</Name>
+			<BitSize>1792</BitSize>
+			<SubItem>
+				<Name>Slave</Name>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Comment><![CDATA[Reference to an axis]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>32</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>InOut</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>Execute</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>64</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>Options</Name>
+				<Type GUID="{33AEBC84-0A01-2C66-13F6-0AB9FED5A8E1}" Namespace="Tc2_MC2">ST_GearOutOptions</Type>
+				<Comment><![CDATA[ optional parameters ]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>72</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>Done</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>80</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Output</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>Busy</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>88</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Output</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>Error</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>96</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Output</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>ErrorID</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>128</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Output</Value>
+					</Property>
+					<Property>
+						<Name>displaymode</Name>
+						<Value>hex</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>LastExecutionResult</Name>
+				<Type GUID="{75094883-433B-F2D9-7061-6E5C2BB5514D}" Namespace="Tc2_MC2">_ST_FunctionBlockResults</Type>
+				<BitSize>96</BitSize>
+				<BitOffs>160</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ADSbusy</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>256</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>iState</Name>
+				<Type GUID="{C4AD65C9-26B0-0967-2D17-6B24719FBCDB}" Namespace="Tc2_MC2">_E_TcMC_STATES</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>272</BitOffs>
+				<Default>
+					<Value>100</Value>
+				</Default>
+			</SubItem>
+			<SubItem>
+				<Name>fbAdsWrite</Name>
+				<Type GUID="{93E4B089-196B-3435-20CE-0FF3838494F2}" Namespace="Tc2_System">ADSWRITE</Type>
+				<BitSize>1216</BitSize>
+				<BitOffs>288</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>fbOnTrigger</Name>
+				<Type GUID="{70150797-2620-D4AA-7871-9945F55686A8}" Namespace="Tc2_Standard">R_TRIG</Type>
+				<BitSize>64</BitSize>
+				<BitOffs>1504</BitOffs>
+				<Properties>
+					<Property>
+						<Name>conditionalshow</Name>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>TimerStateFeedback</Name>
+				<Type GUID="{D5E96B25-A263-741D-2099-FBB6B0108C6C}" Namespace="Tc2_Standard">TON</Type>
+				<BitSize>224</BitSize>
+				<BitOffs>1568</BitOffs>
+				<Properties>
+					<Property>
+						<Name>conditionalshow</Name>
+					</Property>
+				</Properties>
+			</SubItem>
+			<Method>
+				<Name>__GetInterfaceReference</Name>
+				<ReturnType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</ReturnType>
+				<ReturnBitSize>8</ReturnBitSize>
+				<Parameter>
+					<Name>nInterfaceId</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+					<BitSize>32</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>pRef</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000007}" PointerTo="2">DWORD</Type>
+					<BitSize>32</BitSize>
+				</Parameter>
+			</Method>
+			<Method>
+				<Name>__GetInterfacePointer</Name>
+				<ReturnType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</ReturnType>
+				<ReturnBitSize>8</ReturnBitSize>
+				<Parameter>
+					<Name>pRef</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000007}" PointerTo="2">DWORD</Type>
+					<BitSize>32</BitSize>
+				</Parameter>
+			</Method>
+			<Properties>
+				<Property>
+					<Name>PouType</Name>
+					<Value>FunctionBlock</Value>
+				</Property>
+			</Properties>
+		</DataType>
+		<DataType>
 			<Name GUID="{53C30AB3-7287-3F6A-EF14-06075DE6FBFA}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_Reset</Name>
 			<BitSize>1632</BitSize>
 			<SubItem>
@@ -9986,191 +10369,6 @@ External Setpoint Generation:
 			<Properties>
 				<Property>
 					<Name>conditionalshow</Name>
-				</Property>
-			</Properties>
-		</DataType>
-		<DataType>
-			<Name GUID="{93E4B089-196B-3435-20CE-0FF3838494F2}" Namespace="Tc2_System" AutoDeleteType="true">ADSWRITE</Name>
-			<Comment><![CDATA[ ADS write command. ]]></Comment>
-			<BitSize>1216</BitSize>
-			<SubItem>
-				<Name>NETID</Name>
-				<Type GUID="{E73C367E-92B3-1139-8032-E11C3D2123C1}" Namespace="Tc2_System">T_AmsNetID</Type>
-				<Comment><![CDATA[ Ams net id ]]></Comment>
-				<BitSize>192</BitSize>
-				<BitOffs>32</BitOffs>
-				<Properties>
-					<Property>
-						<Name>ItemType</Name>
-						<Value>Input</Value>
-					</Property>
-				</Properties>
-			</SubItem>
-			<SubItem>
-				<Name>PORT</Name>
-				<Type GUID="{1314D5BC-2072-B9BE-309B-ED5DE92ADB0C}" Namespace="Tc2_System">T_AmsPort</Type>
-				<Comment><![CDATA[ Ads communication port ]]></Comment>
-				<BitSize>16</BitSize>
-				<BitOffs>224</BitOffs>
-				<Properties>
-					<Property>
-						<Name>ItemType</Name>
-						<Value>Input</Value>
-					</Property>
-				</Properties>
-			</SubItem>
-			<SubItem>
-				<Name>IDXGRP</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
-				<Comment><![CDATA[ Index group ]]></Comment>
-				<BitSize>32</BitSize>
-				<BitOffs>256</BitOffs>
-				<Properties>
-					<Property>
-						<Name>ItemType</Name>
-						<Value>Input</Value>
-					</Property>
-				</Properties>
-			</SubItem>
-			<SubItem>
-				<Name>IDXOFFS</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
-				<Comment><![CDATA[ Index offset ]]></Comment>
-				<BitSize>32</BitSize>
-				<BitOffs>288</BitOffs>
-				<Properties>
-					<Property>
-						<Name>ItemType</Name>
-						<Value>Input</Value>
-					</Property>
-				</Properties>
-			</SubItem>
-			<SubItem>
-				<Name>LEN</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
-				<Comment><![CDATA[ Max. number of data bytes to write (LEN <= max. size of source buffer) ]]></Comment>
-				<BitSize>32</BitSize>
-				<BitOffs>320</BitOffs>
-				<Properties>
-					<Property>
-						<Name>ItemType</Name>
-						<Value>Input</Value>
-					</Property>
-				</Properties>
-			</SubItem>
-			<SubItem>
-				<Name>SRCADDR</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000018}">PVOID</Type>
-				<Comment><![CDATA[ Pointer to source buffer ]]></Comment>
-				<BitSize>32</BitSize>
-				<BitOffs>352</BitOffs>
-				<Properties>
-					<Property>
-						<Name>ItemType</Name>
-						<Value>Input</Value>
-					</Property>
-				</Properties>
-			</SubItem>
-			<SubItem>
-				<Name>WRITE</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
-				<Comment><![CDATA[ Rising edge starts command execution ]]></Comment>
-				<BitSize>8</BitSize>
-				<BitOffs>384</BitOffs>
-				<Properties>
-					<Property>
-						<Name>ItemType</Name>
-						<Value>Input</Value>
-					</Property>
-				</Properties>
-			</SubItem>
-			<SubItem>
-				<Name>TMOUT</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000048}">TIME</Type>
-				<Comment><![CDATA[ Maximum time allowed for the execution of this ADS command ]]></Comment>
-				<BitSize>32</BitSize>
-				<BitOffs>416</BitOffs>
-				<Default>
-					<Value>5000</Value>
-				</Default>
-				<Properties>
-					<Property>
-						<Name>ItemType</Name>
-						<Value>Input</Value>
-					</Property>
-				</Properties>
-			</SubItem>
-			<SubItem>
-				<Name>BUSY</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
-				<Comment><![CDATA[ Busy flag ]]></Comment>
-				<BitSize>8</BitSize>
-				<BitOffs>448</BitOffs>
-				<Properties>
-					<Property>
-						<Name>ItemType</Name>
-						<Value>Output</Value>
-					</Property>
-				</Properties>
-			</SubItem>
-			<SubItem>
-				<Name>ERR</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
-				<Comment><![CDATA[ Error flag ]]></Comment>
-				<BitSize>8</BitSize>
-				<BitOffs>456</BitOffs>
-				<Properties>
-					<Property>
-						<Name>ItemType</Name>
-						<Value>Output</Value>
-					</Property>
-				</Properties>
-			</SubItem>
-			<SubItem>
-				<Name>ERRID</Name>
-				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
-				<Comment><![CDATA[ ADS error code ]]></Comment>
-				<BitSize>32</BitSize>
-				<BitOffs>480</BitOffs>
-				<Properties>
-					<Property>
-						<Name>ItemType</Name>
-						<Value>Output</Value>
-					</Property>
-				</Properties>
-			</SubItem>
-			<Method>
-				<Name>__GetInterfaceReference</Name>
-				<ReturnType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</ReturnType>
-				<ReturnBitSize>8</ReturnBitSize>
-				<Parameter>
-					<Name>nInterfaceId</Name>
-					<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
-					<BitSize>32</BitSize>
-				</Parameter>
-				<Parameter>
-					<Name>pRef</Name>
-					<Type GUID="{18071995-0000-0000-0000-000000000007}" PointerTo="2">DWORD</Type>
-					<BitSize>32</BitSize>
-				</Parameter>
-			</Method>
-			<Method>
-				<Name>__GetInterfacePointer</Name>
-				<ReturnType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</ReturnType>
-				<ReturnBitSize>8</ReturnBitSize>
-				<Parameter>
-					<Name>pRef</Name>
-					<Type GUID="{18071995-0000-0000-0000-000000000007}" PointerTo="2">DWORD</Type>
-					<BitSize>32</BitSize>
-				</Parameter>
-			</Method>
-			<Properties>
-				<Property>
-					<Name>PouType</Name>
-					<Value>FunctionBlock</Value>
-				</Property>
-				<Property>
-					<Name>hide_all_locals</Name>
 				</Property>
 			</Properties>
 		</DataType>
@@ -11649,6 +11847,259 @@ External Setpoint Generation:
 			</Properties>
 		</DataType>
 		<DataType>
+			<Name GUID="{0D215B5D-6624-2E80-06EE-F0FC0A990E93}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_MoveAbsolute</Name>
+			<BitSize>7808</BitSize>
+			<SubItem>
+				<Name>Axis</Name>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Comment><![CDATA[Reference to an axis]]></Comment>
+				<BitSize>32</BitSize>
+				<BitOffs>32</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>InOut</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>Execute</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<Comment><![CDATA[ Start the motion at rising edge ]]></Comment>
+				<BitSize>8</BitSize>
+				<BitOffs>64</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>Position</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<Comment><![CDATA[ Target position for the motion ]]></Comment>
+				<BitSize>64</BitSize>
+				<BitOffs>128</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>Velocity</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<Comment><![CDATA[ Value of the maximum velocity ]]></Comment>
+				<BitSize>64</BitSize>
+				<BitOffs>192</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>Acceleration</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<Comment><![CDATA[ Value of the maximum acceleration ]]></Comment>
+				<BitSize>64</BitSize>
+				<BitOffs>256</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>Deceleration</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<Comment><![CDATA[ Value of the maximum deceleration ]]></Comment>
+				<BitSize>64</BitSize>
+				<BitOffs>320</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>Jerk</Name>
+				<Type GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</Type>
+				<Comment><![CDATA[ Value of the maximum jerk ]]></Comment>
+				<BitSize>64</BitSize>
+				<BitOffs>384</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>BufferMode</Name>
+				<Type GUID="{F5806EC4-718D-E8F8-1CEA-A88875F8ECAA}" Namespace="Tc2_MC2">MC_BufferMode</Type>
+				<Comment><![CDATA[	Direction			:	MC_Direction; 
+ not available ]]></Comment>
+				<BitSize>16</BitSize>
+				<BitOffs>448</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>Options</Name>
+				<Type GUID="{96BEEC95-559D-AE97-8F2D-45835CA46994}" Namespace="Tc2_MC2">ST_MoveOptions</Type>
+				<Comment><![CDATA[ optional parameters ]]></Comment>
+				<BitSize>320</BitSize>
+				<BitOffs>512</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Input</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>Done</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>832</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Output</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>Busy</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>840</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Output</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>Active</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>848</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Output</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>CommandAborted</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>856</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Output</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>Error</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>864</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Output</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>ErrorID</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000008}">UDINT</Type>
+				<BitSize>32</BitSize>
+				<BitOffs>896</BitOffs>
+				<Properties>
+					<Property>
+						<Name>ItemType</Name>
+						<Value>Output</Value>
+					</Property>
+					<Property>
+						<Name>displaymode</Name>
+						<Value>hex</Value>
+					</Property>
+				</Properties>
+			</SubItem>
+			<SubItem>
+				<Name>LastExecutionResult</Name>
+				<Type GUID="{75094883-433B-F2D9-7061-6E5C2BB5514D}" Namespace="Tc2_MC2">_ST_FunctionBlockResults</Type>
+				<BitSize>96</BitSize>
+				<BitOffs>928</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>ADSbusy</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000030}">BOOL</Type>
+				<BitSize>8</BitSize>
+				<BitOffs>1024</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>MoveGeneric</Name>
+				<Type GUID="{6AED1F4C-13BE-FDBF-6FCC-34F60447A3C8}" Namespace="Tc2_MC2">_FB_MoveUniversalGeneric</Type>
+				<BitSize>6656</BitSize>
+				<BitOffs>1088</BitOffs>
+			</SubItem>
+			<SubItem>
+				<Name>CmdNo</Name>
+				<Type GUID="{18071995-0000-0000-0000-000000000005}">UINT</Type>
+				<BitSize>16</BitSize>
+				<BitOffs>7744</BitOffs>
+			</SubItem>
+			<Method>
+				<Name>__GetInterfaceReference</Name>
+				<ReturnType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</ReturnType>
+				<ReturnBitSize>8</ReturnBitSize>
+				<Parameter>
+					<Name>nInterfaceId</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000009}">DINT</Type>
+					<BitSize>32</BitSize>
+				</Parameter>
+				<Parameter>
+					<Name>pRef</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000007}" PointerTo="2">DWORD</Type>
+					<BitSize>32</BitSize>
+				</Parameter>
+			</Method>
+			<Method>
+				<Name>__GetInterfacePointer</Name>
+				<ReturnType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</ReturnType>
+				<ReturnBitSize>8</ReturnBitSize>
+				<Parameter>
+					<Name>pRef</Name>
+					<Type GUID="{18071995-0000-0000-0000-000000000007}" PointerTo="2">DWORD</Type>
+					<BitSize>32</BitSize>
+				</Parameter>
+			</Method>
+			<Properties>
+				<Property>
+					<Name>PouType</Name>
+					<Value>FunctionBlock</Value>
+				</Property>
+			</Properties>
+		</DataType>
+		<DataType>
 			<Name GUID="{1E725CC3-8204-4DAB-9491-272E328292C3}" AutoDeleteType="true">FB_TcJoy</Name>
 			<BitSize>1984</BitSize>
 			<SubItem>
@@ -12612,12 +13063,6 @@ External Setpoint Generation:
 				<PTCID>#x0850000d</PTCID>
 			</Parameter>
 			<Parameter ReadOnly="true">
-				<Name>Symbolic Mapping</Name>
-				<BitSize>8</BitSize>
-				<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-				<PTCID>#x0850801b</PTCID>
-			</Parameter>
-			<Parameter ReadOnly="true">
 				<Name>Task Module OIDs</Name>
 				<BitSize>32</BitSize>
 				<BaseType GUID="{18071995-0000-0000-0000-000700000001}">ARRAY [0..0] OF OTCID</BaseType>
@@ -12659,7 +13104,7 @@ External Setpoint Generation:
 				<AreaNo AreaType="InputDst" CreateSymbols="true">0</AreaNo>
 				<Name>PlcTask Inputs</Name>
 				<ContextId>0</ContextId>
-				<ByteSize>15204352</ByteSize>
+				<ByteSize>15269888</ByteSize>
 				<Symbol>
 					<Name>IO.devstate</Name>
 					<BitSize>16</BitSize>
@@ -12673,7 +13118,49 @@ External Setpoint Generation:
 							<Value>Input</Value>
 						</Property>
 					</Properties>
-					<BitOffs>4125216</BitOffs>
+					<BitOffs>4161520</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Global_Variables.HMI_Servo1_Force</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+						<Property>
+							<Name>TcAddressType</Name>
+							<Value>Input</Value>
+						</Property>
+					</Properties>
+					<BitOffs>4161664</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Global_Variables.HMI_Servo2_Force</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+						<Property>
+							<Name>TcAddressType</Name>
+							<Value>Input</Value>
+						</Property>
+					</Properties>
+					<BitOffs>4161856</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>IO.DriveAxis1.NcToPlc</Name>
+					<BitSize>2048</BitSize>
+					<BaseType GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}">MC.NCTOPLC_AXIS_REF</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcAddressType</Name>
+							<Value>Input</Value>
+						</Property>
+					</Properties>
+					<BitOffs>4163072</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.DriveFaulted1</Name>
@@ -12689,31 +13176,7 @@ External Setpoint Generation:
 							<Value>Input</Value>
 						</Property>
 					</Properties>
-					<BitOffs>4125304</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>IO.DriveAxis1.NcToPlc</Name>
-					<BitSize>2048</BitSize>
-					<BaseType GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}">MC.NCTOPLC_AXIS_REF</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcAddressType</Name>
-							<Value>Input</Value>
-						</Property>
-					</Properties>
-					<BitOffs>4126400</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>IO.DriveAxis2.NcToPlc</Name>
-					<BitSize>2048</BitSize>
-					<BaseType GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}">MC.NCTOPLC_AXIS_REF</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcAddressType</Name>
-							<Value>Input</Value>
-						</Property>
-					</Properties>
-					<BitOffs>4135424</BitOffs>
+					<BitOffs>4171016</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.LaserDistanceValue</Name>
@@ -12729,7 +13192,7 @@ External Setpoint Generation:
 							<Value>Input</Value>
 						</Property>
 					</Properties>
-					<BitOffs>4143360</BitOffs>
+					<BitOffs>4171024</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.Laser2</Name>
@@ -12744,7 +13207,7 @@ External Setpoint Generation:
 							<Value>Input</Value>
 						</Property>
 					</Properties>
-					<BitOffs>4143376</BitOffs>
+					<BitOffs>4171040</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.DriveEnabled1</Name>
@@ -12759,7 +13222,7 @@ External Setpoint Generation:
 							<Value>Input</Value>
 						</Property>
 					</Properties>
-					<BitOffs>4143392</BitOffs>
+					<BitOffs>4171056</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.DriveFaulted2</Name>
@@ -12775,7 +13238,19 @@ External Setpoint Generation:
 							<Value>Input</Value>
 						</Property>
 					</Properties>
-					<BitOffs>4143400</BitOffs>
+					<BitOffs>4171064</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>IO.DriveAxis2.NcToPlc</Name>
+					<BitSize>2048</BitSize>
+					<BaseType GUID="{72F5AAAA-16DF-4ED3-8367-F6C8C3ADAE99}">MC.NCTOPLC_AXIS_REF</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcAddressType</Name>
+							<Value>Input</Value>
+						</Property>
+					</Properties>
+					<BitOffs>4172160</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.DriveFeedback1</Name>
@@ -12790,7 +13265,7 @@ External Setpoint Generation:
 							<Value>Input</Value>
 						</Property>
 					</Properties>
-					<BitOffs>4143408</BitOffs>
+					<BitOffs>4180096</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.LinearPosition1</Name>
@@ -12805,22 +13280,7 @@ External Setpoint Generation:
 							<Value>Input</Value>
 						</Property>
 					</Properties>
-					<BitOffs>4143424</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>IO.DriveEnabled2</Name>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-						<Property>
-							<Name>TcAddressType</Name>
-							<Value>Input</Value>
-						</Property>
-					</Properties>
-					<BitOffs>4143440</BitOffs>
+					<BitOffs>4180112</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.LoadCell1</Name>
@@ -12835,7 +13295,22 @@ External Setpoint Generation:
 							<Value>Input</Value>
 						</Property>
 					</Properties>
-					<BitOffs>4143456</BitOffs>
+					<BitOffs>4180128</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>IO.DriveEnabled2</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+						<Property>
+							<Name>TcAddressType</Name>
+							<Value>Input</Value>
+						</Property>
+					</Properties>
+					<BitOffs>4180160</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.DriveFeedback2</Name>
@@ -12850,7 +13325,7 @@ External Setpoint Generation:
 							<Value>Input</Value>
 						</Property>
 					</Properties>
-					<BitOffs>4143488</BitOffs>
+					<BitOffs>4180176</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.LinearPosition2</Name>
@@ -12865,7 +13340,7 @@ External Setpoint Generation:
 							<Value>Input</Value>
 						</Property>
 					</Properties>
-					<BitOffs>4143504</BitOffs>
+					<BitOffs>4180192</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.LoadCell2</Name>
@@ -12880,44 +13355,14 @@ External Setpoint Generation:
 							<Value>Input</Value>
 						</Property>
 					</Properties>
-					<BitOffs>4143520</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Global_Variables.HMI_Servo1_Force</Name>
-					<BitSize>64</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-						<Property>
-							<Name>TcAddressType</Name>
-							<Value>Input</Value>
-						</Property>
-					</Properties>
-					<BitOffs>4146560</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Global_Variables.HMI_Servo2_Force</Name>
-					<BitSize>64</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-						<Property>
-							<Name>TcAddressType</Name>
-							<Value>Input</Value>
-						</Property>
-					</Properties>
-					<BitOffs>4146816</BitOffs>
+					<BitOffs>4180224</BitOffs>
 				</Symbol>
 			</DataArea>
 			<DataArea>
 				<AreaNo AreaType="OutputSrc" CreateSymbols="true">1</AreaNo>
 				<Name>PlcTask Outputs</Name>
 				<ContextId>0</ContextId>
-				<ByteSize>15204352</ByteSize>
+				<ByteSize>15269888</ByteSize>
 				<Symbol>
 					<Name>IO.DriveEnable1</Name>
 					<BitSize>8</BitSize>
@@ -12931,7 +13376,7 @@ External Setpoint Generation:
 							<Value>Output</Value>
 						</Property>
 					</Properties>
-					<BitOffs>4125240</BitOffs>
+					<BitOffs>4161928</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.TorqueRequest1</Name>
@@ -12948,7 +13393,22 @@ Drive 1	]]></Comment>
 							<Value>Output</Value>
 						</Property>
 					</Properties>
-					<BitOffs>4125248</BitOffs>
+					<BitOffs>4161936</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>IO.Drive1FaultReset</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+						<Property>
+							<Name>TcAddressType</Name>
+							<Value>Output</Value>
+						</Property>
+					</Properties>
+					<BitOffs>4161952</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.DriveEnable2</Name>
@@ -12963,7 +13423,7 @@ Drive 1	]]></Comment>
 							<Value>Output</Value>
 						</Property>
 					</Properties>
-					<BitOffs>4125272</BitOffs>
+					<BitOffs>4161960</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.TorqueRequest2</Name>
@@ -12979,7 +13439,7 @@ Drive 1	]]></Comment>
 							<Value>Output</Value>
 						</Property>
 					</Properties>
-					<BitOffs>4125280</BitOffs>
+					<BitOffs>4161968</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.DriveAxis1.PlcToNc</Name>
@@ -12991,34 +13451,7 @@ Drive 1	]]></Comment>
 							<Value>Output</Value>
 						</Property>
 					</Properties>
-					<BitOffs>4125376</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>IO.DriveAxis2.PlcToNc</Name>
-					<BitSize>1024</BitSize>
-					<BaseType GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}">MC.PLCTONC_AXIS_REF</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcAddressType</Name>
-							<Value>Output</Value>
-						</Property>
-					</Properties>
-					<BitOffs>4134400</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>IO.Drive1FaultReset</Name>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-						<Property>
-							<Name>TcAddressType</Name>
-							<Value>Output</Value>
-						</Property>
-					</Properties>
-					<BitOffs>119582768</BitOffs>
+					<BitOffs>4162048</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.Drive2FaultReset</Name>
@@ -13033,14 +13466,26 @@ Drive 1	]]></Comment>
 							<Value>Output</Value>
 						</Property>
 					</Properties>
-					<BitOffs>119582776</BitOffs>
+					<BitOffs>4171008</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>IO.DriveAxis2.PlcToNc</Name>
+					<BitSize>1024</BitSize>
+					<BaseType GUID="{63A84524-72E3-41C8-BEAB-4CCE44690A13}">MC.PLCTONC_AXIS_REF</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcAddressType</Name>
+							<Value>Output</Value>
+						</Property>
+					</Properties>
+					<BitOffs>4171136</BitOffs>
 				</Symbol>
 			</DataArea>
 			<DataArea>
 				<AreaNo AreaType="Internal" CreateSymbols="true">3</AreaNo>
 				<Name>PlcTask Internal</Name>
 				<ContextId>0</ContextId>
-				<ByteSize>15204352</ByteSize>
+				<ByteSize>15269888</ByteSize>
 				<Symbol>
 					<Name>Global_Version.stLibVersion_Tc2_Standard</Name>
 					<BitSize>288</BitSize>
@@ -17145,19 +17590,25 @@ Drive 1	]]></Comment>
 					<Default>
 						<Value>0</Value>
 					</Default>
-					<BitOffs>3294760</BitOffs>
+					<BitOffs>3294768</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_TextModeRead.bBusy</Name>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>3294768</BitOffs>
+					<BitOffs>3294776</BitOffs>
 				</Symbol>
 				<Symbol>
-					<Name>p_TextModeRead.bError</Name>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>3294776</BitOffs>
+					<Name>P_FaultMonitoring.st_StateDwordDrive1</Name>
+					<BitSize>32</BitSize>
+					<BaseType GUID="{CBC83B73-B816-4597-A9E5-2B03263CA131}">MC.NCTOPLC_AXIS_REF_STATE</BaseType>
+					<BitOffs>3294784</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_FaultMonitoring.st_StateDwordDrive2</Name>
+					<BitSize>32</BitSize>
+					<BaseType GUID="{CBC83B73-B816-4597-A9E5-2B03263CA131}">MC.NCTOPLC_AXIS_REF_STATE</BaseType>
+					<BitOffs>3294816</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_TextModeRead.sNetId</Name>
@@ -17167,7 +17618,7 @@ Drive 1	]]></Comment>
 					<Default>
 						<String><![CDATA[]]></String>
 					</Default>
-					<BitOffs>3295648</BitOffs>
+					<BitOffs>3295712</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_TextModeRead.sFileName</Name>
@@ -17175,9 +17626,9 @@ Drive 1	]]></Comment>
 					<BitSize>2048</BitSize>
 					<BaseType GUID="{CA937EA4-0DA0-2440-0362-EB5A61325E1A}">Tc2_System.T_MaxString</BaseType>
 					<Default>
-						<String><![CDATA[C:\Twincat\Recipe\file.csv]]></String>
+						<String><![CDATA[C:\Twincat\FtpRoot\file.csv]]></String>
 					</Default>
-					<BitOffs>3295840</BitOffs>
+					<BitOffs>3295904</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_TextModeRead.sCSVLine</Name>
@@ -17187,7 +17638,7 @@ Drive 1	]]></Comment>
 					<Default>
 						<String><![CDATA[]]></String>
 					</Default>
-					<BitOffs>3297888</BitOffs>
+					<BitOffs>3297952</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_TextModeRead.sCSVField</Name>
@@ -17197,33 +17648,19 @@ Drive 1	]]></Comment>
 					<Default>
 						<String><![CDATA[]]></String>
 					</Default>
-					<BitOffs>3299936</BitOffs>
+					<BitOffs>3300000</BitOffs>
 				</Symbol>
 				<Symbol>
-					<Name>p_TextModeRead.nErrId</Name>
-					<BitSize>32</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
-					<BitOffs>3301984</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>p_TextModeRead.nRow</Name>
-					<Comment><![CDATA[ Row number (record) ]]></Comment>
-					<BitSize>32</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
-					<Default>
-						<Value>0</Value>
-					</Default>
-					<BitOffs>3302016</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>p_TextModeRead.nColumn</Name>
-					<Comment><![CDATA[ Column number (record field) ]]></Comment>
-					<BitSize>32</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
-					<Default>
-						<Value>0</Value>
-					</Default>
+					<Name>p_TextModeRead.bError</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
 					<BitOffs>3302048</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>p_TextModeRead.b_initialized</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<BitOffs>3302056</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_TextModeRead.hFile</Name>
@@ -17233,13 +17670,33 @@ Drive 1	]]></Comment>
 					<Default>
 						<Value>0</Value>
 					</Default>
+					<BitOffs>3302064</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>p_TextModeRead.nErrId</Name>
+					<BitSize>32</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
 					<BitOffs>3302080</BitOffs>
 				</Symbol>
 				<Symbol>
-					<Name>P_FunctionGenerators.nCase</Name>
-					<BitSize>16</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
-					<BitOffs>3302096</BitOffs>
+					<Name>p_TextModeRead.nRow</Name>
+					<Comment><![CDATA[ Row number (record) ]]></Comment>
+					<BitSize>32</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+					<Default>
+						<Value>0</Value>
+					</Default>
+					<BitOffs>3302112</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>p_TextModeRead.nColumn</Name>
+					<Comment><![CDATA[ Column number (record field) ]]></Comment>
+					<BitSize>32</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+					<Default>
+						<Value>0</Value>
+					</Default>
+					<BitOffs>3302144</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_TextModeRead.step</Name>
@@ -17248,136 +17705,166 @@ Drive 1	]]></Comment>
 					<Default>
 						<Value>0</Value>
 					</Default>
-					<BitOffs>3302112</BitOffs>
+					<BitOffs>3302176</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_TextModeRead.fbFileOpen</Name>
 					<Comment><![CDATA[ Opens file ]]></Comment>
 					<BitSize>3456</BitSize>
 					<BaseType GUID="{39090AAE-F85B-5A4B-BA6F-E19D9903ADE1}">Tc2_System.FB_FileOpen</BaseType>
-					<BitOffs>3302144</BitOffs>
+					<BitOffs>3302208</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_TextModeRead.fbFileClose</Name>
 					<Comment><![CDATA[ Closes file ]]></Comment>
 					<BitSize>1184</BitSize>
 					<BaseType GUID="{E25B6E26-DBD0-3CEE-84BA-6EA23FE50ACD}">Tc2_System.FB_FileClose</BaseType>
-					<BitOffs>3305600</BitOffs>
+					<BitOffs>3305664</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_TextModeRead.fbFileGets</Name>
 					<Comment><![CDATA[ Reads one record (line) ]]></Comment>
 					<BitSize>3360</BitSize>
 					<BaseType GUID="{134C5170-5986-A827-C1E4-CB4B2745AB21}">Tc2_System.FB_FileGets</BaseType>
-					<BitOffs>3306784</BitOffs>
+					<BitOffs>3306848</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_TextModeRead.fbReader</Name>
 					<Comment><![CDATA[ Helper function block used to parse CSV data bytes (single record line) ]]></Comment>
 					<BitSize>2656</BitSize>
 					<BaseType GUID="{2F7C8940-F1CB-3F8B-6CE2-662D4D9D6E37}">Tc2_Utilities.FB_CSVMemBufferReader</BaseType>
-					<BitOffs>3310144</BitOffs>
+					<BitOffs>3310208</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_TextModeRead.database</Name>
 					<Comment><![CDATA[ Target PLC database ]]></Comment>
 					<BitSize>520520</BitSize>
 					<BaseType GUID="{6ED04087-656B-98A7-735E-B4B6BE5857B0}">ARRAY [0..1000] OF STRING(64)</BaseType>
-					<BitOffs>3312800</BitOffs>
+					<BitOffs>3312864</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.Runtimer</Name>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>3833320</BitOffs>
+					<BitOffs>3833384</BitOffs>
 				</Symbol>
 				<Symbol>
-					<Name>P_FunctionGenerators.nSinStep</Name>
+					<Name>p_TextModeRead.IndexList</Name>
+					<BitSize>16016</BitSize>
+					<BaseType GUID="{6ED04087-656B-98A7-735E-B4B7BE5857F6}">ARRAY [0..1000] OF INT</BaseType>
+					<BitOffs>3833392</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>p_TextModeRead.i</Name>
 					<BitSize>16</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
-					<BitOffs>3833328</BitOffs>
+					<BitOffs>3849408</BitOffs>
 				</Symbol>
 				<Symbol>
-					<Name>P_FunctionGenerators.ElapsedTIME</Name>
-					<BitSize>32</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000048}">TIME</BaseType>
-					<BitOffs>3834720</BitOffs>
+					<Name>P_FunctionGenerators.nCase</Name>
+					<BitSize>16</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
+					<BitOffs>3849424</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.nPositionAr</Name>
 					<BitSize>192000</BitSize>
 					<BaseType GUID="{8ED098D7-A47A-66E5-03EE-277F17FC2D02}">ARRAY [0..2,0..999] OF LREAL</BaseType>
-					<BitOffs>3834752</BitOffs>
+					<BitOffs>3850816</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.timer</Name>
 					<Comment><![CDATA[1000 positions to fill 1 second, 3 seconds worth of buffer. position data in ms.]]></Comment>
 					<BitSize>224</BitSize>
 					<BaseType GUID="{D5E96B25-A263-741D-2099-FBB6B0108C6C}">Tc2_Standard.TON</BaseType>
-					<BitOffs>4026752</BitOffs>
+					<BitOffs>4042816</BitOffs>
 				</Symbol>
 				<Symbol>
-					<Name>P_FunctionGenerators.sin_time</Name>
+					<Name>P_FunctionGenerators.ElapsedTIME</Name>
 					<BitSize>32</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000048}">TIME</BaseType>
-					<BitOffs>4026976</BitOffs>
+					<BitOffs>4043040</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.nPostionTarget</Name>
 					<BitSize>64</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<BitOffs>4027008</BitOffs>
+					<BitOffs>4043072</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.SignalGenerator</Name>
 					<BitSize>1408</BitSize>
-					<BaseType GUID="{F61AF802-212A-5786-9825-59E7F9CADF8F}">Tc2_ControllerToolbox.FB_CTRL_SIGNAL_GENERATOR</BaseType>
-					<BitOffs>4027072</BitOffs>
+					<BaseType GUID="{00045E84-B744-79AD-8690-084ADC333361}">Tc2_ControllerToolbox.FB_CTRL_SIGNAL_GENERATOR</BaseType>
+					<BitOffs>4043136</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.sin_bufferspace</Name>
 					<Comment><![CDATA[10mm]]></Comment>
 					<BitSize>64</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<BitOffs>4028480</BitOffs>
+					<BitOffs>4044544</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.sin_Magnitude</Name>
 					<Comment><![CDATA[100 mm]]></Comment>
 					<BitSize>64</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<BitOffs>4028544</BitOffs>
+					<BitOffs>4044608</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.sin_frequency</Name>
 					<Comment><![CDATA[ 5 hz?]]></Comment>
 					<BitSize>64</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<BitOffs>4028608</BitOffs>
+					<BitOffs>4044672</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_FunctionGenerators.sin_time</Name>
+					<BitSize>32</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000048}">TIME</BaseType>
+					<BitOffs>4044736</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_FunctionGenerators.nSinStep</Name>
+					<BitSize>16</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
+					<BitOffs>4044768</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_FunctionGenerators.bMove1</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<BitOffs>4044784</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_FunctionGenerators.bMove2</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<BitOffs>4044792</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.sin_index</Name>
 					<BitSize>64</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<BitOffs>4028672</BitOffs>
+					<BitOffs>4044800</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.sinout</Name>
 					<BitSize>64</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<BitOffs>4028736</BitOffs>
+					<BitOffs>4044864</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.sin_steps</Name>
 					<BitSize>64</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<BitOffs>4028800</BitOffs>
+					<BitOffs>4044928</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.sin_speed</Name>
 					<BitSize>64</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<BitOffs>4028864</BitOffs>
+					<BitOffs>4044992</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.mc_moveAbs1</Name>
@@ -17385,49 +17872,37 @@ Drive 1	]]></Comment>
 mc_moveAbs2: MC_moveabsolute;]]></Comment>
 					<BitSize>7872</BitSize>
 					<BaseType GUID="{6D4E99C3-E800-5ADC-DFF6-460D8340599B}">Tc2_MC2.MC_MoveContinuousAbsolute</BaseType>
-					<BitOffs>4028928</BitOffs>
+					<BitOffs>4045056</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.mc_moveAbs2</Name>
 					<BitSize>7872</BitSize>
 					<BaseType GUID="{6D4E99C3-E800-5ADC-DFF6-460D8340599B}">Tc2_MC2.MC_MoveContinuousAbsolute</BaseType>
-					<BitOffs>4036800</BitOffs>
+					<BitOffs>4052928</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.mc_AbsCont1</Name>
 					<BitSize>7872</BitSize>
 					<BaseType GUID="{6D4E99C3-E800-5ADC-DFF6-460D8340599B}">Tc2_MC2.MC_MoveContinuousAbsolute</BaseType>
-					<BitOffs>4044672</BitOffs>
+					<BitOffs>4060800</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.haltServo1</Name>
 					<BitSize>7616</BitSize>
 					<BaseType GUID="{71DCC587-282E-2DE3-E772-9949F9F261D9}">Tc2_MC2.MC_Halt</BaseType>
-					<BitOffs>4052544</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>P_FunctionGenerators.bMove1</Name>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>4060160</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>P_FunctionGenerators.bMove2</Name>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>4060168</BitOffs>
+					<BitOffs>4068672</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.bHalt</Name>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>4060176</BitOffs>
+					<BitOffs>4076288</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.brelMove1</Name>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>4060184</BitOffs>
+					<BitOffs>4076296</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.mcabscont1buffermode</Name>
@@ -17436,49 +17911,55 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 					<Default>
 						<Value>21</Value>
 					</Default>
-					<BitOffs>4060192</BitOffs>
+					<BitOffs>4076304</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.bMoveit</Name>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>4060208</BitOffs>
+					<BitOffs>4076320</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.initialized</Name>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>4060216</BitOffs>
+					<BitOffs>4076328</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_FunctionGenerators.n_i</Name>
+					<BitSize>16</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
+					<BitOffs>4076336</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.mc_movere1</Name>
 					<BitSize>7808</BitSize>
 					<BaseType GUID="{B72F3477-58C2-D7EC-5728-B5BD5E108AF3}">Tc2_MC2.MC_MoveRelative</BaseType>
-					<BitOffs>4060224</BitOffs>
+					<BitOffs>4076352</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.relmove1Dist</Name>
 					<BitSize>64</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<BitOffs>4068032</BitOffs>
+					<BitOffs>4084160</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.mc_movere2</Name>
 					<BitSize>7808</BitSize>
 					<BaseType GUID="{B72F3477-58C2-D7EC-5728-B5BD5E108AF3}">Tc2_MC2.MC_MoveRelative</BaseType>
-					<BitOffs>4068096</BitOffs>
+					<BitOffs>4084224</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.rel_speed</Name>
 					<BitSize>64</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<BitOffs>4075904</BitOffs>
+					<BitOffs>4092032</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.livePosition</Name>
 					<BitSize>64</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<BitOffs>4075968</BitOffs>
+					<BitOffs>4092096</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.LiveVel</Name>
@@ -17487,31 +17968,25 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 					<Default>
 						<Value>1000</Value>
 					</Default>
-					<BitOffs>4076032</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>P_FunctionGenerators.n_i</Name>
-					<BitSize>16</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
-					<BitOffs>4076096</BitOffs>
+					<BitOffs>4092160</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.n_max</Name>
 					<BitSize>16</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
-					<BitOffs>4076112</BitOffs>
+					<BitOffs>4092224</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.SignalGeneratorErrorID</Name>
 					<BitSize>16</BitSize>
 					<BaseType GUID="{42490E24-42D9-1C83-B665-A2EC138EACD5}">Tc2_ControllerToolbox.E_CTRL_ERRORCODES</BaseType>
-					<BitOffs>4076128</BitOffs>
+					<BitOffs>4092240</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.SignalGeneratorError</Name>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>4076144</BitOffs>
+					<BitOffs>4092256</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.bInit</Name>
@@ -17520,81 +17995,87 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 					<Default>
 						<Value>1</Value>
 					</Default>
-					<BitOffs>4076152</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>P_FunctionGenerators.InitialPosition</Name>
-					<BitSize>64</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<BitOffs>4076160</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>P_FunctionGenerators.SignalGeneratorParams</Name>
-					<BitSize>320</BitSize>
-					<BaseType GUID="{260EE18E-0DC4-6B3E-A6A6-53FF4FA653F9}">Tc2_ControllerToolbox.ST_CTRL_SIGNAL_GENERATOR_PARAMS</BaseType>
-					<BitOffs>4076224</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>P_FunctionGenerators.SignalGenratorOutput</Name>
-					<BitSize>64</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<BitOffs>4076544</BitOffs>
+					<BitOffs>4092264</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.SignalType</Name>
 					<Comment><![CDATA[  eCTRL_TRIANGLE := 0,  eCTRL_SINUS := 1,  eCTRL_SAWTOOTH := 2]]></Comment>
 					<BitSize>16</BitSize>
 					<BaseType GUID="{F58F8C4B-1152-1937-85DE-043BC15DB800}">Tc2_ControllerToolbox.E_CTRL_SIGNAL_TYPE</BaseType>
-					<BitOffs>4076608</BitOffs>
+					<BitOffs>4092272</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_FunctionGenerators.InitialPosition</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+					<BitOffs>4092288</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_FunctionGenerators.SignalGeneratorParams</Name>
+					<BitSize>320</BitSize>
+					<BaseType GUID="{260EE18E-0DC4-6B3E-A6A6-53FF4FA653F9}">Tc2_ControllerToolbox.ST_CTRL_SIGNAL_GENERATOR_PARAMS</BaseType>
+					<BitOffs>4092352</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_FunctionGenerators.SignalGenratorOutput</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+					<BitOffs>4092672</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.tempvar</Name>
 					<BitSize>16</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
-					<BitOffs>4076624</BitOffs>
+					<BitOffs>4092736</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.SignalGeneratorMode</Name>
 					<BitSize>16</BitSize>
 					<BaseType GUID="{E100BEC8-E91C-9506-9A3F-78B66AB6D721}">Tc2_ControllerToolbox.E_CTRL_MODE</BaseType>
-					<BitOffs>4076640</BitOffs>
+					<BitOffs>4092752</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.SignalGeneratorState</Name>
 					<BitSize>16</BitSize>
 					<BaseType GUID="{0684F174-0FBB-4D47-9D33-775470BD4C61}">Tc2_ControllerToolbox.E_CTRL_STATE</BaseType>
-					<BitOffs>4076656</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>P_FunctionGenerators.PositionBuffer</Name>
-					<BitSize>64</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<BitOffs>4076672</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>p_MotorControl_ST.Mc_ResetServoA</Name>
-					<BitSize>1632</BitSize>
-					<BaseType GUID="{53C30AB3-7287-3F6A-EF14-06075DE6FBFA}">Tc2_MC2.MC_Reset</BaseType>
-					<BitOffs>4077536</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>p_MotorControl_ST.Mc_ResetServoB</Name>
-					<BitSize>1632</BitSize>
-					<BaseType GUID="{53C30AB3-7287-3F6A-EF14-06075DE6FBFA}">Tc2_MC2.MC_Reset</BaseType>
-					<BitOffs>4079168</BitOffs>
+					<BitOffs>4092768</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.ServoResetOK</Name>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
-					<BitOffs>4080800</BitOffs>
+					<BitOffs>4092784</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.ServosReady</Name>
 					<Comment><![CDATA[ 	]]></Comment>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
-					<BitOffs>4080808</BitOffs>
+					<BitOffs>4092792</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_FunctionGenerators.PositionBuffer</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+					<BitOffs>4092800</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>p_MotorControl_ST.MC_GearOutDrive1</Name>
+					<BitSize>1792</BitSize>
+					<BaseType GUID="{F1D3EB31-D4B5-27A6-B3E5-55A26C60F4A2}">Tc2_MC2.MC_GearOut</BaseType>
+					<BitOffs>4093984</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>p_MotorControl_ST.Mc_ResetServoA</Name>
+					<BitSize>1632</BitSize>
+					<BaseType GUID="{53C30AB3-7287-3F6A-EF14-06075DE6FBFA}">Tc2_MC2.MC_Reset</BaseType>
+					<BitOffs>4095776</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>p_MotorControl_ST.Mc_ResetServoB</Name>
+					<BitSize>1632</BitSize>
+					<BaseType GUID="{53C30AB3-7287-3F6A-EF14-06075DE6FBFA}">Tc2_MC2.MC_Reset</BaseType>
+					<BitOffs>4097408</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.st_Buffermode</Name>
@@ -17603,25 +18084,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
  SoeResetRisingEdge :r_trig;]]></Comment>
 					<BitSize>16</BitSize>
 					<BaseType GUID="{F5806EC4-718D-E8F8-1CEA-A88875F8ECAA}">Tc2_MC2.MC_BufferMode</BaseType>
-					<BitOffs>4080816</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>p_MotorControl_ST.FbMc_PowerServoB</Name>
-					<BitSize>768</BitSize>
-					<BaseType GUID="{B41F008E-1CA2-908B-6B03-3887C3A13CF9}">Tc2_MC2.MC_Power</BaseType>
-					<BitOffs>4080832</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>p_MotorControl_ST.FbMc_PowerServoA</Name>
-					<BitSize>768</BitSize>
-					<BaseType GUID="{B41F008E-1CA2-908B-6B03-3887C3A13CF9}">Tc2_MC2.MC_Power</BaseType>
-					<BitOffs>4081600</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>p_MotorControl_ST.jogbuttontimer</Name>
-					<BitSize>224</BitSize>
-					<BaseType GUID="{D5E96B25-A263-741D-2099-FBB6B0108C6C}">Tc2_Standard.TON</BaseType>
-					<BitOffs>4082368</BitOffs>
+					<BitOffs>4099040</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.n_Override</Name>
@@ -17630,110 +18093,176 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 					<Default>
 						<Value>100</Value>
 					</Default>
-					<BitOffs>4082592</BitOffs>
+					<BitOffs>4099056</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>p_MotorControl_ST.FbMc_PowerServoB</Name>
+					<BitSize>768</BitSize>
+					<BaseType GUID="{B41F008E-1CA2-908B-6B03-3887C3A13CF9}">Tc2_MC2.MC_Power</BaseType>
+					<BitOffs>4099072</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>p_MotorControl_ST.FbMc_PowerServoA</Name>
+					<BitSize>768</BitSize>
+					<BaseType GUID="{B41F008E-1CA2-908B-6B03-3887C3A13CF9}">Tc2_MC2.MC_Power</BaseType>
+					<BitOffs>4099840</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>p_MotorControl_ST.jogbuttontimer</Name>
+					<BitSize>224</BitSize>
+					<BaseType GUID="{D5E96B25-A263-741D-2099-FBB6B0108C6C}">Tc2_Standard.TON</BaseType>
+					<BitOffs>4100608</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.SoeReset</Name>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000001}">BYTE</BaseType>
-					<BitOffs>4082608</BitOffs>
+					<BitOffs>4100832</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.b_debugSetEncoders</Name>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>4082616</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>p_MotorControl_ST.EncodeCalibrationRequest_RisingEdge</Name>
-					<BitSize>64</BitSize>
-					<BaseType GUID="{70150797-2620-D4AA-7871-9945F55686A8}">Tc2_Standard.R_TRIG</BaseType>
-					<BitOffs>4082624</BitOffs>
+					<BitOffs>4100840</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.debugging_belt</Name>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>4082688</BitOffs>
+					<BitOffs>4100848</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.BeltForceBit</Name>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>4082696</BitOffs>
+					<BitOffs>4100856</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>p_MotorControl_ST.EncodeCalibrationRequest_RisingEdge</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{70150797-2620-D4AA-7871-9945F55686A8}">Tc2_Standard.R_TRIG</BaseType>
+					<BitOffs>4100864</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.BufferMode</Name>
 					<BitSize>16</BitSize>
 					<BaseType GUID="{F5806EC4-718D-E8F8-1CEA-A88875F8ECAA}">Tc2_MC2.MC_BufferMode</BaseType>
-					<BitOffs>4082704</BitOffs>
+					<BitOffs>4100928</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.state</Name>
 					<Comment><![CDATA[ State machine current step]]></Comment>
 					<BitSize>16</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
-					<BitOffs>4082720</BitOffs>
+					<BitOffs>4100944</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.b_ServosReady</Name>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>4082736</BitOffs>
+					<BitOffs>4100960</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.b_Faulted</Name>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>4082744</BitOffs>
+					<BitOffs>4100968</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.testbool</Name>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>4082752</BitOffs>
+					<BitOffs>4100976</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.b_DEBUG_STOP</Name>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>4082760</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>p_MotorControl_ST.b_EncoderCalibrationRequest</Name>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>4082768</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>P_MotorControl.error</Name>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>4082776</BitOffs>
+					<BitOffs>4100984</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.ServoDisableTimeout</Name>
 					<BitSize>224</BitSize>
 					<BaseType GUID="{D5E96B25-A263-741D-2099-FBB6B0108C6C}">Tc2_Standard.TON</BaseType>
-					<BitOffs>4082784</BitOffs>
+					<BitOffs>4100992</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>p_MotorControl_ST.b_EncoderCalibrationRequest</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<BitOffs>4101216</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_MotorControl.error</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<BitOffs>4101224</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.RequestedState</Name>
 					<BitSize>16</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
-					<BitOffs>4083008</BitOffs>
+					<BitOffs>4101232</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.Requested</Name>
 					<BitSize>16</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
-					<BitOffs>4083024</BitOffs>
+					<BitOffs>4101248</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.n_JogReq</Name>
 					<BitSize>16</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
-					<BitOffs>4083040</BitOffs>
+					<BitOffs>4101264</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>p_MotorControl_ST.ServoEnableRtrig</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{70150797-2620-D4AA-7871-9945F55686A8}">Tc2_Standard.R_TRIG</BaseType>
+					<BitOffs>4101280</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>p_MotorControl_ST.PowerEnableRtrig</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{70150797-2620-D4AA-7871-9945F55686A8}">Tc2_Standard.R_TRIG</BaseType>
+					<BitOffs>4101344</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>p_MotorControl_ST.MoveDoneRtrig</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{70150797-2620-D4AA-7871-9945F55686A8}">Tc2_Standard.R_TRIG</BaseType>
+					<BitOffs>4101408</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_MotorControl.fJogVelocity</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+					<BitOffs>4102848</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_MotorControl.MC_Halt_ServoB</Name>
+					<BitSize>7616</BitSize>
+					<BaseType GUID="{71DCC587-282E-2DE3-E772-9949F9F261D9}">Tc2_MC2.MC_Halt</BaseType>
+					<BitOffs>4102912</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_MotorControl.MC_Halt_ServoA</Name>
+					<BitSize>7616</BitSize>
+					<BaseType GUID="{71DCC587-282E-2DE3-E772-9949F9F261D9}">Tc2_MC2.MC_Halt</BaseType>
+					<BitOffs>4110528</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_MotorControl.ServoA_SPGen</Name>
+					<BitSize>4416</BitSize>
+					<BaseType GUID="{B1F83B48-B022-0180-B80D-36A19F282585}">FB_UseExtSetpointGen</BaseType>
+					<BitOffs>4118144</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_MotorControl.ServoB_SPGen</Name>
+					<BitSize>4416</BitSize>
+					<BaseType GUID="{B1F83B48-B022-0180-B80D-36A19F282585}">FB_UseExtSetpointGen</BaseType>
+					<BitOffs>4122560</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_MotorControl.nSawSPError</Name>
@@ -17742,13 +18271,138 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 					<Default>
 						<Value>0</Value>
 					</Default>
-					<BitOffs>4083056</BitOffs>
+					<BitOffs>4126976</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_MotorControl.b_ExecuteGearIn</Name>
 					<BitSize>8</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<BitOffs>4084448</BitOffs>
+					<BitOffs>4126992</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_MotorControl.bAbsMoveBExecute</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<BitOffs>4127000</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_MotorControl.r_trig_0</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{70150797-2620-D4AA-7871-9945F55686A8}">Tc2_Standard.R_TRIG</BaseType>
+					<BitOffs>4127008</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Global_Variables.EnablemsClock</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>4127088</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Global_Variables.msClockValid</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>4127096</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_MotorControl.MC_GearInA</Name>
+					<BitSize>6656</BitSize>
+					<BaseType GUID="{33058C35-893B-E4F5-1E79-E6A0F3F82064}">Tc2_MC2.MC_GearIn</BaseType>
+					<BitOffs>4127104</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_MotorControl.MC_MoveRelativeA</Name>
+					<BitSize>7808</BitSize>
+					<BaseType GUID="{B72F3477-58C2-D7EC-5728-B5BD5E108AF3}">Tc2_MC2.MC_MoveRelative</BaseType>
+					<BitOffs>4133760</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_MotorControl.MC_MoveAbsolute_B</Name>
+					<Comment><![CDATA[	MC_MoveAbsolute_A: MC_MoveAbsolute;]]></Comment>
+					<BitSize>7808</BitSize>
+					<BaseType GUID="{0D215B5D-6624-2E80-06EE-F0FC0A990E93}">Tc2_MC2.MC_MoveAbsolute</BaseType>
+					<BitOffs>4141568</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>P_MotorControl.MC_MoveAbsolute_A</Name>
+					<BitSize>7872</BitSize>
+					<BaseType GUID="{6D4E99C3-E800-5ADC-DFF6-460D8340599B}">Tc2_MC2.MC_MoveContinuousAbsolute</BaseType>
+					<BitOffs>4149376</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Global_Variables.TcJoy</Name>
+					<BitSize>1984</BitSize>
+					<BaseType GUID="{1E725CC3-8204-4DAB-9491-272E328292C3}">FB_TcJoy</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>4159392</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Global_Variables.HmiButtonData0</Name>
+					<BitSize>32</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000009}">DINT</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>4161376</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Global_Variables.HmiButtonData1</Name>
+					<BitSize>32</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000009}">DINT</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>4161408</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Global_Variables.HmiBoolDword0</Name>
+					<BitSize>32</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000009}">DINT</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>4161440</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Global_Variables.HmiBoolDword1</Name>
+					<BitSize>32</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000009}">DINT</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>4161472</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Global_Variables.b_GearIn</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>4161504</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.SaferyOK</Name>
@@ -17760,49 +18414,53 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>4084472</BitOffs>
+					<BitOffs>4161512</BitOffs>
 				</Symbol>
 				<Symbol>
-					<Name>P_MotorControl.MC_Halt_ServoB</Name>
-					<BitSize>7616</BitSize>
-					<BaseType GUID="{71DCC587-282E-2DE3-E772-9949F9F261D9}">Tc2_MC2.MC_Halt</BaseType>
-					<BitOffs>4084480</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>P_MotorControl.MC_Halt_ServoA</Name>
-					<BitSize>7616</BitSize>
-					<BaseType GUID="{71DCC587-282E-2DE3-E772-9949F9F261D9}">Tc2_MC2.MC_Halt</BaseType>
-					<BitOffs>4092096</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>P_MotorControl.ServoA_SPGen</Name>
-					<BitSize>4416</BitSize>
-					<BaseType GUID="{B1F83B48-B022-0180-B80D-36A19F282585}">FB_UseExtSetpointGen</BaseType>
-					<BitOffs>4099712</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>P_MotorControl.ServoB_SPGen</Name>
-					<BitSize>4416</BitSize>
-					<BaseType GUID="{B1F83B48-B022-0180-B80D-36A19F282585}">FB_UseExtSetpointGen</BaseType>
-					<BitOffs>4104128</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>P_MotorControl.r_trig_0</Name>
+					<Name>Global_Variables.HMI_Servo1_Pos</Name>
 					<BitSize>64</BitSize>
-					<BaseType GUID="{70150797-2620-D4AA-7871-9945F55686A8}">Tc2_Standard.R_TRIG</BaseType>
-					<BitOffs>4108544</BitOffs>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>4161536</BitOffs>
 				</Symbol>
 				<Symbol>
-					<Name>P_MotorControl.MC_GearInA</Name>
-					<BitSize>6656</BitSize>
-					<BaseType GUID="{33058C35-893B-E4F5-1E79-E6A0F3F82064}">Tc2_MC2.MC_GearIn</BaseType>
-					<BitOffs>4108608</BitOffs>
+					<Name>Global_Variables.HMI_Servo1_Vel</Name>
+					<Comment><![CDATA[HMI_Servo1_Torque : LREAL;]]></Comment>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>4161600</BitOffs>
 				</Symbol>
 				<Symbol>
-					<Name>P_MotorControl.MC_MoveRelativeA</Name>
-					<BitSize>7808</BitSize>
-					<BaseType GUID="{B72F3477-58C2-D7EC-5728-B5BD5E108AF3}">Tc2_MC2.MC_MoveRelative</BaseType>
-					<BitOffs>4115264</BitOffs>
+					<Name>Global_Variables.HMI_Servo2_Pos</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>4161728</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Global_Variables.HMI_Servo2_Vel</Name>
+					<Comment><![CDATA[HMI_Servo2_Torque : LREAL;]]></Comment>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>4161792</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.PowerEnabled</Name>
@@ -17814,7 +18472,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>4125232</BitOffs>
+					<BitOffs>4161920</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.DriveAxis1</Name>
@@ -17825,7 +18483,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>4125312</BitOffs>
+					<BitOffs>4161984</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>IO.DriveAxis2</Name>
@@ -17836,7 +18494,18 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>4134336</BitOffs>
+					<BitOffs>4171072</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>SAFETY.GLOBAL_SAFETY_NOT_OK</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>4180168</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>Control.b_UseExternalSetpointGenerator</Name>
@@ -17848,18 +18517,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>4143448</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>IO.Laser_mm</Name>
-					<BitSize>64</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4143552</BitOffs>
+					<BitOffs>4180208</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>Control.b_HaltRequest</Name>
@@ -17871,7 +18529,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>4143616</BitOffs>
+					<BitOffs>4180216</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>Control.b_HaltRequestExecute</Name>
@@ -17883,7 +18541,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>4143624</BitOffs>
+					<BitOffs>4180256</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>Control.n_ServosHalted</Name>
@@ -17895,7 +18553,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>4143632</BitOffs>
+					<BitOffs>4180264</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>Control.b_Servos_Halted</Name>
@@ -17907,7 +18565,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>4143640</BitOffs>
+					<BitOffs>4180272</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>Control.b_EnableServosFinal</Name>
@@ -17919,201 +18577,10 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>4143648</BitOffs>
+					<BitOffs>4180280</BitOffs>
 				</Symbol>
 				<Symbol>
-					<Name>Control.b_SetpointGeneratorFault</Name>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4143656</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Control.b_EnableServosReq</Name>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4143664</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Control.b_RequestServoReset</Name>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4143672</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Control.sp_ServoB</Name>
-					<BitSize>256</BitSize>
-					<BaseType GUID="{44BEA87E-4C15-FEE3-D6A6-ABC13D244EDD}">Setpoint_interface</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4143680</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Control.sp_ServoA</Name>
-					<BitSize>256</BitSize>
-					<BaseType GUID="{44BEA87E-4C15-FEE3-D6A6-ABC13D244EDD}">Setpoint_interface</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4143936</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Control.bExecMoveRelA</Name>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4144192</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Control.b_ExecuteGearIn</Name>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4144200</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Global_Variables.EnablemsClock</Name>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4144208</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Global_Variables.msClockValid</Name>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4144216</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Global_Variables.TcJoy</Name>
-					<BitSize>1984</BitSize>
-					<BaseType GUID="{1E725CC3-8204-4DAB-9491-272E328292C3}">FB_TcJoy</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4144224</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Global_Variables.HmiButtonData0</Name>
-					<BitSize>32</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000009}">DINT</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4146208</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Global_Variables.HmiButtonData1</Name>
-					<BitSize>32</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000009}">DINT</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4146240</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Global_Variables.HmiBoolDword0</Name>
-					<BitSize>32</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000009}">DINT</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4146272</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Global_Variables.HmiBoolDword1</Name>
-					<BitSize>32</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000009}">DINT</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4146304</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Global_Variables.b_GearIn</Name>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4146336</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>SAFETY.GLOBAL_SAFETY_NOT_OK</Name>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4146344</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Constants.bLittleEndian</Name>
-					<Comment><![CDATA[ Does the target support multiple cores?]]></Comment>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<Default>
-						<Value>1</Value>
-					</Default>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4146360</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Global_Variables.HMI_Servo1_Pos</Name>
+					<Name>IO.Laser_mm</Name>
 					<BitSize>64</BitSize>
 					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
 					<Properties>
@@ -18121,62 +18588,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>4146368</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Global_Variables.HMI_Servo1_Torque</Name>
-					<BitSize>64</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4146432</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Global_Variables.HMI_Servo1_Vel</Name>
-					<BitSize>64</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4146496</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Global_Variables.HMI_Servo2_Pos</Name>
-					<BitSize>64</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4146624</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Global_Variables.HMI_Servo2_Torque</Name>
-					<BitSize>64</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4146688</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Global_Variables.HMI_Servo2_Vel</Name>
-					<BitSize>64</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>4146752</BitOffs>
+					<BitOffs>4180288</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>RecipeData.recipememory</Name>
@@ -18191,7 +18603,260 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>4146880</BitOffs>
+					<BitOffs>4180352</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.b_SetpointGeneratorFault</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119559616</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.b_RequestCSVRead</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119559624</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.b_EnableServosReq</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119559632</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.b_RequestServoReset</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119559640</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.n_RowsReadfromCsv</Name>
+					<BitSize>32</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119559648</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.n_LastReadCSVRow</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119559680</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.sp_ServoB</Name>
+					<BitSize>256</BitSize>
+					<BaseType GUID="{44BEA87E-4C15-FEE3-D6A6-ABC13D244EDD}">Setpoint_interface</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119559744</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.sp_ServoA</Name>
+					<BitSize>256</BitSize>
+					<BaseType GUID="{44BEA87E-4C15-FEE3-D6A6-ABC13D244EDD}">Setpoint_interface</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119560000</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.bExecMoveRelA</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119560256</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.b_ExecuteGearIn</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119560264</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.bAbsMoveAExecute</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119560272</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.bAbsMoveBExecute</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119560280</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.bPlayCsv</Name>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119560288</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.RequestedState</Name>
+					<BitSize>16</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119560304</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.RequestedMoveVelocity</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+					<Default>
+						<Value>50</Value>
+					</Default>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119560320</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.fTargetPosA</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119560384</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.fTargetPosB</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119560448</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.fTargetVelA</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119560512</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.fTargetVelB</Name>
+					<BitSize>64</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-00000000000E}">LREAL</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119560576</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Control.nPlayBackIndex</Name>
+					<BitSize>32</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000008}">UDINT</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119560640</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Constants.bLittleEndian</Name>
+					<Comment><![CDATA[ Does the target support multiple cores?]]></Comment>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Default>
+						<Value>1</Value>
+					</Default>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119560672</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Constants.bSimulationMode</Name>
+					<Comment><![CDATA[ Does the target support multiple cores?]]></Comment>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Default>
+						<Value>0</Value>
+					</Default>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119560680</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>Constants.RuntimeVersion</Name>
@@ -18221,7 +18886,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>119526144</BitOffs>
+					<BitOffs>119560688</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>Constants.CompilerVersion</Name>
@@ -18251,37 +18916,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>119526208</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Constants.bSimulationMode</Name>
-					<Comment><![CDATA[ Does the target support multiple cores?]]></Comment>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<Default>
-						<Value>0</Value>
-					</Default>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>119526272</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>Constants.bFPUSupport</Name>
-					<Comment><![CDATA[ Does the target support multiple cores?]]></Comment>
-					<BitSize>8</BitSize>
-					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
-					<Default>
-						<Value>1</Value>
-					</Default>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-					</Properties>
-					<BitOffs>119526280</BitOffs>
+					<BitOffs>119560752</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>Constants.nRegisterSize</Name>
@@ -18296,7 +18931,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>119526288</BitOffs>
+					<BitOffs>119560816</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>Constants.nPackMode</Name>
@@ -18311,7 +18946,22 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>119526304</BitOffs>
+					<BitOffs>119560832</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>Constants.bFPUSupport</Name>
+					<Comment><![CDATA[ Does the target support multiple cores?]]></Comment>
+					<BitSize>8</BitSize>
+					<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+					<Default>
+						<Value>1</Value>
+					</Default>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119560848</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>Constants.bMulticoreSupport</Name>
@@ -18325,7 +18975,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>119526320</BitOffs>
+					<BitOffs>119560856</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>Constants.RuntimeVersionNumeric</Name>
@@ -18340,7 +18990,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>119526336</BitOffs>
+					<BitOffs>119560864</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>Constants.CompilerVersionNumeric</Name>
@@ -18355,7 +19005,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>119526368</BitOffs>
+					<BitOffs>119560896</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>TwinCAT_LicenseInfoVarList._LicenseInfo</Name>
@@ -18420,7 +19070,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>TcVarGlobal</Name>
 						</Property>
 					</Properties>
-					<BitOffs>119526400</BitOffs>
+					<BitOffs>119560928</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>TwinCAT_SystemInfoVarList._AppInfo</Name>
@@ -18434,21 +19084,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>no_init</Name>
 						</Property>
 					</Properties>
-					<BitOffs>119527424</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>TwinCAT_SystemInfoVarList._TaskInfo</Name>
-					<BitSize>1024</BitSize>
-					<BaseType GUID="{45C5D3F5-A54A-27C8-8AF0-3ABCE4A1006D}">ARRAY [1..1] OF PLC.PlcTaskSystemInfo</BaseType>
-					<Properties>
-						<Property>
-							<Name>TcVarGlobal</Name>
-						</Property>
-						<Property>
-							<Name>no_init</Name>
-						</Property>
-					</Properties>
-					<BitOffs>119529472</BitOffs>
+					<BitOffs>119561952</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>TwinCAT_SystemInfoVarList._TaskPouOid_PlcTask</Name>
@@ -18462,7 +19098,21 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>no_init</Name>
 						</Property>
 					</Properties>
-					<BitOffs>119530496</BitOffs>
+					<BitOffs>119564000</BitOffs>
+				</Symbol>
+				<Symbol>
+					<Name>TwinCAT_SystemInfoVarList._TaskInfo</Name>
+					<BitSize>1024</BitSize>
+					<BaseType GUID="{45C5D3F5-A54A-27C8-8AF0-3ABCE4A1006D}">ARRAY [1..1] OF PLC.PlcTaskSystemInfo</BaseType>
+					<Properties>
+						<Property>
+							<Name>TcVarGlobal</Name>
+						</Property>
+						<Property>
+							<Name>no_init</Name>
+						</Property>
+					</Properties>
+					<BitOffs>119564032</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>TwinCAT_SystemInfoVarList._TaskOid_PlcTask</Name>
@@ -18476,7 +19126,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Name>no_init</Name>
 						</Property>
 					</Properties>
-					<BitOffs>119530528</BitOffs>
+					<BitOffs>119565056</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>TwinCAT_SystemInfoVarList.__PlcTask</Name>
@@ -18497,31 +19147,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 							<Value>PlcTask</Value>
 						</Property>
 					</Properties>
-					<BitOffs>119530560</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>p_MotorControl_ST.ServoEnableRtrig</Name>
-					<BitSize>64</BitSize>
-					<BaseType GUID="{70150797-2620-D4AA-7871-9945F55686A8}">Tc2_Standard.R_TRIG</BaseType>
-					<BitOffs>119662016</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>p_MotorControl_ST.PowerEnableRtrig</Name>
-					<BitSize>64</BitSize>
-					<BaseType GUID="{70150797-2620-D4AA-7871-9945F55686A8}">Tc2_Standard.R_TRIG</BaseType>
-					<BitOffs>119662080</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>P_FaultMonitoring.st_StateDwordDrive1</Name>
-					<BitSize>32</BitSize>
-					<BaseType GUID="{CBC83B73-B816-4597-A9E5-2B03263CA131}">MC.NCTOPLC_AXIS_REF_STATE</BaseType>
-					<BitOffs>119662688</BitOffs>
-				</Symbol>
-				<Symbol>
-					<Name>P_FaultMonitoring.st_StateDwordDrive2</Name>
-					<BitSize>32</BitSize>
-					<BaseType GUID="{CBC83B73-B816-4597-A9E5-2B03263CA131}">MC.NCTOPLC_AXIS_REF_STATE</BaseType>
-					<BitOffs>119662720</BitOffs>
+					<BitOffs>119565088</BitOffs>
 				</Symbol>
 			</DataArea>
 		</DataAreas>
@@ -18532,15 +19158,15 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 			</Property>
 			<Property>
 				<Name>ChangeDate</Name>
-				<Value>2020-07-15T11:56:32</Value>
+				<Value>2020-07-17T15:43:54</Value>
 			</Property>
 			<Property>
 				<Name>GeneratedCodeSize</Name>
-				<Value>180224</Value>
+				<Value>167936</Value>
 			</Property>
 			<Property>
 				<Name>GlobalDataSize</Name>
-				<Value>14598144</Value>
+				<Value>14577664</Value>
 			</Property>
 		</Properties>
 		<InstanceName>HorstmanPLC Instance</InstanceName>
@@ -18565,11 +19191,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 			</Value>
 			<Value>
 				<Name>Application Timestamp</Name>
-				<Value>1594814192</Value>
-			</Value>
-			<Value>
-				<Name>Symbolic Mapping</Name>
-				<EnumText>FALSE</EnumText>
+				<Value>1595000634</Value>
 			</Value>
 			<Value>
 				<Name>Task Module OIDs</Name>
@@ -18581,7 +19203,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 			</Value>
 			<Value>
 				<Name>Task Module Names</Name>
-				<Data>506c635461736b000000</Data>
+				<Data>506c635461736b000032</Data>
 			</Value>
 			<Value>
 				<Name>Task Caller OIDs</Name>

@@ -12,14 +12,15 @@ VAR_GLOBAL
 	msClockValid: BOOL;
 	
 	HMI_Servo1_Pos : LREAL;
-	HMI_Servo1_Torque : LREAL;
+	//HMI_Servo1_Torque : LREAL;
 	HMI_Servo1_Vel : LREAL;
 	HMI_Servo1_Force AT %I* :LREAL;
 	
 	HMI_Servo2_Pos : LREAL;
-	HMI_Servo2_Torque : LREAL;
+	//HMI_Servo2_Torque : LREAL;
 	HMI_Servo2_Vel : LREAL;
 	HMI_Servo2_Force AT %I* :LREAL;
+	
 	
 
 	

@@ -7,6 +7,9 @@
     <RootNamespace>TcScopeYT</RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="RecordingDisplay.tcscopex">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="YT Scope Project.tcscopex">
       <SubType>Content</SubType>
     </Content>

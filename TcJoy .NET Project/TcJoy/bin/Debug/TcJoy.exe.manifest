@@ -162,14 +162,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TcJoy.exe" size="110592">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="TcJoy.exe" size="104448">
       <assemblyIdentity name="TcJoy" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>1OprJANAFvwXo2qnQk+qqH34YiIbnw1pQW0rHujp50s=</dsig:DigestValue>
+        <dsig:DigestValue>sBYBN07uQtgow8EVj3G+pj/qqvLmN5wjDXacU1fvRS4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

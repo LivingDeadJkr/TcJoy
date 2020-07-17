@@ -10,13 +10,25 @@ n_ServosHalted :usint; // each servo will set a 1 here in it's respective bit wh
 b_Servos_Halted :BOOL; // if all servos are in halt state, we can drop enable.
 b_EnableServosFinal :BOOL; // if true, the servos will try to enable
 b_SetpointGeneratorFault: BOOL;
-
+n_RowsReadfromCsv : UDINT;
+n_LastReadCSVRow :LREAL;
+b_RequestCSVRead :BOOL;
 sp_ServoB: Setpoint_Interface;
 sp_ServoA: Setpoint_Interface;
 	b_EnableServosReq: BOOL;
 	b_RequestServoReset: BOOL;
 	bExecMoveRelA: BOOL;
 	b_ExecuteGearIn: BOOL;
+	RequestedMoveVelocity : LREAL := 50;
+	bAbsMoveAExecute: BOOL;
+	fTargetPosA: LREAL;
+	fTargetPosB: LREAL;
+	fTargetVelA: LREAL;
+	bAbsMoveBExecute: BOOL;
+	bPlayCsv: Bool;
+	fTargetVelB: LREAL;
+	nPlayBackIndex: UDINT;
+	RequestedState: INT;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

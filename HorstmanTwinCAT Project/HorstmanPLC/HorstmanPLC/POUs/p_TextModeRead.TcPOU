@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="p_TextModeRead" Id="{fa6f1af0-18e9-47b8-a4ac-413c06f18b26}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM p_TextModeRead
+
 VAR
 	bRead			: BOOL := FALSE;(* Rising edge starts program execution *)
 	sNetId			: T_AmsNetId := '';	(* TwinCAT system network address *)
-	sFileName	: T_MaxString := 'C:\Twincat\Recipe\file.csv';(* CSV source file path and name *)
+	sFileName	: T_MaxString := 'C:\Twincat\FtpRoot\file.csv';(* CSV source file path and name *)
 	sCSVLine		: T_MaxString := '';(* Single CSV text line (row, record), we are using string as record buffer (your are able to see read fields)  *)
 	sCSVField		: T_MaxString := '';(* Single CSV field value (column, record field) *)
 	bBusy			: BOOL;
@@ -21,11 +22,24 @@ VAR
 	fbReader		: FB_CSVMemBufferReader;(* Helper function block used to parse CSV data bytes (single record line) *)
 
 	database		: ARRAY[0..1000] OF STRING(64);(* Target PLC database *)
+	IndexList : ARRAY [0..1000] OF INT;
 	
+	b_initialized: BOOL;
+	i: INT;
 END_VAR
 ]]></Declaration>
     <Implementation>
-      <ST><![CDATA[CASE step OF
+      <ST><![CDATA[IF NOT b_initialized THEN
+	FOR i := 0 TO 1000 DO
+		
+		indexlist[i] := i;
+	END_FOR
+	b_initialized := TRUE;
+END_IF
+
+bRead := control.b_RequestCSVRead;
+
+CASE step OF
 	0:	(* Wait for rising edge at bRead variable *)
 		IF bRead THEN
 			bRead 	:= FALSE;
@@ -91,7 +105,7 @@ END_VAR
 				IF ( nRow <= 1000 ) THEN
 					
 						database[nRow] := CSVFIELD_TO_STRING( sCSVField, FALSE );(* TODO: Save or use the field value in your application *)
-					
+					Control.n_LastReadCSVRow := STRING_TO_LREAL(database[nRow]);
 				END_IF
 
 				nColumn := nColumn + 1;(* Increment number of read columns *)
@@ -99,7 +113,7 @@ END_VAR
 					nRow 		:= nRow + 1;(* Increment number of read records *)
 					nColumn 	:= 0;(* Reset number of columns *)
 				END_IF
-
+control.n_RowsReadfromCsv := nrow;
 			ELSE(* Error: End of record reached or all fields read *)
 				step := 3;(* Try to read next line *)
 			END_IF
@@ -129,6 +143,14 @@ END_VAR
 END_CASE]]></ST>
     </Implementation>
     <LineIds Name="p_TextModeRead">
+      <LineId Id="149" Count="0" />
+      <LineId Id="151" Count="0" />
+      <LineId Id="157" Count="0" />
+      <LineId Id="154" Count="1" />
+      <LineId Id="158" Count="0" />
+      <LineId Id="152" Count="0" />
+      <LineId Id="162" Count="1" />
+      <LineId Id="150" Count="0" />
       <LineId Id="25" Count="100" />
       <LineId Id="5" Count="0" />
     </LineIds>

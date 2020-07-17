@@ -241,7 +241,9 @@ Public Class Ads_Link
             AddHandler tmp.KeyUp, Sub()
                                       Try
 
+#Disable Warning BC42104 ' Variable is used before it has been assigned a value
                                           If var.SymbolInfo.DataTypeId() = AdsDatatypeId.ADST_INT32 Then
+#Enable Warning BC42104 ' Variable is used before it has been assigned a value
                                               AdsClient.WriteSymbol(Variable, Convert.ToInt32(tmp.Text), False)
                                           ElseIf var.SymbolInfo.DataTypeId() = AdsDatatypeId.ADST_INT16 Then
                                               AdsClient.WriteSymbol(Variable, Convert.ToInt16(tmp.Text), False)
@@ -318,11 +320,11 @@ End Class
 
 Public Class AdsLinkVariable
 
-    Public Property tagName As String
-    Public Property action As Object
-    Public Property dotNetDataType As Type = Nothing
+    Public Property TagName As String
+    Public Property Action As Object
+    Public Property DotNetDataType As Type = Nothing
     Public Property AdsDataSize As Integer
-    Public Property handle As Integer = 0
+    Public Property Handle As Integer = 0
     Public Property SymbolInfo As ITcAdsSymbol5
     Public Property UI_Element As Object
 

@@ -10,19 +10,34 @@ END_VAR
       <ST><![CDATA[
 Global_variables.HMI_Servo1_Pos := io.DriveAxis1.NcToPlc.ActPos;
 Global_variables.HMI_Servo1_Vel := io.DriveAxis1.NcToPlc.ActVelo;
-Global_variables.HMI_Servo1_Torque := io.DriveAxis1.NcToPlc.ActTorque;
+Global_variables.HMI_Servo1_force := io.LoadCell1;
 
 Global_variables.HMI_Servo2_Pos := io.DriveAxis2.NcToPlc.ActPos;
 Global_variables.HMI_Servo2_Vel := io.DriveAxis1.NcToPlc.ActVelo;
-Global_variables.HMI_Servo2_Torque := io.DriveAxis2.NcToPlc.ActTorque;
+Global_variables.HMI_Servo2_force := io.LoadCell2;
 
 
 
 Control.b_RequestServoReset := Global_variables.HmiButtonData0.3; // also passes fault reset to servo code, might want to move this to the fault monitoring routine later?
 
 p_Faultmonitoring.b_FaultReset := Global_variables.HmiButtonData0.3; //pass fault reset to fault monitoring routine.
+IF NOT p_TextmodeRead.bRead AND Global_variables.HmiButtonData0.5 THEN
+control.b_RequestCSVRead :=   TRUE; 
+ELSE
+	control.b_RequestCSVRead :=   FALSE;
+END_IF
 IO.Laser_mm := UINT_TO_LREAL(io.LaserDistanceValue)  / 10.0;
 
+IF Global_variables.HmiButtonData0.4 AND p_motorcontrol_st.state = 2 THEN // if in ready state, and asked to go to jog mode, jump to Gear In Request.
+	// if halted and ready, switch to jogging mode. 
+	Control.RequestedState := 5;
+END_IF
+
+
+IF Global_variables.HmiButtonData0.6 AND p_motorcontrol_st.state = 6 THEN // if in ready state, and asked to go to jog mode, jump to Gear In Request.
+	// if halted and ready, switch to jogging mode. 
+	Control.RequestedState :=  7;
+END_IF
 
 
 Global_variables.HmiBoolDword0.0 := io.DriveEnabled1;
@@ -54,8 +69,15 @@ Global_variables.HmiBoolDword0.7 := p_Faultmonitoring.b_Faulted;
       <LineId Id="28" Count="0" />
       <LineId Id="94" Count="0" />
       <LineId Id="87" Count="0" />
+      <LineId Id="100" Count="0" />
+      <LineId Id="99" Count="0" />
+      <LineId Id="102" Count="1" />
+      <LineId Id="101" Count="0" />
       <LineId Id="39" Count="0" />
+      <LineId Id="108" Count="3" />
       <LineId Id="54" Count="0" />
+      <LineId Id="113" Count="4" />
+      <LineId Id="112" Count="0" />
       <LineId Id="86" Count="0" />
       <LineId Id="55" Count="0" />
       <LineId Id="53" Count="0" />

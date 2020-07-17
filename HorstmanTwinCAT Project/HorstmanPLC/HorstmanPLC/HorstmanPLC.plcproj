@@ -69,12 +69,6 @@
     <Compile Include="POUs\p_MotorControl_ST.TcPOU">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="POUs\P_ReadCsv.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="POUs\P_SequenceReader.TcPOU">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="POUs\p_TextModeRead.TcPOU">
       <SubType>Code</SubType>
     </Compile>

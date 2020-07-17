@@ -73,33 +73,33 @@ Module PLC_IO_Polling
 
         BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".bControllerConnected", AdsDatatypeId.ADST_BIT, False, True))
 
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".Start_Button", AdsDatatypeId.ADST_BIT, False, True))
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".Back_Button", AdsDatatypeId.ADST_BIT, False, True))
+        '  BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".Start_Button", AdsDatatypeId.ADST_BIT, False, True))
+        '  BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".Back_Button", AdsDatatypeId.ADST_BIT, False, True))
 
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".A_Button", AdsDatatypeId.ADST_BIT, False, True))
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".B_Button", AdsDatatypeId.ADST_BIT, False, True))
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".X_Button", AdsDatatypeId.ADST_BIT, False, True))
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".Y_Button", AdsDatatypeId.ADST_BIT, False, True))
+        '  BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".A_Button", AdsDatatypeId.ADST_BIT, False, True))
+        '   BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".B_Button", AdsDatatypeId.ADST_BIT, False, True))
+        '  BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".X_Button", AdsDatatypeId.ADST_BIT, False, True))
+        '  BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".Y_Button", AdsDatatypeId.ADST_BIT, False, True))
 
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".LeftShoulder_Button", AdsDatatypeId.ADST_BIT, False, True))
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".RightShoulder_Button", AdsDatatypeId.ADST_BIT, False, True))
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".LeftStick_Button", AdsDatatypeId.ADST_BIT, False, True))
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".RightStick_Button", AdsDatatypeId.ADST_BIT, False, True))
+        'BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".LeftShoulder_Button", AdsDatatypeId.ADST_BIT, False, True))
+        ' BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".RightShoulder_Button", AdsDatatypeId.ADST_BIT, False, True))
+        ' BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".LeftStick_Button", AdsDatatypeId.ADST_BIT, False, True))
+        ' BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".RightStick_Button", AdsDatatypeId.ADST_BIT, False, True))
 
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".DPad_Up_Button", AdsDatatypeId.ADST_BIT, False, True))
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".DPad_Left_Button", AdsDatatypeId.ADST_BIT, False, True))
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".DPad_Right_Button", AdsDatatypeId.ADST_BIT, False, True))
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".DPad_Down_Button", AdsDatatypeId.ADST_BIT, False, True))
+        ' BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".DPad_Up_Button", AdsDatatypeId.ADST_BIT, False, True))
+        ' BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".DPad_Left_Button", AdsDatatypeId.ADST_BIT, False, True))
+        ' BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".DPad_Right_Button", AdsDatatypeId.ADST_BIT, False, True))
+        ' BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".DPad_Down_Button", AdsDatatypeId.ADST_BIT, False, True))
 
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".iLeftStick_X_Axis", AdsDatatypeId.ADST_INT32, False, True))
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".iLeftStick_Y_Axis", AdsDatatypeId.ADST_INT32, False, True))
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".iRightStick_X_Axis", AdsDatatypeId.ADST_INT32, False, True))
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".iRightStick_Y_Axis", AdsDatatypeId.ADST_INT32, False, True))
+        ' BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".iLeftStick_X_Axis", AdsDatatypeId.ADST_INT32, False, True))
+        '  BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".iLeftStick_Y_Axis", AdsDatatypeId.ADST_INT32, False, True))
+        ' BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".iRightStick_X_Axis", AdsDatatypeId.ADST_INT32, False, True))
+        ' BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".iRightStick_Y_Axis", AdsDatatypeId.ADST_INT32, False, True))
 
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".iLeftTrigger_Axis", AdsDatatypeId.ADST_INT32, False, True))
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".iRightTrigger_Axis", AdsDatatypeId.ADST_INT32, False, True))
+        '  BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".iLeftTrigger_Axis", AdsDatatypeId.ADST_INT32, False, True))
+        '  BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".iRightTrigger_Axis", AdsDatatypeId.ADST_INT32, False, True))
 
-        BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".sBatteryInfo", AdsDatatypeId.ADST_STRING, False, True))
+        '  BgTaskData.TagList.Add(New HMI.DataTag(fbPath + ".sBatteryInfo", AdsDatatypeId.ADST_STRING, False, True))
 
         'custom tags
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HmiButtonData0", AdsDatatypeId.ADST_INT32, False, True))
@@ -110,11 +110,11 @@ Module PLC_IO_Polling
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HmiBoolDword0", AdsDatatypeId.ADST_INT32, True, False))
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HmiBoolDword1", AdsDatatypeId.ADST_INT32, True, False))
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo1_Pos", AdsDatatypeId.ADST_REAL32, True, False))
-        BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo1_Torque", AdsDatatypeId.ADST_REAL32, True, False))
+        '   BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo1_Torque", AdsDatatypeId.ADST_REAL32, True, False))
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo1_Vel", AdsDatatypeId.ADST_REAL32, True, False))
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo1_Force", AdsDatatypeId.ADST_REAL32, True, False))
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo2_Pos", AdsDatatypeId.ADST_REAL32, True, False))
-        BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo2_Torque", AdsDatatypeId.ADST_REAL32, True, False))
+        '  BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo2_Torque", AdsDatatypeId.ADST_REAL32, True, False))
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo2_Vel", AdsDatatypeId.ADST_REAL32, True, False))
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.HMI_Servo2_Force", AdsDatatypeId.ADST_REAL32, True, False))
 

@@ -85,7 +85,7 @@ Public Class HMI
 
     Public Sub SendFile()
         ' Get the object used to communicate with the server.
-        Dim request As FtpWebRequest = CType(WebRequest.Create("ftp://192.168.0.88/file.csv"), FtpWebRequest)
+        Dim request As FtpWebRequest = CType(WebRequest.Create("ftp://192.168.0.1/file.csv"), FtpWebRequest)
         request.Method = WebRequestMethods.Ftp.UploadFile
 
         ' This example assumes the FTP site uses anonymous logon.
@@ -475,20 +475,17 @@ Public Class HMI
 
                     Case "Global_variables.HMI_Servo1_Pos"
                         txtAPA.Text = Tag.Value.ToString
-                    Case "Global_variables.HMI_Servo1_Torque"
-                        txtATA.Text = Tag.Value.ToString
                     Case "Global_variables.HMI_Servo1_Vel"
-
+                        txtAVA.Text = Tag.Value.ToString
                     Case "Global_variables.HMI_Servo1_Force"
-                        txtTFA.Text = Tag.Value
+                        txtTFA.Text = Tag.Value.ToString
 
                     Case "Global_variables.HMI_Servo2_Pos"
                         txtAPB.Text = Tag.Value.ToString
-                    Case "Global_variables.HMI_Servo2_Torque"
-                        txtATB.Text = Tag.Value.ToString
                     Case "Global_variables.HMI_Servo2_Vel"
+                        txtAVB.Text = Tag.Value.ToString
                     Case "Global_variables.HMI_Servo2_Force"
-                        txtTFB.Text = Tag.Value
+                        txtTFB.Text = Tag.Value.ToString
 
 
 
@@ -500,119 +497,119 @@ Public Class HMI
                         Tag.Value = myHMIButtonData1
 
                     Case TextBox_TcJoyPath.Text + ".bControllerConnected"
-                        Tag.Value = MyController.IsConnected
+                        Tag.Value = 1
 
-                    Case TextBox_TcJoyPath.Text + ".Start_Button"
-                        Tag.Value = MyController.IsStartPressed
+                        ''  Case TextBox_TcJoyPath.Text + ".Start_Button"
+                        '    Tag.Value = MyController.IsStartPressed
 
-                    Case TextBox_TcJoyPath.Text + ".Back_Button"
-                        Tag.Value = MyController.IsBackPressed
+                        ' Case TextBox_TcJoyPath.Text + ".Back_Button"
+                        '     Tag.Value = MyController.IsBackPressed
 
-                    Case TextBox_TcJoyPath.Text + ".A_Button"
-                        Tag.Value = MyController.IsAPressed
+                        '  Case TextBox_TcJoyPath.Text + ".A_Button"
+                        '      Tag.Value = MyController.IsAPressed
 
-                    Case TextBox_TcJoyPath.Text + ".B_Button"
-                        Tag.Value = MyController.IsBPressed
+                        '  Case TextBox_TcJoyPath.Text + ".B_Button"
+                        '     Tag.Value = MyController.IsBPressed
 
-                    Case TextBox_TcJoyPath.Text + ".X_Button"
-                        Tag.Value = MyController.IsXPressed
+                        ' Case TextBox_TcJoyPath.Text + ".X_Button"
+                        '     Tag.Value = MyController.IsXPressed
 
-                    Case TextBox_TcJoyPath.Text + ".Y_Button"
-                        Tag.Value = MyController.IsYPressed
+                        ' Case TextBox_TcJoyPath.Text + ".Y_Button"
+                        '    Tag.Value = MyController.IsYPressed
 
-                    Case TextBox_TcJoyPath.Text + ".LeftShoulder_Button"
-                        Tag.Value = MyController.IsLeftShoulderPressed
+                        '2 Case TextBox_TcJoyPath.Text + ".LeftShoulder_Button"
+                        'Tag.Value = MyController.IsLeftShoulderPressed
 
-                    Case TextBox_TcJoyPath.Text + ".RightShoulder_Button"
-                        Tag.Value = MyController.IsRightShoulderPressed
+                        ' Case TextBox_TcJoyPath.Text + ".RightShoulder_Button"
+                        '     Tag.Value = MyController.IsRightShoulderPressed
 
-                    Case TextBox_TcJoyPath.Text + ".LeftStick_Button"
-                        Tag.Value = MyController.IsLeftStickPressed
+                        ' Case TextBox_TcJoyPath.Text + ".LeftStick_Button"
+                        '     Tag.Value = MyController.IsLeftStickPressed
 
-                    Case TextBox_TcJoyPath.Text + ".RightStick_Button"
-                        Tag.Value = MyController.IsRightStickPressed
+                        ' Case TextBox_TcJoyPath.Text + ".RightStick_Button"
+                        '    Tag.Value = MyController.IsRightStickPressed
 
-                    Case TextBox_TcJoyPath.Text + ".DPad_Up_Button"
-                        Tag.Value = MyController.IsDPadUpPressed
+                        ' Case TextBox_TcJoyPath.Text + ".DPad_Up_Button"
+                        '     Tag.Value = MyController.IsDPadUpPressed
 
-                    Case TextBox_TcJoyPath.Text + ".DPad_Left_Button"
-                        Tag.Value = MyController.IsDPadLeftPressed
+                        ' Case TextBox_TcJoyPath.Text + ".DPad_Left_Button"
+                        '     Tag.Value = MyController.IsDPadLeftPressed
 
-                    Case TextBox_TcJoyPath.Text + ".DPad_Right_Button"
-                        Tag.Value = MyController.IsDPadRightPressed
+                        '  Case TextBox_TcJoyPath.Text + ".DPad_Right_Button"
+                        '     Tag.Value = MyController.IsDPadRightPressed
 
-                    Case TextBox_TcJoyPath.Text + ".DPad_Down_Button"
-                        Tag.Value = MyController.IsDPadDownPressed
+                        '  Case TextBox_TcJoyPath.Text + ".DPad_Down_Button"
+                        '      Tag.Value = MyController.IsDPadDownPressed
 
-                    Case TextBox_TcJoyPath.Text + ".iLeftTrigger_Axis"
-                        If Math.Abs(MyController.LeftTrigger) > CInt(TextBox_ShoulderDeadzone.Text) Then
-                            Tag.Value = MyController.LeftTrigger
-                        Else
-                            Tag.Value = 0
-                        End If
+                        '   Case TextBox_TcJoyPath.Text + ".iLeftTrigger_Axis"
+                        '      If Math.Abs(MyController.LeftTrigger) > CInt(TextBox_ShoulderDeadzone.Text) Then
+                        '      Tag.Value = MyController.LeftTrigger
+                        '      Else
+                        '     Tag.Value = 0
+                        '      End If
 
-                    Case TextBox_TcJoyPath.Text + ".iRightTrigger_Axis"
-                        If Math.Abs(MyController.RightTrigger) > CInt(TextBox_ShoulderDeadzone.Text) Then
-                            Tag.Value = MyController.RightTrigger
-                        Else
-                            Tag.Value = 0
-                        End If
+                        '   Case TextBox_TcJoyPath.Text + ".iRightTrigger_Axis"
+                        '     If Math.Abs(MyController.RightTrigger) > CInt(TextBox_ShoulderDeadzone.Text) Then
+                        ''     Tag.Value = MyController.RightTrigger
+                        '    Else
+                        '   Tag.Value = 0
+                        '   End If
 
-                    Case TextBox_TcJoyPath.Text + ".iLeftStick_X_Axis"
-                        If Math.Abs(MyController.LeftThumbStick.X) > CInt(TextBox_AnalogDeadzone.Text) Then
-                            Tag.Value = MyController.LeftThumbStick.X
-                        Else
-                            Tag.Value = 0
-                        End If
+                        ' Case TextBox_TcJoyPath.Text + ".iLeftStick_X_Axis"
+                        '    If Math.Abs(MyController.LeftThumbStick.X) > CInt(TextBox_AnalogDeadzone.Text) Then
+                        '   Tag.Value = MyController.LeftThumbStick.X
+                        '   Else
+                        '  Tag.Value = 0
+                        ' End If
 
-                    Case TextBox_TcJoyPath.Text + ".iLeftStick_Y_Axis"
-                        If Math.Abs(MyController.LeftThumbStick.Y) > CInt(TextBox_AnalogDeadzone.Text) Then
-                            Tag.Value = MyController.LeftThumbStick.Y
-                        Else
-                            Tag.Value = 0
-                        End If
+                        '  Case TextBox_TcJoyPath.Text + ".iLeftStick_Y_Axis"
+                        '    If Math.Abs(MyController.LeftThumbStick.Y) > CInt(TextBox_AnalogDeadzone.Text) Then
+                        '   Tag.Value = MyController.LeftThumbStick.Y
+                        '   Else
+                        '  Tag.Value = 0
+                        '   End If
 
-                    Case TextBox_TcJoyPath.Text + ".iRightStick_X_Axis"
-                        If Math.Abs(MyController.RightThumbStick.X) > CInt(TextBox_AnalogDeadzone.Text) Then
-                            Tag.Value = MyController.RightThumbStick.X
-                        Else
-                            Tag.Value = 0
-                        End If
+                        ''  Case TextBox_TcJoyPath.Text + ".iRightStick_X_Axis"
+                        '     If Math.Abs(MyController.RightThumbStick.X) > CInt(TextBox_AnalogDeadzone.Text) Then
+                        '   Tag.Value = MyController.RightThumbStick.X
+                        '  Else
+                        '  Tag.Value = 0
+                        '   End If
 
-                    Case TextBox_TcJoyPath.Text + ".iRightStick_Y_Axis"
-                        If Math.Abs(MyController.RightThumbStick.Y) > CInt(TextBox_AnalogDeadzone.Text) Then
-                            Tag.Value = MyController.RightThumbStick.Y
-                        Else
-                            Tag.Value = 0
-                        End If
+                        ' Case TextBox_TcJoyPath.Text + ".iRightStick_Y_Axis"
+                        '    If Math.Abs(MyController.RightThumbStick.Y) > CInt(TextBox_AnalogDeadzone.Text) Then
+                        '    Tag.Value = MyController.RightThumbStick.Y
+                        '   Else
+                        '   Tag.Value = 0
+                        '   End If
 
-                    Case TextBox_TcJoyPath.Text + ".sBatteryInfo"
+                        ' Case TextBox_TcJoyPath.Text + ".sBatteryInfo"
 
-                        MyController.UpdateBatteryState()
+                        '     MyController.UpdateBatteryState()
 
-                        Select Case MyController.BatteryInformationGamepad.BatteryLevel
+                        '    Select Case MyController.BatteryInformationGamepad.BatteryLevel
 
-                            Case BatteryLevel.BATTERY_LEVEL_EMPTY
+                        'Case BatteryLevel.BATTERY_LEVEL_EMPTY
 
-                                Tag.Value = "0"
+                        '    Tag.Value = "0"
 
-                            Case BatteryLevel.BATTERY_LEVEL_LOW
+                        'Case BatteryLevel.BATTERY_LEVEL_LOW
 
-                                Tag.Value = "25"
+                        '   Tag.Value = "25"
 
-                            Case BatteryLevel.BATTERY_LEVEL_MEDIUM
+                        'case BatteryLevel.BATTERY_LEVEL_MEDIUM
 
-                                Tag.Value = "50"
+                        '  Tag.Value = "50"
 
-                            Case BatteryLevel.BATTERY_LEVEL_FULL
+                        'Case BatteryLevel.BATTERY_LEVEL_FULL
 
-                                Tag.Value = "100"
+                        'Tag.Value = "100"
 
-                            Case Else
+                        'Case Else
 
-                                Tag.Value = "unkn"
+                        'Tag.Value = "unkn"
 
-                        End Select
+                'End Select
 
                     Case TextBox_TcJoyPath.Text + ".bHeartBeatToggle"
                         Tag.Value = HeartBeatState
@@ -903,7 +900,7 @@ Public Class HMI
         Return (value And Not (2 ^ bit))
     End Function
 
-    Private Function flipBit(ByRef value As Integer, ByVal bit As Integer)
+    Private Function FlipBit(ByRef value As Integer, ByVal bit As Integer)
         Return (value Xor (2 ^ bit))
     End Function
 
@@ -1101,15 +1098,9 @@ Public Class HMI
 
     End Class
 
-    Private Sub TextBox10_TextChanged(sender As Object, e As EventArgs) Handles txtNewUserPos.TextChanged
 
-    End Sub
 
-    Private Sub TabPage1_Click(sender As Object, e As EventArgs) Handles TabPage1.Click
-
-    End Sub
-
-    Private Sub btnLoad_Click(sender As Object, e As EventArgs) Handles btnLoad.Click
+    Private Sub BtnLoad_Click(sender As Object, e As EventArgs) Handles btnLoad.Click
 
         Dim ScopeFile As New FileInfo(ScopeFilename)
         If (Not ScopeFile.Exists) Then
@@ -1124,32 +1115,32 @@ Public Class HMI
             End If
             ScopeProjectPanel1.ScopeProject.SetFromFile(ScopeFilename)
             If (Not ScopeProjectPanel1.ScopeProject.ContainsData) Then
-                    For Each chart As Chart In ScopeProjectPanel1.ScopeProject.SubMember.OfType(Of Chart)
-                        For Each ag As AxisGroup In chart.SubMember.OfType(Of AxisGroup)
-                            For Each channel As Channel In ag.SubMember.OfType(Of Channel)
-                                For Each ai As AcquisitionInterpreter In channel.SubMember.OfType(Of AcquisitionInterpreter)
+                For Each chart As Chart In ScopeProjectPanel1.ScopeProject.SubMember.OfType(Of Chart)
+                    For Each ag As AxisGroup In chart.SubMember.OfType(Of AxisGroup)
+                        For Each channel As Channel In ag.SubMember.OfType(Of Channel)
+                            For Each ai As AcquisitionInterpreter In channel.SubMember.OfType(Of AcquisitionInterpreter)
                                 If ai.Acquisition IsNot Nothing Then
                                     AmsNetId.TryParse(My.Settings.sPLC_NETID, ai.Acquisition.AmsNetId)
                                     '  AmsNetId.TryParse("192.168.0.109.1.1", ai.Acquisition.AmsNetId) ' make configurable!
                                 End If
                             Next
-                            Next
-
                         Next
-                    Next
-                End If
-                '// load new data
 
+                    Next
+                Next
             End If
+            '// load new data
+
+        End If
     End Sub
 
-    Private Sub btnAddChart_Click(sender As Object, e As EventArgs) Handles btnAddChart.Click
+    Private Sub BtnAddChart_Click(sender As Object, e As EventArgs) Handles btnAddChart.Click
         Dim chart As New YTChart()
         ScopeProjectPanel1.ScopeProject.AddMember(chart)
         chart.SubMember.OfType(Of ChartStyle).First.ToolTipEnabled = True
     End Sub
 
-    Private Sub btnAddAxis_Click(sender As Object, e As EventArgs) Handles btnAddAxis.Click
+    Private Sub BtnAddAxis_Click(sender As Object, e As EventArgs) Handles btnAddAxis.Click
         If ScopeProjectPanel1.ScopeProject.SubMember.OfType(Of Chart).Count = 0 Then
             ScopeProjectPanel1.ScopeProject.AddMember(New AxisGroup())
         Else
@@ -1158,7 +1149,7 @@ Public Class HMI
 
     End Sub
 
-    Private Sub btnAddChannel_Click(sender As Object, e As EventArgs) Handles btnAddChannel.Click
+    Private Sub BtnAddChannel_Click(sender As Object, e As EventArgs) Handles btnAddChannel.Click
         '        Dim ch As New Channel()
         '       If (ScopeProjectPanel1.ScopeProject.SubMember.OfType(Of Chart).Count() = 0) Then
         '      ScopeProjectPanel1.ScopeProject.AddMember(Channel)
@@ -1173,7 +1164,7 @@ Public Class HMI
         MessageBox.Show("not implimented")
     End Sub
 
-    Private Sub btnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
+    Private Sub BtnStart_Click(sender As Object, e As EventArgs) Handles btnStart.Click
         Try
             '//clear old data
             If ScopeProjectPanel1.ScopeProject.ScopeState = TwinCAT.Measurement.Scope.API.ScopeViewState.Reply Then
@@ -1189,6 +1180,7 @@ Public Class HMI
                 For Each chart In ScopeProjectPanel1.ScopeProject.SubMember.OfType(Of Chart)
                     chart.StartDisplay()
                 Next
+            Else MessageBox.Show("chart not connected")
             End If
 
 
@@ -1200,7 +1192,7 @@ Public Class HMI
         End Try
     End Sub
 
-    Private Sub btnStop_Click(sender As Object, e As EventArgs) Handles btnStop.Click
+    Private Sub BtnStop_Click(sender As Object, e As EventArgs) Handles btnStop.Click
         Try
             If ScopeProjectPanel1.ScopeProject.ScopeState = TwinCAT.Measurement.Scope.API.ScopeViewState.Record Then
                 ScopeProjectPanel1.ScopeProject.StopRecord()
@@ -1212,7 +1204,7 @@ Public Class HMI
         End Try
     End Sub
 
-    Private Sub btnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
+    Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles btnSave.Click
         Try
 
             '//save data And configuration
@@ -1236,7 +1228,7 @@ Public Class HMI
         End Try
     End Sub
 
-    Private Sub btnRun_Click(sender As Object, e As EventArgs) Handles btnRun.Click
+    Private Sub BtnRun_Click(sender As Object, e As EventArgs) Handles btnRun.Click
         If (ScopeProjectPanel1.ScopeProject.ScopeState <> TwinCAT.Measurement.Scope.API.ScopeViewState.Record) Then
             MessageBox.Show("Only possible if a record is running!", "Run not possible!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
         End If
@@ -1246,7 +1238,7 @@ Public Class HMI
 
     End Sub
 
-    Private Sub btnPause_Click(sender As Object, e As EventArgs) Handles btnPause.Click
+    Private Sub BtnPause_Click(sender As Object, e As MouseEventArgs) Handles btnPause.Click
 
 
         If (ScopeProjectPanel1.ScopeProject.ScopeState <> TwinCAT.Measurement.Scope.API.ScopeViewState.Record) Then
@@ -1261,69 +1253,85 @@ Public Class HMI
 
     End Sub
 
-    Private Sub BtnLoadCsv_Click(sender As Object, e As EventArgs)
+    Private Sub BtnLoadCsv_Click(sender As Object, e As MouseEventArgs) Handles Button1.Click
 
-        Dim myStream As Stream = Nothing
-        Dim openFileDialog1 As New OpenFileDialog()
+            Dim myStream As Stream = Nothing
+            Dim openFileDialog1 As New OpenFileDialog()
 
-        openFileDialog1.InitialDirectory = "c:\"
-        openFileDialog1.Filter = "txt files (*.csv)|*.csv|All files (*.*)|*.*"
-        openFileDialog1.FilterIndex = 2
-        openFileDialog1.RestoreDirectory = True
+            openFileDialog1.InitialDirectory = "c:\"
+            openFileDialog1.Filter = "txt files (*.csv)|*.csv|All files (*.*)|*.*"
+            openFileDialog1.FilterIndex = 2
+            openFileDialog1.RestoreDirectory = True
 
-        If openFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
-            Try
-                Recipefile = New FileInfo(openFileDialog1.FileName.ToString)
+            If openFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+                Try
+                    Recipefile = New FileInfo(openFileDialog1.FileName.ToString)
 
-                If (Recipefile.Exists) Then
-                    MessageBox.Show(Recipefile.FullName)
-                    SendFile()
-                    ' Insert code to read the stream here.
-                End If
-            Catch Ex As Exception
-                MessageBox.Show("Cannot read file from disk. Original error: " & Ex.Message)
+                    If (Recipefile.Exists) Then
+                        MessageBox.Show(Recipefile.FullName)
+                        SendFile()
+                        ' Insert code to read the stream here.
+                    End If
+                Catch Ex As Exception
+                    MessageBox.Show("Cannot read file from disk. Original error: " & Ex.Message)
 
-            End Try
-        End If
-    End Sub
+                End Try
+            End If
+        End Sub
     'Jog buttons
 
 
-    Private Sub btnRaiseA_MouseDown(sender As Object, e As MouseEventArgs) Handles btnRaiseA.MouseDown
+    Private Sub BtnRaiseA_MouseDown(sender As Object, e As MouseEventArgs) Handles btnRaiseA.MouseDown
         myHMIButtonData0 = SetBit(myHMIButtonData0, 0)
     End Sub
-    Private Sub btnRaiseA_MouseLeave(sender As Object, e As EventArgs) Handles btnRaiseA.MouseLeave, btnRaiseA.MouseUp
+
+    Private Sub BtnRaiseA_MouseLeave1(sender As Object, e As MouseEventArgs) Handles btnRaiseA.MouseUp
         myHMIButtonData0 = ResetBit(myHMIButtonData0, 0)
     End Sub
 
-    Private Sub btnLowerA_MouseDown(sender As Object, e As MouseEventArgs) Handles btnLowerA.MouseDown
+    Private Sub BtnLowerA_MouseDown(sender As Object, e As MouseEventArgs) Handles btnLowerA.MouseDown
         myHMIButtonData0 = SetBit(myHMIButtonData0, 1)
     End Sub
-    Private Sub btnLowerA_MouseLeave(sender As Object, e As EventArgs) Handles btnLowerA.MouseLeave, btnLowerA.MouseUp
+    Private Sub BtnLowerA_MouseLeaveb(sender As Object, e As MouseEventArgs) Handles btnLowerA.MouseUp
         myHMIButtonData0 = ResetBit(myHMIButtonData0, 1)
     End Sub
 
 
     'Power button toggle.
-    Private Sub btnPower_Click(sender As Object, e As EventArgs) Handles btnPower.MouseDown
+    Private Sub BtnPower_Click1(sender As Object, e As MouseEventArgs) Handles btnPower.MouseDown
         myHMIButtonData0 = SetBit(myHMIButtonData0, 2)
     End Sub
 
-    Private Sub btnPower_unClick(sender As Object, e As EventArgs) Handles btnPower.MouseUp, btnPower.MouseLeave
+    Private Sub BtnPower_unClick2(sender As Object, e As MouseEventArgs) Handles btnPower.MouseUp
         myHMIButtonData0 = ResetBit(myHMIButtonData0, 2)
     End Sub
 
-    Private Sub btnFaultReset_MouseDown(sender As Object, e As EventArgs) Handles btnFaultReset.MouseDown
+    Private Sub BtnFaultReset_MouseDown(sender As Object, e As MouseEventArgs) Handles btnFaultReset.MouseDown
         myHMIButtonData0 = SetBit(myHMIButtonData0, 3)
     End Sub
 
-    Private Sub btnFaultReset_MouseUp(sender As Object, e As EventArgs) Handles btnFaultReset.MouseUp, btnFaultReset.MouseLeave
+    Private Sub BtnFaultReset_MouseUp(sender As Object, e As MouseEventArgs) Handles btnFaultReset.MouseUp
         myHMIButtonData0 = ResetBit(myHMIButtonData0, 3)
     End Sub
 
-    Private Sub btn_JogModeToggle_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_JogModeToggle.MouseDown
-        myHMIButtonData0 = flipBit(myHMIButtonData0, 4)
+    Private Sub Btn_JogModeToggle_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_JogModeToggle.MouseDown
+        myHMIButtonData0 = FlipBit(myHMIButtonData0, 4)
     End Sub
 
+
+    Private Sub BtnGraphCSV_Click(sender As Object, e As EventArgs) Handles BtnGraphCSV.Click, BtnGraphCSV.MouseDown
+        myHMIButtonData0 = SetBit(myHMIButtonData0, 5)
+    End Sub
+
+    Private Sub BtnGraphCSV_unClick(sender As Object, e As EventArgs) Handles BtnGraphCSV.MouseUp
+        myHMIButtonData0 = ResetBit(myHMIButtonData0, 5)
+    End Sub
+
+    Private Sub BtnRunCsvClick(sender As Object, e As MouseEventArgs) Handles Button2.MouseDown
+        myHMIButtonData0 = SetBit(myHMIButtonData0, 6)
+    End Sub
+    Private Sub BtnRunCsvunClick(sender As Object, e As MouseEventArgs) Handles Button2.MouseUp
+        myHMIButtonData0 = ResetBit(myHMIButtonData0, 6)
+    End Sub
 
 End Class
