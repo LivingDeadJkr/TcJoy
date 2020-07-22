@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="P_HMI_Polling" Id="{6c3f4490-3ab2-422f-af2f-6459f65a48e9}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM P_HMI_Polling
 VAR
@@ -27,18 +27,7 @@ ELSE
 	control.b_RequestCSVRead :=   FALSE;
 END_IF
 IO.Laser_mm := UINT_TO_LREAL(io.LaserDistanceValue)  / 10.0;
-(* //old mode change code.
-IF Global_variables.HmiButtonData0.4 AND p_motorcontrol_st.state = 2 THEN // if in ready state, and asked to go to jog mode, jump to Gear In Request.
-	// if halted and ready, switch to jogging mode. 
-	Control.RequestedState := 5;
-END_IF
 
-
-IF Global_variables.HmiButtonData0.6 AND p_motorcontrol_st.state = 6 THEN // if in ready state, and asked to go to jog mode, jump to Gear In Request.
-	// if halted and ready, switch to jogging mode. 
-	Control.RequestedState :=  7;
-END_IF
-*)
 
 IF Global_variables.HmiButtonData0.10 	THEN Control.RequestedState := 0; END_IF // Abs move mode
 IF Global_variables.HmiButtonData0.11 	THEN Control.RequestedState := 1; END_IF // Rel Move Mode
@@ -86,10 +75,6 @@ Global_variables.HmiBoolDword0.7 := p_Faultmonitoring.b_Faulted;
       <LineId Id="102" Count="1" />
       <LineId Id="101" Count="0" />
       <LineId Id="39" Count="0" />
-      <LineId Id="108" Count="3" />
-      <LineId Id="54" Count="0" />
-      <LineId Id="113" Count="4" />
-      <LineId Id="112" Count="0" />
       <LineId Id="86" Count="0" />
       <LineId Id="132" Count="0" />
       <LineId Id="123" Count="0" />

@@ -76,7 +76,7 @@ Module PLC_IO_Polling
         '
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.ReqVelocity", AdsDatatypeId.ADST_REAL32, True, True))
         BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.ReqAccel", AdsDatatypeId.ADST_REAL32, True, True))
-        BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.Position", AdsDatatypeId.ADST_REAL32, True, False))
+        BgTaskData.TagList.Add(New HMI.DataTag("Global_variables.Position", AdsDatatypeId.ADST_REAL32, True, True))
 
 
 

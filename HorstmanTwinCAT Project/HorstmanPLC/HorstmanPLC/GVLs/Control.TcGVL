@@ -29,6 +29,10 @@ sp_ServoA: Setpoint_Interface;
 	fTargetVelB: LREAL;
 	nPlayBackIndex: UDINT;
 	RequestedState: INT;
+	bAbsoluteJog: BOOL;
+	bAbsoluteMoveExec: BOOL;
+	bRelativeJog: BOOL;
+	bRelativeMoveExec: BOOL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

@@ -1394,6 +1394,8 @@ Public Class HMI
 
             Case 0 'abs  
                 LblPosition.Text = "Target Position (mm)"
+                lblVel.Text = "Velocity (mm / s)"
+                lblAccel.Text = "Accel/Decel (0 =default) (mm/s)"
                 LblPosition.Visible = True
                 TbPosition.Visible = True
                 myHMIButtonData0 = SetBit(myHMIButtonData0, 10)
@@ -1410,9 +1412,14 @@ Public Class HMI
                 BtnLoadCsv.Visible = False
                 BtnGraphCSV.Visible = False
                 btnPlayCsv.Visible = False
-
+                tbVelReq.Visible = True
+                lblVel.Visible = True
+                lblAccel.Visible = True
+                TbAccel.Visible = True
             Case 1 'rel
                 LblPosition.Text = "Relative Distance (mm)"
+                lblVel.Text = "Velocity (mm / s)"
+                lblAccel.Text = "Accel/Decel (0 =default) (mm/s)"
                 LblPosition.Visible = True
                 TbPosition.Visible = True
                 myHMIButtonData0 = ResetBit(myHMIButtonData0, 10)
@@ -1428,9 +1435,16 @@ Public Class HMI
                 BtnLoadCsv.Visible = False
                 BtnGraphCSV.Visible = False
                 btnPlayCsv.Visible = False
+                tbVelReq.Visible = True
+                lblVel.Visible = True
+                lblAccel.Visible = True
+                TbAccel.Visible = True
 
             Case 2 'sin
                 LblPosition.Text = "Center position (mm)"
+                lblAccel.Text = "amplitude (mm)"
+                lblVel.Text = "period : (ms)"
+
                 LblPosition.Visible = True
                 TbPosition.Visible = True
                 myHMIButtonData0 = ResetBit(myHMIButtonData0, 10)
@@ -1446,9 +1460,16 @@ Public Class HMI
                 BtnLoadCsv.Visible = False
                 BtnGraphCSV.Visible = False
                 btnPlayCsv.Visible = False
-
+                tbVelReq.Visible = True
+                lblVel.Visible = True
+                lblAccel.Visible = True
+                TbAccel.Visible = True
             Case 3 'chrip
                 LblPosition.Text = "Center position (mm)"
+                lblVel.Text = "Velocity (mm / s)"
+                lblAccel.Text = "Accel/Decel (0 =default) (mm/s)"
+
+
                 LblPosition.Visible = True
                 TbPosition.Visible = True
 
@@ -1465,8 +1486,13 @@ Public Class HMI
                 BtnLoadCsv.Visible = False
                 BtnGraphCSV.Visible = False
                 btnPlayCsv.Visible = False
-
+                tbVelReq.Visible = True
+                lblVel.Visible = True
+                lblAccel.Visible = True
+                TbAccel.Visible = True
             Case 4 'CSV playback
+                lblVel.Text = "Velocity (mm / s)"
+                lblAccel.Text = "Accel/Decel (0 =default) (mm/s)"
                 LblPosition.Visible = False
                 TbPosition.Visible = False
 
@@ -1484,12 +1510,15 @@ Public Class HMI
                 BtnLoadCsv.Visible = True
                 BtnGraphCSV.Visible = True
                 btnPlayCsv.Visible = True
-
+                tbVelReq.Visible = True
+                lblVel.Visible = True
+                lblAccel.Visible = True
+                TbAccel.Visible = True
             Case 5 '// set 0 point reference mode
 
                 LblPosition.Visible = True
                 TbPosition.Visible = True
-                LblPosition.Text = "Desired current positon"
+                LblPosition.Text = "Offset"
 
                 myHMIButtonData0 = ResetBit(myHMIButtonData0, 10)
                 myHMIButtonData0 = ResetBit(myHMIButtonData0, 11)
@@ -1504,12 +1533,31 @@ Public Class HMI
                 BtnLoadCsv.Visible = False
                 BtnGraphCSV.Visible = False
                 btnPlayCsv.Visible = False
+                tbVelReq.Visible = False
+                lblVel.Visible = False
+                lblAccel.Visible = False
+                TbAccel.Visible = False
+                TbPosition.Visible = True
 
-            Case 6 'Jog until near limit. (move abs to 1mm away from limits.)
+
+
+
+
+            Case 6 'Jog 
+                lblVel.Text = "Velocity (mm / s)"
+                lblAccel.Text = "Accel/Decel (0 =default) (mm/s)"
                 LblPosition.Visible = False
                 TbPosition.Visible = False
                 btnRaiseA.Visible = True
                 btnLowerA.Visible = True
+                BtnExecute.Visible = False
+                BtnLoadCsv.Visible = False
+                BtnGraphCSV.Visible = False
+                btnPlayCsv.Visible = False
+                tbVelReq.Visible = True
+                lblVel.Visible = True
+                lblAccel.Visible = True
+                TbAccel.Visible = True
                 myHMIButtonData0 = ResetBit(myHMIButtonData0, 10)
                 myHMIButtonData0 = ResetBit(myHMIButtonData0, 11)
                 myHMIButtonData0 = ResetBit(myHMIButtonData0, 12)
@@ -1538,5 +1586,13 @@ Public Class HMI
 
     Private Sub TbAccel_TextChanged(sender As Object, e As EventArgs) Handles TbAccel.TextChanged
 
+    End Sub
+
+    Private Sub BtnExecuteActivate(sender As Object, e As MouseEventArgs) Handles BtnExecute.MouseDown
+        myHMIButtonData0 = SetBit(myHMIButtonData0, 7) ' execute button down
+    End Sub
+
+    Private Sub BtnExecuteDeactivate(sender As Object, e As MouseEventArgs) Handles BtnExecute.MouseUp
+        myHMIButtonData0 = ResetBit(myHMIButtonData0, 7) ' execute button up
     End Sub
 End Class

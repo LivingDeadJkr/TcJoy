@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
   <POU Name="p_MotorControl_ST" Id="{1948efc2-07af-4f24-8417-60a242e950fd}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM p_MotorControl_ST
 VAR
@@ -126,9 +126,9 @@ IF control.b_Servos_Halted AND RequestedState <> 0 THEN State := RequestedState;
 
 IF control.b_EnableServosReq = FALSE THEN control.b_EnableServosFinal := FALSE; State:=0; END_IF 
 
-IF control.RequestedState = 0 THEN 
+
 state := 5;	// attempt Gear in 	
-END_IF
+
 
 3: //Switch into SP mode
 	;//Enabeld, turn off halts, turn on SP generator access to servos
@@ -154,79 +154,26 @@ END_IF
  control.b_HaltRequest := FALSE;
  control.b_ExecuteGearIn := TRUE;
  IF P_Motorcontrol.MC_GearInA.InGear THEN 
-	ExecuteButtonRtrig(CLK := Global_variables.HmiButtonData0.6); // execute button bit
-	JogupRtrig(CLK := Global_variables.HmiButtonData0.0); // raise button
-	JogDnRtrig(CLK := Global_variables.HmiButtonData0.1); // lower button
-	
- 
-  CASE control.RequestedState OF
-	  0:
-	  //Global_variables.HmiButtonData0.6 is execute button
-	  1:
-	  
-	  2:
-	  
-	  3:
-	  
-	  4:
-	  
-	  5:
-	  
-	  6:
-	  state := 6;
-  END_CASE
-END_IF
+;
+ END_IF
 
-
- 6:  // Jog function
- jogbuttontimer();
-IF Control.RequestedState = 7 THEN
-	State := 7;
-END_IF
-IF NOT (Global_variables.HmiButtonData0.0 OR Global_variables.HmiButtonData0.1) OR JogButtonTimer.Q THEN
-			n_jogreq := 0;
-			control.bExecMoveRelA := FALSE;
-			jogbuttontimer.IN := FALSE;
-			ELSIF Global_variables.HmiButtonData0.0 THEN
-				n_jogreq := 5;
-				control.bExecMoveRelA := TRUE;
-				jogbuttontimer.IN := TRUE;
-			ELSIF Global_variables.HmiButtonData0.1THEN
-				n_jogreq := -5;
-				control.bExecMoveRelA := TRUE;
-				jogbuttontimer.IN := TRUE;	
-END_IF
-  
-	7: //Position follower init
-	IF NOT P_Motorcontrol.MC_GearInA.InGear THEN State := 0; END_IF; // Quit if we lose gear in
-   control.bExecMoveRela := FALSE;
 	
-	control.bAbsMoveAExecute := FALSE;
-	control.bAbsMoveBExecute := FALSE;
-	Control.fTargetPosA := 0;
-	Control.fTargetPosB := 0;
-	Control.fTargetVelA := 50; 
-	Control.fTargetVelB := 25;
-	Control.nPlayBackIndex :=0;
-	IF NOT  p_motorcontrol.MC_MoveAbsolute_A.Busy THEN
-	State := 8;
-	END_IF;
-8: // Prepare first move.
+40: // CSV follower.
 	Control.fTargetPosA := STRING_TO_LREAL(p_textmoderead.database[Control.nPlayBackIndex]);
 
 IF NOT (p_motorcontrol.MC_MoveAbsolute_A.Active) THEN
 	control.bAbsMoveAExecute := TRUE;
-	State := 9;
+	State := 41;
 	END_IF;
- 9:
+ 41:
  MoveDoneRTrig(CLK := p_motorcontrol.MC_MoveAbsolute_A.InEndVelocity OR io.DriveAxis1.Status.InPositionArea);
 control.bAbsMoveAExecute := FALSE;
 IF MoveDoneRTrig.Q THEN // index to next move if not at end of file.
 
 	IF Control.nPlayBackIndex <= Control.n_RowsReadfromCsv THEN
 	Control.nPlayBackIndex := Control.nPlayBackIndex +1;
-	State := 8;
-	ELSE State := 111; 	// quit.
+	State := 40;
+	ELSE State := 0; 	// quit.
 	END_IF
 
 END_IF
@@ -236,28 +183,6 @@ END_IF
 
 
 
-99:
-	Control.fTargetPosB := STRING_TO_LREAL(p_textmoderead.database[Control.nPlayBackIndex]);
-IF NOT p_motorcontrol.MC_MoveAbsolute_B.Active THEN 
-	control.bAbsMoveBExecute := TRUE;
-	ELSE
-		control.bAbsMoveBExecute := FALSE;
-END_IF
-
-IF p_motorcontrol.MC_MoveAbsolute_B.Done THEN // index to next move if not at end of file.
-	control.bAbsMoveBExecute := FALSE;
-	IF Control.nPlayBackIndex < Control.n_RowsReadfromCsv THEN
-	Control.nPlayBackIndex := Control.nPlayBackIndex +1;
-	ELSE State := 110; 	// quit.
-	END_IF
-	
-	state := 8;
-END_IF
-
- IF p_Motorcontrol.MC_MoveAbsolute_B.Error THEN 
-	 State :=10;
- END_IF
-
 110: 
 ;
 111: //reached end
@@ -266,11 +191,6 @@ END_CASE
 
 Servodisabletimeout.PT := T#1000MS;
 Servodisabletimeout(IN:=(state = 4)); //.q is true 2 seconds after servo enable is no longer commanded
-
-
-
-
- 
  
 //Servo enable command sent rising edge	
 //ServoEnableRisingedge(CLK:=control.b_EnableServosFinal);
@@ -419,54 +339,10 @@ END_IF
       <LineId Id="4477" Count="0" />
       <LineId Id="4516" Count="0" />
       <LineId Id="4521" Count="0" />
-      <LineId Id="4926" Count="0" />
-      <LineId Id="4946" Count="0" />
-      <LineId Id="4948" Count="0" />
-      <LineId Id="4947" Count="0" />
-      <LineId Id="4944" Count="0" />
-      <LineId Id="4928" Count="1" />
-      <LineId Id="4938" Count="0" />
-      <LineId Id="4931" Count="0" />
-      <LineId Id="4939" Count="0" />
-      <LineId Id="4932" Count="0" />
-      <LineId Id="4940" Count="0" />
-      <LineId Id="4933" Count="0" />
-      <LineId Id="4941" Count="0" />
-      <LineId Id="4934" Count="0" />
-      <LineId Id="4942" Count="0" />
-      <LineId Id="4935" Count="0" />
-      <LineId Id="4943" Count="0" />
-      <LineId Id="4936" Count="1" />
-      <LineId Id="4930" Count="0" />
-      <LineId Id="4518" Count="0" />
-      <LineId Id="4523" Count="0" />
+      <LineId Id="5031" Count="0" />
       <LineId Id="4522" Count="0" />
-      <LineId Id="4517" Count="0" />
-      <LineId Id="4519" Count="0" />
-      <LineId Id="4512" Count="0" />
-      <LineId Id="4841" Count="1" />
-      <LineId Id="4473" Count="0" />
-      <LineId Id="4490" Count="0" />
-      <LineId Id="4499" Count="0" />
-      <LineId Id="4504" Count="0" />
-      <LineId Id="4494" Count="0" />
-      <LineId Id="4496" Count="0" />
-      <LineId Id="4500" Count="0" />
-      <LineId Id="4505" Count="0" />
-      <LineId Id="4498" Count="0" />
-      <LineId Id="4497" Count="0" />
-      <LineId Id="4501" Count="0" />
-      <LineId Id="4506" Count="0" />
-      <LineId Id="4491" Count="0" />
-      <LineId Id="4474" Count="0" />
-      <LineId Id="4777" Count="1" />
-      <LineId Id="4475" Count="0" />
-      <LineId Id="4779" Count="1" />
-      <LineId Id="4782" Count="1" />
-      <LineId Id="4792" Count="2" />
-      <LineId Id="4796" Count="1" />
-      <LineId Id="4791" Count="0" />
-      <LineId Id="4786" Count="1" />
+      <LineId Id="5029" Count="1" />
+      <LineId Id="4787" Count="0" />
       <LineId Id="4795" Count="0" />
       <LineId Id="4853" Count="0" />
       <LineId Id="4808" Count="0" />
@@ -485,20 +361,14 @@ END_IF
       <LineId Id="4784" Count="0" />
       <LineId Id="4859" Count="0" />
       <LineId Id="4813" Count="0" />
-      <LineId Id="4860" Count="2" />
-      <LineId Id="4805" Count="0" />
-      <LineId Id="4821" Count="7" />
-      <LineId Id="4844" Count="0" />
-      <LineId Id="4829" Count="9" />
-      <LineId Id="4814" Count="0" />
+      <LineId Id="4860" Count="1" />
       <LineId Id="4845" Count="3" />
       <LineId Id="4785" Count="0" />
       <LineId Id="3906" Count="0" />
       <LineId Id="4462" Count="0" />
       <LineId Id="3996" Count="0" />
       <LineId Id="3245" Count="0" />
-      <LineId Id="4463" Count="3" />
-      <LineId Id="4468" Count="1" />
+      <LineId Id="4469" Count="0" />
       <LineId Id="3326" Count="1" />
       <LineId Id="3338" Count="1" />
       <LineId Id="3355" Count="0" />

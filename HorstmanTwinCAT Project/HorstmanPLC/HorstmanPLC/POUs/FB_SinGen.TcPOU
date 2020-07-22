@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="FB_SinGen" Id="{1202d7f5-20e9-4994-b38f-585448299ad7}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_SinGen
+VAR_INPUT
+	EN :BOOL;
+	Offset: LREAL; // where to center the sin wave in the stroke
+	Amplitude :LREAL; // how much to multiply the -1 to +1 sin signal by to get the target setpoint
+	Reset: BOOL;
+	Period : LREAL;
+END_VAR
+VAR_OUTPUT
+	SignalOut :LREAL;
+END_VAR
+VAR
+	TimerPreset: TIME; // freqeuncy of sin depends on this
+	K: LREAL;
+	N: DINT;
+	b_init: BOOL;
+	RESULT: LREAL;
+	Timer: TON;
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF EN THEN
+	IF Reset THEN
+	b_init := FALSE;
+	timer.pt := LREAL_TO_TIME(period);
+END_IF
+
+IF NOT b_init THEN
+    K :=2*PI/1000; (* DO ONCE *) 
+	b_init := TRUE;
+END_IF
+timer.PT := TimerPreset;
+Timer(IN := NOT timer.q);
+
+IF timer.Q AND b_init THEN	// don't step unless initialized
+N := N+1; (* REPEAT THIS *)
+N :=  N MOD 1000; 
+RESULT := SIN(K*N); // feeds out a sin signal from -1 to +1, scale and offset to get appropriate motion profile.
+Signalout := ((Result * amplitude) + Global_variables.Position);
+END_IF;
+ELSE 
+	Signalout := 0;
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_SinGen">
+      <LineId Id="39" Count="0" />
+      <LineId Id="42" Count="1" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="44" Count="13" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="58" Count="1" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

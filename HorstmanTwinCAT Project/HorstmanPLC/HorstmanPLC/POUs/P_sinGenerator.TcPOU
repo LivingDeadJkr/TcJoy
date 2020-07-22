@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="P_sinGenerator" Id="{24ea22ae-8911-4ef0-b558-6a81ed977104}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_sinGenerator
+VAR
+		K: LREAL;
+	N: DINT;
+	b_init: BOOL;
+	RESULT: LREAL;
+	Timer: TON;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF NOT b_init THEN
+    K :=2*PI/1000; (* DO ONCE *) 
+	b_init := TRUE;
+END_IF
+timer.PT := T#10MS;
+Timer(IN := NOT timer.q);
+
+IF timer.Q THEN	
+N := N+1; (* REPEAT THIS *)
+
+N :=  N MOD 1000; 
+RESULT := SIN(K*N); // feeds out a sin signal from -1 to +1, scale and offset to get appropriate motion profile.
+END_IF;]]></ST>
+    </Implementation>
+    <LineIds Name="P_sinGenerator">
+      <LineId Id="25" Count="11" />
+      <LineId Id="5" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

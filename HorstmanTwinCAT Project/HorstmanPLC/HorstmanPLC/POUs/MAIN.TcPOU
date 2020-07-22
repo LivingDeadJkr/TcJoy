@@ -12,7 +12,7 @@ P_HMI_polling();
 IF .Global_Variables.TcJoy.bIsActive THEN // if HMI is connected
 	;
 END_IF
-
+p_singenerator();
 p_FaultMonitoring(); // Check fault routine
 //inputs
 p_TextModeRead();

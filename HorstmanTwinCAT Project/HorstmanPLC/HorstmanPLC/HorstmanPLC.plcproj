@@ -48,6 +48,9 @@
     <Compile Include="POUs\FB\FB_UseExtSetpointGen.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\FB_SinGen.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\FB_TcJoy.TcPOU">
       <SubType>Code</SubType>
     </Compile>
@@ -67,6 +70,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\p_MotorControl_ST.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="POUs\P_sinGenerator.TcPOU">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="POUs\p_TextModeRead.TcPOU">
