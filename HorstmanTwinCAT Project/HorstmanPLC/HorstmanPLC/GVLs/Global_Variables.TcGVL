@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
   <GVL Name="Global_Variables" Id="{3d4ea763-d46a-4a6c-8c86-663c0c89768b}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
@@ -21,6 +21,9 @@ VAR_GLOBAL
 	HMI_Servo2_Vel : LREAL;
 	HMI_Servo2_Force AT %I* :LREAL;
 	
+	ReqVelocity :LREAL; // How fast to execute manaual action.
+	ReqAccel :LREAL; // accel/decel for manual action
+	Position :LREAL; // Position for manual action
 	
 
 	

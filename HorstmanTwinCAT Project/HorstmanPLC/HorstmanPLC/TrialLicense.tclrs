@@ -1,29 +1,19 @@
 <?xml version="1.0"?>
 <TcLicenseInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2011/11/TcLicenseInfo">
 	<LicenseInfo>
-		<SystemId>{6DFA206A-D86A-4CC6-2F19-2CD1351F9D3B}</SystemId>
-		<IssueTime>2020-07-17T16:46:00</IssueTime>
-		<ExpireTime>2020-07-25T00:00:00</ExpireTime>
-		<LicenseKey>3e78a54a88fc7f294f78dc1754a7744908916adb59c0d23f23bafe2feaa7890808af5fa452fea3bbca7d19d37281c3dc5c2095ceb0d1701f5e90749db5d17362f53ead87e55c050f8895d7b670633a0b07f812442abc1196579f4fb525321b0fbd23d3629223980fc0d5635c576aa7b2363f1d558e7db38effb16f548dc0235022f6482010d072501bb2b9faa9280f233ba473db99d0c2d874d6c8c05a749c92c3ce533b3afef5e09daf9b67d1b71972d15ae208ea3d0cc9869349eb34ecfc6ffdbeb18bcb4598096cc032238c69aa5b384581db47f362b3b0da4d26a2b0546e5dd1a758c61a4969b0b9b26727b1326a353085153d3c4c499e95554cb8f55e9d</LicenseKey>
-		<License>
-			<LicenseId>{4989A799-AEEA-4FEE-88EF-666B99EEFB45}</LicenseId>
-			<Name>TC3 Scope View Professional</Name>
-			<OrderNo>TE1300</OrderNo>
-		</License>
+		<SystemId>{23BC21C7-0966-E795-7B5A-0B9CC3792F02}</SystemId>
+		<IssueTime>2020-07-21T23:23:00</IssueTime>
+		<ExpireTime>2020-07-29T00:00:00</ExpireTime>
+		<LicenseKey>ca51b376e7b074128be7e37d1c164a8d041d55fe376b5a2ec73e99606bc53c8da7f1fa72e23aa17909ca7533c59b485e97a06756eea184c9990a46b334759b55f7dee1e054b5ee7ed0e5aebe0c32e867a751fe8e489ae05de2bdbe890ccac358fa5bfea16c04283637c1c98dbb04b4b395f43c5b9a720010324010dce24c739a776a3d4df1736ce40305cad5e32aa130b8b72b242337eb00ea393923099c4b5c418d9fc43e534aa36d22481b188ac85015b270f9946c6a41f7757c96395f2a862063231f48034f36a603161fafdb91af4887891e17b6432dcd6955867f97efba7cbc50a6a7ca21103f4ae83ff7ca51e80c509e4cc946f49e5139e43730cc8acb</LicenseKey>
 		<License>
 			<LicenseId>{4C256767-E6E6-4AF5-BD68-9F7ABAD0C200}</LicenseId>
 			<Name>TC3 ADS</Name>
 			<OrderNo>TC1000</OrderNo>
 		</License>
 		<License>
-			<LicenseId>{777F1598-583B-4503-99BB-7C02E0ABD97E}</LicenseId>
-			<Name>TC3 Controller Toolbox</Name>
-			<OrderNo>TF4100</OrderNo>
-		</License>
-		<License>
-			<LicenseId>{A19036CF-A53B-4E3A-99FF-023EF5C4798B}</LicenseId>
-			<Name>TC3 NC PTP Axis</Name>
-			<Instances>10</Instances>
+			<LicenseId>{3FF18E97-7754-401B-93FB-70544DE28A13}</LicenseId>
+			<Name>TC3 IO</Name>
+			<OrderNo>TC1100</OrderNo>
 		</License>
 		<License>
 			<LicenseId>{66689887-CCBD-452C-AC9A-039D997C6E66}</LicenseId>
@@ -31,14 +21,24 @@
 			<OrderNo>TC1200</OrderNo>
 		</License>
 		<License>
+			<LicenseId>{A19036CF-A53B-4E3A-99FF-023EF5C4798B}</LicenseId>
+			<Name>TC3 NC PTP Axis</Name>
+			<Instances>10</Instances>
+		</License>
+		<License>
 			<LicenseId>{520DE751-9DB6-47CB-8240-BD5C466E7E64}</LicenseId>
 			<Name>TC3 NC PTP</Name>
 			<OrderNo>TF5000</OrderNo>
 		</License>
 		<License>
-			<LicenseId>{3FF18E97-7754-401B-93FB-70544DE28A13}</LicenseId>
-			<Name>TC3 IO</Name>
-			<OrderNo>TC1100</OrderNo>
+			<LicenseId>{777F1598-583B-4503-99BB-7C02E0ABD97E}</LicenseId>
+			<Name>TC3 Controller Toolbox</Name>
+			<OrderNo>TF4100</OrderNo>
+		</License>
+		<License>
+			<LicenseId>{4989A799-AEEA-4FEE-88EF-666B99EEFB45}</LicenseId>
+			<Name>TC3 Scope View Professional</Name>
+			<OrderNo>TE1300</OrderNo>
 		</License>
 	</LicenseInfo>
 </TcLicenseInfo>

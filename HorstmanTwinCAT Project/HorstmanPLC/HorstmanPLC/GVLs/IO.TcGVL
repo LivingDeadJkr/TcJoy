@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
   <GVL Name="IO" Id="{bbbb0fc5-1297-4d34-bc8a-189fc9af07a3}">
     <Declaration><![CDATA[{attribute 'qualified_only'}
 VAR_GLOBAL
@@ -39,8 +39,8 @@ DriveFeedback2   AT %I*: INT;
 LinearPosition2   AT %I*: INT;
 LoadCell2   AT %I*: DINT;
  
+Laser_mm: LREAL;
 
-	Laser_mm: LREAL;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

@@ -1,23 +1,16 @@
 ﻿Imports TwinCAT
 Imports TwinCAT.Ads
 Imports J2i.Net.XInputWrapper
-Imports System.ComponentModel
 Imports System
+Imports System.ComponentModel
 Imports System.Text
 Imports System.Net
 Imports System.IO
 Imports TwinCAT.Measurement.Scope.API.Model
 '
-' TcJoy, by Evan Jensen of Jensen Mecharonics, LLC. 2018 
-'
-' See the github page for more information: https://github.com/evanmj/TcJoy
-'
-' TODO: Any todos in code
-' TODO: Fix help tab, add help text/btns on plc settings
-' TODO: Add donate link and possibly 'nag' screen
-' TODO: Make howto video
-' 
-'
+'Horstman HMI by Adrian Neill (2020)
+'based on TCjoy
+
 ' MIT License
 
 ' Copyright(c) 2018 Evan Jensen of Jensen Mecharonics, LLC.
@@ -62,6 +55,13 @@ Public Class HMI
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
+        CboxManualMode.SelectedIndex = 6
+        btnRaiseA.Visible = True
+        btnLowerA.Visible = True
+        BtnExecute.Visible = False
+        BtnLoadCsv.Visible = False
+        BtnGraphCSV.Visible = False
+        btnPlayCsv.Visible = False
 
 
         TabControl.SelectedTab = TabPage_Connection
@@ -410,12 +410,59 @@ Public Class HMI
                                 cbServosHalted.Checked = GetBit(tag.Value, 5)
                                 cb_SoftwareEnable.Checked = GetBit(tag.Value, 6)
                                 cb_GeneralFault.Checked = GetBit(tag.Value, 7)
-                              '  lbl0.Text = tag.Value
+                                '  lbl0.Text = tag.Value
+
+
+
 
 
                             Case "Global_variables.HmiBoolDword1"
-                                '   Integer.TryParse(lbl0.Text, TempInt)
-                             '   lbl1.Text = tag.Value And TempInt
+                                If GetBit(tag.Value, 0) Then
+                                    LbFaults.Items.Add("Servo 1 Drive Fault")
+                                Else
+                                    LbFaults.Items.Remove("Servo 1 Drive Fault")
+                                End If
+
+                                If GetBit(tag.Value, 1) Then
+                                    LbFaults.Items.Add("Servo 2 Drive Fault")
+                                Else
+                                    LbFaults.Items.Remove("Servo 2 Drive Fault")
+                                End If
+
+                                If GetBit(tag.Value, 2) Then
+
+                                    LbFaults.Items.Add("Servo 1 NC Fault")
+                                Else
+                                    LbFaults.Items.Remove("Servo 1 NC Fault")
+
+                                End If
+
+                                If GetBit(tag.Value, 3) Then
+                                    LbFaults.Items.Add("Servo 2 NC Fault")
+                                Else
+                                    LbFaults.Items.Remove("Servo 2 NC Fault")
+                                End If
+
+                                If GetBit(tag.Value, 4) Then
+                                    LbFaults.Items.Add("Servo Gear in (sync) Not active, and required")
+                                Else
+                                    LbFaults.Items.Remove("Servo Gear in (sync) Not active, and required")
+
+                                End If
+                                If GetBit(tag.Value, 5) Then
+
+                                    LbFaults.Items.Add("Servo 1 Failed to enable")
+                                Else
+                                    LbFaults.Items.Remove("Servo 1 Failed to enable")
+
+                                End If
+                                If GetBit(tag.Value, 6) Then
+                                    LbFaults.Items.Add("Servo 2 Failed to enable")
+                                Else
+                                    LbFaults.Items.Remove("Servo 2 Failed to enable")
+
+                                End If
+
 
 
                             Case TextBox_TcJoyPath.Text + ".iUpdateRateMS"
@@ -487,8 +534,14 @@ Public Class HMI
                     Case "Global_variables.HMI_Servo2_Force"
                         txtTFB.Text = Tag.Value.ToString
 
+                    Case "Global_variables.ReqVelocity"
+                        Double.TryParse(tbVelReq.Text, Tag.Value)
 
+                    Case "Global_variables.ReqAccel"
+                        Double.TryParse(TbAccel.Text, Tag.Value)
 
+                    Case "Global_variables.Position"
+                        Double.TryParse(TbPosition.Text, Tag.Value)
 
                     Case "Global_variables.HmiButtonData0"
                         Tag.Value = myHMIButtonData0
@@ -654,15 +707,15 @@ Public Class HMI
                 value = Int32.Parse(TextBox_ADSPort.Text)
             Catch ex As Exception
                 MessageBox.Show("Didn't understand the port you put in, it must be an integer.  Defaulting to 851 for TC3 Runtime 1")
-                TextBox_ADSPort.Text = "851"
-                value = 851
-            End Try
-            If value < 1 Then
-                TextBox_ADSPort.Text = "851"
-            End If
-            My.Settings.sPLC_PORT = TextBox_ADSPort.Text
-            My.Settings.Save()
-        End If
+                                    TextBox_ADSPort.Text = "851"
+                                    value = 851
+                                    End Try
+                                    If value < 1 Then
+                                        TextBox_ADSPort.Text = "851"
+                                    End If
+                                    My.Settings.sPLC_PORT = TextBox_ADSPort.Text
+                                    My.Settings.Save()
+                                End If
 
     End Sub
 
@@ -1253,31 +1306,31 @@ Public Class HMI
 
     End Sub
 
-    Private Sub BtnLoadCsv_Click(sender As Object, e As MouseEventArgs) Handles Button1.Click
+    Private Sub BtnLoadCsv_Click(sender As Object, e As MouseEventArgs) Handles BtnLoadCsv.Click
 
-            Dim myStream As Stream = Nothing
-            Dim openFileDialog1 As New OpenFileDialog()
+        Dim myStream As Stream = Nothing
+        Dim openFileDialog1 As New OpenFileDialog()
 
-            openFileDialog1.InitialDirectory = "c:\"
-            openFileDialog1.Filter = "txt files (*.csv)|*.csv|All files (*.*)|*.*"
-            openFileDialog1.FilterIndex = 2
-            openFileDialog1.RestoreDirectory = True
+        openFileDialog1.InitialDirectory = "c:\"
+        openFileDialog1.Filter = "txt files (*.csv)|*.csv|All files (*.*)|*.*"
+        openFileDialog1.FilterIndex = 2
+        openFileDialog1.RestoreDirectory = True
 
-            If openFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
-                Try
-                    Recipefile = New FileInfo(openFileDialog1.FileName.ToString)
+        If openFileDialog1.ShowDialog() = System.Windows.Forms.DialogResult.OK Then
+            Try
+                Recipefile = New FileInfo(openFileDialog1.FileName.ToString)
 
-                    If (Recipefile.Exists) Then
-                        MessageBox.Show(Recipefile.FullName)
-                        SendFile()
-                        ' Insert code to read the stream here.
-                    End If
-                Catch Ex As Exception
-                    MessageBox.Show("Cannot read file from disk. Original error: " & Ex.Message)
+                If (Recipefile.Exists) Then
+                    MessageBox.Show(Recipefile.FullName)
+                    SendFile()
+                    ' Insert code to read the stream here.
+                End If
+            Catch Ex As Exception
+                MessageBox.Show("Cannot read file from disk. Original error: " & Ex.Message)
 
-                End Try
-            End If
-        End Sub
+            End Try
+        End If
+    End Sub
     'Jog buttons
 
 
@@ -1314,7 +1367,7 @@ Public Class HMI
         myHMIButtonData0 = ResetBit(myHMIButtonData0, 3)
     End Sub
 
-    Private Sub Btn_JogModeToggle_MouseDown(sender As Object, e As MouseEventArgs) Handles btn_JogModeToggle.MouseDown
+    Private Sub Btn_JogModeToggle_MouseDown(sender As Object, e As MouseEventArgs)
         myHMIButtonData0 = FlipBit(myHMIButtonData0, 4)
     End Sub
 
@@ -1327,11 +1380,163 @@ Public Class HMI
         myHMIButtonData0 = ResetBit(myHMIButtonData0, 5)
     End Sub
 
-    Private Sub BtnRunCsvClick(sender As Object, e As MouseEventArgs) Handles Button2.MouseDown
+    Private Sub BtnRunCsvClick(sender As Object, e As MouseEventArgs) Handles btnPlayCsv.MouseDown
         myHMIButtonData0 = SetBit(myHMIButtonData0, 6)
     End Sub
-    Private Sub BtnRunCsvunClick(sender As Object, e As MouseEventArgs) Handles Button2.MouseUp
+    Private Sub BtnRunCsvunClick(sender As Object, e As MouseEventArgs) Handles btnPlayCsv.MouseUp
         myHMIButtonData0 = ResetBit(myHMIButtonData0, 6)
     End Sub
 
+    'bit pack data for transmission to PLC.
+    Private Sub CboxManualMode_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CboxManualMode.SelectedIndexChanged
+        Select Case CboxManualMode.SelectedIndex
+
+
+            Case 0 'abs  
+                LblPosition.Text = "Target Position (mm)"
+                LblPosition.Visible = True
+                TbPosition.Visible = True
+                myHMIButtonData0 = SetBit(myHMIButtonData0, 10)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 11)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 12)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 13)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 14)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 15)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 16)
+
+                btnRaiseA.Visible = False
+                btnLowerA.Visible = False
+                BtnExecute.Visible = True
+                BtnLoadCsv.Visible = False
+                BtnGraphCSV.Visible = False
+                btnPlayCsv.Visible = False
+
+            Case 1 'rel
+                LblPosition.Text = "Relative Distance (mm)"
+                LblPosition.Visible = True
+                TbPosition.Visible = True
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 10)
+                myHMIButtonData0 = SetBit(myHMIButtonData0, 11)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 12)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 13)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 14)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 15)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 16)
+                btnRaiseA.Visible = True
+                btnLowerA.Visible = True
+                BtnExecute.Visible = False
+                BtnLoadCsv.Visible = False
+                BtnGraphCSV.Visible = False
+                btnPlayCsv.Visible = False
+
+            Case 2 'sin
+                LblPosition.Text = "Center position (mm)"
+                LblPosition.Visible = True
+                TbPosition.Visible = True
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 10)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 11)
+                myHMIButtonData0 = SetBit(myHMIButtonData0, 12)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 13)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 14)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 15)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 16)
+                btnRaiseA.Visible = False
+                btnLowerA.Visible = False
+                BtnExecute.Visible = True
+                BtnLoadCsv.Visible = False
+                BtnGraphCSV.Visible = False
+                btnPlayCsv.Visible = False
+
+            Case 3 'chrip
+                LblPosition.Text = "Center position (mm)"
+                LblPosition.Visible = True
+                TbPosition.Visible = True
+
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 10)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 11)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 12)
+                myHMIButtonData0 = SetBit(myHMIButtonData0, 13)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 14)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 15)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 16)
+                btnRaiseA.Visible = False
+                btnLowerA.Visible = False
+                BtnExecute.Visible = True
+                BtnLoadCsv.Visible = False
+                BtnGraphCSV.Visible = False
+                btnPlayCsv.Visible = False
+
+            Case 4 'CSV playback
+                LblPosition.Visible = False
+                TbPosition.Visible = False
+
+
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 10)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 11)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 12)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 13)
+                myHMIButtonData0 = SetBit(myHMIButtonData0, 14)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 15)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 16)
+                btnRaiseA.Visible = False
+                btnLowerA.Visible = False
+                BtnExecute.Visible = False
+                BtnLoadCsv.Visible = True
+                BtnGraphCSV.Visible = True
+                btnPlayCsv.Visible = True
+
+            Case 5 '// set 0 point reference mode
+
+                LblPosition.Visible = True
+                TbPosition.Visible = True
+                LblPosition.Text = "Desired current positon"
+
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 10)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 11)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 12)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 13)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 14)
+                myHMIButtonData0 = SetBit(myHMIButtonData0, 15)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 16)
+                btnRaiseA.Visible = False
+                btnLowerA.Visible = False
+                BtnExecute.Visible = True
+                BtnLoadCsv.Visible = False
+                BtnGraphCSV.Visible = False
+                btnPlayCsv.Visible = False
+
+            Case 6 'Jog until near limit. (move abs to 1mm away from limits.)
+                LblPosition.Visible = False
+                TbPosition.Visible = False
+                btnRaiseA.Visible = True
+                btnLowerA.Visible = True
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 10)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 11)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 12)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 13)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 14)
+                myHMIButtonData0 = ResetBit(myHMIButtonData0, 15)
+                myHMIButtonData0 = SetBit(myHMIButtonData0, 16)
+            Case Else
+
+        End Select
+
+
+
+
+    End Sub
+
+
+
+    Private Sub TbPosition_TextChanged(sender As Object, e As EventArgs) Handles TbPosition.TextChanged
+
+    End Sub
+
+    Private Sub tbVelReq_TextChanged(sender As Object, e As EventArgs) Handles tbVelReq.TextChanged
+
+    End Sub
+
+    Private Sub TbAccel_TextChanged(sender As Object, e As EventArgs) Handles TbAccel.TextChanged
+
+    End Sub
 End Class

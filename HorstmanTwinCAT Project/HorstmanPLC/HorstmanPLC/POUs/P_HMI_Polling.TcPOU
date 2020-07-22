@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
   <POU Name="P_HMI_Polling" Id="{6c3f4490-3ab2-422f-af2f-6459f65a48e9}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM P_HMI_Polling
 VAR
@@ -27,7 +27,7 @@ ELSE
 	control.b_RequestCSVRead :=   FALSE;
 END_IF
 IO.Laser_mm := UINT_TO_LREAL(io.LaserDistanceValue)  / 10.0;
-
+(* //old mode change code.
 IF Global_variables.HmiButtonData0.4 AND p_motorcontrol_st.state = 2 THEN // if in ready state, and asked to go to jog mode, jump to Gear In Request.
 	// if halted and ready, switch to jogging mode. 
 	Control.RequestedState := 5;
@@ -38,6 +38,18 @@ IF Global_variables.HmiButtonData0.6 AND p_motorcontrol_st.state = 6 THEN // if 
 	// if halted and ready, switch to jogging mode. 
 	Control.RequestedState :=  7;
 END_IF
+*)
+
+IF Global_variables.HmiButtonData0.10 	THEN Control.RequestedState := 0; END_IF // Abs move mode
+IF Global_variables.HmiButtonData0.11 	THEN Control.RequestedState := 1; END_IF // Rel Move Mode
+IF Global_variables.HmiButtonData0.12 	THEN Control.RequestedState := 2; END_IF // Sin mode
+IF Global_variables.HmiButtonData0.13 	THEN Control.RequestedState := 3; END_IF // Chirp Mode
+IF Global_variables.HmiButtonData0.14 	THEN Control.RequestedState := 4; END_IF // CSV playback mode
+IF Global_variables.HmiButtonData0.15 	THEN Control.RequestedState := 5; END_IF // Zeroing Mode
+IF Global_variables.HmiButtonData0.16 	THEN Control.RequestedState := 6; END_IF // Jog to limits mode
+
+ //Global_variables.HmiButtonData0.6 is execute button 
+
 
 
 Global_variables.HmiBoolDword0.0 := io.DriveEnabled1;
@@ -79,9 +91,15 @@ Global_variables.HmiBoolDword0.7 := p_Faultmonitoring.b_Faulted;
       <LineId Id="113" Count="4" />
       <LineId Id="112" Count="0" />
       <LineId Id="86" Count="0" />
+      <LineId Id="132" Count="0" />
+      <LineId Id="123" Count="0" />
+      <LineId Id="134" Count="5" />
+      <LineId Id="133" Count="0" />
+      <LineId Id="130" Count="1" />
+      <LineId Id="125" Count="0" />
       <LineId Id="55" Count="0" />
       <LineId Id="53" Count="0" />
-      <LineId Id="44" Count="0" />
+      <LineId Id="122" Count="0" />
       <LineId Id="58" Count="0" />
       <LineId Id="57" Count="0" />
       <LineId Id="62" Count="0" />

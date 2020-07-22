@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.3">
   <POU Name="p_MotorControl_ST" Id="{1948efc2-07af-4f24-8417-60a242e950fd}" SpecialFunc="None">
     <Declaration><![CDATA[PROGRAM p_MotorControl_ST
 VAR
@@ -44,6 +44,10 @@ ServosReady :byte; //
 	ServoEnableRtrig : r_trig;
 	PowerEnableRtrig: r_trig;
 	MoveDoneRtrig: r_trig;
+	ExecuteButtonRtrig: R_trig;
+	JogRtrig: R_trig;
+	JogUpRtrig: R_trig;;
+	JogDnRtrig: R_trig;
 END_VAR
 
 ]]></Declaration>
@@ -122,8 +126,8 @@ IF control.b_Servos_Halted AND RequestedState <> 0 THEN State := RequestedState;
 
 IF control.b_EnableServosReq = FALSE THEN control.b_EnableServosFinal := FALSE; State:=0; END_IF 
 
-IF control.RequestedState = 5 THEN 
-state := 5;				
+IF control.RequestedState = 0 THEN 
+state := 5;	// attempt Gear in 	
 END_IF
 
 3: //Switch into SP mode
@@ -149,7 +153,28 @@ END_IF
 
  control.b_HaltRequest := FALSE;
  control.b_ExecuteGearIn := TRUE;
- IF P_Motorcontrol.MC_GearInA.InGear THEN state := 6;
+ IF P_Motorcontrol.MC_GearInA.InGear THEN 
+	ExecuteButtonRtrig(CLK := Global_variables.HmiButtonData0.6); // execute button bit
+	JogupRtrig(CLK := Global_variables.HmiButtonData0.0); // raise button
+	JogDnRtrig(CLK := Global_variables.HmiButtonData0.1); // lower button
+	
+ 
+  CASE control.RequestedState OF
+	  0:
+	  //Global_variables.HmiButtonData0.6 is execute button
+	  1:
+	  
+	  2:
+	  
+	  3:
+	  
+	  4:
+	  
+	  5:
+	  
+	  6:
+	  state := 6;
+  END_CASE
 END_IF
 
 
@@ -394,6 +419,25 @@ END_IF
       <LineId Id="4477" Count="0" />
       <LineId Id="4516" Count="0" />
       <LineId Id="4521" Count="0" />
+      <LineId Id="4926" Count="0" />
+      <LineId Id="4946" Count="0" />
+      <LineId Id="4948" Count="0" />
+      <LineId Id="4947" Count="0" />
+      <LineId Id="4944" Count="0" />
+      <LineId Id="4928" Count="1" />
+      <LineId Id="4938" Count="0" />
+      <LineId Id="4931" Count="0" />
+      <LineId Id="4939" Count="0" />
+      <LineId Id="4932" Count="0" />
+      <LineId Id="4940" Count="0" />
+      <LineId Id="4933" Count="0" />
+      <LineId Id="4941" Count="0" />
+      <LineId Id="4934" Count="0" />
+      <LineId Id="4942" Count="0" />
+      <LineId Id="4935" Count="0" />
+      <LineId Id="4943" Count="0" />
+      <LineId Id="4936" Count="1" />
+      <LineId Id="4930" Count="0" />
       <LineId Id="4518" Count="0" />
       <LineId Id="4523" Count="0" />
       <LineId Id="4522" Count="0" />
