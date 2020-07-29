@@ -1272,9 +1272,6 @@ External Setpoint Generation:
 					<Value>0</Value>
 				</Default>
 			</SubItem>
-			<Hides>
-				<Hide GUID="{749FA510-5866-E5EC-2FF1-6482C8AAE5F2}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{FD739347-FC07-5B61-1482-D379CA51F115}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..1,0..15] OF BYTE</Name>
@@ -1344,7 +1341,7 @@ External Setpoint Generation:
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{E5B21FFC-BC84-9456-732D-D97A27B2B743}" Namespace="Tc2_Utilities" AutoDeleteType="true">TIMESTRUCT</Name>
+			<Name GUID="{AB538AA0-FBBA-6E2D-4BAD-45812AD1FDB7}" Namespace="Tc2_Utilities" AutoDeleteType="true">TIMESTRUCT</Name>
 			<Comment><![CDATA[ System Time Structure ]]></Comment>
 			<BitSize>128</BitSize>
 			<SubItem>
@@ -1385,7 +1382,7 @@ External Setpoint Generation:
 			<SubItem>
 				<Name>wMinute</Name>
 				<Type GUID="{18071995-0000-0000-0000-000000000004}">WORD</Type>
-				<Comment><![CDATA[ Munute: 0..59 ]]></Comment>
+				<Comment><![CDATA[ Minute: 0..59 ]]></Comment>
 				<BitSize>16</BitSize>
 				<BitOffs>80</BitOffs>
 			</SubItem>
@@ -1405,7 +1402,7 @@ External Setpoint Generation:
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{1287001B-3313-82EB-FD5F-07D60FEAB06C}" Namespace="Tc2_Utilities" AutoDeleteType="true">ST_TimeZoneInformation</Name>
+			<Name GUID="{82264CCA-6F17-774A-3051-8BF170A47CB7}" Namespace="Tc2_Utilities" AutoDeleteType="true">ST_TimeZoneInformation</Name>
 			<BitSize>864</BitSize>
 			<SubItem>
 				<Name>bias</Name>
@@ -1426,7 +1423,7 @@ External Setpoint Generation:
 			</SubItem>
 			<SubItem>
 				<Name>standardDate</Name>
-				<Type GUID="{E5B21FFC-BC84-9456-732D-D97A27B2B743}" Namespace="Tc2_Utilities">TIMESTRUCT</Type>
+				<Type GUID="{AB538AA0-FBBA-6E2D-4BAD-45812AD1FDB7}" Namespace="Tc2_Utilities">TIMESTRUCT</Type>
 				<Comment><![CDATA[Specifies a SYSTEMTIME structure that contains a date and local time when the
 								transition from daylight saving time to standard time occurs on this operating system.]]></Comment>
 				<BitSize>128</BitSize>
@@ -1449,7 +1446,7 @@ External Setpoint Generation:
 			</SubItem>
 			<SubItem>
 				<Name>daylightDate</Name>
-				<Type GUID="{E5B21FFC-BC84-9456-732D-D97A27B2B743}" Namespace="Tc2_Utilities">TIMESTRUCT</Type>
+				<Type GUID="{AB538AA0-FBBA-6E2D-4BAD-45812AD1FDB7}" Namespace="Tc2_Utilities">TIMESTRUCT</Type>
 				<Comment><![CDATA[ Specifies a SYSTEMTIME structure that contains a date and local time when the transition
 								from standard time to daylight saving time occurs on this operating system. ]]></Comment>
 				<BitSize>128</BitSize>
@@ -2959,9 +2956,6 @@ External Setpoint Generation:
 					<Name>conditionalshow</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{82B6A3A8-03EC-7621-62F0-AB1A0913A418}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{2A9AD508-1679-EE3C-CC2C-D20CA21DF3F5}" Namespace="Tc2_MC2" AutoDeleteType="true">_ST_NCADS_TableFunctions</Name>
@@ -2986,9 +2980,6 @@ External Setpoint Generation:
 					<Name>conditionalshow</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{34BB8E20-FFDA-7A87-E596-8A123E2893F4}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{0E01CFCF-C914-0F23-E1FC-B1BCAB10BA0C}" Namespace="Tc2_MC2" AutoDeleteType="true">_ST_NCADS_Table</Name>
@@ -3010,9 +3001,6 @@ External Setpoint Generation:
 					<Name>conditionalshow</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{2F7D29B7-F240-06E9-7BFF-711DFD3295D2}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{1314D5BC-2072-B9BE-309B-ED5DE92ADB0C}" Namespace="Tc2_System" AutoDeleteType="true">T_AmsPort</Name>
@@ -3178,9 +3166,6 @@ External Setpoint Generation:
 					<Name>hide_all_locals</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{BAF3F4F2-2706-D185-7F39-183EC096CC9B}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{B65BBDEF-F2E9-F57B-3A8C-EA4801191C54}" Namespace="Tc2_MC2" AutoDeleteType="true">_TCMCGLOBAL</Name>
@@ -3490,9 +3475,6 @@ External Setpoint Generation:
 					<Name>conditionalshow</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{A593C922-5CA4-A501-3F41-647305213B71}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{39FF659E-27A0-4C52-F64F-682F1E64B1EE}" Namespace="Tc2_ControllerToolbox" AutoDeleteType="true">ST_CTRL_CYCLE_TIME_INTERPRETATION</Name>
@@ -3576,9 +3558,6 @@ External Setpoint Generation:
 					<Name>conditionalshow</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{6693C729-151B-0C2F-E1F7-AA47819550CB}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{716AC969-55C3-BA6E-F680-DA1C06F6B3A8}" Namespace="Tc2_System" AutoDeleteType="true">GETCPUCOUNTER</Name>
@@ -3658,9 +3637,6 @@ External Setpoint Generation:
 					<Name>conditionalshow_all_locals</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{881EC9DF-4F10-1C5F-F9E9-1615902936EA}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{70150797-2620-D4AA-7871-9945F55686A8}" Namespace="Tc2_Standard" AutoDeleteType="true">R_TRIG</Name>
@@ -3739,9 +3715,6 @@ External Setpoint Generation:
 					<Name>conditionalshow_all_locals</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{EDAD7171-4820-6429-B9C9-576F17CD3EE0}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{48180363-29FE-034B-BD50-EC23353DE553}" Namespace="Tc2_Utilities" AutoDeleteType="true">RTC_EX</Name>
@@ -3947,9 +3920,6 @@ External Setpoint Generation:
 					<Name>conditionalshow_all_locals</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{B709283F-8D1B-47DA-C27D-369520CB193F}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{11F20A4A-90D4-35C7-DB3B-0E8659E05E51}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..1] OF DINT</Name>
@@ -4058,9 +4028,6 @@ External Setpoint Generation:
 					<Value>FunctionBlock</Value>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{566D9E99-3A3F-D8E1-B381-17896BEEB42B}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{5C9B2F34-1582-0DDD-654F-E304D1B48154}" Namespace="Tc2_Standard" AutoDeleteType="true">SR</Name>
@@ -4134,9 +4101,6 @@ External Setpoint Generation:
 					<Value>FunctionBlock</Value>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{A7050890-7714-9582-3474-1BBC74F4E168}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{CA937EA4-0DA0-2440-0362-EB5A61325E1A}" Namespace="Tc2_System" AutoDeleteType="true">T_MaxString</Name>
@@ -4388,9 +4352,6 @@ External Setpoint Generation:
 					<Name>hide_all_locals</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{A179D591-9E3E-D126-215A-DBEAAAE44A7C}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{E25B6E26-DBD0-3CEE-84BA-6EA23FE50ACD}" Namespace="Tc2_System" AutoDeleteType="true">FB_FileClose</Name>
@@ -4524,9 +4485,6 @@ External Setpoint Generation:
 					<Name>hide_all_locals</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{A66B1502-B717-8E7F-BD75-5617B63AED72}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{134C5170-5986-A827-C1E4-CB4B2745AB21}" Namespace="Tc2_System" AutoDeleteType="true">FB_FileGets</Name>
@@ -4686,9 +4644,6 @@ External Setpoint Generation:
 					<Name>hide_all_locals</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{EE61B548-4BED-7C59-0C6E-56D96FB86486}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{DC091AEA-94B0-DF06-A732-2F0D35EDD81F}" Namespace="Tc2_Utilities" AutoDeleteType="true">E_EnumCmdType</Name>
@@ -5062,9 +5017,6 @@ External Setpoint Generation:
 					<Name>conditionalshow_all_locals</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{C174F4F5-5EE9-2392-A770-7CFF4693B539}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{6ED04087-656B-98A7-735E-B4B6BE5857B0}" IecBaseType="true" AutoDeleteType="true">ARRAY [0..1000] OF STRING(64)</Name>
@@ -6264,9 +6216,6 @@ External Setpoint Generation:
 					<Value>FunctionBlock</Value>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{700ABA27-9CF8-D49C-578A-C5AFB491979E}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{B6F5F438-C8AF-E0DA-5DA2-CA44839CBB5A}" Namespace="Tc2_MC2" AutoDeleteType="true">ST_AdsAddress</Name>
@@ -7315,7 +7264,7 @@ External Setpoint Generation:
 			</Properties>
 		</DataType>
 		<DataType>
-			<Name GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" AutoDeleteType="true">AXIS_REF</Name>
+			<Name GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" AutoDeleteType="true">AXIS_REF</Name>
 			<Comment><![CDATA[
 	AXIS_REF data structure
 
@@ -7431,7 +7380,7 @@ External Setpoint Generation:
 				<Parameter>
 					<Name>pRef</Name>
 					<Type GUID="{18071995-0000-0000-0000-000000000007}" PointerTo="2">DWORD</Type>
-					<BitSize>64</BitSize>
+					<BitSize>32</BitSize>
 				</Parameter>
 			</Method>
 			<Method>
@@ -7446,7 +7395,7 @@ External Setpoint Generation:
 				<Parameter>
 					<Name>pRef</Name>
 					<Type GUID="{18071995-0000-0000-0000-000000000007}" PointerTo="2">DWORD</Type>
-					<BitSize>64</BitSize>
+					<BitSize>32</BitSize>
 				</Parameter>
 			</Method>
 			<Properties>
@@ -7690,9 +7639,6 @@ External Setpoint Generation:
 				<Enum>12290</Enum>
 				<Comment><![CDATA[ 20190108 Fap - Start torque control relative NOT IMPLEMENTED ]]></Comment>
 			</EnumInfo>
-			<Hides>
-				<Hide GUID="{F2321013-31B3-6633-2B09-E289435D85B5}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{C4AD65C9-26B0-0967-2D17-6B24719FBCDB}" Namespace="Tc2_MC2" AutoDeleteType="true">_E_TcMC_STATES</Name>
@@ -8058,9 +8004,6 @@ External Setpoint Generation:
 					<Name>hide_all_locals</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{0CF2B63E-E841-7620-8120-9DE21F320DED}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{907B5EB1-559E-C88E-E7FD-08EBECFB9C28}" Namespace="Tc2_System" AutoDeleteType="true">FW_GetCurTaskIndex</Name>
@@ -8111,9 +8054,6 @@ External Setpoint Generation:
 					<Name>conditionalshow</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{8BDF7671-10AF-4B99-76CA-2C6D5138D251}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{5D910914-975E-C9C4-6C64-2DE0B951DB6A}" Namespace="Tc2_System" AutoDeleteType="true">GETCURTASKINDEX</Name>
@@ -8177,9 +8117,6 @@ External Setpoint Generation:
 					<Name>conditionalshow_all_locals</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{A8F0EB6C-77DB-D3C7-B038-8CF4B382C2A6}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{5B7782F7-B200-9931-E643-99903349138C}" Namespace="Tc2_MC2" AutoDeleteType="true">_ST_TcNc_OperationModes</Name>
@@ -8258,11 +8195,11 @@ External Setpoint Generation:
 			</Properties>
 		</DataType>
 		<DataType>
-			<Name GUID="{983564A3-2965-6B36-6F71-230F32620DE3}" Namespace="Tc2_MC2" AutoDeleteType="true">_FB_MoveUniversalGeneric</Name>
+			<Name GUID="{6AED1F4C-13BE-FDBF-6FCC-34F60447A3C8}" Namespace="Tc2_MC2" AutoDeleteType="true">_FB_MoveUniversalGeneric</Name>
 			<BitSize>6656</BitSize>
 			<SubItem>
 				<Name>Axis</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>32</BitOffs>
@@ -8776,16 +8713,13 @@ External Setpoint Generation:
 					<Name>conditionalshow</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{15BCF962-EF04-7663-8E76-1FFC9FB14AFB}"/>
-			</Hides>
 		</DataType>
 		<DataType>
-			<Name GUID="{7707B66D-A535-C785-580A-0378EAA6826B}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_MoveContinuousAbsolute</Name>
+			<Name GUID="{6D4E99C3-E800-5ADC-DFF6-460D8340599B}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_MoveContinuousAbsolute</Name>
 			<BitSize>7872</BitSize>
 			<SubItem>
 				<Name>Axis</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>32</BitOffs>
@@ -8998,7 +8932,7 @@ External Setpoint Generation:
 			</SubItem>
 			<SubItem>
 				<Name>MoveGeneric</Name>
-				<Type GUID="{983564A3-2965-6B36-6F71-230F32620DE3}" Namespace="Tc2_MC2">_FB_MoveUniversalGeneric</Type>
+				<Type GUID="{6AED1F4C-13BE-FDBF-6FCC-34F60447A3C8}" Namespace="Tc2_MC2">_FB_MoveUniversalGeneric</Type>
 				<BitSize>6656</BitSize>
 				<BitOffs>1152</BitOffs>
 			</SubItem>
@@ -9039,16 +8973,13 @@ External Setpoint Generation:
 					<Value>FunctionBlock</Value>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{7ED8A2F8-2FCF-DB88-85FF-2868F5A04CBB}"/>
-			</Hides>
 		</DataType>
 		<DataType>
-			<Name GUID="{092E048A-0C73-EBAD-077F-DB466C1A95FA}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_Halt</Name>
+			<Name GUID="{71DCC587-282E-2DE3-E772-9949F9F261D9}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_Halt</Name>
 			<BitSize>7616</BitSize>
 			<SubItem>
 				<Name>Axis</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>32</BitOffs>
@@ -9210,7 +9141,7 @@ External Setpoint Generation:
 			</SubItem>
 			<SubItem>
 				<Name>MoveGeneric</Name>
-				<Type GUID="{983564A3-2965-6B36-6F71-230F32620DE3}" Namespace="Tc2_MC2">_FB_MoveUniversalGeneric</Type>
+				<Type GUID="{6AED1F4C-13BE-FDBF-6FCC-34F60447A3C8}" Namespace="Tc2_MC2">_FB_MoveUniversalGeneric</Type>
 				<BitSize>6656</BitSize>
 				<BitOffs>896</BitOffs>
 			</SubItem>
@@ -9251,16 +9182,13 @@ External Setpoint Generation:
 					<Value>FunctionBlock</Value>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{9C37D8F3-FB4E-6189-8CAB-9B8E6EC2A11A}"/>
-			</Hides>
 		</DataType>
 		<DataType>
-			<Name GUID="{4AB2CB35-77CC-897B-9DEA-AC9C3598175A}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_MoveRelative</Name>
+			<Name GUID="{B72F3477-58C2-D7EC-5728-B5BD5E108AF3}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_MoveRelative</Name>
 			<BitSize>7808</BitSize>
 			<SubItem>
 				<Name>Axis</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>32</BitOffs>
@@ -9459,7 +9387,7 @@ External Setpoint Generation:
 			</SubItem>
 			<SubItem>
 				<Name>MoveGeneric</Name>
-				<Type GUID="{983564A3-2965-6B36-6F71-230F32620DE3}" Namespace="Tc2_MC2">_FB_MoveUniversalGeneric</Type>
+				<Type GUID="{6AED1F4C-13BE-FDBF-6FCC-34F60447A3C8}" Namespace="Tc2_MC2">_FB_MoveUniversalGeneric</Type>
 				<BitSize>6656</BitSize>
 				<BitOffs>1088</BitOffs>
 			</SubItem>
@@ -9500,9 +9428,6 @@ External Setpoint Generation:
 					<Value>FunctionBlock</Value>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{D0A97C2B-63F8-8814-B2ED-5F6DBE6F6D3B}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{33AEBC84-0A01-2C66-13F6-0AB9FED5A8E1}" Namespace="Tc2_MC2" AutoDeleteType="true">ST_GearOutOptions</Name>
@@ -9703,16 +9628,13 @@ External Setpoint Generation:
 					<Name>hide_all_locals</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{78A83ED5-296A-811B-2C26-4E4015A4E506}"/>
-			</Hides>
 		</DataType>
 		<DataType>
-			<Name GUID="{9F5B245D-2150-A391-EFE5-C7DD85D1F35E}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_GearOut</Name>
+			<Name GUID="{F1D3EB31-D4B5-27A6-B3E5-55A26C60F4A2}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_GearOut</Name>
 			<BitSize>1792</BitSize>
 			<SubItem>
 				<Name>Slave</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>32</BitOffs>
@@ -9880,16 +9802,13 @@ External Setpoint Generation:
 					<Value>FunctionBlock</Value>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{C83B595B-E414-9FB2-2352-7C7D6595132D}"/>
-			</Hides>
 		</DataType>
 		<DataType>
-			<Name GUID="{C27C7C82-3C8F-6C3B-8B0B-19F19F4320F2}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_Reset</Name>
+			<Name GUID="{53C30AB3-7287-3F6A-EF14-06075DE6FBFA}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_Reset</Name>
 			<BitSize>1632</BitSize>
 			<SubItem>
 				<Name>Axis</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>32</BitOffs>
@@ -10032,9 +9951,6 @@ External Setpoint Generation:
 					<Value>FunctionBlock</Value>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{F1912BA1-02D0-F41D-210B-98E4880A54CE}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{BF14CFB9-9E19-29CA-FEBD-8426514131F7}" Namespace="Tc2_MC2" AutoDeleteType="true">ST_PowerOptions</Name>
@@ -10137,16 +10053,13 @@ External Setpoint Generation:
 					<Value>FunctionBlock</Value>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{9F620FFA-9A14-0D6F-5204-828843D2F6D0}"/>
-			</Hides>
 		</DataType>
 		<DataType>
-			<Name GUID="{3C7E0719-A594-B8FF-D311-D8A3A77AED21}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_Power</Name>
+			<Name GUID="{B41F008E-1CA2-908B-6B03-3887C3A13CF9}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_Power</Name>
 			<BitSize>768</BitSize>
 			<SubItem>
 				<Name>Axis</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>32</BitOffs>
@@ -10373,9 +10286,6 @@ External Setpoint Generation:
 					<Name>conditionalshow_all_locals</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{6BFC3409-BB02-55B5-972B-FAD65236E4EF}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{44BEA87E-4C15-FEE3-D6A6-ABC13D244EDD}" AutoDeleteType="true">Setpoint_interface</Name>
@@ -10463,11 +10373,11 @@ External Setpoint Generation:
 			</Properties>
 		</DataType>
 		<DataType>
-			<Name GUID="{AFDF6780-1D48-51F9-7ED2-119AB1D970FC}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_ExtSetPointGenEnable</Name>
+			<Name GUID="{95C2C008-DFDC-2C8E-BAF2-52D10D53FAFD}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_ExtSetPointGenEnable</Name>
 			<BitSize>2176</BitSize>
 			<SubItem>
 				<Name>Axis</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>32</BitOffs>
@@ -10664,16 +10574,13 @@ External Setpoint Generation:
 					<Value>FunctionBlock</Value>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{180094AC-BB5F-45EF-EF8A-5AE0CD547E1A}"/>
-			</Hides>
 		</DataType>
 		<DataType>
-			<Name GUID="{CE787CF0-13ED-59B3-3944-9BC722E18EFD}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_ExtSetPointGenDisable</Name>
+			<Name GUID="{842C7EFF-6CE1-BA28-1893-AF62BF0CF0AE}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_ExtSetPointGenDisable</Name>
 			<BitSize>1792</BitSize>
 			<SubItem>
 				<Name>Axis</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>32</BitOffs>
@@ -10840,12 +10747,9 @@ External Setpoint Generation:
 					<Value>FunctionBlock</Value>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{D9A703F8-9DD2-FDD3-3C98-31CD09D0D2FC}"/>
-			</Hides>
 		</DataType>
 		<DataType>
-			<Name GUID="{FA253D0D-2AE0-E8CD-062B-EC178DA98FEB}" AutoDeleteType="true">FB_UseExtSetpointGen</Name>
+			<Name GUID="{B1F83B48-B022-0180-B80D-36A19F282585}" AutoDeleteType="true">FB_UseExtSetpointGen</Name>
 			<BitSize>4416</BitSize>
 			<SubItem>
 				<Name>Enable</Name>
@@ -10875,13 +10779,13 @@ External Setpoint Generation:
 			</SubItem>
 			<SubItem>
 				<Name>MC_ExternalSetpointGenEnable</Name>
-				<Type GUID="{AFDF6780-1D48-51F9-7ED2-119AB1D970FC}" Namespace="Tc2_MC2">MC_ExtSetPointGenEnable</Type>
+				<Type GUID="{95C2C008-DFDC-2C8E-BAF2-52D10D53FAFD}" Namespace="Tc2_MC2">MC_ExtSetPointGenEnable</Type>
 				<BitSize>2176</BitSize>
 				<BitOffs>320</BitOffs>
 			</SubItem>
 			<SubItem>
 				<Name>MC_ExternalSetpointGenDisable</Name>
-				<Type GUID="{CE787CF0-13ED-59B3-3944-9BC722E18EFD}" Namespace="Tc2_MC2">MC_ExtSetPointGenDisable</Type>
+				<Type GUID="{842C7EFF-6CE1-BA28-1893-AF62BF0CF0AE}" Namespace="Tc2_MC2">MC_ExtSetPointGenDisable</Type>
 				<BitSize>1792</BitSize>
 				<BitOffs>2496</BitOffs>
 			</SubItem>
@@ -10929,7 +10833,7 @@ External Setpoint Generation:
 			</SubItem>
 			<SubItem>
 				<Name>Axis</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[ axis to manipulate	]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>4352</BitOffs>
@@ -10971,9 +10875,6 @@ External Setpoint Generation:
 					<Value>FunctionBlock</Value>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{51A70D4C-DBB1-6BA7-CF6B-48C732AC9C61}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{971523EA-AE28-8886-94B2-581E344F13ED}" Namespace="Tc2_MC2" AutoDeleteType="true">_E_TcNC_SlaveTypes</Name>
@@ -11322,16 +11223,13 @@ External Setpoint Generation:
 					<Name>hide_all_locals</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{549A9030-6712-2518-537E-20DDF76F0416}"/>
-			</Hides>
 		</DataType>
 		<DataType>
-			<Name GUID="{0C4C0642-4392-3CC5-0BB7-044DB86A7106}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_GearInDyn</Name>
+			<Name GUID="{4C63EE1A-0410-6275-5C35-B598950ED925}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_GearInDyn</Name>
 			<BitSize>4032</BitSize>
 			<SubItem>
 				<Name>Master</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>32</BitOffs>
@@ -11344,7 +11242,7 @@ External Setpoint Generation:
 			</SubItem>
 			<SubItem>
 				<Name>Slave</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>64</BitOffs>
@@ -11637,16 +11535,13 @@ External Setpoint Generation:
 					<Value>FunctionBlock</Value>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{11592AD4-AE2A-93B9-002A-B2F1963F34F8}"/>
-			</Hides>
 		</DataType>
 		<DataType>
-			<Name GUID="{D03E290F-1678-7F08-173C-493C719920F0}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_GearIn</Name>
+			<Name GUID="{33058C35-893B-E4F5-1E79-E6A0F3F82064}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_GearIn</Name>
 			<BitSize>6656</BitSize>
 			<SubItem>
 				<Name>Master</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>32</BitOffs>
@@ -11659,7 +11554,7 @@ External Setpoint Generation:
 			</SubItem>
 			<SubItem>
 				<Name>Slave</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>64</BitOffs>
@@ -11887,7 +11782,7 @@ External Setpoint Generation:
 			</SubItem>
 			<SubItem>
 				<Name>fbOptGearInDyn</Name>
-				<Type GUID="{0C4C0642-4392-3CC5-0BB7-044DB86A7106}" Namespace="Tc2_MC2">MC_GearInDyn</Type>
+				<Type GUID="{4C63EE1A-0410-6275-5C35-B598950ED925}" Namespace="Tc2_MC2">MC_GearInDyn</Type>
 				<BitSize>4032</BitSize>
 				<BitOffs>2304</BitOffs>
 			</SubItem>
@@ -11950,9 +11845,6 @@ External Setpoint Generation:
 					<Value>FunctionBlock</Value>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{22BD3BC4-5603-1DBD-D81C-FD1C7F46908B}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{1E725CC3-8204-4DAB-9491-272E328292C3}" AutoDeleteType="true">FB_TcJoy</Name>
@@ -12342,9 +12234,6 @@ External Setpoint Generation:
 					<Value>FunctionBlock</Value>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{24EA42A9-517D-4082-6019-C93067FEA0D7}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{15A60DB3-7B30-DF62-9968-7359E98C585B}" AutoDeleteType="true">MoveBuffer1kms</Name>
@@ -12867,9 +12756,6 @@ External Setpoint Generation:
 					<Name>hide</Name>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{558763F6-507D-C439-1E68-CE46801EACDA}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{72AE116B-1367-49BE-15BF-D15593224E3C}" Namespace="Tc2_Standard" AutoDeleteType="true">RS</Name>
@@ -13089,9 +12975,6 @@ External Setpoint Generation:
 					<Value>FunctionBlock</Value>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{EFAF4546-63CD-A74A-94D7-CB9B9F1CCF0C}"/>
-			</Hides>
 		</DataType>
 		<DataType>
 			<Name GUID="{7341440A-5D0F-725A-CA98-E02658F06586}" Namespace="Tc2_MC2" AutoDeleteType="true">ST_SetPositionOptions</Name>
@@ -13166,11 +13049,11 @@ External Setpoint Generation:
 			</Properties>
 		</DataType>
 		<DataType>
-			<Name GUID="{552A1543-B387-9C2A-639C-F9B417CE1C79}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_SetPosition</Name>
+			<Name GUID="{CA7D7F4F-3DB4-2E34-15D8-5E85A9BBE5A3}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_SetPosition</Name>
 			<BitSize>1984</BitSize>
 			<SubItem>
 				<Name>Axis</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>32</BitOffs>
@@ -13360,11 +13243,11 @@ External Setpoint Generation:
 			</Properties>
 		</DataType>
 		<DataType>
-			<Name GUID="{FCFD51D3-FB0E-32FB-4846-FB2958EF6651}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_MoveAbsolute</Name>
+			<Name GUID="{0D215B5D-6624-2E80-06EE-F0FC0A990E93}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_MoveAbsolute</Name>
 			<BitSize>7808</BitSize>
 			<SubItem>
 				<Name>Axis</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>32</BitOffs>
@@ -13570,7 +13453,7 @@ External Setpoint Generation:
 			</SubItem>
 			<SubItem>
 				<Name>MoveGeneric</Name>
-				<Type GUID="{983564A3-2965-6B36-6F71-230F32620DE3}" Namespace="Tc2_MC2">_FB_MoveUniversalGeneric</Type>
+				<Type GUID="{6AED1F4C-13BE-FDBF-6FCC-34F60447A3C8}" Namespace="Tc2_MC2">_FB_MoveUniversalGeneric</Type>
 				<BitSize>6656</BitSize>
 				<BitOffs>1088</BitOffs>
 			</SubItem>
@@ -13611,16 +13494,13 @@ External Setpoint Generation:
 					<Value>FunctionBlock</Value>
 				</Property>
 			</Properties>
-			<Hides>
-				<Hide GUID="{EAE9D278-B6C0-E3FD-3569-FFA3F3CB8507}"/>
-			</Hides>
 		</DataType>
 		<DataType>
-			<Name GUID="{8ACCD5C2-490F-9C7C-829C-7C56B8BC5C95}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_MoveContinuousRelative</Name>
+			<Name GUID="{34C0BFCD-2A9D-8E07-4FE6-BC9BDD164E3A}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_MoveContinuousRelative</Name>
 			<BitSize>7872</BitSize>
 			<SubItem>
 				<Name>Axis</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>32</BitOffs>
@@ -13831,7 +13711,7 @@ External Setpoint Generation:
 			</SubItem>
 			<SubItem>
 				<Name>MoveGeneric</Name>
-				<Type GUID="{983564A3-2965-6B36-6F71-230F32620DE3}" Namespace="Tc2_MC2">_FB_MoveUniversalGeneric</Type>
+				<Type GUID="{6AED1F4C-13BE-FDBF-6FCC-34F60447A3C8}" Namespace="Tc2_MC2">_FB_MoveUniversalGeneric</Type>
 				<BitSize>6656</BitSize>
 				<BitOffs>1152</BitOffs>
 			</SubItem>
@@ -14595,11 +14475,11 @@ External Setpoint Generation:
 			</Properties>
 		</DataType>
 		<DataType>
-			<Name GUID="{D0032A52-EFE3-BB66-DFA7-2714797877FA}" Namespace="Tc2_MC2" AutoDeleteType="true">_FB_ReadWriteParameter</Name>
+			<Name GUID="{94F7E71F-6278-A39E-17DE-CB21A632F357}" Namespace="Tc2_MC2" AutoDeleteType="true">_FB_ReadWriteParameter</Name>
 			<BitSize>3840</BitSize>
 			<SubItem>
 				<Name>Axis</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>32</BitOffs>
@@ -14947,11 +14827,11 @@ External Setpoint Generation:
 			</SubItem>
 		</DataType>
 		<DataType>
-			<Name GUID="{A84A01E5-C7B5-AAF7-AC6A-64AC11914724}" Namespace="Tc2_MC2" AutoDeleteType="true">_FB_WriteParameterPersistent</Name>
+			<Name GUID="{32BB2355-C7A2-82AC-F365-2DC9765571E4}" Namespace="Tc2_MC2" AutoDeleteType="true">_FB_WriteParameterPersistent</Name>
 			<BitSize>9984</BitSize>
 			<SubItem>
 				<Name>Axis</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>32</BitOffs>
@@ -15058,7 +14938,7 @@ External Setpoint Generation:
 			</SubItem>
 			<SubItem>
 				<Name>fbReadWriteParameter</Name>
-				<Type GUID="{D0032A52-EFE3-BB66-DFA7-2714797877FA}" Namespace="Tc2_MC2">_FB_ReadWriteParameter</Type>
+				<Type GUID="{94F7E71F-6278-A39E-17DE-CB21A632F357}" Namespace="Tc2_MC2">_FB_ReadWriteParameter</Type>
 				<BitSize>3840</BitSize>
 				<BitOffs>320</BitOffs>
 			</SubItem>
@@ -15256,11 +15136,11 @@ External Setpoint Generation:
 			</Properties>
 		</DataType>
 		<DataType>
-			<Name GUID="{9511727C-EC7E-EF24-FD18-75D8E565C107}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_WriteParameterPersistent</Name>
+			<Name GUID="{0D85B35C-0FB1-4424-D865-4530DE189E6A}" Namespace="Tc2_MC2" AutoDeleteType="true">MC_WriteParameterPersistent</Name>
 			<BitSize>10240</BitSize>
 			<SubItem>
 				<Name>Axis</Name>
-				<Type GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
+				<Type GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}" Namespace="Tc2_MC2" ReferenceTo="true">AXIS_REF</Type>
 				<Comment><![CDATA[Reference to an axis]]></Comment>
 				<BitSize>32</BitSize>
 				<BitOffs>32</BitOffs>
@@ -15361,7 +15241,7 @@ External Setpoint Generation:
 			</SubItem>
 			<SubItem>
 				<Name>fbWriteParameterPersistent</Name>
-				<Type GUID="{A84A01E5-C7B5-AAF7-AC6A-64AC11914724}" Namespace="Tc2_MC2">_FB_WriteParameterPersistent</Type>
+				<Type GUID="{32BB2355-C7A2-82AC-F365-2DC9765571E4}" Namespace="Tc2_MC2">_FB_WriteParameterPersistent</Type>
 				<BitSize>9984</BitSize>
 				<BitOffs>256</BitOffs>
 			</SubItem>
@@ -19407,7 +19287,7 @@ Drive 1	]]></Comment>
 				<Symbol>
 					<Name>Global_Variables.WEST_EUROPE_TZI</Name>
 					<BitSize>864</BitSize>
-					<BaseType GUID="{1287001B-3313-82EB-FD5F-07D60FEAB06C}">Tc2_Utilities.ST_TimeZoneInformation</BaseType>
+					<BaseType GUID="{82264CCA-6F17-774A-3051-8BF170A47CB7}">Tc2_Utilities.ST_TimeZoneInformation</BaseType>
 					<Default>
 						<SubItem>
 							<Name>.bias</Name>
@@ -20258,25 +20138,25 @@ Drive 1	]]></Comment>
 					<Comment><![CDATA[mc_moveAbs1: MC_moveabsolute;
 mc_moveAbs2: MC_moveabsolute;]]></Comment>
 					<BitSize>7872</BitSize>
-					<BaseType GUID="{7707B66D-A535-C785-580A-0378EAA6826B}">Tc2_MC2.MC_MoveContinuousAbsolute</BaseType>
+					<BaseType GUID="{6D4E99C3-E800-5ADC-DFF6-460D8340599B}">Tc2_MC2.MC_MoveContinuousAbsolute</BaseType>
 					<BitOffs>4045056</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.mc_moveAbs2</Name>
 					<BitSize>7872</BitSize>
-					<BaseType GUID="{7707B66D-A535-C785-580A-0378EAA6826B}">Tc2_MC2.MC_MoveContinuousAbsolute</BaseType>
+					<BaseType GUID="{6D4E99C3-E800-5ADC-DFF6-460D8340599B}">Tc2_MC2.MC_MoveContinuousAbsolute</BaseType>
 					<BitOffs>4052928</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.mc_AbsCont1</Name>
 					<BitSize>7872</BitSize>
-					<BaseType GUID="{7707B66D-A535-C785-580A-0378EAA6826B}">Tc2_MC2.MC_MoveContinuousAbsolute</BaseType>
+					<BaseType GUID="{6D4E99C3-E800-5ADC-DFF6-460D8340599B}">Tc2_MC2.MC_MoveContinuousAbsolute</BaseType>
 					<BitOffs>4060800</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_FunctionGenerators.haltServo1</Name>
 					<BitSize>7616</BitSize>
-					<BaseType GUID="{092E048A-0C73-EBAD-077F-DB466C1A95FA}">Tc2_MC2.MC_Halt</BaseType>
+					<BaseType GUID="{71DCC587-282E-2DE3-E772-9949F9F261D9}">Tc2_MC2.MC_Halt</BaseType>
 					<BitOffs>4068672</BitOffs>
 				</Symbol>
 				<Symbol>
@@ -20321,7 +20201,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 				<Symbol>
 					<Name>P_FunctionGenerators.mc_movere1</Name>
 					<BitSize>7808</BitSize>
-					<BaseType GUID="{4AB2CB35-77CC-897B-9DEA-AC9C3598175A}">Tc2_MC2.MC_MoveRelative</BaseType>
+					<BaseType GUID="{B72F3477-58C2-D7EC-5728-B5BD5E108AF3}">Tc2_MC2.MC_MoveRelative</BaseType>
 					<BitOffs>4076352</BitOffs>
 				</Symbol>
 				<Symbol>
@@ -20333,7 +20213,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 				<Symbol>
 					<Name>P_FunctionGenerators.mc_movere2</Name>
 					<BitSize>7808</BitSize>
-					<BaseType GUID="{4AB2CB35-77CC-897B-9DEA-AC9C3598175A}">Tc2_MC2.MC_MoveRelative</BaseType>
+					<BaseType GUID="{B72F3477-58C2-D7EC-5728-B5BD5E108AF3}">Tc2_MC2.MC_MoveRelative</BaseType>
 					<BitOffs>4084224</BitOffs>
 				</Symbol>
 				<Symbol>
@@ -20449,19 +20329,19 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 				<Symbol>
 					<Name>p_MotorControl_ST.MC_GearOutDrive1</Name>
 					<BitSize>1792</BitSize>
-					<BaseType GUID="{9F5B245D-2150-A391-EFE5-C7DD85D1F35E}">Tc2_MC2.MC_GearOut</BaseType>
+					<BaseType GUID="{F1D3EB31-D4B5-27A6-B3E5-55A26C60F4A2}">Tc2_MC2.MC_GearOut</BaseType>
 					<BitOffs>4093984</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.Mc_ResetServoA</Name>
 					<BitSize>1632</BitSize>
-					<BaseType GUID="{C27C7C82-3C8F-6C3B-8B0B-19F19F4320F2}">Tc2_MC2.MC_Reset</BaseType>
+					<BaseType GUID="{53C30AB3-7287-3F6A-EF14-06075DE6FBFA}">Tc2_MC2.MC_Reset</BaseType>
 					<BitOffs>4095776</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.Mc_ResetServoB</Name>
 					<BitSize>1632</BitSize>
-					<BaseType GUID="{C27C7C82-3C8F-6C3B-8B0B-19F19F4320F2}">Tc2_MC2.MC_Reset</BaseType>
+					<BaseType GUID="{53C30AB3-7287-3F6A-EF14-06075DE6FBFA}">Tc2_MC2.MC_Reset</BaseType>
 					<BitOffs>4097408</BitOffs>
 				</Symbol>
 				<Symbol>
@@ -20485,13 +20365,13 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 				<Symbol>
 					<Name>p_MotorControl_ST.FbMc_PowerServoB</Name>
 					<BitSize>768</BitSize>
-					<BaseType GUID="{3C7E0719-A594-B8FF-D311-D8A3A77AED21}">Tc2_MC2.MC_Power</BaseType>
+					<BaseType GUID="{B41F008E-1CA2-908B-6B03-3887C3A13CF9}">Tc2_MC2.MC_Power</BaseType>
 					<BitOffs>4099072</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>p_MotorControl_ST.FbMc_PowerServoA</Name>
 					<BitSize>768</BitSize>
-					<BaseType GUID="{3C7E0719-A594-B8FF-D311-D8A3A77AED21}">Tc2_MC2.MC_Power</BaseType>
+					<BaseType GUID="{B41F008E-1CA2-908B-6B03-3887C3A13CF9}">Tc2_MC2.MC_Power</BaseType>
 					<BitOffs>4099840</BitOffs>
 				</Symbol>
 				<Symbol>
@@ -20654,25 +20534,25 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 				<Symbol>
 					<Name>P_MotorControl.MC_Halt_ServoB</Name>
 					<BitSize>7616</BitSize>
-					<BaseType GUID="{092E048A-0C73-EBAD-077F-DB466C1A95FA}">Tc2_MC2.MC_Halt</BaseType>
+					<BaseType GUID="{71DCC587-282E-2DE3-E772-9949F9F261D9}">Tc2_MC2.MC_Halt</BaseType>
 					<BitOffs>4103168</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_MotorControl.MC_Halt_ServoA</Name>
 					<BitSize>7616</BitSize>
-					<BaseType GUID="{092E048A-0C73-EBAD-077F-DB466C1A95FA}">Tc2_MC2.MC_Halt</BaseType>
+					<BaseType GUID="{71DCC587-282E-2DE3-E772-9949F9F261D9}">Tc2_MC2.MC_Halt</BaseType>
 					<BitOffs>4110784</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_MotorControl.ServoA_SPGen</Name>
 					<BitSize>4416</BitSize>
-					<BaseType GUID="{FA253D0D-2AE0-E8CD-062B-EC178DA98FEB}">FB_UseExtSetpointGen</BaseType>
+					<BaseType GUID="{B1F83B48-B022-0180-B80D-36A19F282585}">FB_UseExtSetpointGen</BaseType>
 					<BitOffs>4118400</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_MotorControl.ServoB_SPGen</Name>
 					<BitSize>4416</BitSize>
-					<BaseType GUID="{FA253D0D-2AE0-E8CD-062B-EC178DA98FEB}">FB_UseExtSetpointGen</BaseType>
+					<BaseType GUID="{B1F83B48-B022-0180-B80D-36A19F282585}">FB_UseExtSetpointGen</BaseType>
 					<BitOffs>4122816</BitOffs>
 				</Symbol>
 				<Symbol>
@@ -20729,25 +20609,25 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 				<Symbol>
 					<Name>P_MotorControl.MC_GearInA</Name>
 					<BitSize>6656</BitSize>
-					<BaseType GUID="{D03E290F-1678-7F08-173C-493C719920F0}">Tc2_MC2.MC_GearIn</BaseType>
+					<BaseType GUID="{33058C35-893B-E4F5-1E79-E6A0F3F82064}">Tc2_MC2.MC_GearIn</BaseType>
 					<BitOffs>4127360</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_MotorControl.MC_MoveRelativeA</Name>
 					<BitSize>7808</BitSize>
-					<BaseType GUID="{4AB2CB35-77CC-897B-9DEA-AC9C3598175A}">Tc2_MC2.MC_MoveRelative</BaseType>
+					<BaseType GUID="{B72F3477-58C2-D7EC-5728-B5BD5E108AF3}">Tc2_MC2.MC_MoveRelative</BaseType>
 					<BitOffs>4134016</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_MotorControl.MC_MoveRelative_Jog</Name>
 					<BitSize>7808</BitSize>
-					<BaseType GUID="{4AB2CB35-77CC-897B-9DEA-AC9C3598175A}">Tc2_MC2.MC_MoveRelative</BaseType>
+					<BaseType GUID="{B72F3477-58C2-D7EC-5728-B5BD5E108AF3}">Tc2_MC2.MC_MoveRelative</BaseType>
 					<BitOffs>4141824</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_MotorControl.MC_MoveAbsolute_A</Name>
 					<BitSize>7872</BitSize>
-					<BaseType GUID="{7707B66D-A535-C785-580A-0378EAA6826B}">Tc2_MC2.MC_MoveContinuousAbsolute</BaseType>
+					<BaseType GUID="{6D4E99C3-E800-5ADC-DFF6-460D8340599B}">Tc2_MC2.MC_MoveContinuousAbsolute</BaseType>
 					<BitOffs>4149632</BitOffs>
 				</Symbol>
 				<Symbol>
@@ -21218,7 +21098,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 				<Symbol>
 					<Name>IO.DriveAxis1</Name>
 					<BitSize>9024</BitSize>
-					<BaseType GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}">Tc2_MC2.AXIS_REF</BaseType>
+					<BaseType GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}">Tc2_MC2.AXIS_REF</BaseType>
 					<Properties>
 						<Property>
 							<Name>TcVarGlobal</Name>
@@ -21229,7 +21109,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 				<Symbol>
 					<Name>IO.DriveAxis2</Name>
 					<BitSize>9024</BitSize>
-					<BaseType GUID="{6659FE1A-1A9E-570D-559C-4FF484CDBA2D}">Tc2_MC2.AXIS_REF</BaseType>
+					<BaseType GUID="{BD6C6B2A-41FA-92BA-C467-5C276B588A49}">Tc2_MC2.AXIS_REF</BaseType>
 					<Properties>
 						<Property>
 							<Name>TcVarGlobal</Name>
@@ -21736,19 +21616,19 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 				<Symbol>
 					<Name>P_MotorControl.MC_SetPosition_1</Name>
 					<BitSize>1984</BitSize>
-					<BaseType GUID="{552A1543-B387-9C2A-639C-F9B417CE1C79}">Tc2_MC2.MC_SetPosition</BaseType>
+					<BaseType GUID="{CA7D7F4F-3DB4-2E34-15D8-5E85A9BBE5A3}">Tc2_MC2.MC_SetPosition</BaseType>
 					<BitOffs>120783040</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_MotorControl.MC_MoveAbsolute_Jog</Name>
 					<BitSize>7808</BitSize>
-					<BaseType GUID="{FCFD51D3-FB0E-32FB-4846-FB2958EF6651}">Tc2_MC2.MC_MoveAbsolute</BaseType>
+					<BaseType GUID="{0D215B5D-6624-2E80-06EE-F0FC0A990E93}">Tc2_MC2.MC_MoveAbsolute</BaseType>
 					<BitOffs>120824960</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_MotorControl.MC_MoveContinuousRelative_0</Name>
 					<BitSize>7872</BitSize>
-					<BaseType GUID="{8ACCD5C2-490F-9C7C-829C-7C56B8BC5C95}">Tc2_MC2.MC_MoveContinuousRelative</BaseType>
+					<BaseType GUID="{34C0BFCD-2A9D-8E07-4FE6-BC9BDD164E3A}">Tc2_MC2.MC_MoveContinuousRelative</BaseType>
 					<BitOffs>120832768</BitOffs>
 				</Symbol>
 				<Symbol>
@@ -21760,19 +21640,19 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 				<Symbol>
 					<Name>P_MotorControl.McWritePArams1</Name>
 					<BitSize>10240</BitSize>
-					<BaseType GUID="{9511727C-EC7E-EF24-FD18-75D8E565C107}">Tc2_MC2.MC_WriteParameterPersistent</BaseType>
+					<BaseType GUID="{0D85B35C-0FB1-4424-D865-4530DE189E6A}">Tc2_MC2.MC_WriteParameterPersistent</BaseType>
 					<BitOffs>121131008</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_MotorControl.McWritePArams2</Name>
 					<BitSize>10240</BitSize>
-					<BaseType GUID="{9511727C-EC7E-EF24-FD18-75D8E565C107}">Tc2_MC2.MC_WriteParameterPersistent</BaseType>
+					<BaseType GUID="{0D85B35C-0FB1-4424-D865-4530DE189E6A}">Tc2_MC2.MC_WriteParameterPersistent</BaseType>
 					<BitOffs>121141248</BitOffs>
 				</Symbol>
 				<Symbol>
 					<Name>P_MotorControl.MC_SetPosition_0</Name>
 					<BitSize>1984</BitSize>
-					<BaseType GUID="{552A1543-B387-9C2A-639C-F9B417CE1C79}">Tc2_MC2.MC_SetPosition</BaseType>
+					<BaseType GUID="{CA7D7F4F-3DB4-2E34-15D8-5E85A9BBE5A3}">Tc2_MC2.MC_SetPosition</BaseType>
 					<BitOffs>121151488</BitOffs>
 				</Symbol>
 			</DataArea>
@@ -21784,7 +21664,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 			</Property>
 			<Property>
 				<Name>ChangeDate</Name>
-				<Value>2020-07-22T15:59:53</Value>
+				<Value>2020-07-29T14:17:54</Value>
 			</Property>
 			<Property>
 				<Name>GeneratedCodeSize</Name>
@@ -21817,7 +21697,7 @@ mc_moveAbs2: MC_moveabsolute;]]></Comment>
 			</Value>
 			<Value>
 				<Name>Application Timestamp</Name>
-				<Value>1595433593</Value>
+				<Value>1596032274</Value>
 			</Value>
 			<Value>
 				<Name>Task Module OIDs</Name>
