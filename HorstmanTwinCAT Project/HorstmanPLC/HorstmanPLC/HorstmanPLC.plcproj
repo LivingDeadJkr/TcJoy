@@ -51,6 +51,9 @@
     <Compile Include="POUs\FB_SinGen.TcPOU">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="POUs\FB_ChirpGen.TcPOU">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="POUs\FB_TcJoy.TcPOU">
       <SubType>Code</SubType>
     </Compile>

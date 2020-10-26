@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.2">
+  <POU Name="FB_ChirpGen" Id="{e265f706-1b92-434d-9e9c-2ed2746cb55a}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ChirpGen
+VAR_INPUT
+	EN :BOOL;
+	Offset: LREAL; // where to center the chirp wave in the stroke
+	StartVel :LREAL;
+	EndVel :LREAL;
+	A :LREAL;
+	M :LREAL;
+	fTIME :LREAL;
+	
+END_VAR
+VAR_OUTPUT
+	SignalOut :LREAL;
+END_VAR
+VAR
+
+	RESULT: LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[Result := A * COS (startvel * ftime + (endvel - startvel) * ftime * ftime / (2*M));
+signalout := result;]]></ST>
+    </Implementation>
+    <LineIds Name="FB_ChirpGen">
+      <LineId Id="9" Count="0" />
+      <LineId Id="88" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>
