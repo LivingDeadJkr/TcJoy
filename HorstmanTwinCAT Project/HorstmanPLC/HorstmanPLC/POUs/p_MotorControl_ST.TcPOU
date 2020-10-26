@@ -48,6 +48,7 @@ ServosReady :byte; //
 	JogRtrig: R_trig;
 	JogUpRtrig: R_trig;;
 	JogDnRtrig: R_trig;
+	B_Debubool: BOOL;
 END_VAR
 
 ]]></Declaration>
@@ -58,7 +59,7 @@ b_Faulted := p_faultmonitoring.b_Faulted;
 Mc_ResetServoA(Axis := io.DriveAxis1, Execute := Control.b_RequestServoReset);
 Mc_ResetServoB(Axis := io.DriveAxis2, Execute := Control.b_RequestServoReset);//STb
 io.DriveEnable1 := Control.b_EnableServosFinal;
-io.DriveEnable2 := control.b_EnableServosFinal;
+io.DriveEnable2 := control.b_EnableServosFinal ;
 MC_GearOutDrive1(Slave := io.DriveAxis2, Execute := NOT Control.b_ExecuteGearIn);
 servoenablertrig(CLK := io.PowerEnabled) ;
 IF servoenablertrig.q THEN
@@ -202,8 +203,8 @@ Control.b_HaltRequestExecute := control.b_HaltRequest; // halt if requested, unl
 
 
 // pack servo readdy bits into the servoready byte. if a Bit is true, the assosiated servo is ready to roll.
-Servosready.0 := io.DriveEnabled1;
-Servosready.1 := io.DriveEnabled2;
+Servosready.0 := io.DriveAxis1.NcToPlc.StateDWord.0;
+Servosready.1 := io.DriveAxis2.NcToPlc.StateDWord.0;
 
 IF ServosReady = 3 THEN //if all servos ready set bool true
 	b_ServosReady := TRUE;
@@ -223,7 +224,7 @@ END_IF
 
 
 //a
-	FbMc_PowerServoA(Enable		:= io.DriveEnabled1,
+	FbMc_PowerServoA(Enable		:= Control.b_EnableServosFinal,
 			Enable_Positive	:= Control.b_EnableServosFinal ,
 			Enable_Negative	:= Control.b_EnableServosFinal ,
 			Override		:= n_Override ,
@@ -231,7 +232,7 @@ END_IF
 			Axis			:= io.DriveAxis1 );
 
 //Servo B		
-	FbMc_PowerServoB(Enable		:= io.DriveEnabled2,
+	FbMc_PowerServoB(Enable		:= Control.b_EnableServosFinal,
 			Enable_Positive	:= Control.b_EnableServosFinal ,
 			Enable_Negative	:= Control.b_EnableServosFinal ,
 			Override		:= n_Override ,

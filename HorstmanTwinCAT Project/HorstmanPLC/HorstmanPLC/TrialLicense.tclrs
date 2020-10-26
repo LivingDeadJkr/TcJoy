@@ -2,9 +2,9 @@
 <TcLicenseInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2011/11/TcLicenseInfo">
 	<LicenseInfo>
 		<SystemId>{6DFA206A-D86A-4CC6-2F19-2CD1351F9D3B}</SystemId>
-		<IssueTime>2020-07-29T14:18:00</IssueTime>
-		<ExpireTime>2020-08-06T00:00:00</ExpireTime>
-		<LicenseKey>a7bd3f501efe6c72bbd932a61c4253aa9f795e71047a69b97e21fbdf56822a6565118521e5bde2c0e753c4b4802d137c374a6e397347636bd2fada3409d14ed41cb68a3962d38ccb9481f6978612de470162f39766d9b249065a77b50156a211547f7d09668e8b0626aa2154a15fba1a994eb2161495fa712f99aaeeb856bd294e128cee90579955558053b30e99965fef0ce3c713df78b1d3ca359a53efa3604b7fcb159a60b94a1bf9e6d608fb012520414a9c615f0432cc7c67bcb7880a28786e612ee83773c8e4baa0abcb106fcb9b38df619d08a3f36d32173ce6abf888684659ce466b27a70fd55615e4db19c2abb83bdc320c0ab37460e6ff5e6cff9d</LicenseKey>
+		<IssueTime>2020-10-16T14:22:00</IssueTime>
+		<ExpireTime>2020-10-24T00:00:00</ExpireTime>
+		<LicenseKey>90402e376e569c2018860415f17678d8c943dc43dc115b5dd6953f503b0c89aba6741f4ad1d5fa5be8ae858496d6a188d499f6e1999ac13c351f6d135f62654c0f2e86436273637ea11afc58d9a1219e09d7291b91df0e50172ad4edb919d8d5f35c909ed1a1987deb8e1dc7daad9c4b52f5b2c245e561900f0e7bec6b9851d28b12fdf588c8e8e09b39eee5290fddc27bb735b2619fc473f518192d4cbacde34c6b447c9e72232eb4b4e35b9628229d85364b6b8aaf4feb392804bcfb4b76746cf5c12272e2687a5134db68b7603a9394b1fe4ea9d54a0352c70d7fbaf9976985a2383ad9b6b1f6e8e0a944e35b5fcc93361b4790a08132b610895a17dbda60</LicenseKey>
 		<License>
 			<LicenseId>{4C256767-E6E6-4AF5-BD68-9F7ABAD0C200}</LicenseId>
 			<Name>TC3 ADS</Name>
@@ -34,11 +34,6 @@
 			<LicenseId>{777F1598-583B-4503-99BB-7C02E0ABD97E}</LicenseId>
 			<Name>TC3 Controller Toolbox</Name>
 			<OrderNo>TF4100</OrderNo>
-		</License>
-		<License>
-			<LicenseId>{4989A799-AEEA-4FEE-88EF-666B99EEFB45}</LicenseId>
-			<Name>TC3 Scope View Professional</Name>
-			<OrderNo>TE1300</OrderNo>
 		</License>
 	</LicenseInfo>
 </TcLicenseInfo>

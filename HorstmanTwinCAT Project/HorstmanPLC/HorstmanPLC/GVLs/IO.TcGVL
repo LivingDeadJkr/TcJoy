@@ -11,14 +11,16 @@ PowerEnabled :BOOL; // soft  bit we turn on to enable drives when we have no err
 //Drive 1	
 TorqueRequest1 AT %Q*: INT;
 DriveEnable1 AT %Q*: BOOL;
-Drive1FaultReset AT %Q*: BOOL;
+//Drive1FaultReset AT %Q*: BOOL;
 DriveAxis1 : AXIS_Ref;
 //Drive 2
 TorqueRequest2 AT %Q*: INT;
 DriveEnable2 AT %Q*:BOOL;
-Drive2FaultReset AT %Q*: BOOL;
+//Drive2FaultReset AT %Q*: BOOL;
 DriveAxis2 : AXIS_Ref;
 
+
+Wcstate_bus2 AT%I* :BOOL;
 //Simdrive1: AXIS_Ref;
 //Simdrive2: AXIS_Ref;
 
@@ -26,20 +28,30 @@ DriveAxis2 : AXIS_Ref;
 LaserDistanceValue AT %I* :UINT; // Laser
 Laser2 AT %I*: UINT;
 //Drive 1
-DriveFaulted1  AT %I*: BOOL;
-DriveEnabled1  AT %I*: BOOL;
+
+
+Drive1digitalinBtyes  AT %I*: ARRAY[0..3] OF BYTE;
+Drive1positivelimitSw: BOOL;
+Drive1NegativelimitSw : BOOL;
+//DriveFaulted1  AT %I*: BOOL;
+//DriveEnabled1  AT %I*: BOOL;
 DriveFeedback1   AT %I*: INT;
 LinearPosition1   AT %I*: DINT;
 LoadCell1   AT %I*: DINT;
 
 //Drive 2
-DriveFaulted2  AT %I*: BOOL;
-DriveEnabled2  AT %I*: BOOL;
+Drive2digitalinBtyes  AT %I*: ARRAY[0..3] OF BYTE;
+Drive2positivelimitSw: BOOL;
+Drive2NegativelimitSw : BOOL;
+//DriveFaulted2  AT %I*: BOOL;
+//DriveEnabled2  AT %I*: BOOL;
 DriveFeedback2   AT %I*: INT;
 LinearPosition2   AT %I*: DINT;
 LoadCell2   AT %I*: DINT;
  
 Laser_mm: LREAL;
+	Encoder_Left AT %I*: UDINT;
+	Encoder_Right AT %I*: UDINT;
 
 END_VAR]]></Declaration>
   </GVL>

@@ -4,15 +4,26 @@
     <Declaration><![CDATA[PROGRAM MAIN
 VAR
 	SoftClock : RTC_EX;
+	Chirp :fb_chirpgen;
+	outputval: LREAL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[.Global_Variables.TcJoy(); // Read HMI data
+ // read drive limit input swtich status
+ io.Drive1positivelimitSw := io.Drive1digitalinBtyes[2].4;
+ io.Drive1NegativelimitSw := io.Drive1digitalinBtyes[2].5;
+ io.Drive2positivelimitSw := io.Drive2digitalinBtyes[2].4;
+ io.Drive2NegativelimitSw := io.Drive2digitalinBtyes[2].5;
 P_HMI_polling();
 IF .Global_Variables.TcJoy.bIsActive THEN // if HMI is connected
 	;
 END_IF
 p_singenerator();
+
+chirp(en := TRUE, Reset :=FALSE, Offset := 10.0, A := 15, w1 := 10, w2 := 25,M :=2000, SignalOut => outputval);
+
+
 p_FaultMonitoring(); // Check fault routine
 //inputs
 p_TextModeRead();
@@ -28,9 +39,16 @@ p_MotorControl();
 //recipe system]]></ST>
     </Implementation>
     <LineIds Name="MAIN">
-      <LineId Id="3" Count="3" />
+      <LineId Id="3" Count="0" />
+      <LineId Id="58" Count="1" />
+      <LineId Id="61" Count="2" />
+      <LineId Id="4" Count="2" />
       <LineId Id="2" Count="0" />
       <LineId Id="11" Count="0" />
+      <LineId Id="53" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="69" Count="0" />
+      <LineId Id="51" Count="0" />
       <LineId Id="10" Count="0" />
       <LineId Id="12" Count="0" />
       <LineId Id="29" Count="0" />

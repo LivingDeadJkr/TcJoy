@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.4">
+  <POU Name="FB_ChirpGen" Id="{1ace8336-ab8b-497f-8d3b-e8dbbc588162}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_ChirpGen
+VAR_INPUT
+	EN :BOOL;
+	Reset: BOOL;
+	Offset: LREAL; // where to center the sin wave in the stroke
+	A :LREAL; //Peak Amplitude
+	w1 : LREAL; //freq 1
+	w2 : LREAL; //freq 2
+	M :LREAL; //Chirp Duration in ms
+		Res :LREAL; // result
+END_VAR
+VAR_OUTPUT
+	Signalout :LREAL; // result
+END_VAR
+VAR
+	TimerPreset: TIME; // freqeuncy of sin depends on this
+	K: LREAL;
+	N: DINT;
+	b_init: BOOL;
+	RESULT: LREAL;
+	Timer: TON;
+	
+	t1: LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[IF EN THEN 
+	IF Reset THEN
+	b_init := FALSE; //clear initialized flag on reset.
+END_IF
+
+IF NOT b_init THEN // if not initialized, a reset is needed.
+	Timer(IN := FALSE); // reset timer
+   	b_init := TRUE; //mark as initialized
+END_IF
+
+timer.PT := LREAL_TO_TIME(M); // set timer to duration requested
+Timer(IN := NOT timer.q); // run timer if it's not already finished.
+
+t1 := TIME_TO_LREAL(timer.ET);
+Res := A*COS(w1*t1+(w2-w1)*t1*t1/(2*M));
+
+Signalout := Res;
+
+
+ELSE 
+	Signalout := 0; // output of 0 if not enabled. might want to change this to offset?
+END_IF
+]]></ST>
+    </Implementation>
+    <LineIds Name="FB_ChirpGen">
+      <LineId Id="39" Count="0" />
+      <LineId Id="42" Count="1" />
+      <LineId Id="61" Count="0" />
+      <LineId Id="45" Count="1" />
+      <LineId Id="115" Count="0" />
+      <LineId Id="47" Count="0" />
+      <LineId Id="49" Count="0" />
+      <LineId Id="114" Count="0" />
+      <LineId Id="50" Count="1" />
+      <LineId Id="111" Count="0" />
+      <LineId Id="110" Count="0" />
+      <LineId Id="52" Count="0" />
+      <LineId Id="56" Count="1" />
+      <LineId Id="40" Count="0" />
+      <LineId Id="106" Count="0" />
+      <LineId Id="58" Count="1" />
+      <LineId Id="41" Count="0" />
+      <LineId Id="9" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

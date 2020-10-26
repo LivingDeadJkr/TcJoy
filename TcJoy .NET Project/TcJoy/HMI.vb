@@ -417,55 +417,67 @@ Public Class HMI
 
 
                             Case "Global_variables.HmiBoolDword1"
-                                If GetBit(tag.Value, 0) Then
+                                If GetBit(tag.Value, 0) And Not LbFaults.Items.Contains("Servo 1 Drive Fault") Then
                                     LbFaults.Items.Add("Servo 1 Drive Fault")
                                 Else
-                                    LbFaults.Items.Remove("Servo 1 Drive Fault")
+                                    If (LbFaults.Items.Contains("Servo 1 Drive Fault") And Not GetBit(tag.Value, 0)) Then
+                                        LbFaults.Items.Remove("Servo 1 Drive Fault")
+                                    End If
                                 End If
 
-                                If GetBit(tag.Value, 1) Then
+                                If GetBit(tag.Value, 1) And Not LbFaults.Items.Contains("Servo 2 Drive Fault") Then
                                     LbFaults.Items.Add("Servo 2 Drive Fault")
                                 Else
-                                    LbFaults.Items.Remove("Servo 2 Drive Fault")
+                                    If (LbFaults.Items.Contains("Servo 2 Drive Fault") And Not GetBit(tag.Value, 1)) Then
+                                        LbFaults.Items.Remove("Servo 2 Drive Fault")
+                                    End If
                                 End If
 
-                                If GetBit(tag.Value, 2) Then
-
+                                If GetBit(Tag.Value, 2) And Not LbFaults.Items.Contains("Servo 1 NC Fault") Then
                                     LbFaults.Items.Add("Servo 1 NC Fault")
                                 Else
-                                    LbFaults.Items.Remove("Servo 1 NC Fault")
-
+                                    If (LbFaults.Items.Contains("Servo 1 NC Fault") And Not GetBit(tag.Value, 2)) Then
+                                        LbFaults.Items.Remove("Servo 1 NC Fault")
+                                    End If
                                 End If
 
-                                If GetBit(tag.Value, 3) Then
+                                If GetBit(tag.Value, 3) And Not LbFaults.Items.Contains("Servo 2 NC Fault") Then
                                     LbFaults.Items.Add("Servo 2 NC Fault")
                                 Else
-                                    LbFaults.Items.Remove("Servo 2 NC Fault")
+                                    If (LbFaults.Items.Contains("Servo 2 NC Fault") And Not GetBit(tag.Value, 3)) Then
+                                        LbFaults.Items.Remove("Servo 2 NC Fault")
+                                    End If
                                 End If
 
-                                If GetBit(tag.Value, 4) Then
+                                If GetBit(tag.Value, 4) And Not LbFaults.Items.Contains("Servo Gear in (sync) Not active, and required") Then
                                     LbFaults.Items.Add("Servo Gear in (sync) Not active, and required")
                                 Else
-                                    LbFaults.Items.Remove("Servo Gear in (sync) Not active, and required")
+                                    If (LbFaults.Items.Contains("Servo Gear in (sync) Not active, and required") And Not GetBit(tag.Value, 4)) Then
+                                        LbFaults.Items.Remove("Servo Gear in (sync) Not active, and required")
 
+                                    End If
                                 End If
-                                If GetBit(tag.Value, 5) Then
+                                If GetBit(tag.Value, 5) And Not LbFaults.Items.Contains("Servo 1 Failed to enable") Then
 
                                     LbFaults.Items.Add("Servo 1 Failed to enable")
                                 Else
-                                    LbFaults.Items.Remove("Servo 1 Failed to enable")
+                                    If (LbFaults.Items.Contains("Servo 1 Failed to enable") And Not GetBit(tag.Value, 5)) Then
+                                        LbFaults.Items.Remove("Servo 1 Failed to enable")
 
+                                    End If
                                 End If
-                                If GetBit(tag.Value, 6) Then
+                                If GetBit(tag.Value, 6) And Not LbFaults.Items.Contains("Servo 2 Failed to enable") Then
                                     LbFaults.Items.Add("Servo 2 Failed to enable")
                                 Else
-                                    LbFaults.Items.Remove("Servo 2 Failed to enable")
+                                    If (LbFaults.Items.Contains("Servo 2 Failed to enable") And Not GetBit(tag.Value, 6)) Then
+                                        LbFaults.Items.Remove("Servo 2 Failed to enable")
 
+                                    End If
                                 End If
 
 
 
-                            Case TextBox_TcJoyPath.Text + ".iUpdateRateMS"
+        Case TextBox_TcJoyPath.Text + ".iUpdateRateMS"
 
                                 ' Fill out latency status bar graphs with achieved rate.
                                 If tag.Value > 0 Then

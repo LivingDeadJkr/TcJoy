@@ -41,10 +41,10 @@ IF Global_variables.HmiButtonData0.16 	THEN Control.RequestedState := 6; END_IF 
 
 
 
-Global_variables.HmiBoolDword0.0 := io.DriveEnabled1;
-Global_variables.HmiBoolDword0.1 := io.DriveFaulted1;
-Global_variables.HmiBoolDword0.2 := io.DriveEnabled2;
-Global_variables.HmiBoolDword0.3 := io.DriveFaulted2;
+Global_variables.HmiBoolDword0.0 := io.DriveAxis1.NcToPlc.StateDWord.0; // drive 1 enable nc status
+//Global_variables.HmiBoolDword0.1 := io.DriveFaulted1;
+Global_variables.HmiBoolDword0.2 := io.DriveAxis2.NcToPlc.StateDWord.0; // drive 2 enable nc status
+//Global_variables.HmiBoolDword0.3 := io.DriveFaulted2;
 Global_variables.HmiBoolDword0.4 := Global_variables.b_GearIn;
 Global_variables.HmiBoolDword0.5 := control.b_Servos_Halted;
 Global_variables.HmiBoolDword0.6 := control.b_EnableServosFinal;
